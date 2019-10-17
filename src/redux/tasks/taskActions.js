@@ -5,5 +5,15 @@ export const ActionTypes = {
 };
 
 export const getTasksRequest = () => ({
-  type: ActionTypes['/tasks/GET_TASKS_SUCCESS'],
+  type: ActionTypes.GET_TASKS_REQUEST,
+});
+
+export const getTasksSuccess = tasks => ({
+  type: ActionTypes.getTasksSuccess,
+  payload: tasks,
+});
+
+export const getTasksErorr = err => ({
+  type: ActionTypes.GET_TASKS_ERROR,
+  payload: err,
 });
