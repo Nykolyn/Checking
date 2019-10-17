@@ -2,7 +2,7 @@ import React from 'react';
 
 const BurnedOutTab = () => (
   <div>
-    <p>BurnedOyt tab</p>
+    <p>Burned Out Tab</p>
   </div>
 );
 
