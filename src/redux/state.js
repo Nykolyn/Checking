@@ -2,8 +2,10 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
 import tasks from './tasks/tasksReducer';
+import global from './global/globalReducer';
+import componentController from './componentController/componentReducer';
 
-const rootReducer = combineReducers({ tasks });
+const rootReducer = combineReducers({ tasks, global, componentController });
 
 const middleware = [ReduxThunk];
 
