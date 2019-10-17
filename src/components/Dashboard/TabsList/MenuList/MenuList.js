@@ -1,5 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route, Redirect, Switch } from 'react-router-dom';
+import TodayTab from '../TodayTomorrowTab/TodayTomorrowTab';
+import NextWeekTab from '../NexWeekTab/NexWeekTab';
+import BurnedOutTab from '../BurnedOutTab/BurnedOutTab';
+import DoneTab from '../DoneTab/DoneTab';
 
 const MenuList = () => {
   return (
@@ -17,6 +21,14 @@ const MenuList = () => {
       <NavLink to="/dashboard/done">
         <p>Done Tab</p>
       </NavLink>
+
+      <Switch>
+        <Route path="/dashboard/today" component={TodayTab} />
+        <Route path="/dashboard/nextweek" component={NextWeekTab} />
+        <Route path="/dashboard/burnedout" component={BurnedOutTab} />
+        <Route path="/dashboard/done" component={DoneTab} />
+        <Redirect to="/dashboard/today" />
+      </Switch>
     </div>
   );
 };
