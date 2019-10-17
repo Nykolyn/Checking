@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dashboard from '../Dashboard/Dashboard';
 
 class App extends Component {
   state = {};
@@ -6,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>Робит</p>
+        <Dashboard />
       </div>
     );
   }
