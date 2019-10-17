@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TaskPopUp from '../TaskPopUp/TaskPopUp';
 
 class App extends Component {
   state = {};
@@ -6,7 +7,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>Робит</p>
+        {/* <p>Робит</p> */}
+        <TaskPopUp />
       </div>
     );
   }
