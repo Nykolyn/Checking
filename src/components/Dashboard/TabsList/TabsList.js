@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import MenuList from './MenuList/MenuList';
 
-const TabsList = () => (
-  <div>
-    <h1>TabsList page</h1>
-    <MenuList></MenuList>
-  </div>
-);
+class TabsList extends Component {
+  state = {};
+  render() {
+    return (
+      <div>
+        <h1>TabsList page</h1>
+        <MenuList></MenuList>
+      </div>
+    );
+  }
+}
 
 export default TabsList;
