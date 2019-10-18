@@ -1,6 +1,4 @@
-import chroma from 'chroma-js';
-
-export const timeStyles = {
+const timeStyles = {
   control: styles => ({
     ...styles,
     width: '100%',

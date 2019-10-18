@@ -1,6 +1,6 @@
 import chroma from 'chroma-js';
 
-export const roleStyles = {
+const roleStyles = {
   control: styles => ({
     ...styles,
     width: '100%',

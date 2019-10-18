@@ -71,13 +71,17 @@
 }
 
 .priorityDiv {
+  position: relative;
   width: 40%;
   padding-top: 8px;
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
 }
 
-.priorityBtn {
+.lowPriorityBtn {
+  position: absolute;
+  right: 0;
   width: 24px;
   height: 24px;
   border: 0;
@@ -91,7 +95,14 @@
   cursor: pointer;
 }
 
-.priorityBtn:active {
+.lowPriorityBtn:active {
+  width: 32px;
+  height: 32px;
+}
+
+.highPriorityBtn {
+  composes: lowPriorityBtn;
+  left: 0;
   background-color: #f25127;
 }
 
