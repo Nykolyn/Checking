@@ -133,7 +133,6 @@
   padding: 0;
   width: 46.88%;
   height: 40px;
-  /* font-family: serif; */
   font-weight: 700;
   color: #000;
   background-color: #f5f7fa;
@@ -168,7 +167,6 @@
     flex-direction: column;
     height: 146px;
   }
-
 }
 
 @media screen and (min-width: 1120px) {
