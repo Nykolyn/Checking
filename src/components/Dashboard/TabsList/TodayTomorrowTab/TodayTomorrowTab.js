@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import styles from './TodayTomorowTab.module.css';
 
-// const dropDoun = {
-//   transformOrigin: 'center center',
-//   tranform: 'rotate(180deg)',
-// };
-
 class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
@@ -33,6 +28,7 @@ class TodayTomorrowTab extends Component {
             type="button"
             onClick={this.handleToggleToday}
             className={styles.titleButton}
+            // eslint-disable-next-line react/jsx-no-duplicate-props
             className={
               isOpenToday
                 ? styles.titleButton
@@ -41,7 +37,6 @@ class TodayTomorrowTab extends Component {
           >
             Today
           </button>
-          <span />
           {isOpenToday && (
             <ul className={styles.cardList}>
               <li className={styles.cardItem}> card</li>

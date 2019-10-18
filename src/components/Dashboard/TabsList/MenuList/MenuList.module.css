@@ -1,3 +1,58 @@
+.block {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.link {
+  display: block;
+  width: 140px;
+  height: 40px;
+  text-decoration: none;
+  /* text-align: center; */
+  color: gray;
+  border: 1px solid #cdd0d9;
+  background-color: #f5f7fa;
+}
+
+.title::before {
+  padding-left: 14px;
+  padding-right: 14px;
+  content: ' ';
+  display: inline-block;
+  background: url(../../../../assets/icons/dashboard-24px.svg);
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 49%;
+}
+
+.next::before {
+  background: url(../../../../assets/icons/label_important-24px.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 48%;
+}
+
+.burned::before {
+  background: url(../../../../assets/icons/whatshot-24px.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 49%;
+}
+
+.done::before {
+  background: url(../../../../assets/icons/thumb_up-24px.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 48%;
+}
+
+.selected {
+  background-color: #fff;
+}
+
 @media screen and (max-width: 757px) {
   .block {
     display: none;
