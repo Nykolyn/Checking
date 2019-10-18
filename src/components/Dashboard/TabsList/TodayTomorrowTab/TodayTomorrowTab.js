@@ -1,40 +1,22 @@
 import React from 'react';
-import db from '../../../../db.json';
+import styles from './TodayTomorowTab.module.css';
 
-// const TodayTomorrowTab = ({}) => (
-//   <div>
-//     <p>Today</p>
-//     <p>TodayTomorrowTab</p>
-//   </div>
-// );
-
-const TodayTomorrowTab = () => {
-  console.log(db);
+const TodayTomorrowTab = ({ today, tomorrow }) => {
   return (
-    <div>
-      <p>TodayTomorrowTab</p>
-      <div>
-        <p>Today</p>
-        {db.map(el => (
-          <li key={el.id}>
-            <p>{el.header}</p>
-            <p>{el.title}</p>
-            <p>{el.suTitle}</p>
-            <p>{el.data}</p>
-          </li>
-        ))}
-      </div>
-      <div>
-        <p>Tomoroow</p>
-        {db.map(el => (
-          <li key={el.id}>
-            <p>{el.header}</p>
-            <p>{el.title}</p>
-            <p>{el.suTitle}</p>
-            <p>{el.data}</p>
-          </li>
-        ))}
-      </div>
+    <div className={styles.container}>
+      <section className={styles.section}>
+        <p className={styles.title}>Today</p>
+        <div className={styles.card}> card</div>
+        <div className={styles.card}> card</div>
+        <div className={styles.card}> card</div>
+      </section>
+
+      <section className={styles.section}>
+        <p className={styles.title}>Tomoroow</p>
+        <div className={styles.card}> card</div>
+        <div className={styles.card}> card</div>
+        <div className={styles.card}> card</div>
+      </section>
     </div>
   );
 };

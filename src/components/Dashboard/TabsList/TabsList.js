@@ -3,6 +3,7 @@ import Loadable from 'react-loadable';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import MenuList from './MenuList/MenuList';
 import Loader from './Loader';
+import styles from './TabsList.module.css';
 
 const AsyncTodayTab = Loadable({
   loader: () =>
@@ -45,16 +46,17 @@ class TabsList extends Component {
 
   render() {
     return (
-      <div>
-        <h1>TabsList page</h1>
+      <div className={styles.container}>
         <MenuList />
-        <Switch>
-          <Route path="/dashboard/today" component={AsyncTodayTab} />
-          <Route path="/dashboard/nextweek" component={AsyncNextWeekTab} />
-          <Route path="/dashboard/burnedout" component={AsyncBurnedOutTab} />
-          <Route path="/dashboard/done" component={AsyncDoneTab} />
-          <Redirect to="/dashboard/today" />
-        </Switch>
+        <div className={styles.content}>
+          <Switch>
+            <Route path="/dashboard/today" component={AsyncTodayTab} />
+            <Route path="/dashboard/nextweek" component={AsyncNextWeekTab} />
+            <Route path="/dashboard/burnedout" component={AsyncBurnedOutTab} />
+            <Route path="/dashboard/done" component={AsyncDoneTab} />
+            <Redirect to="/dashboard/today" />
+          </Switch>
+        </div>
       </div>
     );
   }
