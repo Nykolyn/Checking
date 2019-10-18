@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import DatePicker from 'react-date-picker/dist/entry.nostyle';
 import styles from './TaskPopUp.module.css';
 

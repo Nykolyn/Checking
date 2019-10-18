@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import DateSelect from './DateSelect';
 import RoleSelect from './RoleSelect';
 import TimeSelect from './TimeSelect';
@@ -7,12 +7,14 @@ import PrioritySelect from './PrioritySelect';
 import styles from './TaskPopUp.module.css';
 
 export default class TaskPopUp extends Component {
-  state = {
-    role: 'None',
-  };
+  // state = {
+  //   role: 'None',
+  // };
+
+  componentDidMount() {}
 
   render() {
-    const { role } = this.state;
+    // const { role } = this.state;
     return (
       <form className={styles.outer}>
         <h3 className={styles.createTaskTitle}>Create Task</h3>

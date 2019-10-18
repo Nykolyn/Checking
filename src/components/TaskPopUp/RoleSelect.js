@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Select from 'react-select';
 import roles from '../../constants/roles';
 import roleStyles from '../../helpers/roleSelectStylesHelper';
