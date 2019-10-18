@@ -21,9 +21,18 @@ export default class TaskPopUp extends Component {
           <DateSelect />
         </div>
         <h4 className={styles.titleTitle}>Title (up to 150 characters)</h4>
-        <input className={styles.titleInput} type="text" required />
+        <input
+          className={styles.titleInput}
+          type="text"
+          placeholder="Write title"
+          required
+        />
         <h4 className={styles.title}>Description (up to 800 characters)</h4>
-        <textarea className={styles.textarea} rows={7} />
+        <textarea
+          className={styles.textarea}
+          placeholder="Your description"
+          rows={10}
+        />
         <div className={styles.flexHelperDiv}>
           <TimeSelect />
           <PrioritySelect />

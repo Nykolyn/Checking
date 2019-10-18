@@ -14,6 +14,9 @@ const roleStyles = {
     return {
       ...styles,
       height: '40px',
+      fontFamily: 'Montserrat',
+      fontSize: '14px',
+      fontWeight: 400,
       backgroundColor: value ? value.color : '#cdd0d9', //! !!!!!!!!!!!!!!
     };
   },
@@ -39,10 +42,14 @@ const roleStyles = {
       border: '1px solid #fff',
       backgroundColor: data.color,
       color: 'black',
+      fontFamily: 'Montserrat',
+      fontSize: '14px',
+      fontWeight: 400,
       cursor: isDisabled ? 'not-allowed' : 'default',
 
       ':active': {
         ...styles[':active'],
+        fontWeight: 600,
         backgroundColor:
           !isDisabled && (isSelected ? data.color : color.alpha(0.3).css()),
       },

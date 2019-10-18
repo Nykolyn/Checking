@@ -13,6 +13,9 @@ const timeStyles = {
       ...styles,
       height: '40px',
       backgroundColor: '#f5f7fa',
+      fontFamily: 'Montserrat',
+      fontSize: '14px',
+      fontWeight: 400,
     };
   },
   indicatorSeparator: styles => ({
@@ -37,10 +40,14 @@ const timeStyles = {
     border: '1px solid #f5f7fa',
     backgroundColor: '#fff',
     color: 'black',
+    fontFamily: 'Montserrat',
+    fontSize: '14px',
+    fontWeight: 400,
 
     ':active': {
       ...styles[':active'],
-      fontWeight: 'bold',
+      fontWeight: 500,
+      backgroundColor: '#f5f7fa',
     },
   }),
 };

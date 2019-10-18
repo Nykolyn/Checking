@@ -1,7 +1,13 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .react-date-picker__wrapper {
   box-sizing: border-box;
   width: 100%;
-  padding: 10px 10px 0 10px;
+  padding: 10px 10px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,10 +22,7 @@
 .react-date-picker__inputGroup__day,
 .react-date-picker__inputGroup__divider,
 .react-date-picker__inputGroup__leadingZero {
-  font-size: 16px;
-  /* font-family: ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-  font-style: normal;
-  font-weight: 400;
+  font-size: 12px;
   border: 0;
   background-color: transparent;
 }
@@ -83,7 +86,6 @@
   max-width: 100%;
   background: #f5f7fa;
   border: 1px solid #a0a096;
-  /* font-family: 'Nova Slim', 'Rubik', 'Baloo Bhaina'; */
   font-weight: normal;
   line-height: 1.125em;
 }
@@ -112,6 +114,11 @@
   margin-bottom: 1em;
 }
 
+.react-calendar__navigation__label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .react-calendar__navigation button {
   min-width: 44px;
   background: none;
@@ -135,6 +142,7 @@
 
 .react-calendar__month-view__weekdays__weekday {
   padding: 0.5em;
+  font-weight: 500;
 }
 
 .react-calendar__month-view__weekNumbers {
@@ -153,10 +161,15 @@
   color: #757575;
 }
 
+.react-calendar__year-view__months__month {
+  font-weight: 500;
+}
+
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
 .react-calendar__century-view .react-calendar__tile {
   padding: 2em 0.5em;
+  font-weight: 500;
 }
 
 .react-calendar__tile {
@@ -164,34 +177,41 @@
   text-align: center;
   padding: 0.75em 0.5em;
   background: none;
+  font-weight: 500;
 }
 
 .react-calendar__tile:disabled {
   background-color: #f0f0f0;
+  font-weight: 500;
 }
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
   background-color: #e6e6e6;
+  font-weight: 600;
 }
 
 .react-calendar__tile--hasActive {
   background: #f25127;
+  font-weight: 500;
 }
 
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
   background: #f25127;
+  font-weight: 600;
 }
 
 .react-calendar__tile--active {
   background: #f25127;
   color: white;
+  font-weight: 500;
 }
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
   background: #c94321;
+  font-weight: 600;
 }
 
 .react-calendar--selectRange .react-calendar__tile--hover {
@@ -202,6 +222,6 @@
   appearance: none;
 }
 
-.react-date-picker__inputGroup__month > * {
+.react-date-picker__inputGroup__month>* {
   display: none;
 }
