@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import RegistrationForm from './RegistrationForm/RegistrationForm';
 import css from './Registration.module.css';
 // import PropTypes from 'prop-types';
@@ -10,13 +11,13 @@ class Registration extends Component {
     return (
       <section className={css.registrationSection}>
         <div>HEADER</div>
-        <div className="">
-          <h1 className="title">asdas</h1>
-          <p>
-            <a href="google.com">Login</a>
-          </p>
+        <div className={css.headerWrapper}>
+          <h1 className={css.title}>Create Account</h1>
+          <Link to="/login" className={css.link}>
+            Login
+          </Link>
         </div>
-        <p>Your account</p>
+        <h2 className={css.subTitle}>Your Account</h2>
         <RegistrationForm />
       </section>
     );

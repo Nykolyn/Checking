@@ -6,7 +6,9 @@ import FormButton from '../FormButton';
 const RegistrationForm = () => (
   <form method="GET" className={css.form}>
     <label htmlFor="1" className={css.label}>
-      E-mail<span className={css.RequireField}>*</span>
+      <p className={css.labelTitle}>
+        E-mail <span className={css.RequireField}>*</span>
+      </p>
       <input
         type="email"
         id="1"
@@ -15,7 +17,9 @@ const RegistrationForm = () => (
       />
     </label>
     <label htmlFor="2" className={css.label}>
-      Password (6 + characters)<span className={css.RequireField}>*</span>
+      <p className={css.labelTitle}>
+        Password (6 + characters) <span className={css.RequireField}>*</span>
+      </p>
       <input
         type="password"
         id="2"
@@ -25,7 +29,10 @@ const RegistrationForm = () => (
       />
     </label>
     <label htmlFor="3" className={css.label}>
-      Password Confirmation<span className={css.RequireField}>*</span>
+      <p className={css.labelTitle}>
+        Password Confirmation <span className={css.RequireField}>*</span>
+      </p>
+
       <input
         type="password"
         id="3"
@@ -34,9 +41,11 @@ const RegistrationForm = () => (
         autoComplete="false"
       />
     </label>
-    <label htmlFor="4" className={css.label}>
+    <label htmlFor="4" className={`${css.label} ${css.checkBoxLabel}`}>
       <input type="checkbox" id="4" />
-      Agreed with Private Policy<span className={css.RequireField}>*</span>
+      <p className={css.labelTitle}>
+        Agreed with Private Policy <span className={css.RequireField}>*</span>
+      </p>
     </label>
     <FormButton type="submit">Registration</FormButton>
   </form>

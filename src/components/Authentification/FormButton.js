@@ -13,11 +13,8 @@ const FormButton = styled.button`
   transition: all 0.5s;
 
   &:hover {
-    /* border: 20px solid #ff6b08; */
     transform: translate(-3px, -3px);
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.75);
-    /* background-color: #fff; */
-    /* color: #ff6b08; */
   }
 `;
 
