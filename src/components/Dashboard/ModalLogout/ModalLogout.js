@@ -3,7 +3,11 @@ import React, { Component, createRef } from 'react';
 import styles from './ModalLogout.module.css';
 
 export default class Modal extends Component {
-  state = {};
+  // add state from Redux
+  state = {
+    isOpen: true,
+  };
+  // ---#---
 
   backdropRef = createRef();
 
@@ -15,9 +19,15 @@ export default class Modal extends Component {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
 
+  onClose = () => {
+    this.setState({
+      isOpen: false,
+    });
+  };
+
   handleKeyPress = e => {
     if (e.code !== 'Escape') return;
-    this.props.onClose();
+    this.onClose();
   };
 
   handleBackdropClick = e => {
@@ -25,19 +35,21 @@ export default class Modal extends Component {
     if (current && e.target !== current) {
       return;
     }
-    this.props.onClose();
+    this.onClose();
   };
 
   render() {
     const { children, url } = this.props;
     return (
-      <div
-        className={styles.backdrop}
-        ref={this.backdropRef}
-        onClick={this.handleBackdropClick}
-      >
-        <div className={styles.modal}>{children}</div>
-      </div>
+      this.state.isOpen && (
+        <div
+          className={styles.backdrop}
+          ref={this.backdropRef}
+          onClick={this.handleBackdropClick}
+        >
+          <div className={styles.modal}>{children}</div>
+        </div>
+      )
     );
   }
 }
