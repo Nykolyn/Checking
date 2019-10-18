@@ -27,16 +27,16 @@ class TodayTomorrowTab extends Component {
           <button
             type="button"
             onClick={this.handleToggleToday}
-            className={styles.title}
+            className={styles.titleButton}
           >
             Today
           </button>
           {isOpenToday && (
-            <div>
-              <div className={styles.card}> card</div>
-              <div className={styles.card}> card</div>
-              <div className={styles.card}> card</div>
-            </div>
+            <ul className={styles.cardList}>
+              <li className={styles.cardItem}> card</li>
+              <li className={styles.cardItem}> card</li>
+              <li className={styles.cardItem}> card</li>
+            </ul>
           )}
         </section>
 
@@ -44,16 +44,16 @@ class TodayTomorrowTab extends Component {
           <button
             type="button"
             onClick={this.handleToggleTomorrow}
-            className={styles.title}
+            className={styles.titleButton}
           >
             Tomoroow
           </button>
           {isOpenTomorrow && (
-            <div>
-              <div className={styles.card}> card</div>
-              <div className={styles.card}> card</div>
-              <div className={styles.card}> card</div>
-            </div>
+            <ul className={styles.cardList}>
+              <li className={styles.cardItem}> card</li>
+              <li className={styles.cardItem}> card</li>
+              <li className={styles.cardItem}> card</li>
+            </ul>
           )}
         </section>
       </main>
