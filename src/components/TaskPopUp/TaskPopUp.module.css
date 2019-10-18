@@ -114,8 +114,9 @@
 }
 
 .lowPriorityBtn:active {
-  width: 32px;
-  height: 32px;
+  transform: scale(1.4);
+  /* width: 32px;
+  height: 32px; */
 }
 
 .lowPriorityBtn:focus {
