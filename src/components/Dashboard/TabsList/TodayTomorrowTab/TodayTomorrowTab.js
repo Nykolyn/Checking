@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import styles from './TodayTomorowTab.module.css';
 
+// const dropDoun = {
+//   transformOrigin: 'center center',
+//   tranform: 'rotate(180deg)',
+// };
+
 class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
@@ -28,9 +33,15 @@ class TodayTomorrowTab extends Component {
             type="button"
             onClick={this.handleToggleToday}
             className={styles.titleButton}
+            className={
+              isOpenToday
+                ? styles.titleButton
+                : [styles.titleButton, styles.dropDoun].join(' ')
+            }
           >
             Today
           </button>
+          <span />
           {isOpenToday && (
             <ul className={styles.cardList}>
               <li className={styles.cardItem}> card</li>
@@ -44,7 +55,11 @@ class TodayTomorrowTab extends Component {
           <button
             type="button"
             onClick={this.handleToggleTomorrow}
-            className={styles.titleButton}
+            className={
+              isOpenTomorrow
+                ? styles.titleButton
+                : [styles.titleButton, styles.dropDoun].join(' ')
+            }
           >
             Tomoroow
           </button>
