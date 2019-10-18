@@ -25,9 +25,14 @@ const timeStyles = {
     backgroundColor: '#f5f7fa',
     fill: '#000',
   }),
-  menu: styles => ({ ...styles, borderRadius: 0, margin: 0 }),
+  menu: styles => ({
+    ...styles,
+    borderRadius: 0,
+    margin: 0,
+  }),
   option: styles => ({
     ...styles,
+    height: '30px',
     boxSizing: 'border-box',
     border: '1px solid #f5f7fa',
     backgroundColor: '#fff',

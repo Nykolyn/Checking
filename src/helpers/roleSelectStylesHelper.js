@@ -34,6 +34,7 @@ const roleStyles = {
     const color = chroma(data.color);
     return {
       ...styles,
+      height: '30px',
       boxSizing: 'border-box',
       border: '1px solid #fff',
       backgroundColor: data.color,

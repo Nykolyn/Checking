@@ -14,7 +14,7 @@ export default class TaskPopUp extends Component {
   render() {
     const { role } = this.state;
     return (
-      <section className={styles.outer}>
+      <form className={styles.outer}>
         <h3 className={styles.createTaskTitle}>Create Task</h3>
         <div className={styles.helperDiv}>
           <RoleSelect />
@@ -32,11 +32,11 @@ export default class TaskPopUp extends Component {
           <button type="button" className={styles.btn}>
             Cancel
           </button>
-          <button type="button" className={styles.acceptBtn}>
+          <button type="submit" className={styles.acceptBtn}>
             Accept
           </button>
         </div>
-      </section>
+      </form>
     );
   }
 }
