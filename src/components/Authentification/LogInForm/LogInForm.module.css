@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  padding-bottom: 40px;
+}
+
+.loginContainer {
+  padding: 50px 20px;
+  padding-bottom: 0;
+  margin: 0 auto;
+  max-width: 326px;
+}
+
+.loginTextWrap {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+.imgContainer {
+  display: none;
+}
+
+.mainText {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer {
+  /* display: flex;
+   flex-direction: column; */
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  
+}  
+
+
