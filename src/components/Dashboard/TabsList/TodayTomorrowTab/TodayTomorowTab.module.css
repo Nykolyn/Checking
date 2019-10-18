@@ -19,10 +19,18 @@
   height: 236px;
   background: gold;
   border: 1px solid red;
-
 }
 
 .title {
+  background-color: transparent;
   margin: 0;
+  margin-bottom: 10px;
   padding: 0;
+  font-size: 12px;
+  display: block;
+  min-width: 320px;
+  max-width: 100%;
+  border: none;
+  color: black;
+  text-align: left;
 }
