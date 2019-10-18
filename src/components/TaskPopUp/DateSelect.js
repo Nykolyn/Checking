@@ -9,7 +9,7 @@ const DateSelect = () => (
     <DatePicker
       className={styles.input}
       value={new Date()}
-      format="MM/dd/yyyy"
+      format="MMM dd, yyyy"
       locale="en"
     />
   </div>
