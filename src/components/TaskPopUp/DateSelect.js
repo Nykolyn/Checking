@@ -11,6 +11,7 @@ const DateSelect = ({ value, onChange }) => (
       value={value}
       format="MMM dd, yyyy"
       locale="en"
+      minDate={new Date()}
       onChange={onChange}
     />
   </div>

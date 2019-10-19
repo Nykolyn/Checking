@@ -113,14 +113,17 @@
   cursor: pointer;
 }
 
-.lowPriorityBtn:active {
+/* .lowPriorityBtn:active {
   transform: scale(1.4);
   /* width: 32px;
-  height: 32px; */
-}
+  height: 32px; } */
 
 .lowPriorityBtn:focus {
   outline: none;
+}
+
+.btnActive {
+  transform: scale(1.5);
 }
 
 .highPriorityBtn {

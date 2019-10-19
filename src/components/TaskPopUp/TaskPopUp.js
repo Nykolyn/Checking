@@ -16,7 +16,7 @@ export default class TaskPopUp extends Component {
     title: '',
     description: '',
     time: timeRanges[4],
-    priority: null,
+    priority: 0,
   };
 
   handleRoleSelect = value => this.setState({ role: value });
@@ -36,15 +36,31 @@ export default class TaskPopUp extends Component {
 
   handleTimeSelect = value => this.setState({ time: value });
 
-  handlePrioritySelect = ({ target }) =>
-    this.setState({ priority: target.getAttribute('data-priority') });
+  handlePrioritySelect = ({ target }) => {
+    const priority = Number(target.getAttribute('data-priority'));
+    this.setState(state => ({
+      priority: state.priority !== priority ? priority : 0,
+    }));
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     const { role, date, title, description, time, priority } = this.state;
     if (!title.length) {
       toast.error('Enter a title!');
+      return;
     }
+    const taskToAdd = {
+      role: role.label,
+      date: new Date(date).toLocaleDateString(),
+      title,
+      description,
+      time: time.label,
+      priority,
+    };
+
+    console.log(taskToAdd);
+    this.reset();
   };
 
   reset = () =>
@@ -54,11 +70,11 @@ export default class TaskPopUp extends Component {
       title: '',
       description: '',
       time: timeRanges[4],
-      priority: null,
+      priority: 0,
     });
 
   render() {
-    const { role, date, title, description, time } = this.state;
+    const { role, date, title, description, time, priority } = this.state;
     return (
       <form className={styles.outer}>
         <h3 className={styles.createTaskTitle}>Create Task</h3>
@@ -87,7 +103,10 @@ export default class TaskPopUp extends Component {
         />
         <div className={styles.flexHelperDiv}>
           <TimeSelect value={time} onChange={this.handleTimeSelect} />
-          <PrioritySelect onClick={this.handlePrioritySelect} />
+          <PrioritySelect
+            priority={priority}
+            onClick={this.handlePrioritySelect}
+          />
         </div>
         <div className={styles.btnDiv}>
           <button type="button" className={styles.btn}>

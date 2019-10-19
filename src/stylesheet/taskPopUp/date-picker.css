@@ -222,6 +222,6 @@
   appearance: none;
 }
 
-.react-date-picker__inputGroup__month>* {
+.react-date-picker__inputGroup__month > * {
   display: none;
 }

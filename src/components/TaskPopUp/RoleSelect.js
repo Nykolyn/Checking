@@ -14,6 +14,7 @@ const RoleSelect = ({ value, onChange }) => {
         options={roles}
         styles={roleStyles}
         onChange={onChange}
+        defaultMenuIsOpen
       />
     </div>
   );
