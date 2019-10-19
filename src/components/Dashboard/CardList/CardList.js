@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
+/*eslint-disable*/
+import React from 'react';
 import Card from './Card/Card';
 
-class CardList extends Component {
-  state = {};
-
-  render() {
-    return (
-      <div>
-        <ul>
-          <Card />
-        </ul>
-      </div>
-    );
-  }
-}
+const CardList = ({ items }) => {
+  console.log(items);
+  return (
+    <div>
+      <ul>
+        {items.map(el => (
+          <li key={el.id}>
+            <Card {...el} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default CardList;

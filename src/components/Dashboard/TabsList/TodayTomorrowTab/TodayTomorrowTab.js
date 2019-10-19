@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import styles from './TodayTomorowTab.module.css';
+// import CardList from '../../CardList/CardList';
+// import { connect } from 'react-redux';
+// import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
 
 class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
     isOpenTomorrow: true,
+    // todayTomorrow: null,
   };
 
-  // componentDidMount() {}
+  // componentDidMount() {
+  //   const { todayTomorrow } = this.props;
+  //   this.setState({
+  //     todayTomorrow: [...todayTomorrow],
+  //   });
+  // }
 
   // componentDidUpdate(prevProps, prevState) {}
 
@@ -42,6 +51,7 @@ class TodayTomorrowTab extends Component {
             Today
           </button>
           {isOpenToday && (
+            // <CardList />
             <ul className={styles.cardList}>
               <li className={styles.cardItem}> card</li>
               <li className={styles.cardItem}> card</li>
@@ -63,6 +73,7 @@ class TodayTomorrowTab extends Component {
             Tomoroow
           </button>
           {isOpenTomorrow && (
+            // <CardList />
             <ul className={styles.cardList}>
               <li className={styles.cardItem}> card</li>
               <li className={styles.cardItem}> card</li>
@@ -76,3 +87,12 @@ class TodayTomorrowTab extends Component {
 }
 
 export default TodayTomorrowTab;
+
+// const mapStateToProps = state => ({
+//   todayTomorrow:  getTodayTomorrow(state),
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   null,
+// )(TodayTomorrowTab);

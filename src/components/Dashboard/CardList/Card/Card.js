@@ -6,13 +6,13 @@ class Card extends Component {
   render() {
     return (
       <>
-        <li>
+        <div>
           <p>Header</p>
           <p>Titile</p>
           <p>Sub Titile</p>
           <p>Date</p>
           <p>Tile</p>
-        </li>
+        </div>
       </>
     );
   }
