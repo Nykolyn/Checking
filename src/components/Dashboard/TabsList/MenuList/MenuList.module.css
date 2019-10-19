@@ -15,51 +15,57 @@
   width: 140px;
   height: 40px;
   text-decoration: none;
-  /* text-align: center; */
   color: gray;
   border: 1px solid #cdd0d9;
   background-color: #f5f7fa;
 }
 
 .title {
-  font-size: 12px;
+  position: relative;
+  font-size: 13px;
   font-family: 'Montserrat';
   font-weight: 500;
   line-height: 34px;
 }
 
 .title::before {
+  vertical-align: middle;
   content: ' ';
   padding-left: 14px;
   padding-right: 14px;
   display: inline-block;
-  background: url(../../../../assets/icons/dashboard-24px.svg);
-  width: 14px;
-  height: 14px;
+  background: url(../../../../assets/icons/icons_menu/icon_dashboard.png);
+  width: 16px;
+  height: 16px;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 49%;
+  background-size: contain;
 }
 
 .next::before {
-  background: url(../../../../assets/icons/label_important-24px.svg);
+  background: url(../../../../assets/icons/icons_menu/icon_next.png);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 48%;
+  background-size: contain;
 }
 
 .burned::before {
-  background: url(../../../../assets/icons/whatshot-24px.svg);
+  background: url(../../../../assets/icons/icons_menu/icon_burned_out.png);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 49%;
+  background-size: contain;
+  position: relative;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
 }
 
 .done::before {
-  background: url(../../../../assets/icons/thumb_up-24px.svg);
+  background: url(../../../../assets/icons/icons_menu/icon_done.png);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 48%;
+  background-size: contain;
+  /* background-size: 48%; */
 }
 
 .selected {
