@@ -7,6 +7,10 @@ class TodayTomorrowTab extends Component {
     isOpenTomorrow: true,
   };
 
+  // componentDidMount() {}
+
+  // componentDidUpdate(prevProps, prevState) {}
+
   handleToggleToday = () => {
     this.setState(state => ({
       isOpenToday: !state.isOpenToday,
