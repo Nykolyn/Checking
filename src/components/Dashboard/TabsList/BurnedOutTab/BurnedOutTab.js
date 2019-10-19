@@ -8,9 +8,10 @@ class BurnedOutTab extends Component {
     return (
       <main className={styles.container}>
         <section className={styles.section}>
-          <button type="button" className={styles.titleButton}>
+          {/* <button type="button" className={styles.titleButton}>
             Burned Out
-          </button>
+          </button> */}
+          <p className={styles.titleButton}>Burned Out</p>
           <ul className={styles.cardList}>
             <li className={styles.cardItem}> card</li>
             <li className={styles.cardItem}> card</li>
