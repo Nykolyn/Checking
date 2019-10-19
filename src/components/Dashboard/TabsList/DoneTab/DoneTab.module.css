@@ -65,7 +65,22 @@
   }
 
   .titleButton {
-    width: 640px;
+    min-width: 640px;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .titleButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    transform: translateY(-50%);
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    border: 1px solid #e0e5eb;
+    z-index: -1;
   }
 
   .cardList {

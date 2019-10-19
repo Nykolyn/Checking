@@ -40,12 +40,13 @@ class TodayTomorrowTab extends Component {
           <button
             type="button"
             onClick={this.handleToggleToday}
-            className={styles.titleButton}
             // eslint-disable-next-line react/jsx-no-duplicate-props
             className={
               isOpenToday
-                ? styles.titleButton
-                : [styles.titleButton, styles.dropDoun].join(' ')
+                ? [styles.titleButton, styles.titleToday].join(' ')
+                : [styles.titleButton, styles.dropDoun, styles.titleToday].join(
+                    ' ',
+                  )
             }
           >
             Today
@@ -66,8 +67,12 @@ class TodayTomorrowTab extends Component {
             onClick={this.handleToggleTomorrow}
             className={
               isOpenTomorrow
-                ? styles.titleButton
-                : [styles.titleButton, styles.dropDoun].join(' ')
+                ? [styles.titleButton, styles.titleTomorrow].join(' ')
+                : [
+                    styles.titleButton,
+                    styles.dropDoun,
+                    styles.titleTomorrow,
+                  ].join(' ')
             }
           >
             Tomoroow
