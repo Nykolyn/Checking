@@ -25,15 +25,19 @@
   margin: 0 auto;
   margin-bottom: 10px;
   font-size: 14px;
+  font-family: 'Montserrat';
+  font-weight: 500;
   display: block;
   min-width: 300px;
   border: none;
   text-align: left;
   color: #869096;
+  outline: none;
+
 }
 
 .titleButton::after {
-  padding-left: 5px;
+  padding-left: 10px;
   transform: rotate(-180deg);
   transform-origin: center center;
   position: relative;

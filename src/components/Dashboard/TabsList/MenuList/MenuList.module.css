@@ -21,10 +21,17 @@
   background-color: #f5f7fa;
 }
 
+.title {
+  font-size: 12px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  line-height: 34px;
+}
+
 .title::before {
+  content: ' ';
   padding-left: 14px;
   padding-right: 14px;
-  content: ' ';
   display: inline-block;
   background: url(../../../../assets/icons/dashboard-24px.svg);
   width: 14px;
