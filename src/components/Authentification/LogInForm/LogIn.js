@@ -23,36 +23,44 @@ class LogIn extends Component {
             </Link>
           </div>
 
-          <div className={style.mainText}>
-            <span className={style.sloganText}>Take control your life.</span>
-            <span classNam={style.sloganText}>Just check in.</span>
+          <div className={style.formWrap}>
+            <div className={style.mainText}>
+              <span className={style.sloganText}>Take control your life.</span>
+              <span className={style.sloganText}>Just check in.</span>
+            </div>
+
+            <form className={style.formLogin}>
+              <p className={style.textEmail}>
+                E-mail<span className={style.star}>*</span>
+              </p>
+              <input
+                className={style.input}
+                type="email"
+                name="email"
+                // value=""
+                placeholder="your@email.com"
+              />
+              <p className={style.password}>
+                <span className={style.textPassword}>
+                  Password<span className={style.star}>*</span>
+                </span>
+                <Link to="/forgot" className={style.linkForgot}>
+                  Forgot?
+                </Link>
+              </p>
+              <input
+                className={style.input}
+                type="password"
+                name="password"
+                // value="password"
+                placeholder="yourpassword"
+              />
+            </form>
+
+            <button className={style.buttonLogin} type="submit">
+              Log in
+            </button>
           </div>
-
-          <form className={style.formLogin}>
-            <p className={style.textEmail}>E-mail</p>
-            <input
-              type="email"
-              name="email"
-              value="email"
-              placeholder="E-mail"
-            />
-            <span className={style.textPassword}>
-              Password
-              <Link to="/forgot" className={style.linkForgot}>
-                Forgot?
-              </Link>
-            </span>
-            <input
-              type="password"
-              name="password"
-              value="password"
-              placeholder="Password*"
-            />
-          </form>
-
-          <button className={style.buttonLogin} type="submit">
-            Log in
-          </button>
         </div>
       </div>
     );
