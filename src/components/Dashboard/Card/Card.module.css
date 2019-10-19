@@ -1,0 +1,56 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+}
+
+.cardSection {
+  width: 300px;
+  height: 230px;
+  margin: 0px auto;
+  margin-bottom: 100px;
+  padding: 0px;
+}
+
+.cardHeader {
+  height: 38px;
+  background-color: #cdd0d9;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+}
+
+.cardHeader__role {
+  margin: 0px;
+  margin-left: 27px;
+  padding: 0px;
+  text-align: center;
+  color: #525356;
+}
+
+.cardHeader__priority {
+  margin-right: 20px;
+  padding: 0px;
+}
+
+.cardBody {
+  height: 134px;
+  color: white;
+  background-color: #091e3f;
+}
+
+.cardBody__title {
+  margin: 0px 24px;
+  margin-bottom: 10px;
+  padding-top: 22px;
+  font-size: 20px;
+}
+
+.cardBody__text {
+  margin: 0px 24px;
+  font-size: 14px;
+  color: #6a7284;
+}

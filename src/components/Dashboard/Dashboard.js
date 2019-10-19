@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TaskPopUp from '../TaskPopUp/TaskPopUp';
+import Card from './Card/Card';
 
 class Dashboard extends Component {
   componentDidMount() {}
@@ -7,7 +8,7 @@ class Dashboard extends Component {
   render() {
     return (
       <main>
-        <h1>Dashboard page</h1>
+        <h1> Dashboard page </h1> <Card />
         <TaskPopUp />
       </main>
     );
