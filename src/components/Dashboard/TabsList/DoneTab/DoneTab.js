@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Element } from 'react-scroll';
 import styles from './DoneTab.module.css';
 
 class DoneTab extends Component {
@@ -7,17 +8,19 @@ class DoneTab extends Component {
   render() {
     return (
       <main className={styles.container}>
-        <section className={styles.section}>
-          {/* <button type="button" className={styles.titleButton}>
+        <Element name="done">
+          <section className={styles.section}>
+            {/* <button type="button" className={styles.titleButton}>
             Done
           </button> */}
-          <p className={styles.titleButton}>Done</p>
-          <ul className={styles.cardList}>
-            <li className={styles.cardItem}> card</li>
-            <li className={styles.cardItem}> card</li>
-            <li className={styles.cardItem}> card</li>
-          </ul>
-        </section>
+            <p className={styles.titleButton}>Done</p>
+            <ul className={styles.cardList}>
+              <li className={styles.cardItem}> card</li>
+              <li className={styles.cardItem}> card</li>
+              <li className={styles.cardItem}> card</li>
+            </ul>
+          </section>
+        </Element>
       </main>
     );
   }
