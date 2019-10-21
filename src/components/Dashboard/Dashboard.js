@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header/Header';
 
 class Dashboard extends Component {
   componentDidMount() {}
@@ -6,6 +7,7 @@ class Dashboard extends Component {
   render() {
     return (
       <main>
+        <Header />
         <h1>Dashboard page</h1>
       </main>
     );
