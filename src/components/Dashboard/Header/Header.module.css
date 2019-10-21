@@ -1,12 +1,13 @@
 .header__box {
   text-transform: uppercase;
   /* margin: 20px; */
+  font-weight: Bold;
+  /* color: red; */
 
 }
 
 .header__logo {
   font-family: "Montserrat", sans-serif;
-  font-weight: Bold;
   color: #091e3f;
   display: flex;
   flex-direction: column;
@@ -21,8 +22,6 @@
 }
 
 .header.svg {
-  color: red;
   background: url(../../../assets/icons/burger2_121004.svg);
   background-repeat: no-repeat;
-
 }

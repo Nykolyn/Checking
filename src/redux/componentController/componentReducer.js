@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import { combineReducers } from 'redux';
 import { ActionTypes } from './componentActions';
 
@@ -17,7 +16,11 @@ const modalLogoutOpen = (state = false, { type, payload }) => {
   return state;
 };
 
-const taskPopUpOpen = (state = false, { type, payload }) => {
+const taskPopUpСreateOpen = (state = false, { type, payload }) => {
+  return state;
+};
+
+const taskPopUpEditOpen = (state = false, { type, payload }) => {
   return state;
 };
 
@@ -36,7 +39,8 @@ const tabsListOpen = (state = false, { type, payload }) => {
 export default combineReducers({
   modalDeleteTaskOpen,
   modalLogoutOpen,
-  taskPopUpOpen,
+  taskPopUpСreateOpen,
+  taskPopUpEditOpen,
   burgerMenuOpen,
   createTaskButtonOpen,
   tabsListOpen,
