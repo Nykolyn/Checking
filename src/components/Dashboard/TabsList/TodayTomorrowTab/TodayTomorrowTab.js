@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Element } from 'react-scroll';
+import { Element, scroller } from 'react-scroll';
 import styles from './TodayTomorowTab.module.css';
+
 // import CardList from '../../CardList/CardList';
 // import { connect } from 'react-redux';
 // import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
@@ -9,7 +10,7 @@ class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
     isOpenTomorrow: true,
-    // burgerEvent: null,
+    burgerEvent: null,
     // todayTomorrow: null,
   };
 
@@ -19,6 +20,15 @@ class TodayTomorrowTab extends Component {
     //   todayTomorrow: [...todayTomorrow],
     //   burgerEvent: burgerClick,
     // });
+    const { burgerEvent } = this.state;
+    if (!burgerEvent) {
+      // console.log(burgerEvent);
+      scroller.scrollTo(`${burgerEvent}`, {
+        duration: 1500,
+        delay: 100,
+        smooth: true,
+      });
+    }
   }
 
   // componentDidUpdate(prevProps, prevState) {}

@@ -51,7 +51,11 @@
   font-weight: 500;
   /* color: #a5adb2; */
   color: gray;
+  transition: all 0.3s ease;
+}
 
+.burgerButton:active {
+  background-color: #fff;
 }
 
 .burgerButton::before {
@@ -111,7 +115,6 @@
   /* display: block; */
   border: 1px solid #dce0e3;
 }
-
 
 /*@media screen and (min-width: 768px) {
   .burgerMenu {
