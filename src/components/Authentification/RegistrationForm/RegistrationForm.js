@@ -5,6 +5,7 @@ import FormButton from '../FormButton';
 
 const RegistrationForm = () => (
   <form method="GET" className={css.form}>
+    <h2 className={css.subTitle}>Your Account</h2>
     <label htmlFor="1" className={css.label}>
       <p className={css.labelTitle}>
         E-mail <span className={css.RequireField}>*</span>

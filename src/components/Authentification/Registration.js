@@ -9,17 +9,19 @@ class Registration extends Component {
 
   render() {
     return (
-      <section className={css.registrationSection}>
-        <div>HEADER</div>
-        <div className={css.headerWrapper}>
-          <h1 className={css.title}>Create Account</h1>
-          <Link to="/login" className={css.link}>
-            Login
-          </Link>
-        </div>
-        <h2 className={css.subTitle}>Your Account</h2>
-        <RegistrationForm />
-      </section>
+      <div className={css.registrationWrapper}>
+        <section className={css.registrationSection}>
+          <div>HEADER</div>
+          <div className={css.headerWrapper}>
+            <h1 className={css.title}>Create Account</h1>
+            <Link to="/login" className={css.link}>
+              Login
+            </Link>
+          </div>
+
+          <RegistrationForm />
+        </section>
+      </div>
     );
   }
 }
