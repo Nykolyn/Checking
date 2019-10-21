@@ -4,32 +4,38 @@ import DoneButton from './DoneButton/DoneButton';
 import style from './Card.module.css';
 
 class Card extends Component {
-  state = {
-    title: 'I houped that this will be long enougth title',
-  };
+  state = {};
 
-  handleTitleLenght = title => {
-    let shortTitle;
-    if (title.lenght > 30) {
-      shortTitle = title.trim().slice(0, 29);
-    }
-    return `${shortTitle}...`;
-  };
+  // handleTitleLenght = title => {
+  //   let shortTitle;
+  //   if (title.lenght > 30) {
+  //     shortTitle = title.trim().slice(0, 29);
+  //   }
+  //   this.setState({
+  //     title: shortTitle,
+  //   });
+  //   return `${shortTitle}...`;
+  // };
 
   render() {
-    const { title } = this.state;
+    // const { title } = this.state;
+
     return (
       <section className={style.cardSection}>
         <header className={style.cardHeader}>
           <p className={style.cardHeader__role}> Role </p>{' '}
-          <p className={style.cardHeader__priority}> 1 </p>{' '}
+          <p className={style.cardHeader__priorityOne}> 1 </p>{' '}
         </header>{' '}
         <div className={style.cardBody}>
           <p className={style.cardBody__title}>
             {' '}
-            {this.handleTitleLenght(title)}{' '}
+            Title with many - many symbols{' '}
           </p>{' '}
-          <p className={style.cardBody__text}> Body text(60 symb) </p>{' '}
+          <p className={style.cardBody__text}>
+            {' '}
+            Body text(60 symb) Body text(60 symb) Body text(60 symb) Body
+            text(60 symb) Body text(60 symb) Body text(60 symb){' '}
+          </p>{' '}
         </div>{' '}
         <footer className={style.cardFooter}>
           <div className={style.cardFooter__wrap}>
