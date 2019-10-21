@@ -8,5 +8,5 @@
 
 .EditBtn:hover {
   background-color: #e0e2e8;
-  background-image: url("../../../../assets/icons/edit-hover.png");
+  background-image: url('../../../../assets/icons/edit-hover.png');
 }
