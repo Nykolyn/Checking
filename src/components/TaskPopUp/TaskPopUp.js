@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import DateSelect from './DateSelect';
 import RoleSelect from './RoleSelect';
@@ -10,6 +10,15 @@ import timeRanges from '../../constants/timeRanges';
 import styles from './TaskPopUp.module.css';
 
 export default class TaskPopUp extends Component {
+  static defaultProps = {
+    isEditing: false,
+  };
+
+  static propTypes = {
+    isEditing: PropTypes.bool,
+    postTask: PropTypes.func.isRequired,
+  };
+
   state = {
     role: roles[4],
     date: new Date(),
@@ -52,14 +61,15 @@ export default class TaskPopUp extends Component {
     }
     const taskToAdd = {
       role: role.label,
-      date: new Date(date).toLocaleDateString(),
+      dates: [new Date(date).toISOString()],
       title,
       description,
       time: time.label,
-      priority,
     };
+    if (priority) taskToAdd.priority = priority;
 
     console.log(taskToAdd);
+    this.props.postTask(taskToAdd);
     this.reset();
   };
 
@@ -74,10 +84,13 @@ export default class TaskPopUp extends Component {
     });
 
   render() {
+    const { isEditing } = this.props;
     const { role, date, title, description, time, priority } = this.state;
     return (
       <form className={styles.outer}>
-        <h3 className={styles.createTaskTitle}>Create Task</h3>
+        <h3 className={styles.createTaskTitle}>
+          {!isEditing ? 'Create Task' : 'Edit Task'}
+        </h3>
         <div className={styles.helperDiv}>
           <RoleSelect value={role} onChange={this.handleRoleSelect} />
           <DateSelect value={date} onChange={this.handleDateChange} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TaskPopUp from '../TaskPopUp/TaskPopUp';
+import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
 
 class Dashboard extends Component {
   componentDidMount() {}

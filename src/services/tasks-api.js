@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'https://cheking.goit.co.ua/api/v1';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-const getTasks = async token => {
+export const getTasks = async token => {
   try {
     const data = axios.get(`${token}`);
     return data;
@@ -11,4 +12,11 @@ const getTasks = async token => {
   }
 };
 
-export default getTasks;
+export const postTask = (task, token) => {
+  axios.defaults.headers.post.Authorization = token;
+  return axios.post('/tasks', task);
+};
+
+export const updateTask = task => axios.put(task);
+
+export const deleteTask = task => axios.delete(task);
