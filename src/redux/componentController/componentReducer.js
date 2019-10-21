@@ -2,7 +2,7 @@
 import { combineReducers } from 'redux';
 import { ActionTypes } from './componentActions';
 
-const modalDeleteTaskOpen = (state = false, { type, payload }) => {
+const modalDeleteTaskOpen = (state = false, { type }) => {
   switch (type) {
     case ActionTypes.MODAL_DELETE_TASK_OPEN:
       return true;

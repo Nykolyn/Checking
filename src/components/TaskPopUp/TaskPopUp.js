@@ -23,6 +23,7 @@ export default class TaskPopUp extends Component {
     taskPopUpEditOpen: PropTypes.bool,
     postTask: PropTypes.func.isRequired,
     updateTask: PropTypes.func.isRequired,
+    modalDeleteTaskOpen: PropTypes.func.isRequired,
     tasks: PropTypes.shape({
       today: PropTypes.arrayOf(PropTypes.object.isRequired),
       tomorrow: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -51,7 +52,7 @@ export default class TaskPopUp extends Component {
   //       description,
   //       time,
   //       priority,
-  //       date: date < new Date().toJSON() ? new Date() : date,
+  //       date: new Date(date) < new Date() ? new Date() : new Date(date),
   //     });
   //   }
   // }
@@ -79,6 +80,8 @@ export default class TaskPopUp extends Component {
       priority: state.priority !== priority ? priority : 0,
     }));
   };
+
+  modalDeleteTaskOpen = () => this.props.modalDeleteTaskOpen();
 
   handleSubmit = e => {
     e.preventDefault();
@@ -127,7 +130,11 @@ export default class TaskPopUp extends Component {
         ) : windowWidth < 768 ? (
           <div className={styles.helperDiv}>
             <h3 className={styles.createTaskTitle}>Edit Task</h3>
-            <button type="button" className={styles.svgBtn}>
+            <button
+              type="button"
+              className={styles.svgBtn}
+              onClick={this.modalDeleteTaskOpen}
+            >
               <DeleteBtn className={styles.svg} />
             </button>
           </div>
@@ -165,7 +172,11 @@ export default class TaskPopUp extends Component {
           />
         </div>
         {!taskPopUpEditOpen && windowWidth > 767 && (
-          <button type="button" className={styles.svgBtn}>
+          <button
+            type="button"
+            className={styles.svgBtn}
+            onClick={this.modalDeleteTaskOpen}
+          >
             <DeleteBtn className={styles.svg} />
           </button>
         )}

@@ -7,8 +7,8 @@ export const modalLogoutIsOpen = state =>
 export const taskPopUpCreateIsOpen = state =>
   state.componentController.taskPopUpCreateOpen;
 
-export const taskPopUpUpdateIsOpen = state =>
-  state.componentController.taskPopUpUpdateteOpen;
+export const taskPopUpEditIsOpen = state =>
+  state.componentController.taskPopUpEditOpen;
 
 export const burgerMenuIsOpen = state =>
   state.componentController.burgerMenuOpen;
