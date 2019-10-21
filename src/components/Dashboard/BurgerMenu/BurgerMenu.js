@@ -4,10 +4,20 @@ import { NavLink } from 'react-router-dom';
 import { Link, scroller } from 'react-scroll';
 import styles from './BurgerMenu.module.css';
 
-export default class BurgerMenu extends Component {
+// import { connect } from 'react-redux';
+// import { isOpenModal } from '../../../redux/componentController/controllerSelectrors';
+
+class BurgerMenu extends Component {
   state = {
-    // isOpen: false
+    isOpen: true,
   };
+
+  // componentDidMount() {
+  //   const { burgerMenuIsOpen } = this.props;
+  //   this.setState({
+  //     isOpen: burgerMenuIsOpen,
+  //   });
+  // }
 
   handleClick({ target }) {
     console.log('target innerText - ', target.innerText);
@@ -128,3 +138,14 @@ export default class BurgerMenu extends Component {
     );
   }
 }
+
+export default BurgerMenu;
+
+// const mapStateToProps = state => ({
+//   burgerMenuIsOpen:  burgerMenuIsOpen(state),
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   null,
+// )(TodayTomorrowTab);
