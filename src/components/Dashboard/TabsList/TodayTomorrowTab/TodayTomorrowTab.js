@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Element, scroller } from 'react-scroll';
 import styles from './TodayTomorowTab.module.css';
+import CardList from '../../CardList/CardList';
 
-// import CardList from '../../CardList/CardList';
 // import { connect } from 'react-redux';
 // import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
 
@@ -67,14 +67,7 @@ class TodayTomorrowTab extends Component {
             >
               Today
             </button>
-            {isOpenToday && (
-              // <CardList />
-              <ul className={styles.cardList}>
-                <li className={styles.cardItem}> card</li>
-                <li className={styles.cardItem}> card</li>
-                <li className={styles.cardItem}> card</li>
-              </ul>
-            )}
+            {isOpenToday && <CardList />}
           </section>
         </Element>
 
@@ -95,14 +88,7 @@ class TodayTomorrowTab extends Component {
             >
               Tomoroow
             </button>
-            {isOpenTomorrow && (
-              // <CardList />
-              <ul className={styles.cardList}>
-                <li className={styles.cardItem}> card</li>
-                <li className={styles.cardItem}> card</li>
-                <li className={styles.cardItem}> card</li>
-              </ul>
-            )}
+            {isOpenTomorrow && <CardList />}
           </section>
         </Element>
       </main>

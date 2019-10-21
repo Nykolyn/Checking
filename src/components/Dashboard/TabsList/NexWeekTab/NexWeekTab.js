@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Element } from 'react-scroll';
+import { Element, scroller } from 'react-scroll';
 import styles from './NexWeekTab.module.css';
+import CardList from '../../CardList/CardList';
 
-// import CardList from '../../CardList/CardList';
 // import { connect } from 'react-redux';
 // import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
 
@@ -10,15 +10,24 @@ class NexWeekTab extends Component {
   state = {
     isOpenNext: true,
     isOpenAfter: true,
+    burgerEvent: null,
     // nexAfter: null,
   };
 
-  // componentDidMount() {
-  //   const { nexAfter } = this.props;
-  //   this.setState({
-  //     nexAfter: [...nexAfter],
-  //   });
-  // }
+  componentDidMount() {
+    // const { nexAfter,burgerClick } = this.props;
+    // this.setState({
+    //   nexAfter: [...nexAfter],
+    // });
+    const { burgerEvent } = this.state;
+    if (!burgerEvent) {
+      scroller.scrollTo(`${burgerEvent}`, {
+        duration: 1500,
+        delay: 100,
+        smooth: true,
+      });
+    }
+  }
 
   // componentDidUpdate(prevProps, prevState) {}
 
@@ -57,14 +66,7 @@ class NexWeekTab extends Component {
             >
               Next 7 Days
             </button>
-            {isOpenNext && (
-              // <CardList />
-              <ul className={styles.cardList}>
-                <li className={styles.cardItem}> card</li>
-                <li className={styles.cardItem}> card</li>
-                <li className={styles.cardItem}> card</li>
-              </ul>
-            )}
+            {isOpenNext && <CardList />}
           </section>
         </Element>
 
@@ -85,14 +87,7 @@ class NexWeekTab extends Component {
             >
               After 7 Days
             </button>
-            {isOpenAfter && (
-              // <CardList />
-              <ul className={styles.cardList}>
-                <li className={styles.cardItem}> card</li>
-                <li className={styles.cardItem}> card</li>
-                <li className={styles.cardItem}> card</li>
-              </ul>
-            )}
+            {isOpenAfter && <CardList />}
           </section>
         </Element>
       </main>
