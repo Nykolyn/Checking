@@ -19,9 +19,21 @@ export const ActionTypes = {
   POST_AFTER_TASK_SUCCESS: 'POST_AFTER_TASK_SUCCESS',
   POST_AFTER_TASK_ERROR: 'POST_AFTER_TASK_ERROR',
 
-  UPDATE_TASK_REQUEST: 'UPDATE_TASK_REQUEST',
-  UPDATE_TASK_SUCCESS: 'UPDATE_TASK_SUCCESS',
-  UPDATE_TASK_ERROR: 'UPDATE_TASK_ERROR',
+  UPDATE_TODAY_TASK_REQUEST: 'UPDATE_TODAY_TASK_REQUEST',
+  UPDATE_TODAY_TASK_SUCCESS: 'UPDATE_TODAY_TASK_SUCCESS',
+  UPDATE_TODAY_TASK_ERROR: 'UPDATE_TODAY_TASK_ERROR',
+
+  UPDATE_TOMORROW_TASK_REQUEST: 'UPDATE_TOMORROW_TASK_REQUEST',
+  UPDATE_TOMORROW_TASK_SUCCESS: 'UPDATE_TOMORROW_TASK_SUCCESS',
+  UPDATE_TOMORROW_TASK_ERROR: 'UPDATE_TOMORROW_TASK_ERROR',
+
+  UPDATE_NEXT_TASK_REQUEST: 'UPDATE_NEXT_TASK_REQUEST',
+  UPDATE_NEXT_TASK_SUCCESS: 'UPDATE_NEXT_TASK_SUCCESS',
+  UPDATE_NEXT_TASK_ERROR: 'UPDATE_NEXT_TASK_ERROR',
+
+  UPDATE_AFTER_TASK_REQUEST: 'UPDATE_AFTER_TASK_REQUEST',
+  UPDATE_AFTER_TASK_SUCCESS: 'UPDATE_AFTER_TASK_SUCCESS',
+  UPDATE_AFTER_TASK_ERROR: 'UPDATE_AFTER_TASK_ERROR',
 
   DELETE_TASK_REQUEST: 'DELETE_TASK_REQUEST',
   DELETE_TASK_SUCCESS: 'DELETE_TASK_SUCCESS',
@@ -108,19 +120,67 @@ export const postTaskAfterError = err => ({
   payload: err,
 });
 
-// UPDATE TASK
+// UPDATE TODAY TASK
 
-export const updateTaskRequest = () => ({
-  type: ActionTypes.POST_TASKS_REQUEST,
+export const updateTaskTodayRequest = () => ({
+  type: ActionTypes.UPDATE_TODAY_TASK_REQUEST,
 });
 
-export const updateTaskSuccess = task => ({
-  type: ActionTypes.UPDATE_TASK_SUCCESS,
+export const updateTaskTodaySuccess = task => ({
+  type: ActionTypes.UPDATE_TODAY_TASK_SUCCESS,
   payload: task,
 });
 
-export const updateTaskErorr = err => ({
-  type: ActionTypes.UPDATE_TASK_ERROR,
+export const updateTaskTodayError = err => ({
+  type: ActionTypes.UPDATE_TODAY_TASK_ERROR,
+  payload: err,
+});
+
+// UPDATE TOMORROW TASK
+
+export const updateTaskTomorrowRequest = () => ({
+  type: ActionTypes.UPDATE_TOMORROW_TASK_REQUEST,
+});
+
+export const updateTaskTomorrowSuccess = task => ({
+  type: ActionTypes.UPDATE_TOMORROW_TASK_SUCCESS,
+  payload: task,
+});
+
+export const updateTaskTomorrowError = err => ({
+  type: ActionTypes.UPDATE_TOMORROW_TASK_ERROR,
+  payload: err,
+});
+
+// UPDATE NEXT WEEK TASK
+
+export const updateTaskNextRequest = () => ({
+  type: ActionTypes.UPDATE_NEXT_TASK_REQUEST,
+});
+
+export const updateTaskNextSuccess = task => ({
+  type: ActionTypes.UPDATE_NEXT_TASK_SUCCESS,
+  payload: task,
+});
+
+export const updateTaskNextError = err => ({
+  type: ActionTypes.UPDATE_NEXT_TASK_ERROR,
+  payload: err,
+});
+
+// UPDATE AFTER NEXT WEEK TASK
+
+export const updateTaskAfterRequest = () => ({
+  type: ActionTypes.UPDATE_AFTER_TASK_REQUEST,
+});
+
+export const updateTaskAfterSuccess = task => ({
+  type: ActionTypes.UPDATE_AFTER_TASK_SUCCESS,
+  payload: task,
+});
+
+export const updateTaskAfterError = err => ({
+  type: ActionTypes.UPDATE_AFTER_TASK_ERROR,
   payload: err,
 });
 

@@ -14,6 +14,8 @@ const today = (state = [], { type, payload }) => {
   switch (type) {
     case ActionTypes.POST_TODAY_TASK_SUCCESS:
       return [...state, payload];
+    case ActionTypes.UPDATE_TODAY_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id), payload];
     default:
       return state;
   }
@@ -23,6 +25,8 @@ const tomorrow = (state = [], { type, payload }) => {
   switch (type) {
     case ActionTypes.POST_TOMORROW_TASK_SUCCESS:
       return [...state, payload];
+    case ActionTypes.UPDATE_TOMORROW_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id), payload];
     default:
       return state;
   }
@@ -32,6 +36,8 @@ const next = (state = [], { type, payload }) => {
   switch (type) {
     case ActionTypes.POST_NEXT_TASK_SUCCESS:
       return [...state, payload];
+    case ActionTypes.UPDATE_NEXT_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id), payload];
     default:
       return state;
   }
@@ -41,6 +47,8 @@ const after = (state = [], { type, payload }) => {
   switch (type) {
     case ActionTypes.POST_AFTER_TASK_SUCCESS:
       return [...state, payload];
+    case ActionTypes.UPDATE_AFTER_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id), payload];
     default:
       return state;
   }

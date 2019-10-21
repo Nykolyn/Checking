@@ -29,6 +29,22 @@
   color: #000;
 }
 
+.svgBtn {
+  width: 39px;
+  height: 39px;
+  border: 0;
+  border-radius: 19px;
+  background-color: #f5e6e6;
+  box-shadow: 0 2px 2px 0 #808080;
+  outline: none;
+  cursor: pointer;
+}
+
+.svg {
+  fill: #f25137;
+}
+
+
 .helperDiv {
   width: 100%;
   margin-bottom: 24px;
@@ -170,6 +186,12 @@
   .flexHelperDiv {
     flex-direction: column;
     height: 146px;
+  }
+
+  .svgBtn {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 24px;
   }
 }
 

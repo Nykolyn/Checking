@@ -63,12 +63,60 @@ export const postTask = task => (dispatch, getState) => {
     });
 };
 
-export const updateTask = task => dispatch => {
-  dispatch(taskHandlers.updateTaskRequest);
-  return api
-    .updateTask(task)
-    .then(dispatch(taskHandlers.updateTaskSuccess(task)))
-    .catch(error => dispatch(taskHandlers.updateTaskErorr(error)));
+export const updateTask = task => (dispatch, getState) => {
+  // const token = getToken(getState());
+  // if (!token) return;
+  const token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
+
+  const dispatcher = defineDispatcher(task);
+
+  switch (dispatcher) {
+    case taskTypes.TODAY:
+      dispatch(taskHandlers.updateTaskTodayRequest());
+      break;
+    case taskTypes.TOMORROW:
+      dispatch(taskHandlers.updateTaskTomorrowRequest());
+      break;
+    case taskTypes.NEXT:
+      dispatch(taskHandlers.updateTaskNextRequest());
+      break;
+    default:
+      dispatch(taskHandlers.updateTaskAfterRequest());
+  }
+
+  api
+    .updateTask(task, token)
+    .then(res => {
+      switch (dispatcher) {
+        case taskTypes.TODAY:
+          dispatch(taskHandlers.updateTaskTodaySuccess(res.task));
+          break;
+        case taskTypes.TOMORROW:
+          dispatch(taskHandlers.updateTaskTomorrowSuccess(res.task));
+          break;
+        case taskTypes.NEXT:
+          dispatch(taskHandlers.updateTaskNextSuccess(res.task));
+          break;
+        default:
+          dispatch(taskHandlers.updateTaskAfterSuccess(res.task));
+      }
+    })
+    .catch(error => {
+      switch (dispatcher) {
+        case taskTypes.TODAY:
+          dispatch(taskHandlers.updateTaskTodayError(error));
+          break;
+        case taskTypes.TOMORROW:
+          dispatch(taskHandlers.updateTaskTomorrowError(error));
+          break;
+        case taskTypes.NEXT:
+          dispatch(taskHandlers.updateTaskNextError(error));
+          break;
+        default:
+          dispatch(taskHandlers.updateTaskAfterError(error));
+      }
+    });
 };
 
 export const deleteTask = task => dispatch => {

@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import { ReactComponent as DeleteBtn } from '../../assets/icons/delete_forever-24px.svg';
 import DateSelect from './DateSelect';
 import RoleSelect from './RoleSelect';
 import TimeSelect from './TimeSelect';
 import PrioritySelect from './PrioritySelect';
 import roles from '../../constants/roles';
 import timeRanges from '../../constants/timeRanges';
+import findTask from '../../helpers/findTaskInArrayOfArrays';
 import styles from './TaskPopUp.module.css';
 
 export default class TaskPopUp extends Component {
   static defaultProps = {
-    isEditing: false,
+    taskPopUpCreateOpen: false,
+    taskPopUpEditOpen: false,
+    tasks: [],
   };
 
   static propTypes = {
-    isEditing: PropTypes.bool,
+    taskPopUpCreateOpen: PropTypes.bool,
+    taskPopUpEditOpen: PropTypes.bool,
     postTask: PropTypes.func.isRequired,
+    updateTask: PropTypes.func.isRequired,
+    tasks: PropTypes.shape({
+      today: PropTypes.arrayOf(PropTypes.object.isRequired),
+      tomorrow: PropTypes.arrayOf(PropTypes.object.isRequired),
+      next: PropTypes.arrayOf(PropTypes.object.isRequired),
+      after: PropTypes.arrayOf(PropTypes.object.isRequired),
+    }),
   };
 
   state = {
@@ -27,6 +39,22 @@ export default class TaskPopUp extends Component {
     time: timeRanges[4],
     priority: 0,
   };
+
+  // componentDidMount() {
+  //   const { taskPopUpEditOpen, tasks } = this.props;
+  //   if (taskPopUpEditOpen) {
+  //     const taskToEdit = findTask(tasks, id);
+  //     const { role, date, title, description, time, priority } = taskToEdit;
+  //     this.setState({
+  //       role,
+  //       title,
+  //       description,
+  //       time,
+  //       priority,
+  //       date: date < new Date().toJSON() ? new Date() : date,
+  //     });
+  //   }
+  // }
 
   handleRoleSelect = value => this.setState({ role: value });
 
@@ -55,13 +83,14 @@ export default class TaskPopUp extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { role, date, title, description, time, priority } = this.state;
+    const { postTask, updateTask, taskPopUpEditOpen } = this.props;
     if (!title.length) {
       toast.error('Enter a title!');
       return;
     }
     const taskToAdd = {
       role: role.label,
-      dates: [new Date(date).toISOString()],
+      dates: [new Date(date).toJSON()],
       title,
       description,
       time: time.label,
@@ -69,7 +98,11 @@ export default class TaskPopUp extends Component {
     if (priority) taskToAdd.priority = priority;
 
     console.log(taskToAdd);
-    this.props.postTask(taskToAdd);
+    if (taskPopUpEditOpen) {
+      updateTask(taskToAdd);
+    } else {
+      postTask(taskToAdd);
+    }
     this.reset();
   };
 
@@ -84,13 +117,23 @@ export default class TaskPopUp extends Component {
     });
 
   render() {
-    const { isEditing } = this.props;
+    const windowWidth = document.documentElement.clientWidth;
+    const { taskPopUpEditOpen } = this.props;
     const { role, date, title, description, time, priority } = this.state;
     return (
       <form className={styles.outer}>
-        <h3 className={styles.createTaskTitle}>
-          {!isEditing ? 'Create Task' : 'Edit Task'}
-        </h3>
+        {!taskPopUpEditOpen ? (
+          <h3 className={styles.createTaskTitle}>Create Task</h3>
+        ) : windowWidth < 768 ? (
+          <div className={styles.helperDiv}>
+            <h3 className={styles.createTaskTitle}>Edit Task</h3>
+            <button type="button" className={styles.svgBtn}>
+              <DeleteBtn className={styles.svg} />
+            </button>
+          </div>
+        ) : (
+          <h3 className={styles.createTaskTitle}>Edit Task</h3>
+        )}
         <div className={styles.helperDiv}>
           <RoleSelect value={role} onChange={this.handleRoleSelect} />
           <DateSelect value={date} onChange={this.handleDateChange} />
@@ -121,6 +164,11 @@ export default class TaskPopUp extends Component {
             onClick={this.handlePrioritySelect}
           />
         </div>
+        {!taskPopUpEditOpen && windowWidth > 767 && (
+          <button type="button" className={styles.svgBtn}>
+            <DeleteBtn className={styles.svg} />
+          </button>
+        )}
         <div className={styles.btnDiv}>
           <button type="button" className={styles.btn}>
             Cancel
