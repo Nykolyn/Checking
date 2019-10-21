@@ -5,19 +5,24 @@
   src: url('../../../assets/fonts/montserrat-v14-latin-500.eot');
   /* IE9 Compat Modes */
   src: local('Montserrat'), local('Montserrat_medium'),
-    /* IE6-IE8 */ url('../../../assets/fonts/montserrat-v14-latin-500.woff2')
-      format('woff2'),
+    /* IE6-IE8 */
+    url('../../../assets/fonts/montserrat-v14-latin-500.woff2') format('woff2'),
     /* Super Modern Browsers */
-      url('../../../assets/fonts/montserrat-v14-latin-500.woff') format('woff'),
+    url('../../../assets/fonts/montserrat-v14-latin-500.woff') format('woff'),
     /* Modern Browsers */
-      url('../../../assets/fonts/montserrat-v14-latin-500.ttf')
-      format('truetype');
+    url('../../../assets/fonts/montserrat-v14-latin-500.ttf') format('truetype');
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.burgerMenu {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
 }
 
 .navLink {
@@ -36,12 +41,20 @@
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.burgerItems {
+  border: 1px solid #cdd0d9;
+}
+
+.burgerItems:not(:last-child) {
+  border-bottom: none;
 }
 
 .burgerButton {
   outline: none;
   background-color: #f6f7fb;
-  border: 1px solid #cdd0d9;
   text-align: left;
   display: block;
   width: 100%;
@@ -50,10 +63,11 @@
   line-height: 40px;
   font-family: 'Montserrat';
   font-weight: 500;
-  /* color: #a5adb2; */
   color: gray;
   transition: all 0.3s ease;
+  border: none;
 }
+
 
 .burgerButton:active {
   background-color: #fff;
@@ -97,9 +111,16 @@
   background-size: contain;
 }
 
+.wrapper {
+  display: block;
+  margin: 0 auto;
+  width: inherit;
+}
+
 .logButton {
+  display: block;
+  margin: 0 auto;
   color: gray;
-  padding-top: 40px;
   background-color: transparent;
   border: none;
   outline: none;
@@ -109,12 +130,15 @@
 
 .logButton::after {
   content: ' ';
-  width: 44px;
+  width: 50px;
   margin: 0 auto;
   outline: none;
   display: block;
-  /* display: block; */
   border: 1px solid #dce0e3;
+}
+
+.logButton:active {
+  outline: 1px solid gray;
 }
 
 @media screen and (min-width: 768px) {

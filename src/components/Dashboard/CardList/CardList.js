@@ -4,7 +4,7 @@ import Card from './Card/Card';
 import styles from '../CardList/CardList.module.css';
 
 const CardList = ({ items }) => {
-  console.log(items);
+  // console.log(items);
   return (
     <div>
       {/* <ul>
