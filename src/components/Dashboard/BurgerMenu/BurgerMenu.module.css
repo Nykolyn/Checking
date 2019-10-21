@@ -116,8 +116,8 @@
   border: 1px solid #dce0e3;
 }
 
-/*@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .burgerMenu {
     display: none;
   }
-}*/
+}
