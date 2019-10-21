@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-
 import { Link, scroller } from 'react-scroll';
 import styles from './BurgerMenu.module.css';
 
@@ -11,7 +10,8 @@ export default class BurgerMenu extends Component {
   };
 
   handleClick({ target }) {
-    console.log(target.innerText);
+    console.log('target innerText - ', target.innerText);
+    console.log('target title - ', target.title);
     // console.log('scroll to today button');
     // scroller.scrollTo('today', {
     //   duration: 1500,
@@ -23,36 +23,108 @@ export default class BurgerMenu extends Component {
   render() {
     // const { isOpen } = this.state;
     return (
-      <section className={styles.burgerMenu}>
-        <div className={styles.container} onClick={this.handleClick}>
-          <NavLink to="/dashboard/today" className={styles.navLink} exact>
-            <button type="button" onClick={this.handleClick}>
+      <nav className={styles.burgerMenu}>
+        <ul className={styles.burgerList}>
+          <NavLink
+            to="/dashboard/today"
+            className={styles.navLink}
+            activeClassName={styles.selected}
+            activeClassName={styles.selected}
+            exact
+          >
+            <button
+              title="today"
+              type="button"
+              onClick={this.handleClick}
+              className={[styles.burgerButton, styles.today].join(' ')}
+            >
               Today
             </button>
           </NavLink>
-          <NavLink to="/dashboard/today" className={styles.navLink} exact>
-            <button type="button" onClick={this.handleClick}>
+          <NavLink
+            to="/dashboard/today"
+            className={styles.navLink}
+            activeClassName={styles.selected}
+            exact
+          >
+            <button
+              title="tomorrow"
+              type="button"
+              onClick={this.handleClick}
+              className={[styles.burgerButton, styles.today].join(' ')}
+            >
               Tomorrow
             </button>
           </NavLink>
-          <NavLink to="/dashboard/nextweek" className={styles.navLink} exact>
-            <button type="button" onClick={this.handleClick}>
+          <NavLink
+            to="/dashboard/nextweek"
+            className={styles.navLink}
+            activeClassName={styles.selected}
+          >
+            <button
+              title="next"
+              type="button"
+              onClick={this.handleClick}
+              className={[styles.burgerButton, styles.next].join(' ')}
+            >
               Next 7 Days
             </button>
           </NavLink>
-          <NavLink to="/dashboard/nextweek" className={styles.navLink} exact>
-            <button type="button" onClick={this.handleClick}>
+          <NavLink
+            to="/dashboard/nextweek"
+            className={styles.navLink}
+            activeClassName={styles.selected}
+          >
+            <button
+              title="after"
+              type="button"
+              onClick={this.handleClick}
+              className={[styles.burgerButton, styles.next].join(' ')}
+            >
               After 7 Days
             </button>
           </NavLink>
-          <NavLink to="/dashboard/burnedout" className={styles.navLink} exact>
-            <button type="button">Burned Out</button>
+          <NavLink
+            to="/dashboard/burnedout"
+            className={styles.navLink}
+            activeClassName={styles.selected}
+          >
+            <button
+              type="button"
+              className={[styles.burgerButton, styles.burned].join(' ')}
+            >
+              Burned Out
+            </button>
           </NavLink>
-          <NavLink to="/dashboard/done" className={styles.navLink} exact>
-            <button type="button">Done</button>
+          <NavLink
+            to="/dashboard/done"
+            className={styles.navLink}
+            activeClassName={styles.selected}
+          >
+            <button
+              type="button"
+              className={[styles.burgerButton, styles.done].join(' ')}
+            >
+              Done
+            </button>
           </NavLink>
-        </div>
-      </section>
+          <NavLink
+            to="/statistics"
+            className={styles.navLink}
+            activeClassName={styles.selected}
+          >
+            <button
+              type="button"
+              className={[styles.burgerButton, styles.statistics].join(' ')}
+            >
+              Statistics
+            </button>
+          </NavLink>
+          <button type="button" className={styles.logButton}>
+            log out
+          </button>
+        </ul>
+      </nav>
     );
   }
 }
