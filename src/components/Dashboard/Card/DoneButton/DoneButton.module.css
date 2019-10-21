@@ -1,5 +1,5 @@
 .DoneBtn {
-  background-image: url("../../../../assets/icons/done-icon.png");
+  background-image: url('../../../../assets/icons/done-icon.png');
   padding: 20px;
   background-color: #f5f7fa;
   border: 0;
