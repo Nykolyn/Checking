@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
-import Card from './Card/Card';
+import Card from '../Card/Card';
 
 const CardList = ({ items }) => {
   console.log(items);

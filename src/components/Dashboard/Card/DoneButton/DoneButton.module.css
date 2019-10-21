@@ -1,8 +1,13 @@
 .DoneBtn {
-  background-image: url('../../../../assets/icons/done-icon.png');
-  padding: 20px;
+  padding: 8px;
   background-color: #f5f7fa;
   border: 0;
   border-radius: 50%;
   margin-left: 10px;
+  fill: #cdd0d9;
+}
+
+.DoneBtn:hover {
+  background-color: #e0e2e8;
+  fill: white;
 }

@@ -1,12 +1,12 @@
 .EditBtn {
-  background-image: url('../../../../assets/icons/edit-icon.png');
-  padding: 20px;
+  padding: 8px;
   background-color: #f5f7fa;
   border: 0;
   border-radius: 50%;
+  fill: #cdd0d9;
 }
 
 .EditBtn:hover {
   background-color: #e0e2e8;
-  background-image: url('../../../../assets/icons/edit-hover.png');
+  fill: white;
 }

@@ -4,21 +4,15 @@ import DoneButton from './DoneButton/DoneButton';
 import style from './Card.module.css';
 
 class Card extends Component {
-  state = {};
-
-  // handleTitleLenght = title => {
-  //   let shortTitle;
-  //   if (title.lenght > 30) {
-  //     shortTitle = title.trim().slice(0, 29);
-  //   }
-  //   this.setState({
-  //     title: shortTitle,
-  //   });
-  //   return `${shortTitle}...`;
-  // };
+  state = {
+    title: 'Title with many - many symbols, many - many realy',
+    text:
+      'Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb)',
+  };
 
   render() {
-    // const { title } = this.state;
+    const { title, text } = this.state;
+    // console.log(title.length, text.length);
 
     return (
       <section className={style.cardSection}>
@@ -29,17 +23,19 @@ class Card extends Component {
         <div className={style.cardBody}>
           <p className={style.cardBody__title}>
             {' '}
-            Title with many - many symbols{' '}
+            {title.length > 30 ? `${title.trim().slice(0, 29)}...` : title}{' '}
           </p>{' '}
           <p className={style.cardBody__text}>
             {' '}
-            Body text(60 symb) Body text(60 symb) Body text(60 symb) Body
-            text(60 symb) Body text(60 symb) Body text(60 symb){' '}
+            {text.length > 60 ? `${text.trim().slice(0, 99)}...` : text}{' '}
           </p>{' '}
         </div>{' '}
         <footer className={style.cardFooter}>
           <div className={style.cardFooter__wrap}>
-            <p className={style.cardFooter__dateTime}> Date | Time </p>{' '}
+            <p className={style.cardFooter__dateTime}>
+              {' '}
+              Oct 10, 2020 | 06.00 - 09.00{' '}
+            </p>{' '}
           </div>{' '}
           <div>
             <EditButton />
