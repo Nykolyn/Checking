@@ -21,11 +21,13 @@ class NexWeekTab extends Component {
     // });
     const { burgerEvent } = this.state;
     if (!burgerEvent) {
-      scroller.scrollTo(`${burgerEvent}`, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      if (burgerEvent === 'next' || burgerEvent === 'after') {
+        scroller.scrollTo(`${burgerEvent}`, {
+          duration: 1500,
+          delay: 100,
+          smooth: true,
+        });
+      }
     }
   }
 

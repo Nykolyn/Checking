@@ -6,6 +6,10 @@ import CardList from '../../CardList/CardList';
 // import { connect } from 'react-redux';
 // import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
 
+// const filterCardTime = array => {
+//   return array.filter(el.priority.sort());
+// };
+
 class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
@@ -22,12 +26,13 @@ class TodayTomorrowTab extends Component {
     // });
     const { burgerEvent } = this.state;
     if (!burgerEvent) {
-      // console.log(burgerEvent);
-      scroller.scrollTo(`${burgerEvent}`, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      if (burgerEvent === 'today' || burgerEvent === 'tomorrow') {
+        scroller.scrollTo(`${burgerEvent}`, {
+          duration: 1500,
+          delay: 100,
+          smooth: true,
+        });
+      }
     }
   }
 
@@ -47,6 +52,8 @@ class TodayTomorrowTab extends Component {
 
   render() {
     const { isOpenToday, isOpenTomorrow } = this.state;
+    // const { todayTomorrow } = this.state;
+    // const filterCard = filterCardTime(todayTomorrow);
     return (
       <main className={styles.container}>
         <Element name="today">
@@ -67,7 +74,10 @@ class TodayTomorrowTab extends Component {
             >
               Today
             </button>
-            {isOpenToday && <CardList />}
+            {isOpenToday && (
+              // <CardList cardItems={filterCard}/>
+              <CardList />
+            )}
           </section>
         </Element>
 
