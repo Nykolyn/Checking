@@ -13,7 +13,7 @@ export default class Loaders extends React.Component {
   render() {
     return (
       <div style={divStyle}>
-        <Loader type="Oval" color="#3d5575" height={140} width={315} />;
+        <Loader type="Oval" color="#3d5575" height={100} width={200} />;
       </div>
     );
   }
