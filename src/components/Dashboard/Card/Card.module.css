@@ -9,27 +9,26 @@
 
 .cardSection {
   width: 300px;
-  height: 230px;
-  margin: 0px auto;
-  margin-bottom: 100px;
+  height: 200px;
+  margin: 0px;
+  margin-bottom: 50px;
   padding: 0px;
 }
 
 .cardHeaderNone {
-  height: 38px;
   background-color: #cdd0d9;
   display: flex;
   justify-content: space-between;
   align-content: space-between;
   align-items: center;
+  color: #525356;
 }
 
-.cardHeader__role {
+.cardHeader__roleLearner {
   margin: 0px;
   margin-left: 27px;
-  padding: 0px;
+  padding: 10px 0px;
   text-align: center;
-  color: #525356;
 }
 
 .cardHeader__priorityOne {
@@ -49,16 +48,16 @@
 /* color: #5ec455; */
 
 .cardBody {
-  height: 134px;
+  /* height: 134px; */
   color: white;
   background-color: #091e3f;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .cardBody__title {
   margin: 0px 24px;
-  margin-bottom: 10px;
-  padding-top: 22px;
+  margin-bottom: 4px;
+  padding-top: 10px;
   font-size: 16px;
   font-weight: 700;
   line-height: 21px;
@@ -68,6 +67,7 @@
   margin: 0px 24px;
   font-size: 12px;
   color: #6a7284;
+  padding-bottom: 10px;
 }
 
 .cardFooter {
@@ -87,5 +87,5 @@
 
 .cardFooter__dateTime {
   color: #869096;
-  /* font-size: 12px; */
+  font-size: 11px;
 }
