@@ -8,5 +8,5 @@ const EditButton = () => (
     <Edit />
   </button>
 );
-
+// prop => taskinModeEdit
 export default EditButton;

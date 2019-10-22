@@ -11,3 +11,8 @@
   background-color: #e0e2e8;
   fill: white;
 }
+
+.DoneBtn:disabled {
+  fill: green;
+  background-color: #fff;
+}

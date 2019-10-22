@@ -15,7 +15,7 @@
   padding: 0px;
 }
 
-.cardHeader {
+.cardHeaderNone {
   height: 38px;
   background-color: #cdd0d9;
   display: flex;
@@ -87,4 +87,5 @@
 
 .cardFooter__dateTime {
   color: #869096;
+  /* font-size: 12px; */
 }

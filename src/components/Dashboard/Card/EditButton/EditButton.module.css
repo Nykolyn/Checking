@@ -10,3 +10,7 @@
   background-color: #e0e2e8;
   fill: white;
 }
+
+.EditBtnDone {
+  display: none;
+}

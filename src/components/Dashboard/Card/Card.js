@@ -16,18 +16,18 @@ class Card extends Component {
 
     return (
       <section className={style.cardSection}>
-        <header className={style.cardHeader}>
+        <header className={style.cardHeaderNone}>
           <p className={style.cardHeader__role}> Role </p>{' '}
           <p className={style.cardHeader__priorityOne}> 1 </p>{' '}
         </header>{' '}
         <div className={style.cardBody}>
           <p className={style.cardBody__title}>
             {' '}
-            {title.length > 30 ? `${title.trim().slice(0, 29)}...` : title}{' '}
+            {title.length > 46 ? `${title.trim().slice(0, 45)}...` : title}{' '}
           </p>{' '}
           <p className={style.cardBody__text}>
             {' '}
-            {text.length > 60 ? `${text.trim().slice(0, 99)}...` : text}{' '}
+            {text.length > 110 ? `${text.trim().slice(0, 100)}...` : text}{' '}
           </p>{' '}
         </div>{' '}
         <footer className={style.cardFooter}>
