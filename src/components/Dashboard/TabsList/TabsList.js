@@ -4,8 +4,6 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import Loader from './Loader';
 import MenuList from './MenuList/MenuList';
 import styles from './TabsList.module.css';
-// import { connect } from 'react-redux';
-// import { getAllTasks } from '../../../../redux/tasks/tasksSelectors';
 
 const AsyncTodayTab = Loadable({
   loader: () =>
@@ -44,18 +42,7 @@ const AsyncDoneTab = Loadable({
 });
 
 class TabsList extends Component {
-  state = {
-    // tasks: null,
-  };
-
-  // componentDidMount() {
-  //   const { allTasks } = this.props;
-  //   this.setState({
-  //     tasks: [...allTasks],
-  //   });
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {}
+  state = {};
 
   render() {
     return (
@@ -76,12 +63,3 @@ class TabsList extends Component {
 }
 
 export default TabsList;
-
-// const mapStateToProps = state => ({
-//   allTasks: getAllTasks(state),
-// });
-
-// export default connect(
-//   mapStateToProps,
-//   null,
-// )(TabsList);
