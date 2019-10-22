@@ -1,0 +1,133 @@
+@font-face {
+  font-family: 'Montserrat_medium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../../../../assets/fonts/montserrat-v14-latin-500.eot');
+  /* IE9 Compat Modes */
+  src: local('Montserrat'), local('Montserrat_medium'),
+    /* IE6-IE8 */ url('../../../../assets/fonts/montserrat-v14-latin-500.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../../../../assets/fonts/montserrat-v14-latin-500.woff')
+      format('woff'),
+    /* Modern Browsers */
+      url('../../../../assets/fonts/montserrat-v14-latin-500.ttf')
+      format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  width: 320px;
+}
+
+.section {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  min-width: 320px;
+}
+
+.titleButton {
+  position: relative;
+  font-size: 14px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  background-color: transparent;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  display: block;
+  min-width: 300px;
+  border: none;
+  text-align: left;
+  color: #869096;
+  cursor: pointer;
+  outline: none;
+  backface-visibility: hidden;
+}
+
+.titleButton::after {
+  padding-left: 10px;
+  transform: rotate(-180deg);
+  transform-origin: center center;
+  position: relative;
+  background: url(../../../../assets/icons/arrow_drop_down-24px.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+}
+
+.dropDoun::after {
+  transform: rotate(0deg);
+}
+
+@media screen and (max-width: 767px) {
+  .titleButton {
+    position: sticky;
+    line-height: 20px;
+    top: 0;
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 640px;
+  }
+
+  .section {
+    margin-bottom: 26px;
+  }
+
+  .titleButton {
+    min-width: 640px;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .titleButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    border: 1px solid #e0e5eb;
+    z-index: -1;
+  }
+
+  .titleToday::before {
+    left: 61px;
+  }
+
+  .titleTomorrow::before {
+    left: 96px;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .container {
+    width: 980px;
+  }
+
+  .section {
+    margin-bottom: 26px;
+  }
+
+  .titleButton {
+    width: 980px;
+  }
+}
