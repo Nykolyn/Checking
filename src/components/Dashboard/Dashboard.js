@@ -4,6 +4,8 @@ import TaskPopUp from '../TaskPopUp/TaskPopUp';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 
 class Dashboard extends Component {
+  state = {};
+
   componentDidMount() {}
 
   render() {

@@ -45,6 +45,7 @@
 }
 
 .burgerItems {
+  list-style: none;
   border: 1px solid #cdd0d9;
 }
 
@@ -67,7 +68,6 @@
   transition: all 0.3s ease;
   border: none;
 }
-
 
 .burgerButton:active {
   background-color: #fff;
