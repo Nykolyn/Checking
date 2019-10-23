@@ -4,7 +4,11 @@ export const modalDeleteTaskIsOpen = state =>
 export const modalLogoutIsOpen = state =>
   state.componentController.modalLogoutIsOpen;
 
-export const taskPopUpIsOpen = state => state.componentController.taskPopUpOpen;
+export const taskPopUpCreateIsOpen = state =>
+  state.componentController.taskPopUpCreateOpen;
+
+export const taskPopUpEditIsOpen = state =>
+  state.componentController.taskPopUpEditOpen;
 
 export const burgerMenuIsOpen = state =>
   state.componentController.burgerMenuOpen;
