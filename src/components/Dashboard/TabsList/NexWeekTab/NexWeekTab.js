@@ -1,37 +1,45 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { Element, scroller } from 'react-scroll';
+import { connect } from 'react-redux';
 import styles from './NexWeekTab.module.css';
 import CardList from '../../CardList/CardList';
+import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
 
-// import { connect } from 'react-redux';
 // import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
 
 class NexWeekTab extends Component {
   state = {
     isOpenNext: true,
     isOpenAfter: true,
-    burgerEvent: null,
     // nexAfter: null,
   };
 
   componentDidMount() {
-    // const { nexAfter,burgerClick } = this.props;
+    // const { nexAfter } = this.props;
     // this.setState({
     //   nexAfter: [...nexAfter],
     // });
-    const { burgerEvent } = this.state;
-    if (!burgerEvent) {
-      if (burgerEvent === 'next' || burgerEvent === 'after') {
-        scroller.scrollTo(`${burgerEvent}`, {
-          duration: 1500,
-          delay: 100,
-          smooth: true,
-        });
-      }
+    // const { burgerEvent } = this.props;
+    if (burgerEvent) {
+      scroller.scrollTo(burgerEvent, {
+        duration: 1500,
+        delay: 100,
+        smooth: true,
+      });
     }
   }
 
-  // componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps) {
+    // const { burgerEvent } = this.props;
+    if (prevProps.burgerEvent !== burgerEvent) {
+      scroller.scrollTo(burgerEvent, {
+        duration: 1500,
+        delay: 100,
+        smooth: true,
+      });
+    }
+  }
 
   handleToggleNext = () => {
     this.setState(state => ({
@@ -49,7 +57,7 @@ class NexWeekTab extends Component {
     const { isOpenNext, isOpenAfter } = this.state;
     return (
       <main className={styles.container}>
-        <Element name="nexDay">
+        <Element name="next">
           <section className={styles.section}>
             <button
               type="button"
@@ -72,7 +80,7 @@ class NexWeekTab extends Component {
           </section>
         </Element>
 
-        <Element name="afterDay">
+        <Element name="after">
           <section className={styles.section}>
             <button
               type="button"
@@ -97,13 +105,16 @@ class NexWeekTab extends Component {
   }
 }
 
-export default NexWeekTab;
+const mapStateToProps = state => ({
+  // nextAfter: getNextAfter(state),
+  burgerEvent: burgerEvent(state),
+});
 
-// const mapStateToProps = state => ({
-//   nextAfter:  getNextAfter(state),
-// });
+const mapDispatchToProps = dispatch => ({
+  getBurgerEvent: () => dispatch(burgerEvent(null)),
+});
 
-// export default connect(
-//   mapStateToProps,
-//   null,
-// )(NexWeekTab);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NexWeekTab);
