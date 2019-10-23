@@ -8,13 +8,13 @@ import TimeSelect from './TimeSelect';
 import PrioritySelect from './PrioritySelect';
 import roles from '../../constants/roles';
 import timeRanges from '../../constants/timeRanges';
-import findTask from '../../helpers/findTaskInArrayOfArrays';
+import defineDispatcher from '../../helpers/dispatchHelper';
 import styles from './TaskPopUp.module.css';
 
 export default class TaskPopUp extends Component {
   static defaultProps = {
     taskPopUpCreateOpen: false,
-    taskPopUpEditOpen: false,
+    taskPopUpEditOpen: true,
     tasks: [],
   };
 
@@ -23,12 +23,18 @@ export default class TaskPopUp extends Component {
     taskPopUpEditOpen: PropTypes.bool,
     postTask: PropTypes.func.isRequired,
     updateTask: PropTypes.func.isRequired,
+    removeTask: PropTypes.func.isRequired,
     modalDeleteTaskOpen: PropTypes.func.isRequired,
     tasks: PropTypes.shape({
-      today: PropTypes.arrayOf(PropTypes.object.isRequired),
-      tomorrow: PropTypes.arrayOf(PropTypes.object.isRequired),
-      next: PropTypes.arrayOf(PropTypes.object.isRequired),
-      after: PropTypes.arrayOf(PropTypes.object.isRequired),
+      todayTomorrow: PropTypes.shape({
+        today: PropTypes.arrayOf(PropTypes.object),
+        tomorrow: PropTypes.arrayOf(PropTypes.object),
+      }),
+      nextAfter: PropTypes.shape({
+        next: PropTypes.arrayOf(PropTypes.object),
+        after: PropTypes.arrayOf(PropTypes.object),
+      }),
+      taskInEditMode: PropTypes.object,
     }),
   };
 
@@ -38,24 +44,31 @@ export default class TaskPopUp extends Component {
     title: '',
     description: '',
     time: timeRanges[4],
-    priority: 0,
+    priority: 3,
   };
 
-  // componentDidMount() {
-  //   const { taskPopUpEditOpen, tasks } = this.props;
-  //   if (taskPopUpEditOpen) {
-  //     const taskToEdit = findTask(tasks, id);
-  //     const { role, date, title, description, time, priority } = taskToEdit;
-  //     this.setState({
-  //       role,
-  //       title,
-  //       description,
-  //       time,
-  //       priority,
-  //       date: new Date(date) < new Date() ? new Date() : new Date(date),
-  //     });
-  //   }
-  // }
+  componentDidMount() {
+    const { taskPopUpEditOpen, tasks } = this.props;
+    if (taskPopUpEditOpen) {
+      const taskToEdit = { ...tasks.taskInEditMode };
+      const { role, date, title, description, time, priority } = taskToEdit;
+      this.setState({
+        role: roles.find(elem => elem.label === role),
+        title,
+        description,
+        time: timeRanges.find(elem => elem.label === time),
+        priority,
+        date: new Date(date) < new Date() ? new Date() : new Date(date),
+      });
+    }
+  }
+
+  // Don't delete a task before submit
+  // If cancel, delete a task from edit mode
+  // If accept: if burned out - delete a task from burned out and define new array through update
+  // if not burned out - compare date from props with new date
+  // if prevDate === new date - dispatch update
+  // if prevDate !== new date - delete a task from prevArray and dispatch update
 
   handleRoleSelect = value => this.setState({ role: value });
 
@@ -77,7 +90,7 @@ export default class TaskPopUp extends Component {
   handlePrioritySelect = ({ target }) => {
     const priority = Number(target.getAttribute('data-priority'));
     this.setState(state => ({
-      priority: state.priority !== priority ? priority : 0,
+      priority: state.priority !== priority ? priority : 3,
     }));
   };
 
@@ -86,27 +99,52 @@ export default class TaskPopUp extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { role, date, title, description, time, priority } = this.state;
-    const { postTask, updateTask, taskPopUpEditOpen } = this.props;
+    const {
+      postTask,
+      updateTask,
+      removeTask,
+      taskPopUpEditOpen,
+      tasks,
+    } = this.props;
     if (!title.length) {
       toast.error('Enter a title!');
       return;
     }
     const taskToAdd = {
       role: role.label,
-      dates: [new Date(date).toJSON()],
+      date: new Date(date).toJSON(),
       title,
       description,
       time: time.label,
+      priority,
     };
-    if (priority) taskToAdd.priority = priority;
 
     console.log(taskToAdd);
     if (taskPopUpEditOpen) {
-      updateTask(taskToAdd);
+      taskToAdd.id = tasks.taskInEditMode._id;
+      if (
+        defineDispatcher(taskToAdd) !== defineDispatcher(tasks.taskInEditMode)
+      ) {
+        removeTask(tasks.taskInEditMode);
+        updateTask(taskToAdd);
+        // taskInEditMode - false
+        // TaskPopUpEditOpen - false
+      }
     } else {
       postTask(taskToAdd);
+      // TaskPopUpCreateOpen - false
     }
     this.reset();
+  };
+
+  handleClose = () => {
+    const { taskPopUpEditOpen } = this.props;
+    if (taskPopUpEditOpen) {
+      // taskInEditMode - false
+      // TaskPopUpEditOpen - false
+      // return
+    }
+    // TaskPopUpCreateOpen - false
   };
 
   reset = () =>
@@ -116,7 +154,7 @@ export default class TaskPopUp extends Component {
       title: '',
       description: '',
       time: timeRanges[4],
-      priority: 0,
+      priority: 3,
     });
 
   render() {
@@ -171,7 +209,7 @@ export default class TaskPopUp extends Component {
             onClick={this.handlePrioritySelect}
           />
         </div>
-        {!taskPopUpEditOpen && windowWidth > 767 && (
+        {taskPopUpEditOpen && windowWidth > 767 && (
           <button
             type="button"
             className={styles.svgBtn}

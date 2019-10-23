@@ -1,5 +1,9 @@
 import { connect } from 'react-redux';
-import { postTask, updateTask } from '../../redux/tasks/tasksOperations';
+import {
+  postTask,
+  updateTask,
+  removeTask,
+} from '../../redux/tasks/tasksOperations';
 import { modalDeleteTaskOpen } from '../../redux/componentController/componentActions';
 import getAllTasks from '../../redux/tasks/tasksSelectors';
 import {
@@ -17,6 +21,7 @@ const mSTP = state => ({
 const mDTP = dispatch => ({
   postTask: task => dispatch(postTask(task)),
   updateTask: task => dispatch(updateTask(task)),
+  removeTask: task => dispatch(removeTask(task)),
   modalDeleteTaskOpen: () => dispatch(modalDeleteTaskOpen()),
 });
 

@@ -11,7 +11,7 @@ export const postTask = task => (dispatch, getState) => {
   // const token = getToken(getState());
   // if (!token) return;
   const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
 
   const dispatcher = defineDispatcher(task);
 
@@ -31,19 +31,19 @@ export const postTask = task => (dispatch, getState) => {
 
   api
     .postTask(task, token)
-    .then(res => {
+    .then(({ data }) => {
       switch (dispatcher) {
         case taskTypes.TODAY:
-          dispatch(taskHandlers.postTaskTodaySuccess(res.task));
+          dispatch(taskHandlers.postTaskTodaySuccess(data.task));
           break;
         case taskTypes.TOMORROW:
-          dispatch(taskHandlers.postTaskTomorrowSuccess(res.task));
+          dispatch(taskHandlers.postTaskTomorrowSuccess(data.task));
           break;
         case taskTypes.NEXT:
-          dispatch(taskHandlers.postTaskNextSuccess(res.task));
+          dispatch(taskHandlers.postTaskNextSuccess(data.task));
           break;
         default:
-          dispatch(taskHandlers.postTaskAfterSuccess(res.task));
+          dispatch(taskHandlers.postTaskAfterSuccess(data.task));
       }
     })
     .catch(error => {
@@ -67,7 +67,7 @@ export const updateTask = task => (dispatch, getState) => {
   // const token = getToken(getState());
   // if (!token) return;
   const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
 
   const dispatcher = defineDispatcher(task);
 
@@ -86,20 +86,21 @@ export const updateTask = task => (dispatch, getState) => {
   }
 
   api
-    .updateTask(task, token)
-    .then(res => {
+    .postTask(task, token, task.id)
+    .then(console.log)
+    .then(({ data }) => {
       switch (dispatcher) {
         case taskTypes.TODAY:
-          dispatch(taskHandlers.updateTaskTodaySuccess(res.task));
+          dispatch(taskHandlers.updateTaskTodaySuccess(data.task));
           break;
         case taskTypes.TOMORROW:
-          dispatch(taskHandlers.updateTaskTomorrowSuccess(res.task));
+          dispatch(taskHandlers.updateTaskTomorrowSuccess(data.task));
           break;
         case taskTypes.NEXT:
-          dispatch(taskHandlers.updateTaskNextSuccess(res.task));
+          dispatch(taskHandlers.updateTaskNextSuccess(data.task));
           break;
         default:
-          dispatch(taskHandlers.updateTaskAfterSuccess(res.task));
+          dispatch(taskHandlers.updateTaskAfterSuccess(data.task));
       }
     })
     .catch(error => {
@@ -119,10 +120,114 @@ export const updateTask = task => (dispatch, getState) => {
     });
 };
 
-export const deleteTask = task => dispatch => {
-  dispatch(taskHandlers.deleteTaskRequest);
-  return api
-    .deleteTask(task)
-    .then(dispatch(taskHandlers.deleteTaskSuccess(task)))
-    .catch(error => dispatch(taskHandlers.deleteTaskErorr(error)));
+export const deleteTask = task => (dispatch, getState) => {
+  // const token = getToken(getState());
+  // if (!token) return;
+  const token =
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
+
+  const dispatcher = defineDispatcher(task);
+
+  switch (dispatcher) {
+    case taskTypes.TODAY:
+      dispatch(taskHandlers.deleteTaskTodayRequest());
+      break;
+    case taskTypes.TOMORROW:
+      dispatch(taskHandlers.deleteTaskTomorrowRequest());
+      break;
+    case taskTypes.NEXT:
+      dispatch(taskHandlers.deleteTaskNextRequest());
+      break;
+    case taskTypes.AFTER:
+      dispatch(taskHandlers.deleteTaskAfterRequest());
+      break;
+    default:
+      dispatch(taskHandlers.deleteTaskBurnedRequest());
+  }
+
+  api
+    .deleteTask(task, token, task.id)
+    .then(res => {
+      switch (dispatcher) {
+        case taskTypes.TODAY:
+          dispatch(taskHandlers.deleteTaskTodaySuccess(res.task));
+          break;
+        case taskTypes.TOMORROW:
+          dispatch(taskHandlers.deleteTaskTomorrowSuccess(res.task));
+          break;
+        case taskTypes.NEXT:
+          dispatch(taskHandlers.deleteTaskNextSuccess(res.task));
+          break;
+        case taskTypes.AFTER:
+          dispatch(taskHandlers.deleteTaskAfterSuccess(res.task));
+          break;
+        default:
+          dispatch(taskHandlers.deleteTaskBurnedSuccess(res.task));
+      }
+    })
+    .catch(error => {
+      switch (dispatcher) {
+        case taskTypes.TODAY:
+          dispatch(taskHandlers.deleteTaskTodayError(error));
+          break;
+        case taskTypes.TOMORROW:
+          dispatch(taskHandlers.deleteTaskTomorrowError(error));
+          break;
+        case taskTypes.NEXT:
+          dispatch(taskHandlers.deleteTaskNextError(error));
+          break;
+        case taskTypes.AFTER:
+          dispatch(taskHandlers.deleteTaskAfterError(error));
+          break;
+        default:
+          dispatch(taskHandlers.deleteTaskBurnedError(error));
+      }
+    });
+};
+
+export const removeTask = task => dispatch => {
+  const dispatcher = defineDispatcher(task);
+
+  switch (dispatcher) {
+    case taskTypes.TODAY:
+      try {
+        dispatch(taskHandlers.removeTaskTodayRequest());
+        dispatch(taskHandlers.removeTaskTodaySuccess(task));
+      } catch (error) {
+        dispatch(taskHandlers.removeTaskTodayError(error));
+      }
+      break;
+    case taskTypes.TOMORROW:
+      try {
+        dispatch(taskHandlers.removeTaskTomorrowRequest());
+        dispatch(taskHandlers.removeTaskTomorrowSuccess(task));
+      } catch (error) {
+        dispatch(taskHandlers.removeTaskTomorrowError(error));
+      }
+      break;
+    case taskTypes.NEXT:
+      try {
+        dispatch(taskHandlers.removeTaskNextRequest());
+        dispatch(taskHandlers.removeTaskNextSuccess(task));
+      } catch (error) {
+        dispatch(taskHandlers.removeTaskNextError(error));
+      }
+      break;
+
+    case taskTypes.AFTER:
+      try {
+        dispatch(taskHandlers.removeTaskAfterRequest());
+        dispatch(taskHandlers.removeTaskAfterSuccess(task));
+      } catch (error) {
+        dispatch(taskHandlers.removeTaskAfterError(error));
+      }
+      break;
+    default:
+      try {
+        dispatch(taskHandlers.removeTaskBurnedRequest());
+        dispatch(taskHandlers.removeTaskBurnedSuccess(task));
+      } catch (error) {
+        dispatch(taskHandlers.removeTaskBurnedError(error));
+      }
+  }
 };

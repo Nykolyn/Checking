@@ -3,6 +3,8 @@ export const ActionTypes = {
   GET_TASKS_SUCCESS: 'GET_TASKS_SUCCESS',
   GET_TASKS_ERROR: 'GET_TASKS_ERROR',
 
+  // POST
+
   POST_TODAY_TASK_REQUEST: 'POST_TODAY_TASK_REQUEST',
   POST_TODAY_TASK_SUCCESS: 'POST_TODAY_TASK_SUCCESS',
   POST_TODAY_TASK_ERROR: 'POST_TODAY_TASK_ERROR',
@@ -18,6 +20,12 @@ export const ActionTypes = {
   POST_AFTER_TASK_REQUEST: 'POST_AFTER_TASK_REQUEST',
   POST_AFTER_TASK_SUCCESS: 'POST_AFTER_TASK_SUCCESS',
   POST_AFTER_TASK_ERROR: 'POST_AFTER_TASK_ERROR',
+
+  POST_BURNED_TASK_REQUEST: 'POST_BURNED_TASK_REQUEST',
+  POST_BURNED_TASK_SUCCESS: 'POST_BURNED_TASK_SUCCESS',
+  POST_BURNED_TASK_ERROR: 'POST_BURNED_TASK_ERROR',
+
+  // UPDATE
 
   UPDATE_TODAY_TASK_REQUEST: 'UPDATE_TODAY_TASK_REQUEST',
   UPDATE_TODAY_TASK_SUCCESS: 'UPDATE_TODAY_TASK_SUCCESS',
@@ -35,9 +43,49 @@ export const ActionTypes = {
   UPDATE_AFTER_TASK_SUCCESS: 'UPDATE_AFTER_TASK_SUCCESS',
   UPDATE_AFTER_TASK_ERROR: 'UPDATE_AFTER_TASK_ERROR',
 
-  DELETE_TASK_REQUEST: 'DELETE_TASK_REQUEST',
-  DELETE_TASK_SUCCESS: 'DELETE_TASK_SUCCESS',
-  DELETE_TASK_ERROR: 'DELETE_TASK_ERROR',
+  // DELETE
+
+  DELETE_TODAY_TASK_REQUEST: 'DELETE_TODAY_TASK_REQUEST',
+  DELETE_TODAY_TASK_SUCCESS: 'DELETE_TODAY_TASK_SUCCESS',
+  DELETE_TODAY_TASK_ERROR: 'DELETE_TODAY_TASK_ERROR',
+
+  DELETE_TOMORROW_TASK_REQUEST: 'DELETE_TOMORROW_TASK_REQUEST',
+  DELETE_TOMORROW_TASK_SUCCESS: 'DELETE_TOMORROW_TASK_SUCCESS',
+  DELETE_TOMORROW_TASK_ERROR: 'DELETE_TOMORROW_TASK_ERROR',
+
+  DELETE_NEXT_TASK_REQUEST: 'DELETE_NEXT_TASK_REQUEST',
+  DELETE_NEXT_TASK_SUCCESS: 'DELETE_NEXT_TASK_SUCCESS',
+  DELETE_NEXT_TASK_ERROR: 'DELETE_NEXT_TASK_ERROR',
+
+  DELETE_AFTER_TASK_REQUEST: 'DELETE_AFTER_TASK_REQUEST',
+  DELETE_AFTER_TASK_SUCCESS: 'DELETE_AFTER_TASK_SUCCESS',
+  DELETE_AFTER_TASK_ERROR: 'DELETE_AFTER_TASK_ERROR',
+
+  DELETE_BURNED_TASK_REQUEST: 'DELETE_BURNED_TASK_REQUEST',
+  DELETE_BURNED_TASK_SUCCESS: 'DELETE_BURNED_TASK_SUCCESS',
+  DELETE_BURNED_TASK_ERROR: 'DELETE_BURNED_TASK_ERROR',
+
+  // REMOVE A TASK FROM STORE
+
+  REMOVE_TODAY_TASK_REQUEST: 'REMOVE_TODAY_TASK_REQUEST',
+  REMOVE_TODAY_TASK_SUCCESS: 'REMOVE_TODAY_TASK_SUCCESS',
+  REMOVE_TODAY_TASK_ERROR: 'REMOVE_TODAY_TASK_ERROR',
+
+  REMOVE_TOMORROW_TASK_REQUEST: 'REMOVE_TOMORROW_TASK_REQUEST',
+  REMOVE_TOMORROW_TASK_SUCCESS: 'REMOVE_TOMORROW_TASK_SUCCESS',
+  REMOVE_TOMORROW_TASK_ERROR: 'REMOVE_TOMORROW_TASK_ERROR',
+
+  REMOVE_NEXT_TASK_REQUEST: 'REMOVE_NEXT_TASK_REQUEST',
+  REMOVE_NEXT_TASK_SUCCESS: 'REMOVE_NEXT_TASK_SUCCESS',
+  REMOVE_NEXT_TASK_ERROR: 'REMOVE_NEXT_TASK_ERROR',
+
+  REMOVE_AFTER_TASK_REQUEST: 'REMOVE_AFTER_TASK_REQUEST',
+  REMOVE_AFTER_TASK_SUCCESS: 'REMOVE_AFTER_TASK_SUCCESS',
+  REMOVE_AFTER_TASK_ERROR: 'REMOVE_AFTER_TASK_ERROR',
+
+  REMOVE_BURNED_TASK_REQUEST: 'REMOVE_BURNED_TASK_REQUEST',
+  REMOVE_BURNED_TASK_SUCCESS: 'REMOVE_BURNED_TASK_SUCCESS',
+  REMOVE_BURNED_TASK_ERROR: 'REMOVE_BURNED_TASK_ERROR',
 };
 
 // GET TASKS
@@ -184,18 +232,162 @@ export const updateTaskAfterError = err => ({
   payload: err,
 });
 
-// DELETE TASK
+// DELETE TODAY TASK
 
-export const deleteTaskRequest = () => ({
-  type: ActionTypes.DELETE_TASKS_REQUEST,
+export const deleteTaskTodayRequest = () => ({
+  type: ActionTypes.DELETE_TODAY_TASK_REQUEST,
 });
 
-export const deleteTaskSuccess = task => ({
-  type: ActionTypes.DELETE_TASK_SUCCESS,
+export const deleteTaskTodaySuccess = task => ({
+  type: ActionTypes.DELETE_TODAY_TASK_SUCCESS,
   payload: task,
 });
 
-export const deleteTaskErorr = err => ({
-  type: ActionTypes.DELETE_TASK_ERROR,
+export const deleteTaskTodayError = err => ({
+  type: ActionTypes.DELETE_TODAY_TASK_ERROR,
+  payload: err,
+});
+
+// DELETE TOMORROW TASK
+
+export const deleteTaskTomorrowRequest = () => ({
+  type: ActionTypes.DELETE_TOMORROW_TASK_REQUEST,
+});
+
+export const deleteTaskTomorrowSuccess = task => ({
+  type: ActionTypes.DELETE_TOMORROW_TASK_SUCCESS,
+  payload: task,
+});
+
+export const deleteTaskTomorrowError = err => ({
+  type: ActionTypes.DELETE_TOMORROW_TASK_ERROR,
+  payload: err,
+});
+
+// DELETE NEXT WEEK TASK
+
+export const deleteTaskNextRequest = () => ({
+  type: ActionTypes.DELETE_NEXT_TASK_REQUEST,
+});
+
+export const deleteTaskNextSuccess = task => ({
+  type: ActionTypes.DELETE_NEXT_TASK_SUCCESS,
+  payload: task,
+});
+
+export const deleteTaskNextError = err => ({
+  type: ActionTypes.DELETE_NEXT_TASK_ERROR,
+  payload: err,
+});
+
+// DELETE AFTER NEXT WEEK TASK
+
+export const deleteTaskAfterRequest = () => ({
+  type: ActionTypes.DELETE_AFTER_TASK_REQUEST,
+});
+
+export const deleteTaskAfterSuccess = task => ({
+  type: ActionTypes.DELETE_AFTER_TASK_SUCCESS,
+  payload: task,
+});
+
+export const deleteTaskAfterError = err => ({
+  type: ActionTypes.DELETE_AFTER_TASK_ERROR,
+  payload: err,
+});
+
+// DELETE BURNED OUT TASK
+
+export const deleteTaskBurnedRequest = () => ({
+  type: ActionTypes.DELETE_BURNED_TASK_REQUEST,
+});
+
+export const deleteTaskBurnedSuccess = task => ({
+  type: ActionTypes.DELETE_BURNED_TASK_SUCCESS,
+  payload: task,
+});
+
+export const deleteTaskBurnedError = err => ({
+  type: ActionTypes.DELETE_BURNED_TASK_ERROR,
+  payload: err,
+});
+
+// REMOVE TODAY TASK
+
+export const removeTaskTodayRequest = () => ({
+  type: ActionTypes.REMOVE_TODAY_TASK_REQUEST,
+});
+
+export const removeTaskTodaySuccess = task => ({
+  type: ActionTypes.REMOVE_TODAY_TASK_SUCCESS,
+  payload: task,
+});
+
+export const removeTaskTodayError = err => ({
+  type: ActionTypes.REMOVE_TODAY_TASK_ERROR,
+  payload: err,
+});
+
+// REMOVE TOMORROW TASK
+
+export const removeTaskTomorrowRequest = () => ({
+  type: ActionTypes.REMOVE_TOMORROW_TASK_REQUEST,
+});
+
+export const removeTaskTomorrowSuccess = task => ({
+  type: ActionTypes.REMOVE_TOMORROW_TASK_SUCCESS,
+  payload: task,
+});
+
+export const removeTaskTomorrowError = err => ({
+  type: ActionTypes.REMOVE_TOMORROW_TASK_ERROR,
+  payload: err,
+});
+
+// REMOVE NEXT WEEK TASK
+
+export const removeTaskNextRequest = () => ({
+  type: ActionTypes.REMOVE_NEXT_TASK_REQUEST,
+});
+
+export const removeTaskNextSuccess = task => ({
+  type: ActionTypes.REMOVE_NEXT_TASK_SUCCESS,
+  payload: task,
+});
+
+export const removeTaskNextError = err => ({
+  type: ActionTypes.DELETE_NEXT_TASK_ERROR,
+  payload: err,
+});
+
+// REMOVE AFTER NEXT WEEK TASK
+
+export const removeTaskAfterRequest = () => ({
+  type: ActionTypes.REMOVE_AFTER_TASK_REQUEST,
+});
+
+export const removeTaskAfterSuccess = task => ({
+  type: ActionTypes.REMOVE_AFTER_TASK_SUCCESS,
+  payload: task,
+});
+
+export const removeTaskAfterError = err => ({
+  type: ActionTypes.REMOVE_AFTER_TASK_ERROR,
+  payload: err,
+});
+
+// REMOVE BURNED OUT TASK
+
+export const removeTaskBurnedRequest = () => ({
+  type: ActionTypes.REMOVE_BURNED_TASK_REQUEST,
+});
+
+export const removeTaskBurnedSuccess = task => ({
+  type: ActionTypes.REMOVE_BURNED_TASK_SUCCESS,
+  payload: task,
+});
+
+export const removeTaskBurnedError = err => ({
+  type: ActionTypes.REMOVE_BURNED_TASK_ERROR,
   payload: err,
 });

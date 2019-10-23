@@ -10,12 +10,33 @@ import { ActionTypes } from './taskActions';
 //   }
 // };
 
-const today = (state = [], { type, payload }) => {
+const today = (
+  state = [
+    {
+      createdAt: '2019-10-23T09:53:08.743Z',
+      date: '2019-10-23T09:53:00.163Z',
+      description: '',
+      isComplete: false,
+      priority: 3,
+      role: 'None',
+      time: 'All Day',
+      title: 'jjk,mm,',
+      updatedAt: '2019-10-23T09:53:08.743Z',
+      userId: '5dadd7d71cb3fe662bd1a846',
+      __v: 0,
+      _id: '5db0230421afc84983dfd58e',
+    },
+  ],
+  { type, payload },
+) => {
   switch (type) {
     case ActionTypes.POST_TODAY_TASK_SUCCESS:
       return [...state, payload];
     case ActionTypes.UPDATE_TODAY_TASK_SUCCESS:
       return [...state.filter(task => task.id !== payload.id), payload];
+    case ActionTypes.DELETE_TODAY_TASK_SUCCESS:
+    case ActionTypes.REMOVE_TODAY_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id)];
     default:
       return state;
   }
@@ -27,6 +48,9 @@ const tomorrow = (state = [], { type, payload }) => {
       return [...state, payload];
     case ActionTypes.UPDATE_TOMORROW_TASK_SUCCESS:
       return [...state.filter(task => task.id !== payload.id), payload];
+    case ActionTypes.DELETE_TOMORROW_TASK_SUCCESS:
+    case ActionTypes.REMOVE_TOMORROW_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id)];
     default:
       return state;
   }
@@ -38,6 +62,9 @@ const next = (state = [], { type, payload }) => {
       return [...state, payload];
     case ActionTypes.UPDATE_NEXT_TASK_SUCCESS:
       return [...state.filter(task => task.id !== payload.id), payload];
+    case ActionTypes.DELETE_NEXT_TASK_SUCCESS:
+    case ActionTypes.REMOVE_NEXT_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id)];
     default:
       return state;
   }
@@ -48,18 +75,62 @@ const after = (state = [], { type, payload }) => {
     case ActionTypes.POST_AFTER_TASK_SUCCESS:
       return [...state, payload];
     case ActionTypes.UPDATE_AFTER_TASK_SUCCESS:
+    case ActionTypes.REMOVE_AFTER_TASK_SUCCESS:
       return [...state.filter(task => task.id !== payload.id), payload];
+    case ActionTypes.DELETE_AFTER_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id)];
     default:
       return state;
   }
 };
 
-const burnedOut = (state = [], { type, payload }) => null;
+const burnedOut = (state = [], { type, payload }) => {
+  switch (type) {
+    case ActionTypes.POST_BURNED_TASK_SUCCESS:
+      return [...state, payload];
+    case ActionTypes.DELETE_BURNED_TASK_SUCCESS:
+    case ActionTypes.REMOVE_BURNED_TASK_SUCCESS:
+      return [...state.filter(task => task.id !== payload.id)];
+    default:
+      return state;
+  }
+};
 
 const done = (state = [], { type, payload }) => null;
 
+// const listName = (state = '', { type, payload }) => null;
+
+const taskInEditMode = (
+  state = {
+    createdAt: '2019-10-23T09:53:08.743Z',
+    date: '2019-10-23T09:53:00.163Z',
+    description: '',
+    isComplete: false,
+    priority: 3,
+    role: 'None',
+    time: 'All Day',
+    title: 'jjk,mm,',
+    updatedAt: '2019-10-23T09:53:08.743Z',
+    userId: '5dadd7d71cb3fe662bd1a846',
+    __v: 0,
+    _id: '5db0230421afc84983dfd58e',
+  },
+  { type, payload },
+) => {
+  switch (type) {
+    default:
+      return state;
+  }
+};
+
 const todayTomorrow = combineReducers({ today, tomorrow });
 const nextAfter = combineReducers({ next, after });
-const tasks = combineReducers({ todayTomorrow, nextAfter, burnedOut, done });
+const tasks = combineReducers({
+  todayTomorrow,
+  nextAfter,
+  burnedOut,
+  done,
+  taskInEditMode,
+});
 
 export default tasks;

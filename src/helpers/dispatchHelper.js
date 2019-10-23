@@ -1,14 +1,17 @@
 import msConverter from '../constants/msConverter';
 import taskTypes from '../constants/taskTypes';
 
-const defineDispatcher = ({ dates }) => {
-  const dateToDay = new Date(dates[0]).getTime();
+const defineDispatcher = ({ date }) => {
+  const dateToDay = new Date(date).getTime();
   const currentDay =
     new Date().getTime() -
     new Date().getHours() * msConverter.msInHour -
     new Date().getMinutes() * msConverter.msInMinute -
     new Date().getSeconds() * msConverter.msInSecond -
     new Date().getMilliseconds();
+  if (dateToDay < currentDay) {
+    return taskTypes.BURNED;
+  }
   if (dateToDay < currentDay + msConverter.msInDay) {
     return taskTypes.TODAY;
   }
@@ -18,7 +21,10 @@ const defineDispatcher = ({ dates }) => {
   if (dateToDay < currentDay + msConverter.msInDay * 7) {
     return taskTypes.NEXT;
   }
-  return taskTypes.AFTER;
+  if (dateToDay >= currentDay + msConverter.msInDay * 7) {
+    return taskTypes.AFTER;
+  }
+  return taskTypes.DONE;
 };
 
 export default defineDispatcher;

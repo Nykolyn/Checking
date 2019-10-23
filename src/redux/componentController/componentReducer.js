@@ -20,7 +20,7 @@ const taskPopUpСreateOpen = (state = false, { type, payload }) => {
   return state;
 };
 
-const taskPopUpEditOpen = (state = false, { type, payload }) => {
+const taskPopUpEditOpen = (state = true, { type, payload }) => {
   return state;
 };
 
