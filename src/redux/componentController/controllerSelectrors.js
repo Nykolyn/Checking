@@ -1,4 +1,3 @@
-
 export const modalDeleteTaskIsOpen = state =>
   state.componentController.modalDeleteTaskOpen;
 
