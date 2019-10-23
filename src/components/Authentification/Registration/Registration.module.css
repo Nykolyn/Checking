@@ -71,7 +71,7 @@
     width: 68%;
     background-image: url(../../../assets/images/registration-img.png);
     background-repeat: no-repeat;
-    /* background-size: cover; */
+    background-size: contain;
     background-position: left;
   }
 }
