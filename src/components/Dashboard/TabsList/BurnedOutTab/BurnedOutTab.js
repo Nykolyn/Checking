@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Element } from 'react-scroll';
+import CardList from '../../CardList/CardList';
 import styles from './BurnedOutTab.module.css';
 
 class BurnedOutTab extends Component {
@@ -7,17 +9,15 @@ class BurnedOutTab extends Component {
   render() {
     return (
       <main className={styles.container}>
-        <section className={styles.section}>
-          {/* <button type="button" className={styles.titleButton}>
+        <Element name="burnedOut">
+          <section className={styles.section}>
+            {/* <button type="button" className={styles.titleButton}>
             Burned Out
           </button> */}
-          <p className={styles.titleButton}>Burned Out</p>
-          <ul className={styles.cardList}>
-            <li className={styles.cardItem}> card</li>
-            <li className={styles.cardItem}> card</li>
-            <li className={styles.cardItem}> card</li>
-          </ul>
-        </section>
+            <p className={styles.titleButton}>Burned Out</p>
+            <CardList />
+          </section>
+        </Element>
       </main>
     );
   }
