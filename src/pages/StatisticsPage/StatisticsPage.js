@@ -1,5 +1,13 @@
-import React from 'react';
+import React , { Component}from 'react';
 
-const StatisticsPage = () => <h1>Statistics page</h1>;
+// import Table from '../../components/Statistics/Table/'
+import Chart from '../../components/Statistics/Chart/Chart'
 
-export default StatisticsPage;
+
+
+export default class StatisticsPage extends Component{
+    state = {}
+    render(){
+return <> <Chart /> </>
+    }
+}
