@@ -20,7 +20,7 @@ class NexWeekTab extends Component {
     // this.setState({
     //   nexAfter: [...nexAfter],
     // });
-    // const { burgerEvent } = this.props;
+    const { burgerEvent } = this.props;
     if (burgerEvent) {
       scroller.scrollTo(burgerEvent, {
         duration: 1500,
@@ -31,7 +31,7 @@ class NexWeekTab extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // const { burgerEvent } = this.props;
+    const { burgerEvent } = this.props;
     if (prevProps.burgerEvent !== burgerEvent) {
       scroller.scrollTo(burgerEvent, {
         duration: 1500,

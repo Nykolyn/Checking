@@ -15,7 +15,6 @@ class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
     isOpenTomorrow: true,
-
     // todayTomorrow: null,
   };
 

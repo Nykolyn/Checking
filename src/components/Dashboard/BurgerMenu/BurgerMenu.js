@@ -5,25 +5,26 @@ import { Link, scroller } from 'react-scroll';
 import styles from './BurgerMenu.module.css';
 import { connect } from 'react-redux';
 import { burgerMenuIsOpen } from '../../../redux/componentController/controllerSelectrors';
-import { burgerEvent } from '../../../redux/componentController/componentActions';
+import {
+  burgerEvent,
+  burgerMenuOpen,
+} from '../../../redux/componentController/componentActions';
 
 class BurgerMenu extends Component {
-  state = { event: null };
+  state = {};
 
   componentDidMount() {}
 
-  componentDidUpdate(prevProps, prevState) {
-    this.getBurgerEvent;
-  }
+  componentDidUpdate(prevProps, prevState) {}
 
-  handleClick = ({ target }) => {
-    this.setState(state => ({
-      event: target.title,
-    }));
+  handleCkick = e => {
+    const { getBurgerEvent, burgerMenuOpen } = this.props;
+    getBurgerEvent(e);
+    burgerMenuOpen();
   };
 
   render() {
-    const { isOpen, getBurgerEvent, burgerMenuIsOpen } = this.props;
+    const { isOpen, getBurgerEvent, burgerMenuOpen } = this.props;
     return (
       <>
         {isOpen && (
@@ -40,9 +41,8 @@ class BurgerMenu extends Component {
                   <button
                     title="today"
                     type="button"
-                    onClick={this.handleClick}
-                    onClick={getBurgerEvent}
-                    onClick={burgerMenuIsOpen}
+                    // onClick={getBurgerEvent}
+                    onClick={this.handleCkick}
                     className={[styles.burgerButton, styles.today].join(' ')}
                   >
                     Today
@@ -59,9 +59,8 @@ class BurgerMenu extends Component {
                   <button
                     title="tomorrow"
                     type="button"
-                    onClick={this.handleClick}
-                    onClick={getBurgerEvent}
-                    onClick={burgerMenuIsOpen}
+                    // onClick={getBurgerEvent}
+                    onClick={this.handleCkick}
                     className={[styles.burgerButton, styles.today].join(' ')}
                   >
                     Tomorrow
@@ -77,9 +76,8 @@ class BurgerMenu extends Component {
                   <button
                     title="next"
                     type="button"
-                    onClick={this.handleClick}
-                    onClick={getBurgerEvent}
-                    onClick={burgerMenuIsOpen}
+                    // onClick={getBurgerEvent}
+                    onClick={this.handleCkick}
                     className={[styles.burgerButton, styles.next].join(' ')}
                   >
                     Next 7 Days
@@ -95,9 +93,8 @@ class BurgerMenu extends Component {
                   <button
                     title="after"
                     type="button"
-                    onClick={this.handleClick}
-                    onClick={getBurgerEvent}
-                    onClick={burgerMenuIsOpen}
+                    // onClick={getBurgerEvent}
+                    onClick={this.handleCkick}
                     className={[styles.burgerButton, styles.next].join(' ')}
                   >
                     After 7 Days
@@ -112,7 +109,7 @@ class BurgerMenu extends Component {
                 >
                   <button
                     type="button"
-                    onClick={burgerMenuIsOpen}
+                    onClick={burgerMenuOpen}
                     className={[styles.burgerButton, styles.burned].join(' ')}
                   >
                     Burned Out
@@ -127,7 +124,7 @@ class BurgerMenu extends Component {
                 >
                   <button
                     type="button"
-                    onClick={burgerMenuIsOpen}
+                    onClick={burgerMenuOpen}
                     className={[styles.burgerButton, styles.done].join(' ')}
                   >
                     Done
@@ -142,7 +139,7 @@ class BurgerMenu extends Component {
                 >
                   <button
                     type="button"
-                    onClick={burgerMenuIsOpen}
+                    onClick={burgerMenuOpen}
                     className={[styles.burgerButton, styles.statistics].join(
                       ' ',
                     )}
@@ -155,7 +152,7 @@ class BurgerMenu extends Component {
             <div className={styles.wrapper}>
               <button
                 type="button"
-                onClick={burgerMenuIsOpen}
+                onClick={burgerMenuOpen}
                 className={styles.logButton}
               >
                 Log Out
@@ -173,7 +170,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   getBurgerEvent: event => dispatch(burgerEvent(event.target.title)),
-  burgerMenuIsOpen: () => dispatch(burgerMenuIsOpen(falls)),
+  burgerMenuOpen: () => dispatch(burgerMenuOpen()),
 });
 
 export default connect(
