@@ -13,3 +13,6 @@ export const createTaskModalIsOpen = state =>
   state.componentController.createTaskModalOpen;
 
 export const tabsListIsOpen = state => state.componentController.tabsListOpen;
+
+export const taskPopUpEditIsOpen = state =>
+  state.componentController.taskPopUpEditOpen;

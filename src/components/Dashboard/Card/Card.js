@@ -37,6 +37,7 @@ class Card extends Component {
           <div className={style.cardFooter__wrap}>
             <p className={style.cardFooter__dateTime}>
               Oct 10, 2020 | 06.00 - 09.00
+              {/* {date}|{time} */}
             </p>
           </div>
           <div>

@@ -11,6 +11,10 @@
   fill: white;
 }
 
+.EditBtn:focus {
+  outline: 0;
+}
+
 .EditBtnDone {
   display: none;
 }

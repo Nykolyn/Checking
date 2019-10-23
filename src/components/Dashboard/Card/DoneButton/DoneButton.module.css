@@ -12,6 +12,10 @@
   fill: white;
 }
 
+.DoneBtn:focus {
+  outline: 0;
+}
+
 .DoneBtnDone {
   fill: green;
   background-color: #e6eeec;

@@ -5,6 +5,7 @@ export const ActionTypes = {
   HANDLE_OPEN_TASK_POPUP: 'HANDLE_OPEN_TASK_POPUP',
   HANDLE_OPEN_BURGER_MENU: 'HANDLE_OPEN_BURGER_MENU',
   HANDLE_OPEN_СREATE_TASK_BUTTON: 'HANDLE_OPEN_СREATE_TASK_BUTTON',
+  HANDLE_OPEN_TASK_POPUP_EDIT: 'HANDLE_OPEN_TASK_POPUP_EDIT',
 };
 
 export const modalDeleteTaskOpen = () => ({
@@ -35,4 +36,9 @@ export const createTaskButtonOpen = () => ({
 export const tabsListOpen = () => ({
   type: ActionTypes.HANDLE_OPEN_TABS_LIST,
   payload: {},
+});
+
+export const taskPopUpEditOpen = isEditOpen => ({
+  type: ActionTypes.HANDLE_OPEN_TASK_POPUP_EDIT,
+  payload: isEditOpen,
 });

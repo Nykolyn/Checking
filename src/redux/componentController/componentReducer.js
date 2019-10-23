@@ -21,7 +21,13 @@ const taskPopUpСreateOpen = (state = false, { type, payload }) => {
 };
 
 const taskPopUpEditOpen = (state = false, { type, payload }) => {
-  return state;
+  switch (type) {
+    case ActionTypes.HANDLE_OPEN_TASK_POPUP_EDIT:
+      return true;
+
+    default:
+      return state;
+  }
 };
 
 const burgerMenuOpen = (state = false, { type, payload }) => {
