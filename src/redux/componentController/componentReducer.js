@@ -24,8 +24,14 @@ const taskPopUpEditOpen = (state = false, { type, payload }) => {
   return state;
 };
 
-const burgerMenuOpen = (state = false, { type, payload }) => {
-  return state;
+const burgerMenuToggle = (state = false, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.HANDLE_BURGER_MENU_TOGGLE:
+      return !state;
+
+    default:
+      return state;
+  }
 };
 
 const createTaskButtonOpen = (state = false, { type, payload }) => {
@@ -41,7 +47,7 @@ export default combineReducers({
   modalLogoutOpen,
   taskPopUpСreateOpen,
   taskPopUpEditOpen,
-  burgerMenuOpen,
+  burgerMenuToggle,
   createTaskButtonOpen,
   tabsListOpen,
 });

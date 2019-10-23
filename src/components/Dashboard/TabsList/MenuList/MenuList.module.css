@@ -68,7 +68,7 @@
   background-color: #fff;
 }
 
-@media screen and (max-width: 757px) {
+@media screen and (max-width: 767px) {
   .block {
     display: none;
   }

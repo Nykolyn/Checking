@@ -1,26 +1,45 @@
 .header__box {
   text-transform: uppercase;
-  /* margin: 20px; */
   font-weight: Bold;
-  /* color: red; */
+  text-align: center;
+  width: 320px;
 }
 
 .header__logo {
   font-family: 'Montserrat', sans-serif;
   color: #091e3f;
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
+  display: block;
+  width: 100px;
+  margin-left: 100px;
   text-align: center;
   background-color: #fff;
   height: 52px;
-  text-transform: uppercase;
-  font-size: 12px;
-  position: relative;
-  padding: 5px;
+
 }
 
-.header.svg {
-  background: url(../../../assets/icons/burger2_121004.svg);
+.logo {
+  background: url('../../../assets/icons/logo-darkblue.svg');
   background-repeat: no-repeat;
+  display: block;
+  height: 52px;
+  width: 150px;
+
+
+}
+
+.button {
+  width: 30px;
+  font-size: 30px;
+  height: 30px;
+  background: url("../../../assets/icons/burger_line_list_menu_nav_navigation_option_icon_123231.svg");
+  display: flex;
+  margin-left: 180px;
+  margin-top: -36px;
+  position: fixed;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+
+
 }

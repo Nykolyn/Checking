@@ -3,7 +3,7 @@ export const ActionTypes = {
   HANDLE_OPEN_TABS_LIST: 'HANDLE_OPEN_TABS_LIST',
   HANDLE_OPEN_MODAL_LOGOUT: 'HANDLE_OPEN_MODAL_LOGOUT',
   HANDLE_OPEN_TASK_POPUP: 'HANDLE_OPEN_TASK_POPUP',
-  HANDLE_OPEN_BURGER_MENU: 'HANDLE_OPEN_BURGER_MENU',
+  HANDLE_BURGER_MENU_TOGGLE: 'HANDLE_BURGER_MENU_TOGGLE',
   HANDLE_OPEN_СREATE_TASK_BUTTON: 'HANDLE_OPEN_СREATE_TASK_BUTTON',
 };
 
@@ -22,9 +22,8 @@ export const taskPopUpOpen = () => ({
   payload: {},
 });
 
-export const burgerMenuOpen = () => ({
-  type: ActionTypes.HANDLE_OPEN_BURGER_MENU,
-  payload: {},
+export const burgerMenuToggle = () => ({
+  type: ActionTypes.HANDLE_BURGER_MENU_TOGGLE,
 });
 
 export const createTaskButtonOpen = () => ({

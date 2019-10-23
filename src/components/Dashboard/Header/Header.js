@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styles from './Header.module.css';
+import { burgerMenuToggle } from '../../../redux/componentController/componentActions';
 // import logo from '..//..//../assets/icons';
 
 class Header extends Component {
@@ -8,10 +10,12 @@ class Header extends Component {
   componentDidMount() {}
 
   render() {
+    const { burgerMenuToggle } = this.props;
     return (
       <div className={styles.container__header}>
         <ul className={styles.header__logo}>
-          <li className={styles.header__box}>logo</li>
+          <img className={styles.logo}></img>
+          <button onClick={burgerMenuToggle} className={styles.button}></button>
           <svg className={styles.header__svg} />
         </ul>
       </div>
@@ -19,4 +23,12 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mSTP = state => ({});
+const mDTP = dispatch => ({
+  burgerMenuToggle: () => dispatch(burgerMenuToggle()),
+});
+
+export default connect(
+  mSTP,
+  mDTP,
+)(Header);
