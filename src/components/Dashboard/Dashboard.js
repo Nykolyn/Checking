@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import TabsList from './TabsList/TabsList';
+import TabsList from './TabsList/TabsList';
 import Header from './Header/Header';
-// import TaskPopUp from '../TaskPopUp/TaskPopUp';
+import TaskPopUp from '../TaskPopUp/TaskPopUp';
 
 class Dashboard extends Component {
   componentDidMount() {}
@@ -11,8 +11,8 @@ class Dashboard extends Component {
       <main>
         <Header />
         <h1>Dashboard page</h1>
-        {/* <TabsList /> */}
-        {/* <TaskPopUp /> */}
+        <TabsList />
+        <TaskPopUp />
       </main>
     );
   }

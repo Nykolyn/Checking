@@ -3,11 +3,10 @@
   /* margin: 20px; */
   font-weight: Bold;
   /* color: red; */
-
 }
 
 .header__logo {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #091e3f;
   display: flex;
   flex-direction: column;
