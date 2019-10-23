@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import style from './LogInForm.module.css';
 
 class LogIn extends Component {
-  state = {};
+  static PropTypes = {};
 
   render() {
     return (
