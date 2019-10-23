@@ -2,7 +2,8 @@ export const ActionTypes = {
   MODAL_DELETE_TASK_OPEN: 'MODAL_DELETE_TASK_OPEN',
   HANDLE_OPEN_TABS_LIST: 'HANDLE_OPEN_TABS_LIST',
   HANDLE_OPEN_MODAL_LOGOUT: 'HANDLE_OPEN_MODAL_LOGOUT',
-  HANDLE_OPEN_TASK_POPUP: 'HANDLE_OPEN_TASK_POPUP',
+  HANDLE_OPEN_TASK_POPUP_CREATE: 'HANDLE_OPEN_TASK_POPUP_CREATE',
+  HANDLE_OPEN_TASK_POPUP_EDIT: 'HANDLE_OPEN_TASK_POPUP_EDIT',
   HANDLE_OPEN_BURGER_MENU: 'HANDLE_OPEN_BURGER_MENU',
   HANDLE_OPEN_СREATE_TASK_BUTTON: 'HANDLE_OPEN_СREATE_TASK_BUTTON',
 };
@@ -17,8 +18,13 @@ export const modalLogoutOpen = () => ({
   payload: {},
 });
 
-export const taskPopUpOpen = () => ({
-  type: ActionTypes.HANDLE_OPEN_TASK_POPUP,
+export const taskPopUpCreateOpen = () => ({
+  type: ActionTypes.HANDLE_OPEN_TASK_POPUP_CREATE,
+  payload: {},
+});
+
+export const taskPopUpEditOpen = () => ({
+  type: ActionTypes.HANDLE_OPEN_TASK_POPUP_EDIT,
   payload: {},
 });
 
