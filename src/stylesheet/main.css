@@ -2,3 +2,7 @@
 @import './fonts.css';
 @import './vars.css';
 @import './taskPopUp/date-picker.css';
+
+* {
+  box-sizing: border-box;
+}
