@@ -22,7 +22,7 @@ const RoleSelect = ({ value, onChange, taskPopUpEditOpen }) => {
 
 RoleSelect.defaultProps = {
   taskPopUpEditOpen: false,
-}
+};
 
 RoleSelect.propTypes = {
   value: PropTypes.shape({
