@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TabsList from './TabsList/TabsList';
 import TaskPopUp from '../TaskPopUp/TaskPopUp';
+import CreateTaskButton from '../CreateTaskButton/CreateTaskButtonContainer';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 
 class Dashboard extends Component {
@@ -15,6 +16,7 @@ class Dashboard extends Component {
         <BurgerMenu />
         <TabsList />
         <TaskPopUp />
+        <CreateTaskButton />
       </main>
     );
   }

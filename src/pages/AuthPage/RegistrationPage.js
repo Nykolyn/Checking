@@ -1,5 +1,6 @@
 import React from 'react';
+import Registration from '../../components/Authentification/Registration/Registration';
 
-const RegistrationPage = () => <h1>Registration page</h1>;
+const RegistrationPage = () => <Registration />;
 
 export default RegistrationPage;
