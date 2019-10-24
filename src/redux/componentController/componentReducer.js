@@ -20,15 +20,19 @@ const taskPopUpСreateOpen = (state = false, { type, payload }) => {
   switch (type) {
     case ActionTypes.HANDLE_OPEN_TASK_POPUP_CREATE:
       return true;
+    case ActionTypes.HANDLE_CLOSE_TASK_POPUP_CREATE:
+      return false;
     default:
       return state;
   }
 };
 
-const taskPopUpEditOpen = (state = true, { type, payload }) => {
+const taskPopUpEditOpen = (state = false, { type, payload }) => {
   switch (type) {
     case ActionTypes.HANDLE_OPEN_TASK_POPUP_EDIT:
       return true;
+    case ActionTypes.HANDLE_CLOSE_TASK_POPUP_EDIT:
+      return false;
     default:
       return state;
   }

@@ -1,4 +1,9 @@
 export const ActionTypes = {
+  PUT_TASK_TO_EDIT_MODE: 'PUT_TASK_TO_EDIT_MODE',
+  REMOVE_TASK_FROM_EDIT_MODE: 'REMOVE_TASK_FROM_EDIT_MODE',
+
+  // GET
+
   GET_TASKS_REQUEST: 'GET_TASKS_REQUEST',
   GET_TASKS_SUCCESS: 'GET_TASKS_SUCCESS',
   GET_TASKS_ERROR: 'GET_TASKS_ERROR',
@@ -87,6 +92,18 @@ export const ActionTypes = {
   REMOVE_BURNED_TASK_SUCCESS: 'REMOVE_BURNED_TASK_SUCCESS',
   REMOVE_BURNED_TASK_ERROR: 'REMOVE_BURNED_TASK_ERROR',
 };
+
+// EDIT MODE
+
+export const putTaskToEditMode = task => ({
+  type: ActionTypes.PUT_TASK_TO_EDIT_MODE,
+  payload: task,
+});
+
+export const removeTaskFromEditMode = task => ({
+  type: ActionTypes.REMOVE_TASK_FROM_EDIT_MODE,
+  payload: task,
+});
 
 // GET TASKS
 

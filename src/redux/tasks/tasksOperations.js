@@ -1,5 +1,6 @@
 import * as api from '../../services/tasks-api';
 import * as taskHandlers from './taskActions';
+import { getToken } from '../session/sessionSelectors';
 import defineDispatcher from '../../helpers/dispatchHelper';
 import taskTypes from '../../constants/taskTypes';
 
@@ -8,10 +9,11 @@ import taskTypes from '../../constants/taskTypes';
 // };
 
 export const postTask = task => (dispatch, getState) => {
-  // const token = getToken(getState());
-  // if (!token) return;
-  const token =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
+  const token = getToken(getState());
+  if (!token) return;
+
+  // const token =
+  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWNmMjA3NGE0YzhhMWIzNTBkN2JiZSIsImlhdCI6MTU3MTkxMzg0M30.iLdWyKTzwO9ZpoqKPhvPJJC7WCRP4Xnf3H0oz_xqpls';
 
   const dispatcher = defineDispatcher(task);
 
@@ -64,10 +66,10 @@ export const postTask = task => (dispatch, getState) => {
 };
 
 export const updateTask = task => (dispatch, getState) => {
-  // const token = getToken(getState());
-  // if (!token) return;
-  const token =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
+  const token = getToken(getState());
+  if (!token) return;
+  // const token =
+  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWNmMjA3NGE0YzhhMWIzNTBkN2JiZSIsImlhdCI6MTU3MTkxMzg0M30.iLdWyKTzwO9ZpoqKPhvPJJC7WCRP4Xnf3H0oz_xqpls';
 
   const dispatcher = defineDispatcher(task);
 
@@ -86,21 +88,20 @@ export const updateTask = task => (dispatch, getState) => {
   }
 
   api
-    .postTask(task, token, task.id)
-    .then(console.log)
-    .then(({ data }) => {
+    .updateTask(task, token, task._id)
+    .then(({ data: { updatedTask } }) => {
       switch (dispatcher) {
         case taskTypes.TODAY:
-          dispatch(taskHandlers.updateTaskTodaySuccess(data.task));
+          dispatch(taskHandlers.updateTaskTodaySuccess(updatedTask));
           break;
         case taskTypes.TOMORROW:
-          dispatch(taskHandlers.updateTaskTomorrowSuccess(data.task));
+          dispatch(taskHandlers.updateTaskTomorrowSuccess(updatedTask));
           break;
         case taskTypes.NEXT:
-          dispatch(taskHandlers.updateTaskNextSuccess(data.task));
+          dispatch(taskHandlers.updateTaskNextSuccess(updatedTask));
           break;
         default:
-          dispatch(taskHandlers.updateTaskAfterSuccess(data.task));
+          dispatch(taskHandlers.updateTaskAfterSuccess(updatedTask));
       }
     })
     .catch(error => {
@@ -121,10 +122,8 @@ export const updateTask = task => (dispatch, getState) => {
 };
 
 export const deleteTask = task => (dispatch, getState) => {
-  // const token = getToken(getState());
-  // if (!token) return;
-  const token =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWRkN2Q3MWNiM2ZlNjYyYmQxYTg0NiIsImlhdCI6MTU3MTY3NDA3MX0.INa2zpf5psajzYG96ZAbvj7DiYN83b7piRVuBaGvps4';
+  const token = getToken(getState());
+  if (!token) return;
 
   const dispatcher = defineDispatcher(task);
 
@@ -185,7 +184,10 @@ export const deleteTask = task => (dispatch, getState) => {
     });
 };
 
-export const removeTask = task => dispatch => {
+export const removeTask = task => (dispatch, getState) => {
+  const token = getToken(getState());
+  if (!token) return;
+
   const dispatcher = defineDispatcher(task);
 
   switch (dispatcher) {

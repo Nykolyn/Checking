@@ -13,28 +13,25 @@ import styles from './TaskPopUp.module.css';
 
 export default class TaskPopUp extends Component {
   static defaultProps = {
-    taskPopUpCreateOpen: false,
     taskPopUpEditOpen: true,
-    tasks: [],
+    taskInEditMode: null,
   };
 
   static propTypes = {
-    taskPopUpCreateOpen: PropTypes.bool,
     taskPopUpEditOpen: PropTypes.bool,
     postTask: PropTypes.func.isRequired,
     updateTask: PropTypes.func.isRequired,
     removeTask: PropTypes.func.isRequired,
     modalDeleteTaskOpen: PropTypes.func.isRequired,
-    tasks: PropTypes.shape({
-      todayTomorrow: PropTypes.shape({
-        today: PropTypes.arrayOf(PropTypes.object),
-        tomorrow: PropTypes.arrayOf(PropTypes.object),
-      }),
-      nextAfter: PropTypes.shape({
-        next: PropTypes.arrayOf(PropTypes.object),
-        after: PropTypes.arrayOf(PropTypes.object),
-      }),
-      taskInEditMode: PropTypes.object,
+    taskPopUpCreateClose: PropTypes.func.isRequired,
+    taskPopUpEditClose: PropTypes.func.isRequired,
+    removeTaskFromEditMode: PropTypes.func.isRequired,
+    taskInEditMode: PropTypes.shape({
+      role: PropTypes.string,
+      date: PropTypes.string,
+      time: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.string,
     }),
   };
 
@@ -48,9 +45,9 @@ export default class TaskPopUp extends Component {
   };
 
   componentDidMount() {
-    const { taskPopUpEditOpen, tasks } = this.props;
+    const { taskPopUpEditOpen, taskInEditMode } = this.props;
     if (taskPopUpEditOpen) {
-      const taskToEdit = { ...tasks.taskInEditMode };
+      const taskToEdit = { ...taskInEditMode };
       const { role, date, title, description, time, priority } = taskToEdit;
       this.setState({
         role: roles.find(elem => elem.label === role),
@@ -104,7 +101,10 @@ export default class TaskPopUp extends Component {
       updateTask,
       removeTask,
       taskPopUpEditOpen,
-      tasks,
+      taskPopUpCreateClose,
+      taskPopUpEditClose,
+      removeTaskFromEditMode,
+      taskInEditMode,
     } = this.props;
     if (!title.length) {
       toast.error('Enter a title!');
@@ -119,32 +119,35 @@ export default class TaskPopUp extends Component {
       priority,
     };
 
-    console.log(taskToAdd);
     if (taskPopUpEditOpen) {
-      taskToAdd.id = tasks.taskInEditMode._id;
-      if (
-        defineDispatcher(taskToAdd) !== defineDispatcher(tasks.taskInEditMode)
-      ) {
-        removeTask(tasks.taskInEditMode);
-        updateTask(taskToAdd);
-        // taskInEditMode - false
-        // TaskPopUpEditOpen - false
-      }
-    } else {
-      postTask(taskToAdd);
-      // TaskPopUpCreateOpen - false
+      taskToAdd._id = taskInEditMode._id;
+      if (defineDispatcher(taskToAdd) !== defineDispatcher(taskInEditMode))
+        removeTask(taskInEditMode);
+      updateTask(taskToAdd);
+      taskPopUpEditClose();
+      removeTaskFromEditMode(taskInEditMode);
+      this.reset();
+      return;
     }
+    postTask(taskToAdd);
+    taskPopUpCreateClose();
+
     this.reset();
   };
 
   handleClose = () => {
-    const { taskPopUpEditOpen } = this.props;
+    const {
+      taskPopUpEditOpen,
+      taskPopUpCreateClose,
+      taskPopUpEditClose,
+      removeTaskFromEditMode,
+    } = this.props;
     if (taskPopUpEditOpen) {
-      // taskInEditMode - false
-      // TaskPopUpEditOpen - false
-      // return
+      removeTaskFromEditMode();
+      taskPopUpEditClose();
+      return;
     }
-    // TaskPopUpCreateOpen - false
+    taskPopUpCreateClose();
   };
 
   reset = () =>
@@ -180,7 +183,11 @@ export default class TaskPopUp extends Component {
           <h3 className={styles.createTaskTitle}>Edit Task</h3>
         )}
         <div className={styles.helperDiv}>
-          <RoleSelect value={role} onChange={this.handleRoleSelect} />
+          <RoleSelect
+            value={role}
+            onChange={this.handleRoleSelect}
+            taskPopUpEditOpen={taskPopUpEditOpen}
+          />
           <DateSelect value={date} onChange={this.handleDateChange} />
         </div>
         <h4 className={styles.titleTitle}>Title (up to 150 characters)</h4>
@@ -219,7 +226,11 @@ export default class TaskPopUp extends Component {
           </button>
         )}
         <div className={styles.btnDiv}>
-          <button type="button" className={styles.btn}>
+          <button
+            type="button"
+            className={styles.btn}
+            onClick={this.handleClose}
+          >
             Cancel
           </button>
           <button

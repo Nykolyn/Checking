@@ -6,6 +6,9 @@ export const ActionTypes = {
   HANDLE_OPEN_TASK_POPUP_EDIT: 'HANDLE_OPEN_TASK_POPUP_EDIT',
   HANDLE_OPEN_BURGER_MENU: 'HANDLE_OPEN_BURGER_MENU',
   HANDLE_OPEN_СREATE_TASK_BUTTON: 'HANDLE_OPEN_СREATE_TASK_BUTTON',
+
+  HANDLE_CLOSE_TASK_POPUP_CREATE: 'HANDLE_CLOSE_TASK_POPUP_CREATE',
+  HANDLE_CLOSE_TASK_POPUP_EDIT: 'HANDLE_CLOSE_TASK_POPUP_EDIT',
 };
 
 export const modalDeleteTaskOpen = () => ({
@@ -25,6 +28,16 @@ export const taskPopUpCreateOpen = () => ({
 
 export const taskPopUpEditOpen = () => ({
   type: ActionTypes.HANDLE_OPEN_TASK_POPUP_EDIT,
+  payload: {},
+});
+
+export const taskPopUpCreateClose = () => ({
+  type: ActionTypes.HANDLE_CLOSE_TASK_POPUP_CREATE,
+  payload: {},
+});
+
+export const taskPopUpEditClose = () => ({
+  type: ActionTypes.HANDLE_CLOSE_TASK_POPUP_EDIT,
   payload: {},
 });
 
