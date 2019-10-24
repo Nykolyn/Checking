@@ -1,11 +1,11 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { connect } from 'react-redux';
 import styles from './TodayTomorowTab.module.css';
 import CardList from '../../CardList/CardList';
 import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
-
-// import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
+import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 
 // const filterCardTime = array => {
 //   return array.filter(el.priority.sort());
@@ -15,34 +15,49 @@ class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
     isOpenTomorrow: true,
-    // todayTomorrow: null,
+    stateTasks: {},
+    // todayTomorrow: {},
   };
 
   componentDidMount() {
-    // const { todayTomorrow} = this.props;
-    // this.setState({
-    //   todayTomorrow: [...todayTomorrow],
-    // });
+    //get tasks for state
+    const { todayTomorrowTasks } = this.props;
+    // this.getTasks(todayTomorrowTasks);
+
+    //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (burgerEvent) {
-      scroller.scrollTo(burgerEvent, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      this.scrollFn(burgerEvent);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
+    //get tasks for state
+    const { todayTomorrowTasks } = this.props;
+    if (prevState.todayTomorrowTasks !== todayTomorrowTasks) {
+      // this.getTasks(todayTomorrowTasks);
+    }
+
+    //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (prevProps.burgerEvent !== burgerEvent) {
-      scroller.scrollTo(burgerEvent, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      this.scrollFn(burgerEvent);
     }
   }
+
+  getTasks = tasks => {
+    this.setState({
+      stateTasks: [...tasks],
+    });
+  };
+
+  scrollFn = value => {
+    scroller.scrollTo(value, {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+    });
+  };
 
   handleToggleToday = () => {
     this.setState(state => ({
@@ -58,7 +73,8 @@ class TodayTomorrowTab extends Component {
 
   render() {
     const { isOpenToday, isOpenTomorrow } = this.state;
-    // const filterCard = filterCardTime(todayTomorrow);
+    // const filterCardToday = filterCardTime(todayTomorrow.today);
+    // const filterCardTomorrow = filterCardTime(todayTomorrow.tomorrow);
     return (
       <main className={styles.container}>
         <Element name="today">
@@ -111,9 +127,8 @@ class TodayTomorrowTab extends Component {
   }
 }
 
-// export default TodayTomorrowTab;
-
 const mapStateToProps = state => ({
+  todayTomorrowTasks: getTodayTomorrowTasks(state),
   burgerEvent: burgerEvent(state),
 });
 

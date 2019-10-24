@@ -22,24 +22,24 @@ class NexWeekTab extends Component {
     // });
     const { burgerEvent } = this.props;
     if (burgerEvent) {
-      scroller.scrollTo(burgerEvent, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      this.scrollFn(burgerEvent);
     }
   }
 
   componentDidUpdate(prevProps) {
     const { burgerEvent } = this.props;
     if (prevProps.burgerEvent !== burgerEvent) {
-      scroller.scrollTo(burgerEvent, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      this.scrollFn(burgerEvent);
     }
   }
+
+  scrollFn = value => {
+    scroller.scrollTo(value, {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+    });
+  };
 
   handleToggleNext = () => {
     this.setState(state => ({
