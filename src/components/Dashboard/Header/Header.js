@@ -3,27 +3,42 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './Header.module.css';
 import { burgerMenuOpen } from '../../../redux/componentController/componentActions';
+import { burgerMenuIsOpen } from '../../../redux/componentController/controllerSelectrors';
 // import logo from '..//..//../assets/icons';
+
 class Header extends Component {
   state = {};
 
   componentDidMount() {}
 
   render() {
-    const { burgerMenuToogle } = this.props;
+    const { burgerMenuToogle, isOpen } = this.props;
+    console.log(isOpen);
     return (
-      <div className={styles.container__header}>
+      <nav className={styles.container}>
         <ul className={styles.header__logo}>
-          <img className={styles.logo} />
-          <button onClick={burgerMenuToogle} className={styles.button} />
-          {/* <svg className={styles.header__svg} /> */}
+          <li>
+            <img className={styles.logo} />
+          </li>
+          <li>
+            <button
+              onClick={burgerMenuToogle}
+              className={
+                isOpen
+                  ? [styles.button, styles.checked].join(' ')
+                  : styles.button
+              }
+            />
+          </li>
         </ul>
-      </div>
+      </nav>
     );
   }
 }
 
-const mSTP = state => ({});
+const mSTP = state => ({
+  isOpen: burgerMenuIsOpen(state),
+});
 const mDTP = dispatch => ({
   burgerMenuToogle: () => dispatch(burgerMenuOpen()),
 });

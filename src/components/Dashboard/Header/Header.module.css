@@ -1,3 +1,9 @@
+.container {
+  width: 320px;
+  display: block;
+  margin: 0 auto;
+}
+
 .header__box {
   text-transform: uppercase;
   font-weight: Bold;
@@ -44,5 +50,21 @@
   background-color: Transparent;
   background-repeat: no-repeat;
   border: none;
+  outline: none;
   overflow: hidden;
+}
+
+.checked {
+  background-image: url('../../../assets/icons/close-24px.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .button {
+    display: none;
+  }
 }
