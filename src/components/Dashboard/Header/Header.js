@@ -16,7 +16,7 @@ class Header extends Component {
         <ul className={styles.header__logo}>
           <img className={styles.logo}></img>
           <button onClick={burgerMenuToggle} className={styles.button}></button>
-          <svg className={styles.header__svg} />
+          {/* <svg className={styles.header__svg} /> */}
         </ul>
       </div>
     );

@@ -9,19 +9,27 @@
   font-family: 'Montserrat', sans-serif;
   color: #091e3f;
   display: block;
-  width: 100px;
+  /* width: 100px; */
   margin-left: 100px;
   text-align: center;
   background-color: #fff;
-  height: 52px;
+  background-repeat: no-repeat;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
 }
 
 .logo {
   background: url('../../../assets/icons/logo-darkblue.svg');
   background-repeat: no-repeat;
-  display: block;
+  /* display: block; */
   height: 52px;
-  width: 150px;
+  width: 100px;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
 }
 
 .button {
