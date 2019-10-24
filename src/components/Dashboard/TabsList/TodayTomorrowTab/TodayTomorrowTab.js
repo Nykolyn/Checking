@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Element, scroller } from 'react-scroll';
+import { connect } from 'react-redux';
 import styles from './TodayTomorowTab.module.css';
 import CardList from '../../CardList/CardList';
+import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
 
-// import { connect } from 'react-redux';
 // import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
 
 // const filterCardTime = array => {
@@ -14,29 +15,34 @@ class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
     isOpenTomorrow: true,
-    burgerEvent: null,
     // todayTomorrow: null,
   };
 
   componentDidMount() {
-    // const { todayTomorrow, burgerClick } = this.props;
+    // const { todayTomorrow} = this.props;
     // this.setState({
     //   todayTomorrow: [...todayTomorrow],
-    //   burgerEvent: burgerClick,
     // });
-    const { burgerEvent } = this.state;
-    if (!burgerEvent) {
-      if (burgerEvent === 'today' || burgerEvent === 'tomorrow') {
-        scroller.scrollTo(`${burgerEvent}`, {
-          duration: 1500,
-          delay: 100,
-          smooth: true,
-        });
-      }
+    const { burgerEvent } = this.props;
+    if (burgerEvent) {
+      scroller.scrollTo(burgerEvent, {
+        duration: 1500,
+        delay: 100,
+        smooth: true,
+      });
     }
   }
 
-  // componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    const { burgerEvent } = this.props;
+    if (prevProps.burgerEvent !== burgerEvent) {
+      scroller.scrollTo(burgerEvent, {
+        duration: 1500,
+        delay: 100,
+        smooth: true,
+      });
+    }
+  }
 
   handleToggleToday = () => {
     this.setState(state => ({
@@ -52,7 +58,6 @@ class TodayTomorrowTab extends Component {
 
   render() {
     const { isOpenToday, isOpenTomorrow } = this.state;
-    // const { todayTomorrow } = this.state;
     // const filterCard = filterCardTime(todayTomorrow);
     return (
       <main className={styles.container}>
@@ -106,13 +111,13 @@ class TodayTomorrowTab extends Component {
   }
 }
 
-export default TodayTomorrowTab;
+// export default TodayTomorrowTab;
 
-// const mapStateToProps = state => ({
-//   todayTomorrow:  getTodayTomorrow(state),
-// });
+const mapStateToProps = state => ({
+  burgerEvent: burgerEvent(state),
+});
 
-// export default connect(
-//   mapStateToProps,
-//   null,
-// )(TodayTomorrowTab);
+export default connect(
+  mapStateToProps,
+  null,
+)(TodayTomorrowTab);
