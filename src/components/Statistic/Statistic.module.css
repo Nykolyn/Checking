@@ -6,6 +6,9 @@
 .inner {
   max-width: 300px;
   margin: 0 auto;
+}
+
+.componentsWraper {
   display: flex;
   flex-direction: column;
 }
@@ -45,6 +48,28 @@
   .chartWraper {
     width: 360px;
     /* margin: 0 auto; */
+    /* margin-bottom: 70px; */
+  }
+}
+
+@media only screen and (min-width: 943px) {
+  .outer {
+    max-width: 1280px;
+  }
+  .inner {
+    max-width: 942px;
+  }
+  .componentsWraper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .tableWraper {
+    width: 470px;
+    margin: auto 0;
+  }
+  .chartWraper {
+    width: 360px;
+    margin: 0;
     /* margin-bottom: 70px; */
   }
 }

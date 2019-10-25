@@ -18,7 +18,11 @@ const Chart = () => {
         data={data}
         width={100}
         height={100}
-        options={{ responsive: true, maintainAspectRatio: true }}
+        options={{
+          responsive: true,
+          maintainAspectRatio: true,
+          cutoutPercentage: 55,
+        }}
         legend={{
           display: false,
         }}

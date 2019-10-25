@@ -11,11 +11,13 @@ class StatisticsPage extends Component {
       <div className={styles.outer}>
         <div className={styles.inner}>
           <h2 className={styles.pageName}>Statistics</h2>
-          <div className={styles.chartWraper}>
-            <Chart />
-          </div>
-          <div className={styles.tableWraper}>
-            <Table />
+          <div className={styles.componentsWraper}>
+            <div className={styles.chartWraper}>
+              <Chart />
+            </div>
+            <div className={styles.tableWraper}>
+              <Table />
+            </div>
           </div>
         </div>
       </div>
