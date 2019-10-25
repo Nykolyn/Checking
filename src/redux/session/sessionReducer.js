@@ -5,8 +5,6 @@ const user = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_IN_SUCCESS:
     case ActionTypes.SIGN_UP_SUCCESS:
-    case ActionTypes.REFRESH_USER_SUCCESS:
-      console.log(payload);
       return payload.response.userData;
 
     case ActionTypes.LOGOUT_SUCCESS:

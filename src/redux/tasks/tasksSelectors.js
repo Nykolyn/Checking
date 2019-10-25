@@ -1,3 +1,3 @@
-const getAllTasks = state => state.tasks;
+export const getAllTasks = state => state.tasks;
 
-export default getAllTasks;
+export const getTaskInEditMode = state => state.tasks.taskInEditMode;
