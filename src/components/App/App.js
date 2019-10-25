@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Loader from '../Dashboard/Loader/Loader';
+import Header from '../Header/Header';
 
 const AsyncDashboard = Loadable({
   loader: () =>
@@ -44,13 +45,16 @@ const AsyncStatistics = Loadable({
 });
 
 const App = () => (
-  <Switch>
-    <Route path="/login" component={AsyncLogin} />
-    <Route path="/registration" component={AsyncRegistration} />
-    <Route path="/dashboard" component={AsyncDashboard} />
-    <Route path="/statistics" component={AsyncStatistics} />
-    <Redirect to="/dashboard" />
-  </Switch>
+  <>
+    <Header />
+    <Switch>
+      <Route path="/login" component={AsyncLogin} />
+      <Route path="/registration" component={AsyncRegistration} />
+      <Route path="/dashboard" component={AsyncDashboard} />
+      <Route path="/statistics" component={AsyncStatistics} />
+      <Redirect to="/dashboard" />
+    </Switch>
+  </>
 );
 
 export default App;
