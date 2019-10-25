@@ -60,13 +60,6 @@ export default class TaskPopUp extends Component {
     }
   }
 
-  // Don't delete a task before submit
-  // If cancel, delete a task from edit mode
-  // If accept: if burned out - delete a task from burned out and define new array through update
-  // if not burned out - compare date from props with new date
-  // if prevDate === new date - dispatch update
-  // if prevDate !== new date - delete a task from prevArray and dispatch update
-
   handleRoleSelect = value => this.setState({ role: value });
 
   handleDateChange = date => this.setState({ date });
