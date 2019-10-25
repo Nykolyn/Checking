@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  padding: 20px 0 20px 0;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 15px;
+  max-width: 100%;
+}
+
+.loginContainer {
+  padding-bottom: 0;
+  margin: 0 auto;
+}
+
+.loginTextWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 40px;
+}
+
+.mainText {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+
+.sloganText {
+  font-size: 16px;
+  color: #091e3f;
+  font-weight: 700;
+  padding-bottom: 11px;
+}
+
+.formContainer {
+  margin: 0 auto;
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+}
+
+.password {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 12px;
+}
+
+.textEmail,
+.textPassword {
+  font-size: 14px;
+  color: #869096;
+  padding-bottom: 12px;
+}
+
+.star {
+  color: orangered;
+}
+
+.linkForgot,
+.linkCreate {
+  color: #869096;
+  font-size: 13px;
+}
+
+.textLogin {
+  font-size: 26px;
+  color: #091e3f;
+  font-weight: 600;
+}
+
+.input {
+  padding-left: 10px;
+  border-width: 1px;
+  border-color: rgb(245, 247, 250);
+  border-style: solid;
+  background-color: rgb(245, 247, 250);
+  box-shadow: 0px -2px 2px 0px rgba(29, 29, 27, 0.1);
+  width: 320px;
+  height: 38px;
+  margin-bottom: 24px;
+}
+
+.buttonLogin {
+  border: none;
+  background-color: rgb(255, 107, 8);
+  width: 320px;
+  height: 59px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.input::placeholder {
+  font-size: 14px;
+  color: rgb(166, 171, 185);
+  text-align: left;
+}
+
+.sloganText:last-child {
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapLogin {
+    background-color: #f5f7fa;
+  }
+  .loginContainer {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .formContainer {
+    max-width: 403px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 48px 40px 48px 40px;
+    background-color: #ffffff;
+  }
+
+  .loginTextWrap {
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 403px;
+    padding-bottom: 20px;
+  }
+
+  .formWrap,
+  .mainText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .textWrap {
+    align-self: center;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: none;
+  }
+
+  .imgContainer {
+    background-color: #fff;
+    height: 100vh;
+    width: 60%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    background-image: url('../../../img/pic.png');
+    display: block;
+  }
+
+  .loginContainer {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
