@@ -1,8 +1,9 @@
 /*eslint-disable*/
 import React, { Component, createRef } from 'react';
+import { connect } from 'react-redux';
 import styles from './ModalLogout.module.css';
 
-export default class Modal extends Component {
+class Modal extends Component {
   // add state from Redux
   state = {
     isOpen: true,
@@ -39,7 +40,8 @@ export default class Modal extends Component {
   };
 
   render() {
-    const { children, url } = this.props;
+    const { children, test } = this.props;
+    console.log(test);
     return (
       this.state.isOpen && (
         <div
@@ -53,3 +55,11 @@ export default class Modal extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  test: state,
+});
+
+// const mapDispatchToProps = {};
+
+export default connect(mapStateToProps)(ModalLogout);
