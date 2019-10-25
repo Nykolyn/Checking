@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import styles from './Header.module.css';
 import { burgerMenuOpen } from '../../../redux/componentController/componentActions';
 import { burgerMenuIsOpen } from '../../../redux/componentController/controllerSelectrors';
-// import logo from '..//..//../assets/icons';
+// import { ReactComponent as Logo } from '../../../assets/icons/logo-darkblue.svg';
 
 class Header extends Component {
   state = {};
@@ -13,12 +13,14 @@ class Header extends Component {
 
   render() {
     const { burgerMenuToogle, isOpen } = this.props;
-    console.log(isOpen);
     return (
       <nav className={styles.container}>
-        <ul className={styles.header__logo}>
+        <li className={styles.header__logo}>
+          <li className={styles.button__stats}>
+            <button click="onClick" />
+          </li>
           <li>
-            <img className={styles.logo} />
+            <logo />
           </li>
           <li>
             <button
@@ -30,7 +32,7 @@ class Header extends Component {
               }
             />
           </li>
-        </ul>
+        </li>
       </nav>
     );
   }

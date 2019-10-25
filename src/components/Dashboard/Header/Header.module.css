@@ -1,42 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   width: 320px;
   display: block;
   margin: 0 auto;
 }
 
-.header__box {
-  text-transform: uppercase;
-  font-weight: Bold;
-  text-align: center;
+.logo__stats {
+  display: flex;
+  justify-content: flex-start;
   width: 320px;
 }
 
 .header__logo {
   font-family: 'Montserrat', sans-serif;
+  list-style: none;
   color: #091e3f;
-  display: block;
+  display: flex;
+  flex-direction: column;
   /* width: 100px; */
-  margin-left: 100px;
-  text-align: center;
+  margin-left: 60px;
   background-color: #fff;
   background-repeat: no-repeat;
   background-color: Transparent;
   background-repeat: no-repeat;
   border: none;
   overflow: hidden;
+  background-image: url('../../../assets/icons/logo-darkblue.svg');
 }
 
-.logo {
-  background: url('../../../assets/icons/logo-darkblue.svg');
-  background-repeat: no-repeat;
-  /* display: block; */
+.button__stats {
+  flex-direction: column-reverse;
+  width: 52px;
   height: 52px;
-  width: 100px;
+  display: flex;
+  margin-left: -20px;
+  margin-top: -15px;
+  position: relative;
+  transform: translateX(120%);
   background-color: Transparent;
   background-repeat: no-repeat;
   border: none;
+  outline: none;
   overflow: hidden;
+  background-image: url(../../../assets/icons/icons_menu/icon_donut.png);
 }
+
 
 .button {
   width: 30px;
@@ -44,8 +57,8 @@
   height: 30px;
   background: url('../../../assets/icons/burger_line_list_menu_nav_navigation_option_icon_123231.svg');
   display: flex;
-  margin-left: 180px;
-  margin-top: -36px;
+  margin-left: 220px;
+  margin-top: -15px;
   position: fixed;
   background-color: Transparent;
   background-repeat: no-repeat;
@@ -58,13 +71,52 @@
   background-image: url('../../../assets/icons/close-24px.svg');
   background-repeat: no-repeat;
   background-size: contain;
-
 }
-
-
 
 @media screen and (min-width: 768px) {
   .button {
     display: none;
   }
+
+}
+
+@media screen and (min-width: 767px) {
+  .container {
+    width: 1024px;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .btn {
+    position: absolute;
+    justify-content: flex-start;
+    margin: 0 auto;
+    width: 52px;
+    height: 52px;
+    background-image: url('../../../assets/icons/icons_menu/icon_donut.png');
+    background-color: #cdd0d9;
+    background-repeat: no-repeat;
+    color: #fff;
+    border: none;
+    overflow: hidden;
+    background-size: contain;
+    background-size: 20px;
+    background-position: center;
+    margin-left: 0px;
+  }
+
+  .logo__stats {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+  }
+
+  .header__logo {
+    width: 1024px;
+    margin-left: 60px;
+    position: relative;
+    top: 0;
+  }
+
 }
