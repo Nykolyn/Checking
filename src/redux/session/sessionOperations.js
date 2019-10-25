@@ -60,6 +60,7 @@ export const refreshUser = () => (dispatch, getState) => {
 
   if (!token) return;
   setAuthToken(token);
+
   dispatch(refreshUserRequest());
   axios
     .get('/tasks')
