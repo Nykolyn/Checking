@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { connect } from 'react-redux';
 import RegistrationForm from './RegistrationForm';
 import { signUp } from '../../../../redux/session/sessionOperations';
