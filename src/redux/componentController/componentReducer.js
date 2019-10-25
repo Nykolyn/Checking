@@ -2,7 +2,7 @@
 import { combineReducers } from 'redux';
 import { ActionTypes } from './componentActions';
 
-const modalDeleteTaskOpen = (state = false, { type, payload }) => {
+const modalDeleteTaskOpen = (state = false, { type }) => {
   switch (type) {
     case ActionTypes.MODAL_DELETE_TASK_OPEN:
       return true;
@@ -20,6 +20,8 @@ const taskPopUpСreateOpen = (state = false, { type, payload }) => {
   switch (type) {
     case ActionTypes.HANDLE_OPEN_TASK_POPUP_CREATE:
       return true;
+    case ActionTypes.HANDLE_CLOSE_TASK_POPUP_CREATE:
+      return false;
     default:
       return state;
   }
@@ -29,7 +31,8 @@ const taskPopUpEditOpen = (state = false, { type, payload }) => {
   switch (type) {
     case ActionTypes.HANDLE_OPEN_TASK_POPUP_EDIT:
       return true;
-
+    case ActionTypes.HANDLE_CLOSE_TASK_POPUP_EDIT:
+      return false;
     default:
       return state;
   }

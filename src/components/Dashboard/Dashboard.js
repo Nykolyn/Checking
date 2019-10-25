@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
-import Card from './Card/Card';
+import PropTypes from 'prop-types';
+import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
 import TabsList from './TabsList/TabsList';
-import TaskPopUp from '../TaskPopUp/TaskPopUp';
+import Card from './Card/Card';
+import css from './Dashbard.module.css';
 import CreateTaskButton from '../CreateTaskButton/CreateTaskButtonContainer';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 
@@ -14,19 +16,33 @@ import BurgerMenu from './BurgerMenu/BurgerMenu';
 //     'Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb)',
 // };
 class Dashboard extends Component {
+  static propTypes = {
+    taskCreateOpen: PropTypes.bool.isRequired,
+  };
+
   state = {};
 
   componentDidMount() {}
 
   render() {
+    const { taskCreateOpen } = this.props;
     return (
       <main>
         <h1>Dashboard page</h1>
         <Card />
         <BurgerMenu />
-        <TabsList />
-        <TaskPopUp />
-        <CreateTaskButton />
+        <div className={css.dashboard}>
+          <TabsList />
+          {taskCreateOpen ? (
+            <aside className={css.createTaskModalWrapper}>
+              <TaskPopUp />
+            </aside>
+          ) : (
+            <div className={css.CreateTaskButtonWrapper}>
+              <CreateTaskButton />
+            </div>
+          )}
+        </div>
       </main>
     );
   }

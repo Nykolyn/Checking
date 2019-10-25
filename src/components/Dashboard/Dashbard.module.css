@@ -1,0 +1,16 @@
+.CreateTaskButtonWrapper {
+  position: fixed;
+  top: 50%;
+  left: 3%;
+  transform: translate(-50%, -50%);
+}
+
+.createTaskModalWrapper {
+  width: 40%;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row-reverse;
+  transition: all 1s;
+}
