@@ -1,61 +1,51 @@
 import React from 'react';
 import EditButton from './EditButton/EditButton';
 import DoneButton from './DoneButton/DoneButton';
+import {
+  roleStyleSelect,
+  priorityStyleSelect,
+} from '../../../helpers/cardStyleSwitchHelper';
 import style from './Card.module.css';
-// import roleStyleSelectHelper from '../../../helpers/roleStyleSelectHelper';
 
-const selectRole = role => {
-  const clas = 'cardHeader_role';
-  switch (role) {
-    case 'Partner':
-      return `${clas}${role}`;
-
-    default:
-      break;
-  }
-};
-
-const Card = ({ task }) => (
-  <section className={style.cardSection}>
-    {task ? console.log(task) : null}
-    <header className={style.cardHeaderNone}>
-      <p className={selectRole(task.role)}>{task.role}</p>
-      <p className={style.cardHeader__priority}>{task.priority}</p>
-    </header>
-    {/* <header className={style.cardHeaderNone}>
-      {/* <p className={style.cardHeader__role}> Role </p> */}
-    {/* {task.role} */}
-    {/* <p className={style.cardHeader__priority1}> 1 </p> */}
-    {/* </header> */}
-    {/* {roleStyleSelectHelper(task.role, task.priority)} */}
-    <div className={style.cardBody}>
-      <p className={style.cardBody__title}>
-        {/* {title} */}
-        {/* {task.title.length > 46
-          ? `${task.title.trim().slice(0, 45)}...`
-          : task.title} */}
-      </p>
-      <p className={style.cardBody__text}>
-        {/* {text} */}
-        {/* {task.text.length > 110
-          ? `${task.text.trim().slice(0, 109)}...`
-          : task.text} */}
-      </p>
-    </div>
-    <footer className={style.cardFooter}>
-      <div className={style.cardFooter__wrap}>
-        <p className={style.cardFooter__dateTime}>
-          Oct 10, 2020 | 06.00 - 09.00
-          {/* {task.date}|{task.time} */}
+const Card = ({ task }) => {
+  return (
+    <section className={style.cardSection}>
+      <header style={roleStyleSelect(task.role)}>
+        <p className={style.cardHeader__role}>{task.role}</p>
+        {task.priority < 3 ? (
+          <p style={priorityStyleSelect(task.priority)}>{task.priority}</p>
+        ) : null}
+      </header>
+      <div className={style.cardBody}>
+        <p className={style.cardBody__title}>
+          {/* {task.title} */}
+          {/* {title} */}
+          {task.title.length > 50
+            ? `${task.title.trim().slice(0, 49)}...`
+            : task.title}
+        </p>
+        <p className={style.cardBody__text}>
+          {/* {task.description} */}
+          {task.description.length > 100
+            ? `${task.description.trim().slice(0, 100)}...`
+            : task.description}
         </p>
       </div>
-      <div>
-        <EditButton task={task} />
-        <DoneButton />
-      </div>
-    </footer>
-  </section>
-);
+      <footer className={style.cardFooter}>
+        <div className={style.cardFooter__wrap}>
+          <p className={style.cardFooter__dateTime}>
+            {/* Oct 10, 2020 | 06.00 - 09.00 */}
+            {task.date}|{task.time}
+          </p>
+        </div>
+        <div>
+          <EditButton task={task} />
+          <DoneButton />
+        </div>
+      </footer>
+    </section>
+  );
+};
 
 export default Card;
 
