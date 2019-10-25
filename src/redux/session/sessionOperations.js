@@ -40,7 +40,7 @@ export const signIn = credentials => dispatch => {
 
   axios
     .post('/login', credentials)
-    .then(response => dispatch(signInSuccesss(response.data)))
+    .then(response => dispatch(signInSuccesss(response.data.user)))
     .catch(error => dispatch(signInError(error.response.data)));
 };
 
@@ -48,7 +48,7 @@ export const refreshUser = () => (dispatch, getState) => {
   const token = getToken(getState());
 
   if (!token) return;
-  setAuthToken(token);
+  setAuthToken(token);cd 
   dispatch(refreshUserRequest());
   axios
     .get('finance', token)

@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import Loader from '../Dashboard/Loader/Loader';
+import ProtectedComponent from '../../hoc/ProtectedRoute/ProtectedRoute';
 
 const AsyncDashboard = Loadable({
   loader: () =>
@@ -47,7 +48,8 @@ const App = () => (
   <Switch>
     <Route path="/login" component={AsyncLogin} />
     <Route path="/registration" component={AsyncRegistration} />
-    <Route path="/dashboard" component={AsyncDashboard} />
+    <ProtectedComponent path="/dashboard" component={AsyncDashboard} />
+    {/* <Route path="/dashboard" component={AsyncDashboard} /> */}
     <Route path="/statistics" component={AsyncStatistics} />
     <Redirect to="/dashboard" />
   </Switch>
