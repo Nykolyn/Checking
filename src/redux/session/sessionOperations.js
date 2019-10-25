@@ -17,7 +17,7 @@ import {
 } from './sessionActions';
 import { getToken } from './sessionSelectors';
 
-axios.defaults.baseURL = 'https://cheking.goit.co.ua/api/v1/auth';
+axios.defaults.baseURL = 'https://cheking.goit.co.ua/api/v1';
 
 const setAuthToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -30,7 +30,7 @@ const clearAuthToken = () => {
 export const signUp = credentials => dispatch => {
   dispatch(signUpRequest());
   return axios
-    .post('/register', credentials)
+    .post('/auth/register', credentials)
     .then(response => dispatch(signUpSuccesss(response.data.user)))
     .catch(error => dispatch(signUpError(error)));
 };
@@ -39,7 +39,7 @@ export const signIn = credentials => dispatch => {
   dispatch(signInRequest());
 
   axios
-    .post('/login', credentials)
+    .post('/auth/login', credentials)
     .then(response => dispatch(signInSuccesss(response.data)))
     .catch(error => dispatch(signInError(error.response.data)));
 };
@@ -51,7 +51,7 @@ export const refreshUser = () => (dispatch, getState) => {
   setAuthToken(token);
   dispatch(refreshUserRequest());
   axios
-    .get('finance', token)
+    .get('/tasks', token)
     .then(response => dispatch(refreshUserSuccess(response.data)))
     .catch(error => dispatch(refreshUserError(error.message)));
 };
