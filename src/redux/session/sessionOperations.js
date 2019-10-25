@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import axios from 'axios';
 import {
   signUpRequest,
@@ -19,8 +17,21 @@ import { getToken } from './sessionSelectors';
 
 axios.defaults.baseURL = 'https://cheking.goit.co.ua/api/v1';
 
+const TASKS_DEFAULT = {
+  todayTomorrow: {
+    today: [],
+    tomorrow: [],
+  },
+  nextAfter: {
+    next: [],
+    after: [],
+  },
+  burnedOut: [{}],
+  done: [],
+};
+
 const setAuthToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = token;
 };
 
 const clearAuthToken = () => {
@@ -49,11 +60,21 @@ export const refreshUser = () => (dispatch, getState) => {
 
   if (!token) return;
   setAuthToken(token);
+
   dispatch(refreshUserRequest());
   axios
-    .get('/tasks', token)
-    .then(response => dispatch(refreshUserSuccess(response.data)))
-    .catch(error => dispatch(refreshUserError(error.message)));
+    .get('/tasks')
+    .then(response => dispatch(refreshUserSuccess(response.data.tasks)))
+    .catch(error => {
+      if (
+        error.response.data.error ===
+        "Cannot read property 'today' of undefined"
+      ) {
+        return dispatch(refreshUserSuccess(TASKS_DEFAULT));
+      }
+
+      return dispatch(refreshUserError(error));
+    });
 };
 
 export const signOut = () => (dispatch, getState) => {
