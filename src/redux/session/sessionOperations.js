@@ -48,7 +48,8 @@ export const refreshUser = () => (dispatch, getState) => {
   const token = getToken(getState());
 
   if (!token) return;
-  setAuthToken(token);cd 
+  setAuthToken(token);
+  cd;
   dispatch(refreshUserRequest());
   axios
     .get('finance', token)

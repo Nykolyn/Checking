@@ -17,17 +17,17 @@ const authRedirect = ComposedComponent => {
       const { authentificated, history } = this.props;
       if (!authentificated) return;
 
-      history.push('/dashboard');
+      history.replace('/dashboard');
     }
 
     componentDidUpdate() {
       const { authentificated, location, history } = this.props;
       if (!authentificated) return;
       if (location.state && location.state.from) {
-        history.push(location.state.from);
+        history.replace(location.state.from);
       }
 
-      history.push('/dashboard');
+      history.replace('/dashboard');
     }
 
     render() {
