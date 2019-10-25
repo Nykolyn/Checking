@@ -31,6 +31,14 @@
   text-align: center;
 }
 
+.cardHeader__rolePartner {
+  margin: 0px;
+  margin-left: 27px;
+  padding: 10px 0px;
+  text-align: center;
+  color: orange;
+}
+
 .cardHeader__priority1 {
   display: block;
   background-color: #fff;

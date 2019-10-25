@@ -4,15 +4,23 @@ import DoneButton from './DoneButton/DoneButton';
 import style from './Card.module.css';
 // import roleStyleSelectHelper from '../../../helpers/roleStyleSelectHelper';
 
-const p = {
-  priority: 1,
+const selectRole = role => {
+  const clas = 'cardHeader_role';
+  switch (role) {
+    case 'Partner':
+      return `${clas}${role}`;
+
+    default:
+      break;
+  }
 };
 
-const Card = () => (
+const Card = ({ task }) => (
   <section className={style.cardSection}>
+    {task ? console.log(task) : null}
     <header className={style.cardHeaderNone}>
-      <p className={style.cardHeader__role} />
-      <p className={style.cardHeader__priority}>{p.priority}</p>
+      <p className={selectRole(task.role)}>{task.role}</p>
+      <p className={style.cardHeader__priority}>{task.priority}</p>
     </header>
     {/* <header className={style.cardHeaderNone}>
       {/* <p className={style.cardHeader__role}> Role </p> */}
@@ -42,7 +50,7 @@ const Card = () => (
         </p>
       </div>
       <div>
-        <EditButton />
+        <EditButton task={task} />
         <DoneButton />
       </div>
     </footer>
