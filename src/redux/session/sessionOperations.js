@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import axios from 'axios';
 import {
   signUpRequest,
@@ -17,10 +15,23 @@ import {
 } from './sessionActions';
 import { getToken } from './sessionSelectors';
 
-axios.defaults.baseURL = 'https://cheking.goit.co.ua/api/v1/auth';
+axios.defaults.baseURL = 'https://cheking.goit.co.ua/api/v1';
+
+const TASKS_DEFAULT = {
+  todayTomorrow: {
+    today: [],
+    tomorrow: [],
+  },
+  nextAfter: {
+    next: [],
+    after: [],
+  },
+  burnedOut: [{}],
+  done: [],
+};
 
 const setAuthToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = token;
 };
 
 const clearAuthToken = () => {
@@ -30,7 +41,7 @@ const clearAuthToken = () => {
 export const signUp = credentials => dispatch => {
   dispatch(signUpRequest());
   return axios
-    .post('/register', credentials)
+    .post('/auth/register', credentials)
     .then(response => dispatch(signUpSuccesss(response.data.user)))
     .catch(error => dispatch(signUpError(error)));
 };
@@ -39,8 +50,8 @@ export const signIn = credentials => dispatch => {
   dispatch(signInRequest());
 
   axios
-    .post('/login', credentials)
-    .then(response => dispatch(signInSuccesss(response.data.user)))
+    .post('/auth/login', credentials)
+    .then(response => dispatch(signInSuccesss(response.data)))
     .catch(error => dispatch(signInError(error.response.data)));
 };
 
@@ -49,12 +60,21 @@ export const refreshUser = () => (dispatch, getState) => {
 
   if (!token) return;
   setAuthToken(token);
-  cd;
+
   dispatch(refreshUserRequest());
   axios
-    .get('finance', token)
-    .then(response => dispatch(refreshUserSuccess(response.data)))
-    .catch(error => dispatch(refreshUserError(error.message)));
+    .get('/tasks')
+    .then(response => dispatch(refreshUserSuccess(response.data.tasks)))
+    .catch(error => {
+      if (
+        error.response.data.error ===
+        "Cannot read property 'today' of undefined"
+      ) {
+        return dispatch(refreshUserSuccess(TASKS_DEFAULT));
+      }
+
+      return dispatch(refreshUserError(error));
+    });
 };
 
 export const signOut = () => (dispatch, getState) => {

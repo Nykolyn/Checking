@@ -41,7 +41,7 @@ const timeStyles = {
     backgroundColor: '#fff',
     color: 'black',
     fontFamily: 'Montserrat',
-    fontSize: '14px',
+    fontSize: '12px',
     fontWeight: 400,
 
     ':active': {
