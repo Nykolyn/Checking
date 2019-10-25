@@ -24,14 +24,14 @@
   color: #525356;
 }
 
-.cardHeader__roleLearner {
+.cardHeader__role {
   margin: 0px;
   margin-left: 27px;
   padding: 10px 0px;
   text-align: center;
 }
 
-.cardHeader__priorityOne {
+.cardHeader__priority1 {
   display: block;
   background-color: #fff;
   color: #f4715c;
