@@ -51,7 +51,7 @@ export const signIn = credentials => dispatch => {
 
   axios
     .post('/auth/login', credentials)
-    .then(response => dispatch(signInSuccesss(response.data)))
+    .then(response => dispatch(signInSuccesss(response.data.user)))
     .catch(error => dispatch(signInError(error.response.data)));
 };
 
@@ -60,6 +60,7 @@ export const refreshUser = () => (dispatch, getState) => {
 
   if (!token) return;
   setAuthToken(token);
+
   dispatch(refreshUserRequest());
   axios
     .get('/tasks')
