@@ -4,43 +4,34 @@ import DoneButton from './DoneButton/DoneButton';
 import {
   roleStyleSelect,
   priorityStyleSelect,
-} from '../../../helpers/cardStyleSwitchHelper';
+  titleSlicer,
+  descriptionSlicer,
+  dateFormatter,
+} from '../../../helpers/cardFuncHelper';
 import style from './Card.module.css';
 
-const Card = ({ task }) => {
+const Card = ({ task }, inDoneTab, inBudnedOutTab) => {
   return (
     <section className={style.cardSection}>
       <header style={roleStyleSelect(task.role)}>
         <p className={style.cardHeader__role}>{task.role}</p>
-        {task.priority < 3 ? (
-          <p style={priorityStyleSelect(task.priority)}>{task.priority}</p>
-        ) : null}
+        <p style={priorityStyleSelect(task.priority)}>{task.priority}</p>
       </header>
       <div className={style.cardBody}>
-        <p className={style.cardBody__title}>
-          {/* {task.title} */}
-          {/* {title} */}
-          {task.title.length > 50
-            ? `${task.title.trim().slice(0, 49)}...`
-            : task.title}
-        </p>
+        <p className={style.cardBody__title}>{titleSlicer(task.title)}</p>
         <p className={style.cardBody__text}>
-          {/* {task.description} */}
-          {task.description.length > 100
-            ? `${task.description.trim().slice(0, 100)}...`
-            : task.description}
+          {descriptionSlicer(task.description)}
         </p>
       </div>
       <footer className={style.cardFooter}>
         <div className={style.cardFooter__wrap}>
           <p className={style.cardFooter__dateTime}>
-            {/* Oct 10, 2020 | 06.00 - 09.00 */}
-            {task.date}|{task.time}
+            {dateFormatter(task.date)} | {task.time}
           </p>
         </div>
         <div>
-          <EditButton task={task} />
-          <DoneButton />
+          {!inDoneTab && <EditButton task={task} />}
+          <DoneButton inBudnedOutTab={inBudnedOutTab} />
         </div>
       </footer>
     </section>

@@ -6,7 +6,7 @@ import styles from '../CardList/CardList.module.css';
 const task = {
   role: 'Learner',
   time: 'All Day',
-  priority: 1,
+  priority: 2,
   isComplete: false,
   _id: '5db19fb87f221a047b82f150',
   date: '2019-10-24T21:00:00.000Z',

@@ -15,35 +15,6 @@
   padding: 0px;
 }
 
-.cardHeader {
-  background-color: #cdd0d9;
-  display: flex;
-  justify-content: space-between;
-  align-content: space-between;
-  align-items: center;
-  color: #525356;
-}
-
-.learner {
-  background-color: #fef9de;
-}
-
-.partner {
-  background-color: #c2c9de;
-}
-
-.coWorker {
-  background-color: #d3dcd6;
-}
-
-.daughterSon {
-  background-color: #d5ebff;
-}
-
-.none {
-  background-color: #cdd0d9;
-}
-
 .cardHeader__role {
   margin: 0px;
   margin-left: 27px;
@@ -51,25 +22,6 @@
   text-align: center;
 }
 
-.cardHeader__priority {
-  display: block;
-  background-color: #fff;
-  margin-right: 20px;
-  padding: 3px 8px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 50%;
-  margin-left: 10px;
-  text-align: center;
-}
-
-.priorityOne {
-  color: #f4715c;
-}
-
-.priorityTwo {
-  color: #5ec455;
-}
 
 .cardBody {
   /* height: 134px; */
