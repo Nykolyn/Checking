@@ -5,7 +5,6 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { refreshUser } from '../../redux/session/sessionOperations';
 import Loader from '../Dashboard/Loader/Loader';
-// import Header from '../Header/Header';
 import ProtectedComponent from '../../hoc/ProtectedRoute/ProtectedRoute';
 
 const AsyncDashboard = Loadable({
@@ -62,13 +61,15 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route path="/login" component={AsyncLogin} />
-        <Route path="/registration" component={AsyncRegistration} />
-        <ProtectedComponent path="/dashboard" component={AsyncDashboard} />
-        <ProtectedComponent path="/statistics" component={AsyncStatistics} />
-        <Redirect to="/dashboard" />
-      </Switch>
+      <>
+        <Switch>
+          <Route path="/login" component={AsyncLogin} />
+          <Route path="/registration" component={AsyncRegistration} />
+          <ProtectedComponent path="/dashboard" component={AsyncDashboard} />
+          <ProtectedComponent path="/statistics" component={AsyncStatistics} />
+          <Redirect to="/dashboard" />
+        </Switch>
+      </>
     );
   }
 }
