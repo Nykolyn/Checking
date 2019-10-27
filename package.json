@@ -27,7 +27,8 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "short-id": "^0.1.0",
-    "shortid": "^2.2.14"
+    "shortid": "^2.2.14",
+    "styled-components": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -69,5 +70,17 @@
     "react-toastify": "^5.3.2",
     "redux-devtools-extension": "^2.13.8"
   },
-  "homepage": "https://bohdanradchenko.github.io/goit-react-hw-03-image-finder/"
+  "homepage": "https://bohdanradchenko.github.io/goit-react-hw-03-image-finder/",
+  "description": "РАБОТА З “GIT” GitHub:",
+  "main": ".lintstagedrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nykolyn/Checking.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nykolyn/Checking/issues"
+  }
 }
