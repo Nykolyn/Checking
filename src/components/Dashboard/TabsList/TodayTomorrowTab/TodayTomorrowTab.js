@@ -7,16 +7,20 @@ import CardList from '../../CardList/CardList';
 import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 
-// const filterCardTime = array => {
-//   return array.filter(el.priority.sort());
+// const filterCard = array => {
+//   let filtredArray = [];
+//   if (array.length >= 1) {
+//     filtredArray = array.filter(el.priority.sort());
+//   }
+//   return filtredArray;
 // };
 
 class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
     isOpenTomorrow: true,
-    todayTasks: {},
-    tomorrowTasks: {},
+    todayTasks: [],
+    tomorrowTasks: [],
   };
 
   componentDidMount() {
@@ -35,15 +39,6 @@ class TodayTomorrowTab extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //setState  today/tomorrow tasks
-    // const { getTodayTomorrowTasks } = this.props;
-    // if (prevState.getTodayTomorrowTasks !== getTodayTomorrowTasks) {
-    //   this.setState({
-    //     today: [...getTodayTomorrowTasks.today],
-    //     tomorrow: [...getTodayTomorrowTasks.tomorrow],
-    //   });
-    // }
-
     //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (prevProps.burgerEvent !== burgerEvent) {
@@ -72,9 +67,14 @@ class TodayTomorrowTab extends Component {
   };
 
   render() {
-    const { isOpenToday, isOpenTomorrow } = this.state;
-    // const filterCardToday = filterCardTime((getAllTasks.todayTomorrow.today);
-    // const filterCardTomorrow = filterCardTime(todayTomorrow.tomorrow);
+    const {
+      isOpenToday,
+      isOpenTomorrow,
+      todayTasks,
+      tomorrowTasks,
+    } = this.state;
+    // const filterCardToday = filterCard(todayTasks);
+    // const filterCardTomorrow = filterCard(tomorrowTasks);
     return (
       <main className={styles.container}>
         <Element name="today">
@@ -95,10 +95,8 @@ class TodayTomorrowTab extends Component {
             >
               Today
             </button>
-            {isOpenToday && (
-              // <CardList cardItems={filterCard}/>
-              <CardList />
-            )}
+            {/* {isOpenToday && <CardList cardItems={filterCardToday} />} */}
+            {isOpenToday && <CardList cardItems={todayTasks} />}
           </section>
         </Element>
 
@@ -119,7 +117,8 @@ class TodayTomorrowTab extends Component {
             >
               Tomoroow
             </button>
-            {isOpenTomorrow && <CardList />}
+            {/* {isOpenTomorrow && <CardList cardItems={filterCardTomorrow} />} */}
+            {isOpenTomorrow && <CardList cardItems={tomorrowTasks} />}
           </section>
         </Element>
       </main>

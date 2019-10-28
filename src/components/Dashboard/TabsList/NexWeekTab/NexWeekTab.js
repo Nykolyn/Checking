@@ -11,8 +11,8 @@ class NexWeekTab extends Component {
   state = {
     isOpenNext: true,
     isOpenAfter: true,
-    nextTasks: {},
-    afterTasks: {},
+    nextTasks: [],
+    afterTasks: [],
   };
 
   componentDidMount() {
@@ -58,7 +58,7 @@ class NexWeekTab extends Component {
   };
 
   render() {
-    const { isOpenNext, isOpenAfter } = this.state;
+    const { isOpenNext, isOpenAfter, nextTasks, afterTasks } = this.state;
     return (
       <main className={styles.container}>
         <Element name="next">
@@ -80,7 +80,7 @@ class NexWeekTab extends Component {
             >
               Next 7 Days
             </button>
-            {isOpenNext && <CardList />}
+            {isOpenNext && <CardList cardItems={nextTasks} />}
           </section>
         </Element>
 
@@ -101,7 +101,7 @@ class NexWeekTab extends Component {
             >
               After 7 Days
             </button>
-            {isOpenAfter && <CardList />}
+            {isOpenAfter && <CardList cardItems={nextTasks} />}
           </section>
         </Element>
       </main>

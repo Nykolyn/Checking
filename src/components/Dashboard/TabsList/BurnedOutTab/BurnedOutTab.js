@@ -18,6 +18,7 @@ class BurnedOutTab extends Component {
   }
 
   render() {
+    const { burnedOutTasks } = this.state;
     return (
       <main className={styles.container}>
         <Element name="burnedOut">
@@ -26,7 +27,7 @@ class BurnedOutTab extends Component {
             Burned Out
           </button> */}
             <p className={styles.titleButton}>Burned Out</p>
-            <CardList />
+            <CardList cardItems={burnedOutTasks} />
           </section>
         </Element>
       </main>

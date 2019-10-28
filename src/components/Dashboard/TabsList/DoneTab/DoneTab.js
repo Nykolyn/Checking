@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import { connect } from 'react-redux';
@@ -11,13 +12,14 @@ class DoneTab extends Component {
   };
 
   componentDidMount() {
-    const { getDoneTasks } = this.props;
+    const { getDone } = this.props;
     this.setState({
-      doneTasks: getDoneTasks,
+      doneTasks: getDone,
     });
   }
 
   render() {
+    const { doneTasks } = this.state;
     return (
       <main className={styles.container}>
         <Element name="done">
@@ -26,7 +28,7 @@ class DoneTab extends Component {
             Done
           </button> */}
             <p className={styles.titleButton}>Done</p>
-            <CardList />
+            <CardList cardItems={doneTasks} />
           </section>
         </Element>
       </main>
@@ -35,7 +37,7 @@ class DoneTab extends Component {
 }
 
 const mapStateToProps = state => ({
-  getDoneTasks: getDoneTasks(state),
+  getDone: getDoneTasks(state),
 });
 
 export default connect(mapStateToProps)(DoneTab);
