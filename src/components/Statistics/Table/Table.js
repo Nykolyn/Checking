@@ -2,7 +2,6 @@ import React from 'react';
 import ReactTable from 'react-table';
 
 import './Table.css';
-import data from '../testData';
 
 const columns = [
   {
@@ -26,36 +25,38 @@ const filteredData = array => {
   const coWorker = array.filter(el => el.role === 'Co-worker').length;
   const none = array.filter(el => el.role === 'None').length;
 
+  const summ = (partner + learner + dotherSon + coWorker + none) / 100;
+
   return [
     {
       roles: 'Partner',
-      percentage: 10 + '%',
+      percentage: `${Math.round(partner / summ)}%`,
       goals: `${partner}/?`,
     },
     {
       roles: 'Learner',
-      percentage: 30 + '%',
+      percentage: `${Math.round(learner / summ)}%`,
       goals: `${learner}/?`,
     },
     {
       roles: 'Daugther / Son',
-      percentage: 30 + '%',
+      percentage: `${Math.round(dotherSon / summ)}%`,
       goals: `${dotherSon}/?`,
     },
     {
       roles: 'Co-worker',
-      percentage: 30 + '%',
+      percentage: `${Math.round(coWorker / summ)}%`,
       goals: `${coWorker}/?`,
     },
     {
       roles: 'None',
-      percentage: 30 + '%',
+      percentage: `${Math.round(none / summ)}%`,
       goals: `${none}/?`,
     },
   ];
 };
 
-const Table = () => {
+const Table = ({ data }) => {
   return (
     <ReactTable
       data={filteredData(data)}

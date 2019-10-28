@@ -27,7 +27,9 @@ const filteredData = array => {
   };
 };
 
-const Chart = () => {
+const Chart = ({ data }) => {
+  console.log(data);
+
   return (
     <div>
       <Doughnut
