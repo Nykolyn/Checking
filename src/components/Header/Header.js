@@ -66,7 +66,7 @@ const Header = ({
               <button
                 type="button"
                 onClick={burgerMenuToogle}
-                className={isOpen ? styles.checked : styles.button}
+                className={isOpen ? styles.button : styles.checked}
               />
             </li>
           )}
