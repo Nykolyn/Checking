@@ -10,8 +10,10 @@ import {
   dateFormatter,
 } from '../../../helpers/cardFuncHelper';
 import style from './Card.module.css';
+import taskTypes from '../../../constants/taskTypes';
+import defineDispatcher from '../../../helpers/dispatchHelper';
 
-const Card = ({ task }, inBudnedOutTab, inDoneTab) => {
+const Card = ({ task }) => {
   return (
     <section className={style.cardSection}>
       <header style={roleStyleSelect(task.role)}>
@@ -31,8 +33,11 @@ const Card = ({ task }, inBudnedOutTab, inDoneTab) => {
           </p>
         </div>
         <div>
-          {!inDoneTab && <EditButton task={task} />}
-          <DoneButton inBudnedOutTab={inBudnedOutTab} />
+          {!task.isComplete && <EditButton task={task} />}
+          <DoneButton
+            inBudnedOutTab={defineDispatcher(task) === taskTypes.BURNED}
+            inDoneTab={task.isComplete}
+          />
         </div>
       </footer>
     </section>
