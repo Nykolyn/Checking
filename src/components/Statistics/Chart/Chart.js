@@ -1,7 +1,7 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-import data from '../testData';
+// import data from '../testData';
 
 const filteredData = array => {
   const partner = array.filter(el => el.role === 'Partner').length;
@@ -26,6 +26,8 @@ const filteredData = array => {
     ],
   };
 };
+
+/* eslint-disable */
 
 const Chart = ({ data }) => {
   console.log(data);

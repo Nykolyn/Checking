@@ -5,12 +5,11 @@ import Chart from '../../components/Statistics/Chart/Chart';
 import Table from '../../components/Statistics/Table/Table';
 import styles from '../../components/Statistics/Statistic.module.css';
 
-const storage = localStorage.getItem('persist:root');
-const { token } = JSON.parse(storage);
+const storage = JSON.parse(localStorage.getItem('persist:root'));
 
 const config = {
   headers: {
-    Authorization: token.slice(1, -1),
+    Authorization: storage ? storage.token.slice(1, -1) : '',
   },
 };
 
