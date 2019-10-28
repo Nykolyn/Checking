@@ -45,9 +45,9 @@ export const taskPopUpCreateOpen = () => ({
   payload: {},
 });
 
-export const taskPopUpEditOpen = () => ({
+export const taskPopUpEditOpen = isEditOpen => ({
   type: ActionTypes.HANDLE_OPEN_TASK_POPUP_EDIT,
-  payload: {},
+  payload: isEditOpen,
 });
 
 export const taskPopUpCreateClose = () => ({

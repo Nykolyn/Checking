@@ -56,7 +56,8 @@ class App extends Component {
 
   componentDidMount() {
     const { refreshUserData } = this.props;
-    // refreshUserData();
+
+    refreshUserData();
   }
 
   render() {
