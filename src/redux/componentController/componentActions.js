@@ -1,5 +1,7 @@
 export const ActionTypes = {
   MODAL_DELETE_TASK_OPEN: 'MODAL_DELETE_TASK_OPEN',
+  HANDLE_OPEN_STATISTICS: 'HANDLE_OPEN_STATISTICS',
+  HANDLE_OPEN_DASHBOARD: 'HANDLE_OPEN_DASHBOARD',
   HANDLE_OPEN_TABS_LIST: 'HANDLE_OPEN_TABS_LIST',
   HANDLE_OPEN_MODAL_LOGOUT: 'HANDLE_OPEN_MODAL_LOGOUT',
   HANDLE_OPEN_BURGER_MENU: 'HANDLE_OPEN_BURGER_MENU',
@@ -18,8 +20,18 @@ export const modalDeleteTaskOpen = () => ({
   payload: {},
 });
 
+export const handleOpenStatistics = () => ({
+  type: ActionTypes.HANDLE_OPEN_STATISTICS,
+  payload: {},
+});
+
+export const handleOpenDashboard = () => ({
+  type: ActionTypes.HANDLE_OPEN_DASHBOARD,
+  payload: {},
+});
+
 export const modalLogoutOpen = () => ({
-  type: ActionTypes.HANDLE_OPEN_TABS_LIST,
+  type: ActionTypes.HANDLE_OPEN_MODAL_LOGOUT,
   payload: {},
 });
 
