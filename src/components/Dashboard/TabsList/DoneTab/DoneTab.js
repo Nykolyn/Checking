@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { Element } from 'react-scroll';
+import { connect } from 'react-redux';
 import styles from './DoneTab.module.css';
 import CardList from '../../CardList/CardList';
+import { getDoneTasks } from '../../../../redux/tasks/tasksSelectors';
 
 class DoneTab extends Component {
-  state = {};
+  state = {
+    doneTasks: [],
+  };
+
+  componentDidMount() {
+    const { getDoneTasks } = this.props;
+    this.setState({
+      doneTasks: getDoneTasks,
+    });
+  }
 
   render() {
     return (
@@ -23,4 +34,8 @@ class DoneTab extends Component {
   }
 }
 
-export default DoneTab;
+const mapStateToProps = state => ({
+  getDoneTasks: getDoneTasks(state),
+});
+
+export default connect(mapStateToProps)(DoneTab);

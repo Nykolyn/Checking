@@ -15,14 +15,17 @@ class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
     isOpenTomorrow: true,
-    stateTasks: {},
-    // todayTomorrow: {},
+    todayTasks: {},
+    tomorrowTasks: {},
   };
 
   componentDidMount() {
-    //get tasks for state
-    const { todayTomorrowTasks } = this.props;
-    // this.getTasks(todayTomorrowTasks);
+    //setState  today/tomorrow tasks
+    const { getTodayTomorrowTasks } = this.props;
+    this.setState({
+      todayTasks: [...getTodayTomorrowTasks.today],
+      tomorrowTasks: [...getTodayTomorrowTasks.tomorrow],
+    });
 
     //scroll to event from burger menu
     const { burgerEvent } = this.props;
@@ -32,11 +35,14 @@ class TodayTomorrowTab extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //get tasks for state
-    const { todayTomorrowTasks } = this.props;
-    if (prevState.todayTomorrowTasks !== todayTomorrowTasks) {
-      // this.getTasks(todayTomorrowTasks);
-    }
+    //setState  today/tomorrow tasks
+    // const { getTodayTomorrowTasks } = this.props;
+    // if (prevState.getTodayTomorrowTasks !== getTodayTomorrowTasks) {
+    //   this.setState({
+    //     today: [...getTodayTomorrowTasks.today],
+    //     tomorrow: [...getTodayTomorrowTasks.tomorrow],
+    //   });
+    // }
 
     //scroll to event from burger menu
     const { burgerEvent } = this.props;
@@ -44,12 +50,6 @@ class TodayTomorrowTab extends Component {
       this.scrollFn(burgerEvent);
     }
   }
-
-  getTasks = tasks => {
-    this.setState({
-      stateTasks: [...tasks],
-    });
-  };
 
   scrollFn = value => {
     scroller.scrollTo(value, {
@@ -73,7 +73,7 @@ class TodayTomorrowTab extends Component {
 
   render() {
     const { isOpenToday, isOpenTomorrow } = this.state;
-    // const filterCardToday = filterCardTime(todayTomorrow.today);
+    // const filterCardToday = filterCardTime((getAllTasks.todayTomorrow.today);
     // const filterCardTomorrow = filterCardTime(todayTomorrow.tomorrow);
     return (
       <main className={styles.container}>
@@ -128,7 +128,7 @@ class TodayTomorrowTab extends Component {
 }
 
 const mapStateToProps = state => ({
-  todayTomorrowTasks: getTodayTomorrowTasks(state),
+  getTodayTomorrowTasks: getTodayTomorrowTasks(state),
   burgerEvent: burgerEvent(state),
 });
 

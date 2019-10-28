@@ -5,21 +5,25 @@ import { connect } from 'react-redux';
 import styles from './NexWeekTab.module.css';
 import CardList from '../../CardList/CardList';
 import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
-
-// import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
+import { getNextAfterTasks } from '../../../../redux/tasks/tasksSelectors';
 
 class NexWeekTab extends Component {
   state = {
     isOpenNext: true,
     isOpenAfter: true,
-    // nexAfter: null,
+    nextTasks: {},
+    afterTasks: {},
   };
 
   componentDidMount() {
-    // const { nexAfter } = this.props;
-    // this.setState({
-    //   nexAfter: [...nexAfter],
-    // });
+    //setState  next/after tasks
+    const { getNextAfterTasks } = this.props;
+    this.setState({
+      nextTasks: [...getNextAfterTasks.next],
+      afterTasks: [...getNextAfterTasks.after],
+    });
+
+    //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (burgerEvent) {
       this.scrollFn(burgerEvent);
@@ -106,7 +110,7 @@ class NexWeekTab extends Component {
 }
 
 const mapStateToProps = state => ({
-  // nextAfter: getNextAfter(state),
+  getNextAfterTasks: getNextAfterTasks(state),
   burgerEvent: burgerEvent(state),
 });
 
