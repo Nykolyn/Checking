@@ -129,11 +129,6 @@
   cursor: pointer;
 }
 
-/* .lowPriorityBtn:active {
-  transform: scale(1.4);
-  /* width: 32px;
-  height: 32px; } */
-
 .lowPriorityBtn:focus {
   outline: none;
 }
@@ -179,7 +174,6 @@
 
 @media screen and (min-width: 768px) {
   .outer {
-    /* max-height: 94.73vh; */
     padding: 6.6% 28.76%;
   }
 
@@ -193,6 +187,10 @@
     margin: 0 auto;
     margin-bottom: 24px;
   }
+
+  .priorityDiv {
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 1120px) {
@@ -202,6 +200,6 @@
   }
 
   .priorityDiv {
-    width: 20%;
+    width: 70%;
   }
 }

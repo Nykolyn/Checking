@@ -19,7 +19,6 @@ class Dashboard extends Component {
 
   render() {
     const { taskCreateOpen } = this.props;
-    console.log(this.props);
     return (
       <>
         <Header />
