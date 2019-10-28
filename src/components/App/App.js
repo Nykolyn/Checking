@@ -6,6 +6,7 @@ import Loadable from 'react-loadable';
 import { refreshUser } from '../../redux/session/sessionOperations';
 import Loader from '../Dashboard/Loader/Loader';
 import ProtectedComponent from '../../hoc/ProtectedRoute/ProtectedRoute';
+import test from '../../pages/StatisticsPage/StatisticsPage';
 
 const AsyncDashboard = Loadable({
   loader: () =>
@@ -42,7 +43,7 @@ const AsyncStatistics = Loadable({
     import(
       '../../pages/StatisticsPage/StatisticsPage' /* webpackChunkName: "statistics-page" */
     ),
-  loading: Loader,
+  loading: test,
   timeout: 10000,
   delay: 200,
 });
@@ -56,6 +57,7 @@ class App extends Component {
 
   componentDidMount() {
     const { refreshUserData } = this.props;
+
     refreshUserData();
   }
 

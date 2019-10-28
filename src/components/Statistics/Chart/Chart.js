@@ -1,33 +1,50 @@
-import React from 'react'
+import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const  data = {
-	labels: [
-		'Red',
-		'Green',
-		'Yellow'
-	],
-	datasets: [{
-		data: [300, 50, 100],
-		backgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-		'#FFCE56'
-		],
-		hoverBackgroundColor: [
-		'#FF6384',
-		'#36A2EB',
-		'#FFCE56'
-		]
-	}]
+import data from '../testData';
+
+const filteredData = array => {
+  const partner = array.filter(el => el.role === 'Partner').length;
+  const learner = array.filter(el => el.role === 'Learner').length;
+  const dotherSon = array.filter(el => el.role === 'Dauther / Son').length;
+  const coWorker = array.filter(el => el.role === 'Co-worker').length;
+  const none = array.filter(el => el.role === 'None').length;
+
+  return {
+    labels: ['Partner', 'Learner', 'Dother / son', 'Co-worker', 'None'],
+    datasets: [
+      {
+        data: [partner, learner, dotherSon, coWorker, none],
+        backgroundColor: [
+          '#c2c9de',
+          '#fef9de',
+          '#d5ebff',
+          '#d3dcd6',
+          '#cdd0d9',
+        ],
+      },
+    ],
+  };
 };
 
+const Chart = () => {
+  return (
+    <div>
+      <Doughnut
+        data={filteredData(data)}
+        width={100}
+        height={100}
+        options={{
+          responsive: true,
+          maintainAspectRatio: true,
+          cutoutPercentage: 55,
+        }}
+        legend={{
+          display: false,
+        }}
+      />
+    </div>
+  );
+};
 
-const chart =()=>{
-    return <Doughnut data={data} data={data}
-    width={420}
-    height={400}
-    options={{ maintainAspectRatio: false }} />
-}
- 
-export default chart
+export default Chart;
