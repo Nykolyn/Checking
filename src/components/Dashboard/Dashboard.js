@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import PropTypes from 'prop-types';
 import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
 import TabsList from './TabsList/TabsList';
@@ -18,7 +19,6 @@ class Dashboard extends Component {
 
   render() {
     const { taskCreateOpen } = this.props;
-    console.log(this.props);
     return (
       <>
         <Header />
