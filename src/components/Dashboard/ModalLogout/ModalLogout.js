@@ -2,12 +2,10 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
 import styles from './ModalLogout.module.css';
+import { modalLogoutClose } from '../../../redux/componentController/componentActions';
+class ModalLogout extends Component {
+  // add state from Reduxz
 
-class Modal extends Component {
-  // add state from Redux
-  state = {
-    isOpen: true,
-  };
   // ---#---
 
   backdropRef = createRef();
@@ -21,9 +19,7 @@ class Modal extends Component {
   }
 
   onClose = () => {
-    this.setState({
-      isOpen: false,
-    });
+    return this.props.modalLogoutClose();
   };
 
   handleKeyPress = e => {
@@ -33,6 +29,7 @@ class Modal extends Component {
 
   handleBackdropClick = e => {
     const { current } = this.backdropRef;
+    console.log(current);
     if (current && e.target !== current) {
       return;
     }
@@ -40,10 +37,10 @@ class Modal extends Component {
   };
 
   render() {
-    const { children, test } = this.props;
-    console.log(test);
+    const { children } = this.props;
+
     return (
-      this.state.isOpen && (
+      this.props.openModal && (
         <div
           className={styles.backdrop}
           ref={this.backdropRef}
@@ -57,9 +54,12 @@ class Modal extends Component {
 }
 
 const mapStateToProps = state => ({
-  test: state,
+  openModal: state.componentController.modalLogoutOpen,
 });
 
-// const mapDispatchToProps = {};
+const mapDispatchToProps = { modalLogoutClose };
 
-export default connect(mapStateToProps)(ModalLogout);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ModalLogout);

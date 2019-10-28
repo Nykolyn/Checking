@@ -52,7 +52,7 @@ export const signIn = credentials => dispatch => {
   axios
     .post('/auth/login', credentials)
     .then(response => dispatch(signInSuccesss(response.data.user)))
-    .catch(error => dispatch(signInError(error)));
+    .catch(error => dispatch(signInError(error.response.data)));
 };
 
 export const refreshUser = () => (dispatch, getState) => {

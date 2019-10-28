@@ -61,13 +61,15 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route path="/login" component={AsyncLogin} />
-        <Route path="/registration" component={AsyncRegistration} />
-        <ProtectedComponent path="/dashboard" component={AsyncDashboard} />
-        <ProtectedComponent path="/statistics" component={AsyncStatistics} />
-        <Redirect to="/dashboard" />
-      </Switch>
+      <>
+        <Switch>
+          <Route path="/login" component={AsyncLogin} />
+          <Route path="/registration" component={AsyncRegistration} />
+          <ProtectedComponent path="/dashboard" component={AsyncDashboard} />
+          <ProtectedComponent path="/statistics" component={AsyncStatistics} />
+          <Redirect to="/dashboard" />
+        </Switch>
+      </>
     );
   }
 }
