@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Chart from '../../components/Statistic/Chart/Chart';
-import Table from '../../components/Statistic/Table/Table';
-import styles from '../../components/Statistic/Statistic.module.css';
+import Chart from '../../components/Statistics/Chart/Chart';
+import Table from '../../components/Statistics/Table/Table';
+import styles from '../../components/Statistics/Statistic.module.css';
 
 const storage = localStorage.getItem('persist:root');
 const { token } = JSON.parse(storage);
