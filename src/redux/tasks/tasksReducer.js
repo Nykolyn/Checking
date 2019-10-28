@@ -1,5 +1,5 @@
-// import { combineReducers } from 'redux';
-// import { ActionTypes } from './taskActions';
+import { combineReducers } from 'redux';
+import { ActionTypes as TaskActionTypes } from './taskActions';
 
 import { ActionTypes } from '../session/sessionActions';
 
@@ -100,32 +100,16 @@ const tasks = (state = {}, { type, payload }) => {
 
 // const done = (state = [], { type, payload }) => null;
 
-// const taskInEditMode = (
-//   state = {
-//     role: 'Partner',
-//     time: 'All Day',
-//     priority: 3,
-//     isComplete: false,
-//     _id: '5db19fb87f221a047b82f150',
-//     date: '2019-10-24T21:00:00.000Z',
-//     title: 'test',
-//     description: '',
-//     userId: '5dacf2074a4c8a1b350d7bbe',
-//     createdAt: '2019-10-24T12:57:28.740Z',
-//     updatedAt: '2019-10-24T12:57:28.740Z',
-//     __v: 0,
-//   },
-//   { type, payload },
-// ) => {
-//   switch (type) {
-//     case ActionTypes.PUT_TASK_TO_EDIT_MODE:
-//       return payload;
-//     case ActionTypes.REMOVE_TASK_FROM_EDIT_MODE:
-//       return null;
-//     default:
-//       return state;
-//   }
-// };
+const taskInEditMode = (state = null, { type, payload }) => {
+  switch (type) {
+    case TaskActionTypes.PUT_TASK_TO_EDIT_MODE:
+      return payload;
+    case TaskActionTypes.REMOVE_TASK_FROM_EDIT_MODE:
+      return null;
+    default:
+      return state;
+  }
+};
 
 // const todayTomorrow = combineReducers({ today, tomorrow });
 // const nextAfter = combineReducers({ next, after });
@@ -137,4 +121,6 @@ const tasks = (state = {}, { type, payload }) => {
 //   taskInEditMode,
 // });
 
-export default tasks;
+// export default tasks;
+
+export default combineReducers({ tasks, taskInEditMode });

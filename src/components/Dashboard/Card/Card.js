@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import EditButton from './EditButton/EditButton';
 import DoneButton from './DoneButton/DoneButton';
 import {
@@ -10,7 +11,7 @@ import {
 } from '../../../helpers/cardFuncHelper';
 import style from './Card.module.css';
 
-const Card = ({ task }, inDoneTab, inBudnedOutTab) => {
+const Card = ({ task }, inBudnedOutTab, inDoneTab) => {
   return (
     <section className={style.cardSection}>
       <header style={roleStyleSelect(task.role)}>
@@ -38,26 +39,21 @@ const Card = ({ task }, inDoneTab, inBudnedOutTab) => {
   );
 };
 
+Card.propTypes = {
+  task: PropTypes.shape({
+    role: PropTypes.string,
+    time: PropTypes.string,
+    priority: PropTypes.number,
+    isComplete: PropTypes.bool,
+    _id: PropTypes.string,
+    date: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    userId: PropTypes.string,
+    createdAt: PropTypes.string,
+    updatedAt: PropTypes.string,
+    __v: PropTypes.number,
+  }).isRequired,
+};
+
 export default Card;
-
-// class Card extends Component {
-//   state = {
-//     propsRole: 'Learner',
-//     title: 'Title with many - many symbols, many - many realy',
-//     text:
-//       'Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb) Body text(60 symb)',
-//   };
-
-//   render() {
-//     const { propsRole, title, text } = this.state;
-//     // console.log(title.length, text.length);
-//     let role;
-//     if (propsRole === 'Learner') {
-//       role = <p className={style.cardHeader__roleLearner}> Learner </p>;
-//     }
-//     return (
-
-//   }
-// }
-
-// export default Card;
