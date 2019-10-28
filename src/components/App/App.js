@@ -43,7 +43,7 @@ const AsyncStatistics = Loadable({
     import(
       '../../pages/StatisticsPage/StatisticsPage' /* webpackChunkName: "statistics-page" */
     ),
-  loading: test,
+  loading: Loader,
   timeout: 10000,
   delay: 200,
 });
