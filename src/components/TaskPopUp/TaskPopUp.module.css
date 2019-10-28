@@ -189,7 +189,7 @@
   }
 
   .priorityDiv {
-    width: 70%;
+    width: 100%;
   }
 }
 
@@ -197,5 +197,9 @@
   .outer {
     max-width: 100%;
     padding: 30px 13.64%;
+  }
+
+  .priorityDiv {
+    width: 70%;
   }
 }
