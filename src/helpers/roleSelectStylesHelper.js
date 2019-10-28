@@ -17,7 +17,7 @@ const roleStyles = {
       fontFamily: 'Montserrat',
       fontSize: '14px',
       fontWeight: 400,
-      backgroundColor: value ? value.color : '#cdd0d9', //! !!!!!!!!!!!!!!
+      backgroundColor: value.color,
     };
   },
   indicatorSeparator: styles => ({
@@ -43,7 +43,7 @@ const roleStyles = {
       backgroundColor: data.color,
       color: 'black',
       fontFamily: 'Montserrat',
-      fontSize: '14px',
+      fontSize: '12px',
       fontWeight: 400,
       cursor: isDisabled ? 'not-allowed' : 'default',
 

@@ -5,7 +5,7 @@ export const modalLogoutIsOpen = state =>
   state.componentController.modalLogoutIsOpen;
 
 export const taskPopUpCreateIsOpen = state =>
-  state.componentController.taskPopUpCreateOpen;
+  state.componentController.taskPopUpСreateOpen;
 
 export const taskPopUpEditIsOpen = state =>
   state.componentController.taskPopUpEditOpen;
