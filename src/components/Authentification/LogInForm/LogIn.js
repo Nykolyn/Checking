@@ -3,28 +3,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
+import { Formik } from 'formik';
 import style from './LogInForm.module.css';
 import FormButton from '../FormButton';
 import { signIn } from '../../../redux/session/sessionOperations';
 import { isAuthentificated } from '../../../redux/session/sessionSelectors';
 
 class LogIn extends Component {
-  // static propTypes = {
-  //   history: ReactRouterPropTypes.history.isRequired,
-  //   authentificated: PropTypes.bool.isRequired,
-  // };
-
   state = {
     email: '',
     password: '',
   };
-
-  // componentDidUpdate() {
-  //   const { authentificated, history } = this.props;
-  //   if (authentificated) {
-  //     history.push('/dashboard');
-  //   }
-  // }
 
   handleSubmit = e => {
     e.preventDefault();
