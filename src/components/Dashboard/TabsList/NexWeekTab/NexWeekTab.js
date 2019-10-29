@@ -101,7 +101,7 @@ class NexWeekTab extends Component {
             >
               After 7 Days
             </button>
-            {isOpenAfter && <CardList cardItems={afterTasks} />}
+            {isOpenAfter && <CardList cardItems={nextTasks} />}
           </section>
         </Element>
       </main>
