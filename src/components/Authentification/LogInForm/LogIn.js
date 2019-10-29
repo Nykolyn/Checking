@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import style from './LogInForm.module.css';
 import FormButton from '../FormButton';
+import Header from '../../Header/Header';
 import { signIn } from '../../../redux/session/sessionOperations';
 import { isAuthentificated } from '../../../redux/session/sessionSelectors';
 
@@ -29,10 +30,11 @@ class LogIn extends Component {
   };
 
   render() {
+    const screenWidth = document.documentElement.clientWidth;
     const { email, password } = this.state;
     return (
       <div className={style.wrapLogin}>
-        <div className={style.header}>HEADER</div>
+        {screenWidth < 768 && <Header />}
         <div className={style.loginContainer}>
           <div className={style.imgContainer} />
 

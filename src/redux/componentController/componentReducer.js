@@ -12,8 +12,27 @@ const modalDeleteTaskOpen = (state = false, { type }) => {
   }
 };
 
+const statisticsOpen = (state = false, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.HANDLE_OPEN_STATISTICS:
+      return true;
+    case ActionTypes.HANDLE_OPEN_DASHBOARD:
+      return false;
+    default:
+      return state;
+  }
+};
+
 const modalLogoutOpen = (state = false, { type, payload }) => {
-  return state;
+  switch (type) {
+    case ActionTypes.HANDLE_OPEN_MODAL_LOGOUT:
+      return true;
+    case ActionTypes.HANDLE_CLOSE_MODAL_LOGOUT:
+      return false;
+
+    default:
+      return state;
+  }
 };
 
 const taskPopUpСreateOpen = (state = false, { type, payload }) => {
@@ -68,6 +87,7 @@ const burgerEvent = (state = null, { type, payload }) => {
 
 export default combineReducers({
   modalDeleteTaskOpen,
+  statisticsOpen,
   modalLogoutOpen,
   taskPopUpСreateOpen,
   taskPopUpEditOpen,

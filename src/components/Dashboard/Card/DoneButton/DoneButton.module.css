@@ -1,0 +1,28 @@
+.DoneBtn {
+  padding: 6px;
+  background-color: #f5f7fa;
+  border: 0;
+  border-radius: 50%;
+  margin-left: 10px;
+  fill: #cdd0d9;
+}
+
+.DoneBtn:hover {
+  background-color: #e0e2e8;
+  fill: white;
+}
+
+.DoneBtn:focus {
+  outline: 0;
+}
+
+/* 
+.DoneBtnDone {
+  fill: green;
+  background-color: #e6eeec;
+}
+
+.DoneBtnBurned {
+  fill: #f25137;
+  background-color: #f5e6e6;
+} */

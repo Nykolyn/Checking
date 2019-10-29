@@ -1,7 +1,10 @@
 export const ActionTypes = {
   MODAL_DELETE_TASK_OPEN: 'MODAL_DELETE_TASK_OPEN',
+  HANDLE_OPEN_STATISTICS: 'HANDLE_OPEN_STATISTICS',
+  HANDLE_OPEN_DASHBOARD: 'HANDLE_OPEN_DASHBOARD',
   HANDLE_OPEN_TABS_LIST: 'HANDLE_OPEN_TABS_LIST',
   HANDLE_OPEN_MODAL_LOGOUT: 'HANDLE_OPEN_MODAL_LOGOUT',
+  HANDLE_CLOSE_MODAL_LOGOUT: 'HANDLE_CLOSE_MODAL_LOGOUT',
   HANDLE_OPEN_BURGER_MENU: 'HANDLE_OPEN_BURGER_MENU',
   HANDLE_OPEN_СREATE_TASK_BUTTON: 'HANDLE_OPEN_СREATE_TASK_BUTTON',
 
@@ -18,8 +21,22 @@ export const modalDeleteTaskOpen = () => ({
   payload: {},
 });
 
+export const handleOpenStatistics = () => ({
+  type: ActionTypes.HANDLE_OPEN_STATISTICS,
+  payload: {},
+});
+
+export const handleOpenDashboard = () => ({
+  type: ActionTypes.HANDLE_OPEN_DASHBOARD,
+  payload: {},
+});
+
 export const modalLogoutOpen = () => ({
-  type: ActionTypes.HANDLE_OPEN_TABS_LIST,
+  type: ActionTypes.HANDLE_OPEN_MODAL_LOGOUT,
+  payload: {},
+});
+export const modalLogoutClose = () => ({
+  type: ActionTypes.HANDLE_CLOSE_MODAL_LOGOUT,
   payload: {},
 });
 
@@ -28,9 +45,9 @@ export const taskPopUpCreateOpen = () => ({
   payload: {},
 });
 
-export const taskPopUpEditOpen = () => ({
+export const taskPopUpEditOpen = isEditOpen => ({
   type: ActionTypes.HANDLE_OPEN_TASK_POPUP_EDIT,
-  payload: {},
+  payload: isEditOpen,
 });
 
 export const taskPopUpCreateClose = () => ({
