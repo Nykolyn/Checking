@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { ActionTypes as TaskActionTypes } from './taskActions';
+import { ActionTypes, ActionTypes as TaskActionTypes } from './taskActions';
 
-import { ActionTypes } from '../session/sessionActions';
+// import { ActionTypes } from '../session/sessionActions';
 
 // const tasks = (state = {}, { type, payload }) => {
 //   switch (type) {

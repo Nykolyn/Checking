@@ -7,7 +7,7 @@ const DateSelect = ({ value, onChange }) => (
   <div className={styles.selectContainer}>
     <h4 className={styles.title}>Date</h4>
     <DatePicker
-      className={styles.input}
+      className={styles.dateInput}
       value={value}
       format="MMM dd, yyyy"
       locale="en"
