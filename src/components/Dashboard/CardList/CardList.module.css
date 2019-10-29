@@ -14,17 +14,7 @@
   padding: 0;
   margin: 0;
   margin-bottom: 10px;
-  width: 300px;
-  /* height: 200px;
-  background: gold;
-  border: 1px solid red; */
-
-}
-
-/* 
-.cardItem:last-child {
-  margin-bottom: 0;
-} */
+  width: 300px;}
 
 @media screen and (min-width: 768px) {
   .cardList {
