@@ -9,9 +9,10 @@ class Registration extends Component {
   state = {};
 
   render() {
+    const screenWidth = document.documentElement.clientWidth;
     return (
       <>
-        <Header />
+        {screenWidth < 768 && <Header />}
         <div className={css.registrationWrapper}>
           <section className={css.registrationSection}>
             <div className={css.formWrapper}>

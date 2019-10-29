@@ -14,9 +14,6 @@ export const postTask = task => (dispatch, getState) => {
   const token = getToken(getState());
   if (!token) return;
 
-  // const token =
-  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYWNmMjA3NGE0YzhhMWIzNTBkN2JiZSIsImlhdCI6MTU3MTkxMzg0M30.iLdWyKTzwO9ZpoqKPhvPJJC7WCRP4Xnf3H0oz_xqpls';
-
   const dispatcher = defineDispatcher(task);
 
   switch (dispatcher) {
@@ -35,6 +32,7 @@ export const postTask = task => (dispatch, getState) => {
 
   api
     .postTask(task, token)
+    // .then(({ data }) => console.log(data.task))
     .then(({ data }) => {
       switch (dispatcher) {
         case taskTypes.TODAY:

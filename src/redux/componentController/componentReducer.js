@@ -27,6 +27,8 @@ const modalLogoutOpen = (state = false, { type, payload }) => {
   switch (type) {
     case ActionTypes.HANDLE_OPEN_MODAL_LOGOUT:
       return true;
+    case ActionTypes.HANDLE_CLOSE_MODAL_LOGOUT:
+      return false;
 
     default:
       return state;
