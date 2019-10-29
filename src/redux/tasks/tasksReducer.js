@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { ActionTypes } from './taskActions';
+import { ActionTypes , ActionTypes as TaskActionTypes } from './taskActions';
+
 
 // import { ActionTypes } from '../session/sessionActions';
 
@@ -14,6 +15,9 @@ import { ActionTypes } from './taskActions';
 
 const today = (state = [], { type, payload }) => {
   switch (type) {
+    case ActionTypes.REFRESH_USER_SUCCESS:
+      return payload.response.todayTomorrow.today;
+
     case ActionTypes.POST_TODAY_TASK_SUCCESS:
       return [...state, payload];
     case ActionTypes.UPDATE_TODAY_TASK_SUCCESS:
@@ -28,6 +32,8 @@ const today = (state = [], { type, payload }) => {
 
 const tomorrow = (state = [], { type, payload }) => {
   switch (type) {
+    case ActionTypes.REFRESH_USER_SUCCESS:
+      return payload.response.todayTomorrow.tomorrow;
     case ActionTypes.POST_TOMORROW_TASK_SUCCESS:
       return [...state, payload];
     case ActionTypes.UPDATE_TOMORROW_TASK_SUCCESS:
@@ -42,6 +48,8 @@ const tomorrow = (state = [], { type, payload }) => {
 
 const next = (state = [], { type, payload }) => {
   switch (type) {
+    case ActionTypes.REFRESH_USER_SUCCESS:
+      return payload.response.nextAfter.next;
     case ActionTypes.POST_NEXT_TASK_SUCCESS:
       return [...state, payload];
     case ActionTypes.UPDATE_NEXT_TASK_SUCCESS:
@@ -56,6 +64,8 @@ const next = (state = [], { type, payload }) => {
 
 const after = (state = [], { type, payload }) => {
   switch (type) {
+    case ActionTypes.REFRESH_USER_SUCCESS:
+      return payload.response.nextAfter.after;
     case ActionTypes.POST_AFTER_TASK_SUCCESS:
       return [...state, payload];
     case ActionTypes.UPDATE_AFTER_TASK_SUCCESS:
@@ -70,6 +80,8 @@ const after = (state = [], { type, payload }) => {
 
 const burnedOut = (state = [], { type, payload }) => {
   switch (type) {
+    case ActionTypes.REFRESH_USER_SUCCESS:
+      return payload.response.burnedOut;
     case ActionTypes.POST_BURNED_TASK_SUCCESS:
       return [...state, payload];
     case ActionTypes.DELETE_BURNED_TASK_SUCCESS:
@@ -80,29 +92,20 @@ const burnedOut = (state = [], { type, payload }) => {
   }
 };
 
-const done = (state = [], { type, payload }) => null;
-
-const taskInEditMode = (
-  state = {
-    role: 'Partner',
-    time: 'All Day',
-    priority: 3,
-    isComplete: false,
-    _id: '5db19fb87f221a047b82f150',
-    date: '2019-10-24T21:00:00.000Z',
-    title: 'test',
-    description: '',
-    userId: '5dacf2074a4c8a1b350d7bbe',
-    createdAt: '2019-10-24T12:57:28.740Z',
-    updatedAt: '2019-10-24T12:57:28.740Z',
-    __v: 0,
-  },
-  { type, payload },
-) => {
+const done = (state = [], { type, payload }) => {
   switch (type) {
-    case ActionTypes.PUT_TASK_TO_EDIT_MODE:
+    case ActionTypes.REFRESH_USER_SUCCESS:
+      return payload.response.done;
+    default:
+      return state;
+  }
+};
+
+const taskInEditMode = (state = null, { type, payload }) => {
+  switch (type) {
+    case TaskActionTypes.PUT_TASK_TO_EDIT_MODE:
       return payload;
-    case ActionTypes.REMOVE_TASK_FROM_EDIT_MODE:
+    case TaskActionTypes.REMOVE_TASK_FROM_EDIT_MODE:
       return null;
     default:
       return state;
@@ -119,4 +122,6 @@ const tasks = combineReducers({
   taskInEditMode,
 });
 
-export default tasks;
+// export default tasks;
+
+export default combineReducers({ tasks, taskInEditMode });
