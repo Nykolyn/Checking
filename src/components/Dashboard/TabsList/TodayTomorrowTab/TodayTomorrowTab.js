@@ -7,6 +7,8 @@ import CardList from '../../CardList/CardList';
 import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 
+//FILTER NE TROGAT`
+
 // const filterCard = array => {
 //   let filtredArray = [];
 //   if (array.length >= 1) {
@@ -73,6 +75,7 @@ class TodayTomorrowTab extends Component {
       todayTasks,
       tomorrowTasks,
     } = this.state;
+    //FILTER NE TROGAT`
     // const filterCardToday = filterCard(todayTasks);
     // const filterCardTomorrow = filterCard(tomorrowTasks);
     return (
@@ -95,7 +98,6 @@ class TodayTomorrowTab extends Component {
             >
               Today
             </button>
-            {/* {isOpenToday && <CardList cardItems={filterCardToday} />} */}
             {isOpenToday && <CardList cardItems={todayTasks} />}
           </section>
         </Element>
@@ -117,7 +119,6 @@ class TodayTomorrowTab extends Component {
             >
               Tomoroow
             </button>
-            {/* {isOpenTomorrow && <CardList cardItems={filterCardTomorrow} />} */}
             {isOpenTomorrow && <CardList cardItems={tomorrowTasks} />}
           </section>
         </Element>
