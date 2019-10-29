@@ -1,13 +1,13 @@
 /*eslint-disable*/
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Link, scroller } from 'react-scroll';
 import styles from './BurgerMenu.module.css';
 import { connect } from 'react-redux';
 import { burgerMenuIsOpen } from '../../../redux/componentController/controllerSelectrors';
 import {
   burgerEvent,
   burgerMenuOpen,
+  modalLogoutOpen,
 } from '../../../redux/componentController/componentActions';
 
 class BurgerMenu extends Component {
@@ -24,7 +24,12 @@ class BurgerMenu extends Component {
   };
 
   render() {
-    const { isOpen, getBurgerEvent, burgerMenuOpen } = this.props;
+    const {
+      isOpen,
+      getBurgerEvent,
+      burgerMenuOpen,
+      openModalLogout,
+    } = this.props;
     return (
       <>
         {isOpen && (
@@ -152,7 +157,8 @@ class BurgerMenu extends Component {
             <div className={styles.wrapper}>
               <button
                 type="button"
-                onClick={burgerMenuOpen}
+                // onClick={burgerMenuOpen}
+                onClick={openModalLogout}
                 className={styles.logButton}
               >
                 Log Out
@@ -171,6 +177,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getBurgerEvent: event => dispatch(burgerEvent(event.target.title)),
   burgerMenuOpen: () => dispatch(burgerMenuOpen()),
+  openModalLogout: () => dispatch(modalLogoutOpen()),
 });
 
 export default connect(
