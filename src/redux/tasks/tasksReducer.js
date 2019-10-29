@@ -1,16 +1,7 @@
 import { combineReducers } from 'redux';
-import { ActionTypes, ActionTypes as TaskActionTypes } from './taskActions';
+import { ActionTypes as TaskActionTypes } from './taskActions';
 
-// import { ActionTypes } from '../session/sessionActions';
-
-// const tasks = (state = {}, { type, payload }) => {
-//   switch (type) {
-//     case ActionTypes.REFRESH_USER_SUCCESS:
-//       return payload.response;
-//     default:
-//       return state;
-//   }
-// };
+import { ActionTypes } from '../session/sessionActions';
 
 const today = (state = [], { type, payload }) => {
   switch (type) {
@@ -121,6 +112,4 @@ const tasks = combineReducers({
   taskInEditMode,
 });
 
-// export default tasks;
-
-export default combineReducers({ tasks, taskInEditMode });
+export default tasks;
