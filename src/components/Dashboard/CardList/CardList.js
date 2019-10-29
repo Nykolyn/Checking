@@ -9,7 +9,7 @@ const task = {
   priority: 2,
   isComplete: false,
   _id: '5db19fb87f221a047b82f150',
-  date: '2019-10-24T21:00:00.000Z',
+  date: '2019-10-29T21:00:00.000Z',
   title:
     'testtesttes ttesttes  ttest  testtesttest testtesttesttest test test test test test test test test ',
   description:
