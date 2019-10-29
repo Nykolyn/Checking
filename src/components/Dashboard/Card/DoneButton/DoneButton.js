@@ -4,11 +4,6 @@ import styleSelector from '../../../../helpers/DoneBtnStyleSelectHelper';
 import style from './DoneButton.module.css';
 import { ReactComponent as ThumbUp } from '../../../../assets/icons/thumb_up-24px.svg';
 
-// doneStatus;
-
-// RemoveTask(old)
-// UpdateTask(new)
-
 export default class DoneButton extends Component {
   state = {};
 
@@ -43,39 +38,19 @@ export default class DoneButton extends Component {
   render() {
     const { inDoneTab, inBurnedOutTab, task } = this.props;
     return (
-      <button
-        type="button"
-        className={style.DoneBtn}
-        style={styleSelector(inDoneTab, inBurnedOutTab)}
-        onClick={() => {
-          this.handleClick(task);
-        }}
-      >
-        <ThumbUp />
-      </button>
+      <>
+        <button
+          disabled={inDoneTab}
+          type="button"
+          className={style.DoneBtn}
+          style={styleSelector(inDoneTab, inBurnedOutTab)}
+          onClick={() => {
+            this.handleClick(task);
+          }}
+        >
+          <ThumbUp />
+        </button>
+      </>
     );
   }
 }
-
-// const mapStateToProps = (state) => ({
-// })
-
-// export default connect(
-//   null,
-//   mDtP,
-// )(DoneButton);
-
-// export default DoneButton;
-
-// const DoneButton = ({ task, inDoneTab, inBudnedOutTab }) => (
-//   <button
-//     type="button"
-//     className={style.DoneBtn}
-//     style={styleSelector(inDoneTab, inBudnedOutTab)}
-//     onClick={() => {
-//       // doneStatus(task);
-//     }}
-//   >
-//     <ThumbUp />
-//   </button>
-// );
