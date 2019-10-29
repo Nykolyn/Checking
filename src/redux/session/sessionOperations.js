@@ -17,19 +17,6 @@ import { getToken } from './sessionSelectors';
 
 axios.defaults.baseURL = 'https://cheking.goit.co.ua/api/v1';
 
-const TASKS_DEFAULT = {
-  todayTomorrow: {
-    today: [],
-    tomorrow: [],
-  },
-  nextAfter: {
-    next: [],
-    after: [],
-  },
-  burnedOut: [{}],
-  done: [],
-};
-
 const setAuthToken = token => {
   axios.defaults.headers.common.Authorization = token;
 };
@@ -65,16 +52,7 @@ export const refreshUser = () => (dispatch, getState) => {
   axios
     .get('/tasks')
     .then(response => dispatch(refreshUserSuccess(response.data.tasks)))
-    .catch(error => {
-      if (
-        error.response.data.error ===
-        "Cannot read property 'today' of undefined"
-      ) {
-        return dispatch(refreshUserSuccess(TASKS_DEFAULT));
-      }
-
-      return dispatch(refreshUserError(error));
-    });
+    .catch(error => dispatch(refreshUserError(error)));
 };
 
 export const signOut = () => (dispatch, getState) => {
