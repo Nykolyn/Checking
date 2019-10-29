@@ -9,7 +9,7 @@ const DoneButton = ({ inDoneTab, inBudnedOutTab }) => (
     type="button"
     className={style.DoneBtn}
     style={styleSelector(inDoneTab, inBudnedOutTab)}
-    onClick={console.log('click')}
+    // onClick={console.log('click')}
   >
     <ThumbUp />
   </button>
