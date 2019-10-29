@@ -5,6 +5,7 @@ import Chart from '../../components/Statistics/Chart/Chart';
 import Table from '../../components/Statistics/Table/Table';
 import Header from '../../components/Header/Header';
 import styles from '../../components/Statistics/Statistic.module.css';
+import BackButton from '../../components/BackButton/BackButtonContainer';
 
 const storage = JSON.parse(localStorage.getItem('persist:root'));
 
@@ -56,6 +57,7 @@ class StatisticsPage extends Component {
             </div>
           </div>
         </div>
+        <BackButton />;
       </>
     );
   }

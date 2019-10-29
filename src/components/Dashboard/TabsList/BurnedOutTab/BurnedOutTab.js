@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Element } from 'react-scroll';
+import { getBurnedOutTasks } from '../../../../redux/tasks/tasksSelectors';
 import CardList from '../../CardList/CardList';
 import styles from './BurnedOutTab.module.css';
 
 class BurnedOutTab extends Component {
-  state = {};
+  state = {
+    burnedOutTasks: [],
+  };
+
+  componentDidMount() {
+    const { getBurnedOutTasks } = this.props;
+    this.setState({
+      burnedOutTasks: getBurnedOutTasks,
+    });
+  }
 
   render() {
+    const { burnedOutTasks } = this.state;
     return (
       <main className={styles.container}>
         <Element name="burnedOut">
@@ -15,7 +27,7 @@ class BurnedOutTab extends Component {
             Burned Out
           </button> */}
             <p className={styles.titleButton}>Burned Out</p>
-            <CardList />
+            <CardList cardItems={burnedOutTasks} />
           </section>
         </Element>
       </main>
@@ -23,4 +35,8 @@ class BurnedOutTab extends Component {
   }
 }
 
-export default BurnedOutTab;
+const mapStateToProps = state => ({
+  getBurnedOutTasks: getBurnedOutTasks(state),
+});
+
+export default connect(mapStateToProps)(BurnedOutTab);
