@@ -120,6 +120,7 @@ const tasks = combineReducers({
   burnedOut,
   done,
   taskInEditMode,
+  // DoneStatusChange,
 });
 
 // export default tasks;
