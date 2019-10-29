@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import { ActionTypes , ActionTypes as TaskActionTypes } from './taskActions';
-
+import { ActionTypes, ActionTypes as TaskActionTypes } from './taskActions';
 
 // import { ActionTypes } from '../session/sessionActions';
 
