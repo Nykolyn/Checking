@@ -66,15 +66,13 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/registration" component={Registration} />
-          <ProtectedComponent path="/dashboard" component={Dashboard} />
-          <ProtectedComponent path="/statistics" component={Statistics} />
-          <Redirect to="/dashboard" />
-        </Switch>
-      </>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/registration" component={Registration} />
+        <ProtectedComponent path="/dashboard" component={Dashboard} />
+        <ProtectedComponent path="/statistics" component={Statistics} />
+        <Redirect to="/dashboard" />
+      </Switch>
     );
   }
 }

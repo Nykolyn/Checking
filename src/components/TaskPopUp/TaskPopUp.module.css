@@ -79,6 +79,11 @@
   border-color: #f1f1f1;
 }
 
+.dateInput {
+  composes: input;
+  padding-left: 10px;
+}
+
 .titleInput {
   composes: input;
   margin-bottom: 24px;
