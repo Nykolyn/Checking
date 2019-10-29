@@ -1,8 +1,10 @@
 .CreateTaskButtonWrapper {
   position: fixed;
-  top: 50%;
-  left: 3%;
-  transform: translate(-50%, -50%);
+  bottom: 4%;
+  width: 57px;
+  height: 57px;
+  right: 4%;
+  z-index: 99999;
 }
 
 .createTaskModalWrapper {
@@ -12,5 +14,33 @@
 .dashboard {
   display: flex;
   flex-direction: row-reverse;
+  padding-top: 30px;
   transition: all 1s;
+  min-height: 94vh;
+  background-color: #f5f7fa;
+}
+
+@media screen and (min-width: 768px) {
+  .CreateTaskButtonWrapper {
+    bottom: 6%;
+    right: 6%;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .popUpDesctop {
+    width: 52px;
+    height: 100vh;
+    box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+  }
+
+  .CreateTaskButtonWrapper {
+    left: 3%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

@@ -33,8 +33,10 @@ class Dashboard extends Component {
                 <TaskPopUp />
               </aside>
             ) : (
-              <div className={css.CreateTaskButtonWrapper}>
-                <CreateTaskButton />
+              <div className={css.popUpDesctop}>
+                <div className={css.CreateTaskButtonWrapper}>
+                  <CreateTaskButton />
+                </div>
               </div>
             )}
           </div>
