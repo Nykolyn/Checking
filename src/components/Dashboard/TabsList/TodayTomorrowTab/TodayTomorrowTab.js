@@ -1,48 +1,60 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { connect } from 'react-redux';
 import styles from './TodayTomorowTab.module.css';
 import CardList from '../../CardList/CardList';
 import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
+import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 
-// import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
+//FILTER NE TROGAT`
 
-// const filterCardTime = array => {
-//   return array.filter(el.priority.sort());
+// const filterCard = array => {
+//   let filtredArray = [];
+//   if (array.length >= 1) {
+//     filtredArray = array.filter(el.priority.sort());
+//   }
+//   return filtredArray;
 // };
 
 class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
     isOpenTomorrow: true,
-    // todayTomorrow: null,
+    todayTasks: [],
+    tomorrowTasks: [],
   };
 
   componentDidMount() {
-    // const { todayTomorrow} = this.props;
-    // this.setState({
-    //   todayTomorrow: [...todayTomorrow],
-    // });
+    //setState  today/tomorrow tasks
+    const { getTodayTomorrowTasks } = this.props;
+    this.setState({
+      todayTasks: [...getTodayTomorrowTasks.today],
+      tomorrowTasks: [...getTodayTomorrowTasks.tomorrow],
+    });
+
+    //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (burgerEvent) {
-      scroller.scrollTo(burgerEvent, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      this.scrollFn(burgerEvent);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
+    //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (prevProps.burgerEvent !== burgerEvent) {
-      scroller.scrollTo(burgerEvent, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      this.scrollFn(burgerEvent);
     }
   }
+
+  scrollFn = value => {
+    scroller.scrollTo(value, {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+    });
+  };
 
   handleToggleToday = () => {
     this.setState(state => ({
@@ -57,8 +69,15 @@ class TodayTomorrowTab extends Component {
   };
 
   render() {
-    const { isOpenToday, isOpenTomorrow } = this.state;
-    // const filterCard = filterCardTime(todayTomorrow);
+    const {
+      isOpenToday,
+      isOpenTomorrow,
+      todayTasks,
+      tomorrowTasks,
+    } = this.state;
+    //FILTER NE TROGAT`
+    // const filterCardToday = filterCard(todayTasks);
+    // const filterCardTomorrow = filterCard(tomorrowTasks);
     return (
       <main className={styles.container}>
         <Element name="today">
@@ -79,10 +98,7 @@ class TodayTomorrowTab extends Component {
             >
               Today
             </button>
-            {isOpenToday && (
-              // <CardList cardItems={filterCard}/>
-              <CardList />
-            )}
+            {isOpenToday && <CardList cardItems={todayTasks} />}
           </section>
         </Element>
 
@@ -103,7 +119,7 @@ class TodayTomorrowTab extends Component {
             >
               Tomoroow
             </button>
-            {isOpenTomorrow && <CardList />}
+            {isOpenTomorrow && <CardList cardItems={tomorrowTasks} />}
           </section>
         </Element>
       </main>
@@ -111,9 +127,8 @@ class TodayTomorrowTab extends Component {
   }
 }
 
-// export default TodayTomorrowTab;
-
 const mapStateToProps = state => ({
+  getTodayTomorrowTasks: getTodayTomorrowTasks(state),
   burgerEvent: burgerEvent(state),
 });
 
