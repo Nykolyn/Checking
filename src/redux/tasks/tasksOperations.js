@@ -1,3 +1,5 @@
+/* eslint-disable*/
+
 import * as api from '../../services/tasks-api';
 import * as taskHandlers from './taskActions';
 import { getToken } from '../session/sessionSelectors';
