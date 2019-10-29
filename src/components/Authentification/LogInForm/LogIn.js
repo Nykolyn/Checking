@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import style from './LogInForm.module.css';
 import FormButton from '../FormButton';
+import Header from '../../Header/Header';
 import { signIn } from '../../../redux/session/sessionOperations';
 import { isAuthentificated } from '../../../redux/session/sessionSelectors';
-import Header from '../../Header/Header';
 
 class LogIn extends Component {
   // static propTypes = {
@@ -44,64 +44,62 @@ class LogIn extends Component {
     const screenWidth = document.documentElement.clientWidth;
     const { email, password } = this.state;
     return (
-      <>
-        <div className={style.wrapLogin}>
-          {screenWidth < 768 && <Header />}
-          <div className={style.loginContainer}>
-            <div className={style.imgContainer} />
+      <div className={style.wrapLogin}>
+        {screenWidth < 768 && <Header />}
+        <div className={style.loginContainer}>
+          <div className={style.imgContainer} />
 
-            <div className={style.textWrap}>
-              <div className={style.loginTextWrap}>
-                <h2 className={style.textLogin}>Log In</h2>
-                <Link to="/registration" className={style.linkCreate}>
-                  <p className={style.textCreate}>Create an account</p>
-                </Link>
+          <div className={style.textWrap}>
+            <div className={style.loginTextWrap}>
+              <h2 className={style.textLogin}>Log In</h2>
+              <Link to="/registration" className={style.linkCreate}>
+                <p className={style.textCreate}>Create an account</p>
+              </Link>
+            </div>
+
+            <div className={style.formContainer}>
+              <div className={style.mainText}>
+                <span className={style.sloganText}>
+                  Take control your life.
+                </span>
+                <span className={style.sloganText}>Just check in.</span>
               </div>
 
-              <div className={style.formContainer}>
-                <div className={style.mainText}>
-                  <span className={style.sloganText}>
-                    Take control your life.
+              <form className={style.formLogin} onSubmit={this.handleSubmit}>
+                <p className={style.textEmail}>
+                  E-mail<span className={style.star}>*</span>
+                </p>
+                <input
+                  onChange={this.handleChange}
+                  value={email}
+                  type="email"
+                  name="email"
+                  className={style.input}
+                  placeholder="your@email.com"
+                />
+                <p className={style.password}>
+                  <span className={style.textPassword}>
+                    Password<span className={style.star}>*</span>
                   </span>
-                  <span className={style.sloganText}>Just check in.</span>
-                </div>
+                  <Link to="/forgot" className={style.linkForgot}>
+                    Forgot?
+                  </Link>
+                </p>
+                <input
+                  onChange={this.handleChange}
+                  value={password}
+                  type="password"
+                  name="password"
+                  className={style.input}
+                  placeholder="yourpassword"
+                />
 
-                <form className={style.formLogin} onSubmit={this.handleSubmit}>
-                  <p className={style.textEmail}>
-                    E-mail<span className={style.star}>*</span>
-                  </p>
-                  <input
-                    onChange={this.handleChange}
-                    value={email}
-                    type="email"
-                    name="email"
-                    className={style.input}
-                    placeholder="your@email.com"
-                  />
-                  <p className={style.password}>
-                    <span className={style.textPassword}>
-                      Password<span className={style.star}>*</span>
-                    </span>
-                    <Link to="/forgot" className={style.linkForgot}>
-                      Forgot?
-                    </Link>
-                  </p>
-                  <input
-                    onChange={this.handleChange}
-                    value={password}
-                    type="password"
-                    name="password"
-                    className={style.input}
-                    placeholder="yourpassword"
-                  />
-
-                  <FormButton type="submit">Log In</FormButton>
-                </form>
-              </div>
+                <FormButton type="submit">Log In</FormButton>
+              </form>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
