@@ -1,5 +1,6 @@
 export const ActionTypes = {
   MODAL_DELETE_TASK_OPEN: 'MODAL_DELETE_TASK_OPEN',
+  MODAL_DELETE_TASK_CLOSE: 'MODAL_DELETE_TASK_CLOSE',
   HANDLE_OPEN_STATISTICS: 'HANDLE_OPEN_STATISTICS',
   HANDLE_OPEN_DASHBOARD: 'HANDLE_OPEN_DASHBOARD',
   HANDLE_OPEN_TABS_LIST: 'HANDLE_OPEN_TABS_LIST',
@@ -18,6 +19,10 @@ export const ActionTypes = {
 
 export const modalDeleteTaskOpen = () => ({
   type: ActionTypes.MODAL_DELETE_TASK_OPEN,
+  payload: {},
+});
+export const modalDeleteTaskClose = () => ({
+  type: ActionTypes.MODAL_DELETE_TASK_CLOSE,
   payload: {},
 });
 
