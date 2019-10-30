@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import style from './LogInForm.module.css';
 import FormButton from '../FormButton';
 import Header from '../../Header/Header';
-// import { signIn } from '../../../redux/session/sessionOperations';
 import { isAuthentificated } from '../../../redux/session/sessionSelectors';
 
 class LogIn extends Component {
@@ -14,10 +13,6 @@ class LogIn extends Component {
     authentificated: PropTypes.bool.isRequired,
     history: ReactRouterPropTypes.history.isRequired,
   };
-  // state = {
-  //   email: '',
-  //   password: '',
-  // };
 
   componentDidUpdate() {
     const { authentificated, history } = this.props;
@@ -25,18 +20,6 @@ class LogIn extends Component {
       history.replace('/dashboard');
     }
   }
-  // handleSubmit = e => {
-  //   e.preventDefault();
-
-  //   this.props.onLogin({ ...this.state });
-  //   this.setState({ email: '', password: '' });
-  // };
-
-  // handleChange = e => {
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
 
   render() {
     const screenWidth = document.documentElement.clientWidth;
@@ -82,6 +65,7 @@ class LogIn extends Component {
                   name="email"
                   className={style.input}
                   placeholder="your@email.com"
+                  required
                 />
                 {errors.email && touched.email && (
                   <div className={style.inputError}>{errors.email}</div>
@@ -102,9 +86,10 @@ class LogIn extends Component {
                   name="password"
                   className={style.input}
                   placeholder="yourpassword"
+                  required
                 />
-                {errors.email && touched.email && (
-                  <div className={style.inputError}>{errors.email}</div>
+                {errors.password && touched.password && (
+                  <div className={style.inputError}>{errors.password}</div>
                 )}
 
                 <FormButton type="submit">Log In</FormButton>
@@ -118,7 +103,6 @@ class LogIn extends Component {
 }
 
 LogIn.propTypes = {
-  // onLogin: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -131,11 +115,7 @@ const mapStateToProps = state => ({
   authentificated: isAuthentificated(state),
 });
 
-const mapDispatchToProps = {
-  // onLogin: signIn,
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  null,
 )(LogIn);
