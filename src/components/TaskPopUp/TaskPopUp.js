@@ -106,7 +106,7 @@ export default class TaskPopUp extends Component {
     }
     const taskToAdd = {
       role: role.label,
-      date: new Date(date).toJSON(),
+      date: new Date(date).toString(),
       title,
       description,
       time: time.label,
