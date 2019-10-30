@@ -111,6 +111,26 @@
   padding-bottom: 0;
 }
 
+.errorInput {
+  border: 1px solid red;
+}
+
+.inputError {
+  color: red;
+  margin-bottom: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+input:invalid:not(:placeholder-shown) {
+  border-color: red;
+}
+
+input:valid:not(:placeholder-shown) {
+  border-color: green;
+}
+
 @media screen and (min-width: 768px) {
   .wrapLogin {
     background-color: #f5f7fa;
