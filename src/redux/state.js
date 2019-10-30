@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
+import throttle from 'redux-throttle';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import ReduxThunk from 'redux-thunk';
 import tasks from './tasks/tasksReducer';
@@ -14,6 +15,13 @@ const persistConfig = {
   whitelist: ['token'],
 };
 
+const defaultWait = 1000;
+const defaultThrottleOption = {
+  // https://lodash.com/docs#throttle
+  leading: true,
+  trailing: true,
+};
+
 const rootReducer = combineReducers({
   session: persistReducer(persistConfig, session),
   tasks,
@@ -21,7 +29,7 @@ const rootReducer = combineReducers({
   componentController,
 });
 
-const middleware = [ReduxThunk];
+const middleware = [throttle(defaultWait, defaultThrottleOption), ReduxThunk];
 
 const enhancer =
   process.env.NODE_ENV === 'development'

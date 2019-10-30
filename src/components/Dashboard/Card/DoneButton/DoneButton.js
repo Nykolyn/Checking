@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { throttle } from 'lodash';
 import styleSelector from '../../../../helpers/DoneBtnStyleSelectHelper';
 import style from './DoneButton.module.css';
 import { ReactComponent as ThumbUp } from '../../../../assets/icons/thumb_up-24px.svg';
@@ -28,7 +29,8 @@ export default class DoneButton extends Component {
     }).isRequired,
   };
 
-  handleClick = task => {
+  handleClick = () => {
+    const { task } = this.props.task;
     const changedTask = { ...task, isComplete: true };
     const { removeTask, updateTask } = this.props;
     removeTask(task);
@@ -42,11 +44,11 @@ export default class DoneButton extends Component {
         <button
           disabled={inDoneTab}
           type="button"
-          className={style.DoneBtn}
+          className={inBurnedOutTab ? style.DoneBtnBurn : style.DoneBtn}
           style={styleSelector(inDoneTab, inBurnedOutTab)}
-          onClick={() => {
-            this.handleClick(task);
-          }}
+          onClick={throttle(() => {
+            this.handleClick();
+          }, 5000)}
         >
           <ThumbUp />
         </button>

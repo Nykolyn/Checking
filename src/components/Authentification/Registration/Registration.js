@@ -16,7 +16,7 @@ class Registration extends Component {
           <section className={css.registrationSection}>
             <div className={css.formWrapper}>
               <div className={css.formInner}>
-                <div>HEADER</div>
+                {/* <div>HEADER</div> */}
                 <div className={css.headerWrapper}>
                   <h1 className={css.title}>Create Account</h1>
                   <Link to="/login" className={css.link}>
