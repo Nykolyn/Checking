@@ -23,7 +23,7 @@ class Registration extends Component {
                 </Link>
               </div>
 
-              <RegistrationForm />
+              <RegistrationForm {...this.props} />
             </div>
           </div>
           <div className={css.imgWrapper} />
