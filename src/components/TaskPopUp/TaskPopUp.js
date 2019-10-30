@@ -1,4 +1,3 @@
-/*eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -14,7 +13,7 @@ import styles from './TaskPopUp.module.css';
 
 export default class TaskPopUp extends Component {
   static defaultProps = {
-    taskPopUpEditOpen: true,
+    taskPopUpEditOpen: false,
     taskInEditMode: null,
   };
 
@@ -106,7 +105,7 @@ export default class TaskPopUp extends Component {
     }
     const taskToAdd = {
       role: role.label,
-      date: new Date(date).toJSON(),
+      date: new Date(date).toString(),
       title,
       description,
       time: time.label,
