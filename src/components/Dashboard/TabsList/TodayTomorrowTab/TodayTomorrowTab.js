@@ -41,6 +41,21 @@ class TodayTomorrowTab extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const { getTodayTomorrowTasks } = this.props;
+    if (prevProps.getTodayTomorrowTasks.today !== getTodayTomorrowTasks.today) {
+      this.setState({
+        todayTasks: [...getTodayTomorrowTasks.today],
+      });
+    }
+
+    if (
+      prevProps.getTodayTomorrowTasks.tomorrow !==
+      getTodayTomorrowTasks.tomorrow
+    ) {
+      this.setState({
+        tomorrowTasks: [...getTodayTomorrowTasks.tomorrow],
+      });
+    }
     //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (prevProps.burgerEvent !== burgerEvent) {
