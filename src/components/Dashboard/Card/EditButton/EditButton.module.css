@@ -9,6 +9,7 @@
 .EditBtn:hover {
   background-color: #e0e2e8;
   fill: white;
+  cursor: pointer;
 }
 
 .EditBtn:focus {
