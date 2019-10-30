@@ -118,7 +118,7 @@ class TodayTomorrowTab extends Component {
                     ].join(' ')
               }
             >
-              Tomoroow
+              Tomorrow
             </button>
             {isOpenTomorrow && <CardList cardItems={tomorrowTasks} />}
           </section>

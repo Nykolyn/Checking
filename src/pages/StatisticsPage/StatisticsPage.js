@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Chart from '../../components/Statistics/Chart/Chart';
 import Table from '../../components/Statistics/Table/Table';
+import Header from '../../components/Header/Header';
 import styles from '../../components/Statistics/Statistic.module.css';
+import BackButton from '../../components/BackButton/BackButtonContainer';
 
 const storage = JSON.parse(localStorage.getItem('persist:root'));
 
@@ -40,19 +42,23 @@ class StatisticsPage extends Component {
     console.log(test);
 
     return (
-      <div className={styles.outer}>
-        <div className={styles.inner}>
-          <h2 className={styles.pageName}>Statistics</h2>
-          <div className={styles.componentsWraper}>
-            <div className={styles.chartWraper}>
-              <Chart data={done} />
-            </div>
-            <div className={styles.tableWraper}>
-              <Table data={done} />
+      <>
+        <Header />
+        <div className={styles.outer}>
+          <div className={styles.inner}>
+            <h2 className={styles.pageName}>Statistics</h2>
+            <div className={styles.componentsWraper}>
+              <div className={styles.chartWraper}>
+                <Chart data={done} />
+              </div>
+              <div className={styles.tableWraper}>
+                <Table data={done} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <BackButton />
+      </>
     );
   }
 }

@@ -47,7 +47,7 @@ const Header = ({
           )}
           <li className={styles.li}>
             <Link to="/dashboard">
-              <Logo className={styles.logo} />
+              <Logo className={styles.logo} onClick={openDashboard} />
             </Link>
           </li>
           {screenWidth > 767 && (
