@@ -10,6 +10,7 @@ import {
   burgerMenuOpen,
   modalLogoutOpen,
 } from '../../../redux/componentController/componentActions';
+import ModalLogout from '../../Dashboard/ModalLogout/ModalLogout';
 
 class BurgerMenu extends Component {
   state = {};
@@ -167,6 +168,7 @@ class BurgerMenu extends Component {
             </div>
           </nav>
         )}
+        <ModalLogout />
       </>
     );
   }

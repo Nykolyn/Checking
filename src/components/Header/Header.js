@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './Header.module.css';
@@ -63,11 +63,33 @@ const Header = ({
           )}
           {screenWidth < 768 && token && (
             <li className={styles.burgerLi}>
-              <button
-                type="button"
-                onClick={burgerMenuToogle}
-                className={isOpen ? styles.button : styles.checked}
-              />
+              {!isOpen ? (
+                <NavLink
+                  to="/menu"
+                  activeClassName={styles.selected}
+                  className={styles.link}
+                  exact
+                >
+                  <button
+                    type="button"
+                    onClick={burgerMenuToogle}
+                    className={styles.checked}
+                  />
+                </NavLink>
+              ) : (
+                <NavLink
+                  to="/dashboard"
+                  activeClassName={styles.selected}
+                  className={styles.link}
+                  exact
+                >
+                  <button
+                    type="button"
+                    onClick={burgerMenuToogle}
+                    className={styles.button}
+                  />
+                </NavLink>
+              )}
             </li>
           )}
         </ul>
