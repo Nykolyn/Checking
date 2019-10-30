@@ -28,7 +28,6 @@ class TodayTomorrowTab extends Component {
   componentDidMount() {
     //setState  today/tomorrow tasks
     const { getTodayTomorrowTasks } = this.props;
-    console.log(getTodayTomorrowTasks);
     this.setState({
       todayTasks: [...getTodayTomorrowTasks.today],
       tomorrowTasks: [...getTodayTomorrowTasks.tomorrow],
