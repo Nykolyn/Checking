@@ -7,16 +7,29 @@
   z-index: 99999;
 }
 
+.popUpDesktop {
+  position: relative;
+}
+
 .createTaskModalWrapper {
   width: 40%;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+}
+
+.createTaskModalWrapper {
+  position: static;
+  width: 100%;
 }
 
 .dashboard {
   display: flex;
   flex-direction: row-reverse;
-  padding-top: 30px;
+  padding-top: 90px;
   transition: all 1s;
-  min-height: 94vh;
+  min-height: 100vh;
   background-color: #f5f7fa;
 }
 
@@ -28,19 +41,22 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .popUpDesctop {
+  .popUpDesktop {
     width: 52px;
     height: 100vh;
     box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     background-color: #fff;
   }
 
+  .createTaskModalWrapper {
+    position: static;
+  }
+
   .CreateTaskButtonWrapper {
-    left: 3%;
+    left: 1.4%;
     top: 50%;
-    transform: translate(-50%, -50%);
   }
 }

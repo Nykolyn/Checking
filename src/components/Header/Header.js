@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './Header.module.css';
+import ModalLogout from '../Dashboard/ModalLogout/ModalLogout';
 import {
   modalLogoutOpen,
   burgerMenuOpen,
@@ -72,6 +73,7 @@ const Header = ({
           )}
         </ul>
       </nav>
+      <ModalLogout />
     </header>
   );
 };
