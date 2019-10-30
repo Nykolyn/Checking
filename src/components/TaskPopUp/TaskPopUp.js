@@ -13,7 +13,7 @@ import styles from './TaskPopUp.module.css';
 
 export default class TaskPopUp extends Component {
   static defaultProps = {
-    taskPopUpEditOpen: true,
+    taskPopUpEditOpen: false,
     taskInEditMode: null,
   };
 
