@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
+import Media from 'react-media';
 import PropTypes from 'prop-types';
-import ModalLogout from './ModalLogout/ModalLogout';
 import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
 import TabsList from './TabsList/TabsList';
 import css from './Dashbard.module.css';
@@ -23,22 +22,55 @@ class Dashboard extends Component {
       <>
         <Header />
         <main>
-          <ModalLogout />
-          <div className={css.dashboard}>
-            {/* <div className={css.tabsListWrapper}>
-              <TabsList />
-            </div> */}
-            <TabsList />
-            {taskCreateOpen ? (
-              <aside className={css.createTaskModalWrapper}>
-                <TaskPopUp />
-              </aside>
-            ) : (
-              <div className={css.CreateTaskButtonWrapper}>
-                <CreateTaskButton />
-              </div>
+          <Media
+            queries={{
+              small: '(min-width: 320px) and (max-width: 1199px)',
+              large: '(min-width: 1200px)',
+            }}
+          >
+            {matches => (
+              <>
+                {matches.small && (
+                  <>
+                    <div className={css.dashboard}>
+                      {taskCreateOpen ? (
+                        <aside className={css.createTaskModalWrapper}>
+                          <TaskPopUp />
+                        </aside>
+                      ) : (
+                        <>
+                          <TabsList />
+                          <div className={css.popUpDesktop}>
+                            <div className={css.CreateTaskButtonWrapper}>
+                              <CreateTaskButton />
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </>
+                )}
+                {matches.large && (
+                  <>
+                    <div className={css.dashboard}>
+                      <TabsList />
+                      {taskCreateOpen ? (
+                        <aside className={css.createTaskModalWrapper}>
+                          <TaskPopUp />
+                        </aside>
+                      ) : (
+                        <div className={css.popUpDesktop}>
+                          <div className={css.CreateTaskButtonWrapper}>
+                            <CreateTaskButton />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                )}
+              </>
             )}
-          </div>
+          </Media>
         </main>
       </>
     );
