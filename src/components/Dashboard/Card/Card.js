@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditButton from './EditButton/EditButton';
-import DoneButton from './DoneButton/DoneButton';
+import EditButton from './EditButton/EditButtonContainer';
+import DoneButton from './DoneButton/DoneButtonContainer';
 import {
   roleStyleSelect,
   priorityStyleSelect,
@@ -13,36 +13,35 @@ import style from './Card.module.css';
 import taskTypes from '../../../constants/taskTypes';
 import defineDispatcher from '../../../helpers/dispatchHelper';
 
-const Card = ({ task }) => {
-  return (
-    <section className={style.cardSection}>
-      <header style={roleStyleSelect(task.role)}>
-        <p className={style.cardHeader__role}>{task.role}</p>
-        <p style={priorityStyleSelect(task.priority)}>{task.priority}</p>
-      </header>
-      <div className={style.cardBody}>
-        <p className={style.cardBody__title}>{titleSlicer(task.title)}</p>
-        <p className={style.cardBody__text}>
-          {descriptionSlicer(task.description)}
+const Card = ({ task }) => (
+  <section className={style.cardSection}>
+    <header style={roleStyleSelect(task.role)}>
+      <p className={style.cardHeader__role}>{task.role}</p>
+      <p style={priorityStyleSelect(task.priority)}>{task.priority}</p>
+    </header>
+    <div className={style.cardBody}>
+      <p className={style.cardBody__title}>{titleSlicer(task.title)}</p>
+      <p className={style.cardBody__text}>
+        {descriptionSlicer(task.description)}
+      </p>
+    </div>
+    <footer className={style.cardFooter}>
+      <div className={style.cardFooter__wrap}>
+        <p className={style.cardFooter__dateTime}>
+          {dateFormatter(task.date)} | {task.time}
         </p>
       </div>
-      <footer className={style.cardFooter}>
-        <div className={style.cardFooter__wrap}>
-          <p className={style.cardFooter__dateTime}>
-            {dateFormatter(task.date)} | {task.time}
-          </p>
-        </div>
-        <div>
-          {!task.isComplete && <EditButton task={task} />}
-          <DoneButton
-            inBudnedOutTab={defineDispatcher(task) === taskTypes.BURNED}
-            inDoneTab={task.isComplete}
-          />
-        </div>
-      </footer>
-    </section>
-  );
-};
+      <div>
+        {!task.isComplete && <EditButton task={task} />}
+        <DoneButton
+          task={task}
+          inBurnedOutTab={defineDispatcher(task) === taskTypes.BURNED}
+          inDoneTab={task.isComplete}
+        />
+      </div>
+    </footer>
+  </section>
+);
 
 Card.propTypes = {
   task: PropTypes.shape({
