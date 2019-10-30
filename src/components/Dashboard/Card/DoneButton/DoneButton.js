@@ -29,8 +29,12 @@ export default class DoneButton extends Component {
     }).isRequired,
   };
 
-  handleClick = () => {
-    const { task } = this.props;
+  throttleClick = throttle(() => {
+    this.handleClick();
+  }, 1000);
+
+  handleClick = task => {
+    // const { task } = this.props;
     const changedTask = { ...task, isComplete: true };
     const { removeTask, updateTask } = this.props;
     removeTask(task);
@@ -46,9 +50,7 @@ export default class DoneButton extends Component {
           type="button"
           className={inBurnedOutTab ? style.DoneBtnBurn : style.DoneBtn}
           style={styleSelector(inDoneTab, inBurnedOutTab)}
-          onClick={throttle(() => {
-            this.handleClick();
-          }, 5000)}
+          onClick={this.throttleClick}
         >
           <ThumbUp />
         </button>
