@@ -31,7 +31,7 @@
 .dashboard {
   display: flex;
   flex-direction: row-reverse;
-  padding-top: 90px;
+  padding-top: 4px;
   transition: all 1s;
   min-height: 100vh;
   background-color: #f5f7fa;
@@ -41,6 +41,10 @@
   .CreateTaskButtonWrapper {
     bottom: 6%;
     right: 6%;
+  }
+
+  .dashboard {
+    padding-top: 90px;
   }
 }
 

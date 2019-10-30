@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
 import TabsList from './TabsList/TabsList';
 import css from './Dashbard.module.css';
 import CreateTaskButton from '../CreateTaskButton/CreateTaskButtonContainer';
 import Header from '../Header/Header';
+
+import { refreshUser } from '../../redux/session/sessionOperations';
 
 class Dashboard extends Component {
   static propTypes = {
@@ -14,7 +17,11 @@ class Dashboard extends Component {
 
   state = {};
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { refreshUserData } = this.props;
+
+    refreshUserData();
+  }
 
   render() {
     const { taskCreateOpen } = this.props;
@@ -77,4 +84,11 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mDTP = {
+  refreshUserData: refreshUser,
+};
+
+export default connect(
+  null,
+  mDTP,
+)(Dashboard);
