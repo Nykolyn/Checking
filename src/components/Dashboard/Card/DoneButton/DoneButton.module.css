@@ -10,19 +10,9 @@
 .DoneBtn:hover {
   background-color: #e0e2e8;
   fill: white;
+  cursor: pointer;
 }
 
 .DoneBtn:focus {
   outline: 0;
 }
-
-/* 
-.DoneBtnDone {
-  fill: green;
-  background-color: #e6eeec;
-}
-
-.DoneBtnBurned {
-  fill: #f25137;
-  background-color: #f5e6e6;
-} */
