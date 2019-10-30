@@ -30,7 +30,7 @@ export default class DoneButton extends Component {
   };
 
   handleClick = () => {
-    const { task } = this.props.task;
+    const { task } = this.props;
     const changedTask = { ...task, isComplete: true };
     const { removeTask, updateTask } = this.props;
     removeTask(task);
@@ -38,7 +38,7 @@ export default class DoneButton extends Component {
   };
 
   render() {
-    const { inDoneTab, inBurnedOutTab, task } = this.props;
+    const { inDoneTab, inBurnedOutTab } = this.props;
     return (
       <>
         <button
