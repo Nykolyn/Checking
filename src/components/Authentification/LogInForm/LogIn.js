@@ -74,9 +74,6 @@ class LogIn extends Component {
                   <span className={style.textPassword}>
                     Password<span className={style.star}>*</span>
                   </span>
-                  <Link to="/forgot" className={style.linkForgot}>
-                    Forgot?
-                  </Link>
                 </p>
                 <input
                   value={values.password}
