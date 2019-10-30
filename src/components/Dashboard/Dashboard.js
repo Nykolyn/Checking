@@ -27,6 +27,9 @@ class Dashboard extends Component {
           <ModalLogout />
           <BurgerMenu />
           <div className={css.dashboard}>
+            {/* <div className={css.tabsListWrapper}>
+              <TabsList />
+            </div> */}
             <TabsList />
             {taskCreateOpen ? (
               <aside className={css.createTaskModalWrapper}>

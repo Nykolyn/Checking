@@ -4,8 +4,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 757px) {
-}
+@media screen and (max-width: 757px) {}
 
 .container {
   display: block;
@@ -19,3 +18,7 @@
   display: block;
   margin: 0 auto;
 }
+
+/* .opened {
+  width: 100%;
+} */

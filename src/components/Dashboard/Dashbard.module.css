@@ -9,8 +9,29 @@
   width: 40%;
 }
 
+.tabsListWrapper {
+  width: 60%;
+}
+
 .dashboard {
   display: flex;
   flex-direction: row-reverse;
   transition: all 1s;
 }
+
+/* @media screen and (min-width: 768px) {
+  .createTaskModalWrapper {
+    width: 40%;
+  }
+
+  .tabsListWrapper {
+    width: 60%;
+  }
+
+  .dashboard {
+    min-width: 768px;
+    display: flex;
+    flex-direction: row-reverse;
+    transition: all 1s;
+  }
+} */
