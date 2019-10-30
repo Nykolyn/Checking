@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -118,6 +119,7 @@ export default class TaskPopUp extends Component {
         removeTask(taskInEditMode);
       updateTask(taskToAdd);
       taskPopUpEditClose();
+      taskPopUpCreateClose();
       removeTaskFromEditMode(taskInEditMode);
       this.reset();
       return;
@@ -138,6 +140,7 @@ export default class TaskPopUp extends Component {
     if (taskPopUpEditOpen) {
       removeTaskFromEditMode();
       taskPopUpEditClose();
+      taskPopUpCreateClose();
       return;
     }
     taskPopUpCreateClose();

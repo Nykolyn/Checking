@@ -50,13 +50,36 @@ export const priorityStyleSelect = priority => {
 };
 
 export const titleSlicer = title => {
-  const sliceTitle = title.length > 50 ? title.trim().slice(0, 49) : title;
-  return `${sliceTitle.slice(0, sliceTitle.lastIndexOf(' '))}...`;
+  let sliceTitle;
+  sliceTitle = title;
+
+  if (title.length > 50) {
+    sliceTitle = title.trim().slice(0, 49);
+    return `${sliceTitle.slice(
+      0,
+      sliceTitle.lastIndexOf(' ') > 45
+        ? sliceTitle.length
+        : sliceTitle.lastIndexOf(' '),
+    )}...`;
+  }
+
+  return sliceTitle;
 };
+
 export const descriptionSlicer = description => {
-  const descriptionTitle =
-    description.length > 100 ? description.trim().slice(0, 99) : description;
-  return `${descriptionTitle.slice(0, descriptionTitle.lastIndexOf(' '))}...`;
+  let sliceDescription;
+  sliceDescription = description;
+
+  if (description.length > 100) {
+    sliceDescription = description.trim().slice(0, 99);
+    return `${sliceDescription.slice(
+      0,
+      sliceDescription.lastIndexOf(' ') > 96
+        ? sliceDescription.length
+        : sliceDescription.lastIndexOf(' '),
+    )}...`;
+  }
+  return sliceDescription;
 };
 
 export const dateFormatter = date => {
