@@ -53,7 +53,6 @@ class TabsList extends Component {
 
   render() {
     const { taskPopUpCreateIsOpen } = this.props;
-    console.log(taskPopUpCreateIsOpen);
     return (
       // <div className={styles.container}>
       <div

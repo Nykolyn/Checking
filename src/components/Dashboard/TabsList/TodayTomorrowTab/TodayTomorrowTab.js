@@ -35,6 +35,11 @@ class TodayTomorrowTab extends Component {
 
     //scroll to event from burger menu
     const { burgerEvent } = this.props;
+    if (burgerEvent === 'tomorrow') {
+      this.setState({
+        isOpenToday: false,
+      });
+    }
     if (burgerEvent) {
       this.scrollFn(burgerEvent);
     }
@@ -90,6 +95,8 @@ class TodayTomorrowTab extends Component {
       todayTasks,
       tomorrowTasks,
     } = this.state;
+    const { burgerEvent } = this.props;
+    console.log(burgerEvent);
     //FILTER NE TROGAT`
     // const filterCardToday = filterCard(todayTasks);
     // const filterCardTomorrow = filterCard(tomorrowTasks);

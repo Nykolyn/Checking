@@ -25,6 +25,11 @@ class NexWeekTab extends Component {
 
     //scroll to event from burger menu
     const { burgerEvent } = this.props;
+    if (burgerEvent === 'after') {
+      this.setState({
+        isOpenNext: false,
+      });
+    }
     if (burgerEvent) {
       this.scrollFn(burgerEvent);
     }
