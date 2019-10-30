@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -60,13 +61,6 @@ export default class TaskPopUp extends Component {
     }
   }
 
-  // Don't delete a task before submit
-  // If cancel, delete a task from edit mode
-  // If accept: if burned out - delete a task from burned out and define new array through update
-  // if not burned out - compare date from props with new date
-  // if prevDate === new date - dispatch update
-  // if prevDate !== new date - delete a task from prevArray and dispatch update
-
   handleRoleSelect = value => this.setState({ role: value });
 
   handleDateChange = date => this.setState({ date });
@@ -125,6 +119,7 @@ export default class TaskPopUp extends Component {
         removeTask(taskInEditMode);
       updateTask(taskToAdd);
       taskPopUpEditClose();
+      taskPopUpCreateClose();
       removeTaskFromEditMode(taskInEditMode);
       this.reset();
       return;
@@ -145,6 +140,7 @@ export default class TaskPopUp extends Component {
     if (taskPopUpEditOpen) {
       removeTaskFromEditMode();
       taskPopUpEditClose();
+      taskPopUpCreateClose();
       return;
     }
     taskPopUpCreateClose();

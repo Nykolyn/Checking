@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import PropTypes from 'prop-types';
 import ModalLogout from './ModalLogout/ModalLogout';
 import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
@@ -19,7 +20,6 @@ class Dashboard extends Component {
 
   render() {
     const { taskCreateOpen } = this.props;
-    console.log(this.props);
     return (
       <>
         <Header />

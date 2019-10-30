@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -47,7 +47,7 @@ const Header = ({
           )}
           <li className={styles.li}>
             <Link to="/dashboard">
-              <Logo className={styles.logo} />
+              <Logo className={styles.logo} onClick={openDashboard} />
             </Link>
           </li>
           {screenWidth > 767 && (

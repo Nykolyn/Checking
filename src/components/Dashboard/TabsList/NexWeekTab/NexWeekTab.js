@@ -5,41 +5,45 @@ import { connect } from 'react-redux';
 import styles from './NexWeekTab.module.css';
 import CardList from '../../CardList/CardList';
 import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
-
-// import { getTodayTomorrow } from '../../../../redux/tasks/tasksSelectors';
+import { getNextAfterTasks } from '../../../../redux/tasks/tasksSelectors';
 
 class NexWeekTab extends Component {
   state = {
     isOpenNext: true,
     isOpenAfter: true,
-    // nexAfter: null,
+    nextTasks: [],
+    afterTasks: [],
   };
 
   componentDidMount() {
-    // const { nexAfter } = this.props;
-    // this.setState({
-    //   nexAfter: [...nexAfter],
-    // });
+    //setState  next/after tasks
+    const { getNextAfterTasks } = this.props;
+    this.setState({
+      nextTasks: [...getNextAfterTasks.next],
+      afterTasks: [...getNextAfterTasks.after],
+    });
+
+    //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (burgerEvent) {
-      scroller.scrollTo(burgerEvent, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      this.scrollFn(burgerEvent);
     }
   }
 
   componentDidUpdate(prevProps) {
     const { burgerEvent } = this.props;
     if (prevProps.burgerEvent !== burgerEvent) {
-      scroller.scrollTo(burgerEvent, {
-        duration: 1500,
-        delay: 100,
-        smooth: true,
-      });
+      this.scrollFn(burgerEvent);
     }
   }
+
+  scrollFn = value => {
+    scroller.scrollTo(value, {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+    });
+  };
 
   handleToggleNext = () => {
     this.setState(state => ({
@@ -54,7 +58,7 @@ class NexWeekTab extends Component {
   };
 
   render() {
-    const { isOpenNext, isOpenAfter } = this.state;
+    const { isOpenNext, isOpenAfter, nextTasks, afterTasks } = this.state;
     return (
       <main className={styles.container}>
         <Element name="next">
@@ -76,7 +80,7 @@ class NexWeekTab extends Component {
             >
               Next 7 Days
             </button>
-            {isOpenNext && <CardList />}
+            {isOpenNext && <CardList cardItems={nextTasks} />}
           </section>
         </Element>
 
@@ -97,7 +101,7 @@ class NexWeekTab extends Component {
             >
               After 7 Days
             </button>
-            {isOpenAfter && <CardList />}
+            {isOpenAfter && <CardList cardItems={afterTasks} />}
           </section>
         </Element>
       </main>
@@ -106,7 +110,7 @@ class NexWeekTab extends Component {
 }
 
 const mapStateToProps = state => ({
-  // nextAfter: getNextAfter(state),
+  getNextAfterTasks: getNextAfterTasks(state),
   burgerEvent: burgerEvent(state),
 });
 
