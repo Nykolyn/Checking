@@ -50,6 +50,10 @@ export const ActionTypes = {
   UPDATE_AFTER_TASK_SUCCESS: 'UPDATE_AFTER_TASK_SUCCESS',
   UPDATE_AFTER_TASK_ERROR: 'UPDATE_AFTER_TASK_ERROR',
 
+  UPDATE_DONE_TASK_REQUEST: 'UPDATE_DONE_TASK_REQUEST',
+  UPDATE_DONE_TASK_SUCCESS: 'UPDATE_DONE_TASK_SUCCESS',
+  UPDATE_DONE_TASK_ERROR: 'UPDATE_DONE_TASK_ERROR',
+
   // DELETE
 
   DELETE_TODAY_TASK_REQUEST: 'DELETE_TODAY_TASK_REQUEST',
@@ -248,6 +252,22 @@ export const updateTaskAfterSuccess = task => ({
 
 export const updateTaskAfterError = err => ({
   type: ActionTypes.UPDATE_AFTER_TASK_ERROR,
+  payload: err,
+});
+
+// UPDATE DONE TASK
+
+export const updateTaskDoneRequest = () => ({
+  type: ActionTypes.UPDATE_DONE_TASK_REQUEST,
+});
+
+export const updateTaskDoneSuccess = task => ({
+  type: ActionTypes.UPDATE_DONE_TASK_SUCCESS,
+  payload: task,
+});
+
+export const updateTaskDoneError = err => ({
+  type: ActionTypes.UPDATE_DONE_TASK_ERROR,
   payload: err,
 });
 
