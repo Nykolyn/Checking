@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import styles from './ModalDeleteTask.module.css';
 import { modalDeleteTaskClose } from '../../../redux/componentController/componentActions';
 import { deleteTask } from '../../../redux/tasks/tasksOperations';
+import { refreshUser } from '../../../redux/session/sessionOperations';
 class ModalDeleteTask extends Component {
   backdropRef = createRef();
 
@@ -20,7 +21,9 @@ class ModalDeleteTask extends Component {
   };
 
   onDeleteTask = () => {
-    return this.props.deleteTask(this.props.taskToDelete);
+    this.props.deleteTask(this.props.taskToDelete);
+    this.props.handleCloseEditModal();
+    return;
   };
 
   handleKeyPress = e => {
@@ -80,7 +83,11 @@ const mapStateToProps = state => ({
   openModalDeleteTask: state.componentController.modalDeleteTaskOpen,
 });
 
-const mapDispatchToProps = { modalDeleteTaskClose, deleteTask };
+const mapDispatchToProps = {
+  modalDeleteTaskClose,
+  deleteTask,
+  getAllTasks: refreshUser,
+};
 
 export default connect(
   mapStateToProps,

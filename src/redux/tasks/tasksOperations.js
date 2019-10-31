@@ -143,22 +143,22 @@ export const deleteTask = task => (dispatch, getState) => {
   }
   api
     .deleteTask(token, task._id)
-    .then(res => {
+    .then(() => {
       switch (dispatcher) {
         case taskTypes.TODAY:
-          dispatch(taskHandlers.deleteTaskTodaySuccess(res.task));
+          dispatch(taskHandlers.deleteTaskTodaySuccess(task));
           break;
         case taskTypes.TOMORROW:
-          dispatch(taskHandlers.deleteTaskTomorrowSuccess(res.task));
+          dispatch(taskHandlers.deleteTaskTomorrowSuccess(task));
           break;
         case taskTypes.NEXT:
-          dispatch(taskHandlers.deleteTaskNextSuccess(res.task));
+          dispatch(taskHandlers.deleteTaskNextSuccess(task));
           break;
         case taskTypes.AFTER:
-          dispatch(taskHandlers.deleteTaskAfterSuccess(res.task));
+          dispatch(taskHandlers.deleteTaskAfterSuccess(task));
           break;
         default:
-          dispatch(taskHandlers.deleteTaskBurnedSuccess(res.task));
+          dispatch(taskHandlers.deleteTaskBurnedSuccess(task));
       }
     })
     .catch(error => {

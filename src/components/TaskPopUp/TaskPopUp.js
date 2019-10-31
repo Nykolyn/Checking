@@ -237,7 +237,10 @@ export default class TaskPopUp extends Component {
             Accept
           </button>
         </div>
-        <ModalDeleteTask taskToDelete={this.props.taskInEditMode} />
+        <ModalDeleteTask
+          handleCloseEditModal={this.handleClose}
+          taskToDelete={this.props.taskInEditMode}
+        />
       </form>
     );
   }
