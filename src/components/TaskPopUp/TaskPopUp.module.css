@@ -10,7 +10,7 @@
 
 .title {
   margin: 0;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   font-size: 14px;
   color: #a09a9a;
 }
@@ -23,7 +23,7 @@
 
 .createTaskTitle {
   composes: title;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 22px;
   font-weight: 500;
   color: #000;
@@ -46,7 +46,7 @@
 
 .helperDiv {
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
 }
@@ -86,14 +86,14 @@
 
 .titleInput {
   composes: input;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   font-size: 16px;
 }
 
 .textarea {
   box-sizing: border-box;
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   background-color: #f5f7fa;
   border-width: 2px 0 0 0;
   border-style: solid;
@@ -112,7 +112,7 @@
   position: relative;
   width: 40%;
   padding-top: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
 }
@@ -190,7 +190,7 @@
   .svgBtn {
     display: block;
     margin: 0 auto;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .priorityDiv {

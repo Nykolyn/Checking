@@ -202,7 +202,7 @@ export default class TaskPopUp extends Component {
           value={description}
           className={styles.textarea}
           placeholder="Your description"
-          rows={10}
+          rows={3}
           onChange={this.handleTextInput}
         />
         <div className={styles.flexHelperDiv}>
