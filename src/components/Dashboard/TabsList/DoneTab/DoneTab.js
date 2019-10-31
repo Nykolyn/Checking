@@ -18,6 +18,15 @@ class DoneTab extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { getDone } = this.props;
+    if (prevProps.getDone !== getDone) {
+      this.setState({
+        doneTasks: getDone,
+      });
+    }
+  }
+
   render() {
     const { doneTasks } = this.state;
     return (

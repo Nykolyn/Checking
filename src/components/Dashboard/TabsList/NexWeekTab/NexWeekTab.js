@@ -25,12 +25,31 @@ class NexWeekTab extends Component {
 
     //scroll to event from burger menu
     const { burgerEvent } = this.props;
+    if (burgerEvent === 'after') {
+      this.setState({
+        isOpenNext: false,
+      });
+    }
     if (burgerEvent) {
       this.scrollFn(burgerEvent);
     }
   }
 
   componentDidUpdate(prevProps) {
+    const { getNextAfterTasks } = this.props;
+    if (prevProps.getNextAfterTasks.next !== getNextAfterTasks.next) {
+      this.setState({
+        nextTasks: [...getNextAfterTasks.next],
+      });
+    }
+
+    if (prevProps.getNextAfterTasks.after !== getNextAfterTasks.after) {
+      this.setState({
+        afterTasks: [...getNextAfterTasks.after],
+      });
+    }
+
+    //scroll to event from burger menu
     const { burgerEvent } = this.props;
     if (prevProps.burgerEvent !== burgerEvent) {
       this.scrollFn(burgerEvent);
