@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-// import { throttle } from 'lodash';
-import styleSelector from '../../../../helpers/DoneBtnStyleSelectHelper';
-import style from './DoneButton.module.css';
-import Loaders from '../../TabsList/Loaders';
-import { ReactComponent as ThumbUp } from '../../../../assets/icons/thumb_up-24px.svg';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import styleSelector from "../../../../helpers/DoneBtnStyleSelectHelper";
+import style from "./DoneButton.module.css";
+import Loaders from "../../TabsList/Loaders";
+import { ReactComponent as ThumbUp } from "../../../../assets/icons/thumb_up-24px.svg";
 
 export default class DoneButton extends Component {
   state = {
-    isLoading: false,
+    isLoading: false
   };
 
   static propTypes = {
@@ -28,8 +27,8 @@ export default class DoneButton extends Component {
       userId: PropTypes.string,
       createdAt: PropTypes.string,
       updatedAt: PropTypes.string,
-      __v: PropTypes.number,
-    }).isRequired,
+      __v: PropTypes.number
+    }).isRequired
   };
 
   handleLoader = () => {
