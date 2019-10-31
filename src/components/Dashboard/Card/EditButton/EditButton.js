@@ -3,11 +3,20 @@ import PropTypes from 'prop-types';
 import style from './EditButton.module.css';
 import { ReactComponent as Edit } from '../../../../assets/icons/edit-24px.svg';
 
-const EditButton = ({ task, onClick, TaskToEditMode, PopUpCreateOpen }) => (
+const EditButton = ({
+  task,
+  onClick,
+  TaskToEditMode,
+  PopUpCreateOpen,
+  taskPopUpEditClose,
+  removeTaskFromEditMode,
+}) => (
   <button
     type="button"
     className={style.EditBtn}
     onClick={() => {
+      taskPopUpEditClose();
+      removeTaskFromEditMode();
       onClick();
       TaskToEditMode(task);
       PopUpCreateOpen();
@@ -36,6 +45,8 @@ EditButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   TaskToEditMode: PropTypes.func.isRequired,
   PopUpCreateOpen: PropTypes.func.isRequired,
+  taskPopUpEditClose: PropTypes.func.isRequired,
+  removeTaskFromEditMode: PropTypes.func.isRequired,
 };
 
 export default EditButton;

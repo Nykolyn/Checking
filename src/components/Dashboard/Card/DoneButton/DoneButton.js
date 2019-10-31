@@ -38,10 +38,10 @@ export default class DoneButton extends Component {
   handleClick = task => {
     const changedTask = { ...task, isComplete: true, date: new Date() };
     const { removeTask, updateTask } = this.props;
-    // this.handleLoader();
+    this.handleLoader();
     removeTask(task);
     updateTask(changedTask);
-    // this.handleLoader();
+    this.handleLoader();
   };
 
   render() {
@@ -59,7 +59,9 @@ export default class DoneButton extends Component {
           type="button"
           className={inBurnedOutTab ? style.DoneBtnBurn : style.DoneBtn}
           style={styleSelector(inDoneTab, inBurnedOutTab)}
-          onClick={this.handleClick(task)}
+          onClick={() => {
+            this.handleClick(task);
+          }}
         >
           <ThumbUp />
         </button>

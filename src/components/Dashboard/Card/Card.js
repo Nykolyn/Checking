@@ -28,7 +28,8 @@ const Card = ({ task }) => (
     <footer className={style.cardFooter}>
       <div className={style.cardFooter__wrap}>
         <p className={style.cardFooter__dateTime}>
-          {dateFormatter(task.date)} | {task.time}
+          {dateFormatter(task.date)}
+          {!task.isComplete && <> | {task.time}</>}
         </p>
       </div>
       <div className={style.cardFooter__btnWrapper}>
