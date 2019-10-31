@@ -5,6 +5,7 @@
 }
 
 .container {
+  padding-top: 30px;
   display: block;
   padding: 0;
   margin: 0 auto;
@@ -12,7 +13,7 @@
   min-width: 320x;
 }
 
-.content {
+s .content {
   display: block;
   margin: 0 auto;
 }
