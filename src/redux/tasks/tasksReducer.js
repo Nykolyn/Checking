@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { combineReducers } from 'redux';
 import { ActionTypes as SessionActionTypes } from '../session/sessionActions';
 import { ActionTypes } from './taskActions';
@@ -112,7 +111,6 @@ const tasks = combineReducers({
   burnedOut,
   done,
   taskInEditMode,
-  // DoneStatusChange,
 });
 
 export default tasks;
