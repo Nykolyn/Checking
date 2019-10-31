@@ -59,7 +59,7 @@ const taskPopUpEditOpen = (state = false, { type, payload }) => {
   }
 };
 
-const burgerMenuOpen = (state = true, { type, payload }) => {
+const burgerMenuOpen = (state = false, { type, payload }) => {
   switch (type) {
     case ActionTypes.HANDLE_OPEN_BURGER_MENU:
       return !state;

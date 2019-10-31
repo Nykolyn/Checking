@@ -11,24 +11,26 @@ class Registration extends Component {
   render() {
     const screenWidth = document.documentElement.clientWidth;
     return (
-      <div className={css.registrationWrapper}>
-        <section className={css.registrationSection}>
-          <div className={css.formWrapper}>
-            <div className={css.formInner}>
-              {screenWidth < 768 && <Header />}
-              <div className={css.headerWrapper}>
-                <h1 className={css.title}>Create Account</h1>
-                <Link to="/login" className={css.link}>
-                  Login
-                </Link>
-              </div>
+      <>
+        {screenWidth < 768 && <Header />}
+        <div className={css.registrationWrapper}>
+          <section className={css.registrationSection}>
+            <div className={css.formWrapper}>
+              <div className={css.formInner}>
+                <div className={css.headerWrapper}>
+                  <h1 className={css.title}>Create Account</h1>
+                  <Link to="/login" className={css.link}>
+                    Login
+                  </Link>
+                </div>
 
-              <RegistrationForm />
+                <RegistrationForm {...this.props} />
+              </div>
             </div>
-          </div>
-          <div className={css.imgWrapper} />
-        </section>
-      </div>
+            <div className={css.imgWrapper} />
+          </section>
+        </div>
+      </>
     );
   }
 }
