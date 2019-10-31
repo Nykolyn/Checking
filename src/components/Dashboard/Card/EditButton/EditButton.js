@@ -19,7 +19,7 @@ const EditButton = ({
       removeTaskFromEditMode();
       onClick();
       TaskToEditMode(task);
-      PopUpCreateOpen();
+      // PopUpCreateOpen();
       // taskPopUpCreate must be closed on click
     }}
   >
