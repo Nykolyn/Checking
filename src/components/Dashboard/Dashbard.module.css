@@ -26,7 +26,7 @@
   display: flex;
 
   transition: all 1s;
-  height: calc(100vh - 52px);
+  min-height: calc(100vh - 52px);
   background-color: #f5f7fa;
 }
 
@@ -38,12 +38,10 @@
 }
 
 @media screen and (min-width: 980px) {
-  .dashboard {
-    overflow: hidden;
-  }
+
   .popUpDesktop {
     width: 52px;
-    height: calc(100vh - 52px);
+    min-height: calc(100vh - 52px);
     box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
     bottom: 0;
     left: 0;
@@ -63,9 +61,9 @@
   }
 
   .CreateTaskButtonWrapper {
-    right: 0;
-    transform: translate(50%, -50%);
-    position: absolute;
+    left: 1.8%;
+    transform: translateY(-50%);
+    position: fixed;
     top: 50%;
   }
 
