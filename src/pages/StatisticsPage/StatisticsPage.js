@@ -9,32 +9,7 @@ import BackButton from '../../components/BackButton/BackButtonContainer';
 // import { array } from '../../../../../AppData/Local/Microsoft/TypeScript/3.6/node_modules/@types/prop-types';
 import roleFilter from '../../helpers/roleFilter';
 
-// const storage = JSON.parse(localStorage.getItem('persist:root'));
-
-// const config = {
-//   headers: {
-//     Authorization: storage ? storage.token.slice(1, -1) : '',
-//   },
-// };
-
 class StatisticsPage extends Component {
-  // state = {
-  //   done: [],
-  // };
-
-  // componentDidMount() {
-  //   axios
-  //     .get('https://cheking.goit.co.ua/api/v1/tasks', config)
-  //     .then(response => {
-  //       const { data } = response;
-
-  //       this.setState({ done: [...data.tasks.done] });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
-
   rolesSum = (todayTomorrow, nextAfter, burnedOut, done) => {
     const { today, tomorrow } = todayTomorrow;
     const { next, after } = nextAfter;
