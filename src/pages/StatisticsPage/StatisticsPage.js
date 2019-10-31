@@ -6,7 +6,6 @@ import Table from '../../components/Statistics/Table/Table';
 import Header from '../../components/Header/Header';
 import styles from '../../components/Statistics/Statistic.module.css';
 import BackButton from '../../components/BackButton/BackButtonContainer';
-// import { array } from '../../../../../AppData/Local/Microsoft/TypeScript/3.6/node_modules/@types/prop-types';
 import roleFilter from '../../helpers/roleFilter';
 
 class StatisticsPage extends Component {
