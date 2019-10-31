@@ -30,3 +30,16 @@
 .DoneBtn:focus {
   outline: 0;
 }
+
+.loaderWrapper {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  right: -12px;
+  top: -158px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cdd0d9;
+  opacity: 0.8;
+}

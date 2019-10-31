@@ -66,3 +66,7 @@
   color: #869096;
   font-size: 11px;
 }
+
+.cardFooter__btnWrapper {
+  position: relative;
+}

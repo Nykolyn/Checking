@@ -31,7 +31,7 @@ const Card = ({ task }) => (
           {dateFormatter(task.date)} | {task.time}
         </p>
       </div>
-      <div>
+      <div className={style.cardFooter__btnWrapper}>
         {!task.isComplete && <EditButton task={task} />}
         <DoneButton
           task={task}
