@@ -34,8 +34,8 @@ class Dashboard extends Component {
         <main>
           <Media
             queries={{
-              small: '(min-width: 320px) and (max-width: 1199px)',
-              large: '(min-width: 1200px)',
+              small: '(min-width: 320px) and (max-width: 979px)',
+              large: '(min-width: 980px)',
             }}
           >
             {matches => (
@@ -82,7 +82,7 @@ class Dashboard extends Component {
                       className={`${
                         taskCreateOpen
                           ? css.tabsListContainerOpen
-                          : css.tabsListContainer
+                          : css.tabsListContainerClose
                       }`}
                     >
                       <TabsList />
