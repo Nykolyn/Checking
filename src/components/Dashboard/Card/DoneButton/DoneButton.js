@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Throttle } from 'react-throttle';
 import styleSelector from '../../../../helpers/DoneBtnStyleSelectHelper';
 import style from './DoneButton.module.css';
 import Loaders from '../../TabsList/Loaders';
@@ -32,16 +33,16 @@ export default class DoneButton extends Component {
   };
 
   handleLoader = () => {
-    this.setState(prevState => ({ isLoading: !prevState.isLoading }));
+    return this.setState(prevState => ({ isLoading: !prevState.isLoading }));
   };
 
   handleClick = task => {
     const changedTask = { ...task, isComplete: true, date: new Date() };
     const { removeTask, updateTask } = this.props;
-    this.handleLoader();
-    removeTask(task);
-    updateTask(changedTask);
-    this.handleLoader();
+    setTimeout(() => {
+      removeTask(task);
+      updateTask(changedTask);
+    }, 1000);
   };
 
   render() {
@@ -49,22 +50,25 @@ export default class DoneButton extends Component {
     const { inDoneTab, inBurnedOutTab, task } = this.props;
     return (
       <>
+        <Throttle time="1000" handler="onClick">
+          <button
+            disabled={inDoneTab}
+            type="button"
+            className={inBurnedOutTab ? style.DoneBtnBurn : style.DoneBtn}
+            style={styleSelector(inDoneTab, inBurnedOutTab)}
+            onClick={() => {
+              this.handleLoader();
+              this.handleClick(task);
+            }}
+          >
+            <ThumbUp />
+          </button>
+        </Throttle>
         {isLoading && (
           <div className={style.loaderWrapper}>
             <Loaders />
           </div>
         )}
-        <button
-          disabled={inDoneTab}
-          type="button"
-          className={inBurnedOutTab ? style.DoneBtnBurn : style.DoneBtn}
-          style={styleSelector(inDoneTab, inBurnedOutTab)}
-          onClick={() => {
-            this.handleClick(task);
-          }}
-        >
-          <ThumbUp />
-        </button>
       </>
     );
   }

@@ -49,7 +49,7 @@ export default class TaskPopUp extends Component {
   componentDidMount() {
     const { taskPopUpEditOpen, taskInEditMode } = this.props;
     if (taskPopUpEditOpen) {
-      const taskToEdit = { ...taskInEditMode };
+      let taskToEdit = { ...taskInEditMode };
       const { role, date, title, description, time, priority } = taskToEdit;
       this.setState({
         role: roles.find(elem => elem.label === role),
@@ -141,7 +141,7 @@ export default class TaskPopUp extends Component {
     if (taskPopUpEditOpen) {
       removeTaskFromEditMode();
       taskPopUpEditClose();
-      // taskPopUpCreateClose();
+      taskPopUpCreateClose();
       return;
     }
     taskPopUpCreateClose();
@@ -159,8 +159,9 @@ export default class TaskPopUp extends Component {
 
   render() {
     const windowWidth = document.documentElement.clientWidth;
-    const { taskPopUpEditOpen } = this.props;
+    const { taskPopUpEditOpen, taskInEditMode } = this.props;
     const { role, date, title, description, time, priority } = this.state;
+
     return (
       <form className={styles.outer}>
         {!taskPopUpEditOpen ? (
@@ -181,16 +182,19 @@ export default class TaskPopUp extends Component {
         )}
         <div className={styles.helperDiv}>
           <RoleSelect
-            value={role}
+            value={taskInEditMode ? taskInEditMode.role : role}
             onChange={this.handleRoleSelect}
             taskPopUpEditOpen={taskPopUpEditOpen}
           />
-          <DateSelect value={date} onChange={this.handleDateChange} />
+          <DateSelect
+            value={taskInEditMode ? taskInEditMode.date : date}
+            onChange={this.handleDateChange}
+          />
         </div>
         <h4 className={styles.titleTitle}>Title (up to 150 characters)</h4>
         <input
           name="title"
-          value={title}
+          value={taskInEditMode ? taskInEditMode.title : title}
           className={styles.titleInput}
           type="text"
           placeholder="Write title"
@@ -200,16 +204,19 @@ export default class TaskPopUp extends Component {
         <h4 className={styles.title}>Description (up to 800 characters)</h4>
         <textarea
           name="description"
-          value={description}
+          value={taskInEditMode ? taskInEditMode.description : description}
           className={styles.textarea}
           placeholder="Your description"
           rows={3}
           onChange={this.handleTextInput}
         />
         <div className={styles.flexHelperDiv}>
-          <TimeSelect value={time} onChange={this.handleTimeSelect} />
+          <TimeSelect
+            value={taskInEditMode ? taskInEditMode.time : time}
+            onChange={this.handleTimeSelect}
+          />
           <PrioritySelect
-            priority={priority}
+            priority={taskInEditMode ? taskInEditMode.priority : priority}
             onClick={this.handlePrioritySelect}
           />
         </div>

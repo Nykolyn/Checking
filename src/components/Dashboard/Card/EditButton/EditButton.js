@@ -7,20 +7,17 @@ const EditButton = ({
   task,
   onClick,
   TaskToEditMode,
-  PopUpCreateOpen,
-  taskPopUpEditClose,
   removeTaskFromEditMode,
+  taskPopUpCreateOpen,
 }) => (
   <button
     type="button"
     className={style.EditBtn}
     onClick={() => {
-      taskPopUpEditClose();
       removeTaskFromEditMode();
       onClick();
       TaskToEditMode(task);
-      // PopUpCreateOpen();
-      // taskPopUpCreate must be closed on click
+      taskPopUpCreateOpen();
     }}
   >
     <Edit />
@@ -44,9 +41,8 @@ EditButton.propTypes = {
   }).isRequired,
   onClick: PropTypes.func.isRequired,
   TaskToEditMode: PropTypes.func.isRequired,
-  PopUpCreateOpen: PropTypes.func.isRequired,
-  taskPopUpEditClose: PropTypes.func.isRequired,
   removeTaskFromEditMode: PropTypes.func.isRequired,
+  taskPopUpCreateOpen: PropTypes.func.isRequired,
 };
 
 export default EditButton;
