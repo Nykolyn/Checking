@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import Chart from '../../components/Statistics/Chart/Chart';
 import Table from '../../components/Statistics/Table/Table';
 import Header from '../../components/Header/Header';
@@ -74,6 +73,7 @@ class StatisticsPage extends Component {
   render() {
     const { tasks } = this.props;
     const { burnedOut, nextAfter, todayTomorrow, done } = tasks.tasks;
+    const screenWidth = document.documentElement.clientWidth;
 
     return (
       <>
@@ -97,9 +97,9 @@ class StatisticsPage extends Component {
                 />
               </div>
             </div>
+            {screenWidth < 768 && <BackButton className={styles.button} />}
           </div>
         </div>
-        <BackButton />
       </>
     );
   }
