@@ -158,7 +158,7 @@ export default class TaskPopUp extends Component {
 
   render() {
     const windowWidth = document.documentElement.clientWidth;
-    const { taskPopUpEditOpen } = this.props;
+    const { taskPopUpEditOpen, taskInEditMode } = this.props;
     const { role, date, title, description, time, priority } = this.state;
     return (
       <form className={styles.outer}>
@@ -239,7 +239,7 @@ export default class TaskPopUp extends Component {
         </div>
         <ModalDeleteTask
           handleCloseEditModal={this.handleClose}
-          taskToDelete={this.props.taskInEditMode}
+          taskToDelete={taskInEditMode}
         />
       </form>
     );

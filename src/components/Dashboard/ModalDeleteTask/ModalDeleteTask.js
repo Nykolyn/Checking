@@ -1,11 +1,20 @@
-/*eslint-disable*/
 import React, { Component, createRef } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './ModalDeleteTask.module.css';
 import { modalDeleteTaskClose } from '../../../redux/componentController/componentActions';
 import { deleteTask } from '../../../redux/tasks/tasksOperations';
 import { refreshUser } from '../../../redux/session/sessionOperations';
+
 class ModalDeleteTask extends Component {
+  static propTypes = {
+    modalDeleteTaskClose: PropTypes.func.isRequired,
+    deleteTask: PropTypes.func.isRequired,
+    taskToDelete: PropTypes.func.isRequired,
+    handleCloseEditModal: PropTypes.func.isRequired,
+    openModalDeleteTask: PropTypes.bool.isRequired,
+  };
+
   backdropRef = createRef();
 
   componentDidMount() {
@@ -23,7 +32,6 @@ class ModalDeleteTask extends Component {
   onDeleteTask = () => {
     this.props.deleteTask(this.props.taskToDelete);
     this.props.handleCloseEditModal();
-    return;
   };
 
   handleKeyPress = e => {
@@ -33,7 +41,6 @@ class ModalDeleteTask extends Component {
 
   handleBackdropClick = e => {
     const { current } = this.backdropRef;
-    console.log(current);
     if (current && e.target !== current) {
       return;
     }
@@ -41,10 +48,11 @@ class ModalDeleteTask extends Component {
   };
 
   render() {
-    // const { task } = this.props;
+    const { openModalDeleteTask } = this.props;
     return (
-      this.props.openModalDeleteTask && (
+      openModalDeleteTask && (
         <div
+          role="dialog"
           className={styles.backdrop}
           ref={this.backdropRef}
           onClick={this.handleBackdropClick}

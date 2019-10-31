@@ -1,10 +1,17 @@
-/*eslint-disable*/
 import React, { Component, createRef } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './ModalLogout.module.css';
 import { modalLogoutClose } from '../../../redux/componentController/componentActions';
 import { signOut } from '../../../redux/session/sessionOperations';
+
 class ModalLogout extends Component {
+  static propTypes = {
+    modalLogoutClose: PropTypes.func.isRequired,
+    signOut: PropTypes.func.isRequired,
+    openModalLogout: PropTypes.bool.isRequired,
+  };
+
   backdropRef = createRef();
 
   componentDidMount() {
@@ -30,7 +37,6 @@ class ModalLogout extends Component {
 
   handleBackdropClick = e => {
     const { current } = this.backdropRef;
-    console.log(current);
     if (current && e.target !== current) {
       return;
     }
@@ -38,9 +44,11 @@ class ModalLogout extends Component {
   };
 
   render() {
+    const { openModalLogout } = this.props;
     return (
-      this.props.openModalLogout && (
+      openModalLogout && (
         <div
+          role="dialog"
           className={styles.backdrop}
           ref={this.backdropRef}
           onClick={this.handleBackdropClick}
