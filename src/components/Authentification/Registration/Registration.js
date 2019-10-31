@@ -9,14 +9,14 @@ class Registration extends Component {
   state = {};
 
   render() {
+    const screenWidth = document.documentElement.clientWidth;
     return (
       <>
-        <Header />
+        {screenWidth < 768 && <Header />}
         <div className={css.registrationWrapper}>
           <section className={css.registrationSection}>
             <div className={css.formWrapper}>
               <div className={css.formInner}>
-                <div>HEADER</div>
                 <div className={css.headerWrapper}>
                   <h1 className={css.title}>Create Account</h1>
                   <Link to="/login" className={css.link}>
@@ -24,7 +24,7 @@ class Registration extends Component {
                   </Link>
                 </div>
 
-                <RegistrationForm />
+                <RegistrationForm {...this.props} />
               </div>
             </div>
             <div className={css.imgWrapper} />

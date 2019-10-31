@@ -1,4 +1,6 @@
 export const ActionTypes = {
+  // EDIT MODE
+
   PUT_TASK_TO_EDIT_MODE: 'PUT_TASK_TO_EDIT_MODE',
   REMOVE_TASK_FROM_EDIT_MODE: 'REMOVE_TASK_FROM_EDIT_MODE',
 
@@ -47,6 +49,10 @@ export const ActionTypes = {
   UPDATE_AFTER_TASK_REQUEST: 'UPDATE_AFTER_TASK_REQUEST',
   UPDATE_AFTER_TASK_SUCCESS: 'UPDATE_AFTER_TASK_SUCCESS',
   UPDATE_AFTER_TASK_ERROR: 'UPDATE_AFTER_TASK_ERROR',
+
+  UPDATE_DONE_TASK_REQUEST: 'UPDATE_DONE_TASK_REQUEST',
+  UPDATE_DONE_TASK_SUCCESS: 'UPDATE_DONE_TASK_SUCCESS',
+  UPDATE_DONE_TASK_ERROR: 'UPDATE_DONE_TASK_ERROR',
 
   // DELETE
 
@@ -246,6 +252,22 @@ export const updateTaskAfterSuccess = task => ({
 
 export const updateTaskAfterError = err => ({
   type: ActionTypes.UPDATE_AFTER_TASK_ERROR,
+  payload: err,
+});
+
+// UPDATE DONE TASK
+
+export const updateTaskDoneRequest = () => ({
+  type: ActionTypes.UPDATE_DONE_TASK_REQUEST,
+});
+
+export const updateTaskDoneSuccess = task => ({
+  type: ActionTypes.UPDATE_DONE_TASK_SUCCESS,
+  payload: task,
+});
+
+export const updateTaskDoneError = err => ({
+  type: ActionTypes.UPDATE_DONE_TASK_ERROR,
   payload: err,
 });
 

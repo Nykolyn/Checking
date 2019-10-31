@@ -17,6 +17,15 @@ class BurnedOutTab extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { getBurnedOutTasks } = this.props;
+    if (prevProps.getBurnedOutTasks !== getBurnedOutTasks) {
+      this.setState({
+        burnedOutTasks: getBurnedOutTasks,
+      });
+    }
+  }
+
   render() {
     const { burnedOutTasks } = this.state;
     return (

@@ -125,7 +125,7 @@ class StatisticsPage extends Component {
             </div>
           </div>
         </div>
-        <BackButton />;
+        <BackButton />
       </>
     );
   }

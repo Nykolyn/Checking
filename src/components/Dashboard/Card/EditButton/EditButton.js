@@ -1,19 +1,17 @@
-// /* eslint-disable */
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './EditButton.module.css';
 import { ReactComponent as Edit } from '../../../../assets/icons/edit-24px.svg';
-import { taskPopUpEditOpen } from '../../../../redux/componentController/componentActions';
-import { putTaskToEditMode } from '../../../../redux/tasks/taskActions';
 
-const EditButton = ({ task, onClick, TaskToEditMode }) => (
+const EditButton = ({ task, onClick, TaskToEditMode, PopUpCreateOpen }) => (
   <button
     type="button"
     className={style.EditBtn}
     onClick={() => {
       onClick();
       TaskToEditMode(task);
+      // PopUpCreateOpen();
+      // taskPopUpCreate must be closed on click
     }}
   >
     <Edit />
@@ -37,14 +35,7 @@ EditButton.propTypes = {
   }).isRequired,
   onClick: PropTypes.func.isRequired,
   TaskToEditMode: PropTypes.func.isRequired,
+  PopUpCreateOpen: PropTypes.func.isRequired,
 };
 
-const mDtP = dispatch => ({
-  onClick: isEditOpen => dispatch(taskPopUpEditOpen(isEditOpen)),
-  TaskToEditMode: task => dispatch(putTaskToEditMode(task)),
-});
-
-export default connect(
-  null,
-  mDtP,
-)(EditButton);
+export default EditButton;

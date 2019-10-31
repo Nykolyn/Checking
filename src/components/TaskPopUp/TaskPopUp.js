@@ -10,10 +10,11 @@ import roles from '../../constants/roles';
 import timeRanges from '../../constants/timeRanges';
 import defineDispatcher from '../../helpers/dispatchHelper';
 import styles from './TaskPopUp.module.css';
+import ModalDeleteTask from '../Dashboard/ModalDeleteTask/ModalDeleteTask';
 
 export default class TaskPopUp extends Component {
   static defaultProps = {
-    taskPopUpEditOpen: true,
+    taskPopUpEditOpen: false,
     taskInEditMode: null,
   };
 
@@ -105,7 +106,7 @@ export default class TaskPopUp extends Component {
     }
     const taskToAdd = {
       role: role.label,
-      date: new Date(date).toJSON(),
+      date: new Date(date).toString(),
       title,
       description,
       time: time.label,
@@ -118,6 +119,7 @@ export default class TaskPopUp extends Component {
         removeTask(taskInEditMode);
       updateTask(taskToAdd);
       taskPopUpEditClose();
+      // taskPopUpCreateClose();
       removeTaskFromEditMode(taskInEditMode);
       this.reset();
       return;
@@ -138,6 +140,7 @@ export default class TaskPopUp extends Component {
     if (taskPopUpEditOpen) {
       removeTaskFromEditMode();
       taskPopUpEditClose();
+      // taskPopUpCreateClose();
       return;
     }
     taskPopUpCreateClose();
@@ -155,7 +158,7 @@ export default class TaskPopUp extends Component {
 
   render() {
     const windowWidth = document.documentElement.clientWidth;
-    const { taskPopUpEditOpen } = this.props;
+    const { taskPopUpEditOpen, taskInEditMode } = this.props;
     const { role, date, title, description, time, priority } = this.state;
     return (
       <form className={styles.outer}>
@@ -199,7 +202,7 @@ export default class TaskPopUp extends Component {
           value={description}
           className={styles.textarea}
           placeholder="Your description"
-          rows={10}
+          rows={3}
           onChange={this.handleTextInput}
         />
         <div className={styles.flexHelperDiv}>
@@ -234,6 +237,10 @@ export default class TaskPopUp extends Component {
             Accept
           </button>
         </div>
+        <ModalDeleteTask
+          handleCloseEditModal={this.handleClose}
+          taskToDelete={taskInEditMode}
+        />
       </form>
     );
   }
