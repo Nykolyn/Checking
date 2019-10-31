@@ -4,16 +4,6 @@
   padding: 0;
 }
 
-/* .header {
-  padding: 20px 0 20px 0;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
-  margin-bottom: 40px;
-  text-align: center;
-  font-size: 15px;
-  max-width: 100%;
-} */
-
 .loginContainer {
   padding-bottom: 0;
   margin: 0 auto;
@@ -169,10 +159,6 @@ input:valid:not(:placeholder-shown) {
     width: 50%;
     margin: 0 auto;
   }
-
-  /* .header {
-    display: none;
-  } */
 
   .imgContainer {
     background-color: #fff;

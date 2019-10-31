@@ -80,8 +80,8 @@ class RegistrationForm extends Component {
               autoComplete="false"
               required
             />
-            {errors.confirmPassword && touched.confirmPassword && (
-              <div className={css.inputError}>{errors.con}</div>
+            {errors.passwordConfirm && touched.passwordConfirm && (
+              <div className={css.inputError}>{errors.passwordConfirm}</div>
             )}
           </label>
           <label htmlFor="4" className={`${css.label} ${css.checkBoxLabel}`}>
