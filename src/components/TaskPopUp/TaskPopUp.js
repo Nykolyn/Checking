@@ -119,7 +119,7 @@ export default class TaskPopUp extends Component {
         removeTask(taskInEditMode);
       updateTask(taskToAdd);
       taskPopUpEditClose();
-      taskPopUpCreateClose();
+      // taskPopUpCreateClose();
       removeTaskFromEditMode(taskInEditMode);
       this.reset();
       return;
@@ -140,7 +140,7 @@ export default class TaskPopUp extends Component {
     if (taskPopUpEditOpen) {
       removeTaskFromEditMode();
       taskPopUpEditClose();
-      taskPopUpCreateClose();
+      // taskPopUpCreateClose();
       return;
     }
     taskPopUpCreateClose();

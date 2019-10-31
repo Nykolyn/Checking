@@ -10,7 +10,7 @@ const EditButton = ({ task, onClick, TaskToEditMode, PopUpCreateOpen }) => (
     onClick={() => {
       onClick();
       TaskToEditMode(task);
-      PopUpCreateOpen();
+      // PopUpCreateOpen();
       // taskPopUpCreate must be closed on click
     }}
   >

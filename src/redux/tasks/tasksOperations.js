@@ -68,9 +68,12 @@ export const updateTask = task => (dispatch, getState) => {
   const token = getToken(getState());
   if (!token) return;
 
-  const dispatcher = defineDispatcher(task);
+  const dispatcher = task.isComplete ? taskTypes.DONE : defineDispatcher(task);
 
   switch (dispatcher) {
+    case taskTypes.DONE:
+      dispatch(taskHandlers.updateTaskDoneRequest());
+      break;
     case taskTypes.TODAY:
       dispatch(taskHandlers.updateTaskTodayRequest());
       break;
@@ -88,6 +91,9 @@ export const updateTask = task => (dispatch, getState) => {
     .updateTask(task, token, task._id)
     .then(({ data: { updatedTask } }) => {
       switch (dispatcher) {
+        case taskTypes.DONE:
+          dispatch(taskHandlers.updateTaskDoneSuccess(updatedTask));
+          break;
         case taskTypes.TODAY:
           dispatch(taskHandlers.updateTaskTodaySuccess(updatedTask));
           break;
@@ -103,6 +109,9 @@ export const updateTask = task => (dispatch, getState) => {
     })
     .catch(error => {
       switch (dispatcher) {
+        case taskTypes.DONE:
+          dispatch(taskHandlers.updateTaskDoneError(error));
+          break;
         case taskTypes.TODAY:
           dispatch(taskHandlers.updateTaskTodayError(error));
           break;
