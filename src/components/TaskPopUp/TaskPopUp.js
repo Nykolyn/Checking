@@ -1,5 +1,3 @@
-/* eslint-disable*/
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -34,6 +32,7 @@ export default class TaskPopUp extends Component {
       date: PropTypes.string,
       time: PropTypes.string,
       title: PropTypes.string,
+      priority: PropTypes.number,
       description: PropTypes.string,
     }),
   };
@@ -50,7 +49,7 @@ export default class TaskPopUp extends Component {
   componentDidMount() {
     const { taskPopUpEditOpen, taskInEditMode } = this.props;
     if (taskPopUpEditOpen) {
-      let taskToEdit = { ...taskInEditMode };
+      const taskToEdit = { ...taskInEditMode };
       const { role, date, title, description, time, priority } = taskToEdit;
       this.setState({
         role: roles.find(elem => elem.label === role),
