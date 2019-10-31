@@ -12,16 +12,11 @@
 }
 
 .createTaskModalWrapper {
-  width: 40%;
-  position: fixed;
-  z-index: 99999;
+  width: 34%;
+  /* position: fixed; */
+  z-index: 1;
   top: 0;
   left: 0;
-}
-
-.createTaskModalWrapper {
-  position: static;
-  width: 100%;
 }
 
 .tabsListWrapper {
@@ -30,10 +25,9 @@
 
 .dashboard {
   display: flex;
-  flex-direction: row-reverse;
-  padding-top: 4px;
+  overflow: hidden;
   transition: all 1s;
-  min-height: 100vh;
+  height: calc(100vh - 52px);
   background-color: #f5f7fa;
 }
 
@@ -42,46 +36,56 @@
     bottom: 6%;
     right: 6%;
   }
-
-  .dashboard {
-    padding-top: 90px;
-  }
 }
 
 @media screen and (min-width: 1280px) {
+  .dashboard {
+  }
+
   .popUpDesktop {
     width: 52px;
-    height: 100vh;
+    height: calc(100vh - 52px);
     box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     left: 0;
     background-color: #fff;
+    position: relative;
+  }
+
+  .createTaskModalWrapperOpen {
+    width: 34%;
+    height: calc(100vh - 52px);
+    background-color: #fff;
+    box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
   }
 
   .createTaskModalWrapper {
-    position: static;
+    position: relative;
   }
 
   .CreateTaskButtonWrapper {
-    left: 1.4%;
+    right: 0;
+    transform: translate(50%, -50%);
+    position: absolute;
     top: 50%;
+  }
+
+  .tabsListContainerOpen {
+    width: 66%;
+    margin: 0 auto;
+  }
+
+  .tabsListContainer {
+    width: calc(100% -52px);
+    margin: 0 auto;
+    display: block;
   }
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (max-width: 980px) {
   .createTaskModalWrapper {
-    width: 40%;
+    position: static;
+    width: 100%;
   }
-
-  .tabsListWrapper {
-    width: 60%;
-  }
-
-  .dashboard {
-    min-width: 768px;
-    display: flex;
-    flex-direction: row-reverse;
-    transition: all 1s;
-  }
-} */
+}

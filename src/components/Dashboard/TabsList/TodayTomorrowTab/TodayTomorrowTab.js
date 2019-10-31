@@ -95,8 +95,6 @@ class TodayTomorrowTab extends Component {
       todayTasks,
       tomorrowTasks,
     } = this.state;
-    const { burgerEvent } = this.props;
-    console.log(burgerEvent);
     //FILTER NE TROGAT`
     // const filterCardToday = filterCard(todayTasks);
     // const filterCardTomorrow = filterCard(tomorrowTasks);

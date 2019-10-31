@@ -13,6 +13,7 @@ import { refreshUser } from '../../redux/session/sessionOperations';
 class Dashboard extends Component {
   static propTypes = {
     taskCreateOpen: PropTypes.bool.isRequired,
+    refreshUserData: PropTypes.func.isRequired,
   };
 
   state = {};
@@ -27,7 +28,9 @@ class Dashboard extends Component {
     const { taskCreateOpen } = this.props;
     return (
       <>
-        <Header />
+        <div className={css.headerContainer}>
+          <Header />
+        </div>
         <main>
           <Media
             queries={{
@@ -38,42 +41,53 @@ class Dashboard extends Component {
             {matches => (
               <>
                 {matches.small && (
-                  <>
-                    <div className={css.dashboard}>
-                      {taskCreateOpen ? (
-                        <aside className={css.createTaskModalWrapper}>
-                          <TaskPopUp />
-                        </aside>
-                      ) : (
-                        <>
-                          <TabsList />
-                          <div className={css.popUpDesktop}>
-                            <div className={css.CreateTaskButtonWrapper}>
-                              <CreateTaskButton />
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </>
-                )}
-                {matches.large && (
-                  <>
-                    <div className={css.dashboard}>
-                      <TabsList />
-                      {taskCreateOpen ? (
-                        <aside className={css.createTaskModalWrapper}>
-                          <TaskPopUp />
-                        </aside>
-                      ) : (
+                  <div
+                    className={`${css.dashboard} ${taskCreateOpen &&
+                      css.dashboardPopUpOpen}`}
+                  >
+                    {taskCreateOpen ? (
+                      <aside className={css.createTaskModalWrapper}>
+                        <TaskPopUp />
+                      </aside>
+                    ) : (
+                      <>
                         <div className={css.popUpDesktop}>
                           <div className={css.CreateTaskButtonWrapper}>
                             <CreateTaskButton />
                           </div>
                         </div>
+                        <TabsList />
+                      </>
+                    )}
+                  </div>
+                )}
+                {matches.large && (
+                  <div className={css.dashboard}>
+                    <aside
+                      className={`${
+                        taskCreateOpen
+                          ? css.createTaskModalWrapperOpen
+                          : css.popUpDesktop
+                      }`}
+                    >
+                      {taskCreateOpen ? (
+                        <TaskPopUp />
+                      ) : (
+                        <div className={css.CreateTaskButtonWrapper}>
+                          <CreateTaskButton />
+                        </div>
                       )}
+                    </aside>
+                    <div
+                      className={`${
+                        taskCreateOpen
+                          ? css.tabsListContainerOpen
+                          : css.tabsListContainer
+                      }`}
+                    >
+                      <TabsList />
                     </div>
-                  </>
+                  </div>
                 )}
               </>
             )}
