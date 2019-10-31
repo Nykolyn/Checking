@@ -64,11 +64,11 @@ class Dashboard extends Component {
                 {matches.large && (
                   <div className={css.dashboard}>
                     <aside
-                      className={`${
+                      className={
                         taskCreateOpen
                           ? css.createTaskModalWrapperOpen
                           : css.popUpDesktop
-                      }`}
+                      }
                     >
                       {taskCreateOpen ? (
                         <TaskPopUp />
@@ -79,11 +79,11 @@ class Dashboard extends Component {
                       )}
                     </aside>
                     <div
-                      className={`${
+                      className={
                         taskCreateOpen
                           ? css.tabsListContainerOpen
                           : css.tabsListContainerClose
-                      }`}
+                      }
                     >
                       <TabsList />
                     </div>
