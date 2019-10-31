@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import style from './LogInForm.module.css';
 import FormButton from '../FormButton';
 import Header from '../../Header/Header';
-import { isAuthentificated } from '../../../redux/session/sessionSelectors';
 
 class LogIn extends Component {
-  static propTypes = {
-    authentificated: PropTypes.bool.isRequired,
-    history: ReactRouterPropTypes.history.isRequired,
-  };
-
-  componentDidUpdate() {
-    const { authentificated, history } = this.props;
-    if (authentificated) {
-      history.replace('/dashboard');
-    }
-  }
+  state = {};
 
   render() {
     const screenWidth = document.documentElement.clientWidth;
@@ -108,11 +95,4 @@ LogIn.propTypes = {
   touched: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-const mapStateToProps = state => ({
-  authentificated: isAuthentificated(state),
-});
-
-export default connect(
-  mapStateToProps,
-  null,
-)(LogIn);
+export default LogIn;
