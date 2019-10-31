@@ -4,7 +4,10 @@ import { Element, scroller } from 'react-scroll';
 import { connect } from 'react-redux';
 import styles from './TodayTomorowTab.module.css';
 import CardList from '../../CardList/CardList';
-import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
+import {
+  burgerEvent,
+  taskPopUpCreateIsOpen,
+} from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 
 //FILTER NE TROGAT`
@@ -95,11 +98,16 @@ class TodayTomorrowTab extends Component {
       todayTasks,
       tomorrowTasks,
     } = this.state;
+    const { taskPopUpCreateIsOpen } = this.props;
     //FILTER NE TROGAT`
     // const filterCardToday = filterCard(todayTasks);
     // const filterCardTomorrow = filterCard(tomorrowTasks);
     return (
-      <main className={styles.container}>
+      <main
+        className={
+          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+        }
+      >
         <Element name="today">
           <section className={styles.section}>
             <button
@@ -150,7 +158,12 @@ class TodayTomorrowTab extends Component {
 const mapStateToProps = state => ({
   getTodayTomorrowTasks: getTodayTomorrowTasks(state),
   burgerEvent: burgerEvent(state),
+  taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
 });
+
+// const mapDispatchToProps = dispatch => ({
+//   getBurgerEvent: () => dispatch(burgerEvent(null)),
+// });
 
 export default connect(
   mapStateToProps,
