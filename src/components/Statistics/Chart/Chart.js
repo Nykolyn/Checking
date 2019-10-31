@@ -6,7 +6,7 @@ import { Doughnut } from 'react-chartjs-2';
 const filteredData = array => {
   const partner = array.filter(el => el.role === 'Partner').length;
   const learner = array.filter(el => el.role === 'Learner').length;
-  const dotherSon = array.filter(el => el.role === 'Dauther / Son').length;
+  const dotherSon = array.filter(el => el.role === 'Daughter/Son').length;
   const coWorker = array.filter(el => el.role === 'Co-worker').length;
   const none = array.filter(el => el.role === 'None').length;
 
