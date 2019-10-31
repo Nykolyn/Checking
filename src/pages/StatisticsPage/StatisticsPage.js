@@ -9,33 +9,33 @@ import BackButton from '../../components/BackButton/BackButtonContainer';
 // import { array } from '../../../../../AppData/Local/Microsoft/TypeScript/3.6/node_modules/@types/prop-types';
 import roleFilter from '../../helpers/roleFilter';
 
-const storage = JSON.parse(localStorage.getItem('persist:root'));
+// const storage = JSON.parse(localStorage.getItem('persist:root'));
 
-const config = {
-  headers: {
-    Authorization: storage ? storage.token.slice(1, -1) : '',
-  },
-};
+// const config = {
+//   headers: {
+//     Authorization: storage ? storage.token.slice(1, -1) : '',
+//   },
+// };
 
 class StatisticsPage extends Component {
-  state = {
-    done: [],
-  };
+  // state = {
+  //   done: [],
+  // };
 
-  componentDidMount() {
-    axios
-      .get('https://cheking.goit.co.ua/api/v1/tasks', config)
-      .then(response => {
-        const { data } = response;
+  // componentDidMount() {
+  //   axios
+  //     .get('https://cheking.goit.co.ua/api/v1/tasks', config)
+  //     .then(response => {
+  //       const { data } = response;
 
-        this.setState({ done: [...data.tasks.done] });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  //       this.setState({ done: [...data.tasks.done] });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 
-  total = (todayTomorrow, nextAfter, burnedOut, done) => {
+  rolesSum = (todayTomorrow, nextAfter, burnedOut, done) => {
     const { today, tomorrow } = todayTomorrow;
     const { next, after } = nextAfter;
 
@@ -98,11 +98,8 @@ class StatisticsPage extends Component {
   };
 
   render() {
-    // const { done } = this.state;
     const { tasks } = this.props;
     const { burnedOut, nextAfter, todayTomorrow, done } = tasks.tasks;
-
-    console.log(this.total(todayTomorrow, nextAfter, burnedOut, done));
 
     return (
       <>
@@ -117,7 +114,7 @@ class StatisticsPage extends Component {
               <div className={styles.tableWraper}>
                 <Table
                   data={done}
-                  dataTotal={this.total(
+                  dataTotal={this.rolesSum(
                     todayTomorrow,
                     nextAfter,
                     burnedOut,
