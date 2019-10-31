@@ -30,8 +30,6 @@ const filteredData = array => {
 /* eslint-disable */
 
 const Chart = ({ data }) => {
-  console.log(data);
-
   return (
     <div>
       <Doughnut

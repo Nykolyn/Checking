@@ -6,6 +6,8 @@ import Table from '../../components/Statistics/Table/Table';
 import Header from '../../components/Header/Header';
 import styles from '../../components/Statistics/Statistic.module.css';
 import BackButton from '../../components/BackButton/BackButtonContainer';
+// import { array } from '../../../../../AppData/Local/Microsoft/TypeScript/3.6/node_modules/@types/prop-types';
+import roleFilter from '../../helpers/roleFilter';
 
 const storage = JSON.parse(localStorage.getItem('persist:root'));
 
@@ -16,30 +18,91 @@ const config = {
 };
 
 class StatisticsPage extends Component {
-  state = { done: [] };
+  state = {
+    done: [],
+  };
 
   componentDidMount() {
     axios
       .get('https://cheking.goit.co.ua/api/v1/tasks', config)
       .then(response => {
         const { data } = response;
-        console.log(data);
 
-        this.setState({ done: [...data.tasks.done], test: [data.tasks] });
+        this.setState({ done: [...data.tasks.done] });
       })
       .catch(error => {
         console.log(error);
       });
   }
 
-  total = () => {
-    const { burnedOut } = this.state.test;
-    console.log(burnedOut);
+  total = (todayTomorrow, nextAfter, burnedOut, done) => {
+    const { today, tomorrow } = todayTomorrow;
+    const { next, after } = nextAfter;
+
+    const todayFiltered = roleFilter(today);
+    const tomorrowFiltered = roleFilter(tomorrow);
+    const nextFiltered = roleFilter(next);
+    const afterFiltered = roleFilter(after);
+    const burnedOutFiltered = roleFilter(burnedOut);
+    const doneFiltered = roleFilter(done);
+
+    const partnerSum =
+      todayFiltered.partner +
+      tomorrowFiltered.partner +
+      nextFiltered.partner +
+      afterFiltered.partner +
+      burnedOutFiltered.partner +
+      doneFiltered.partner;
+
+    const learnerSum =
+      todayFiltered.learner +
+      tomorrowFiltered.learner +
+      nextFiltered.learner +
+      afterFiltered.learner +
+      burnedOutFiltered.learner +
+      doneFiltered.learner;
+
+    const dotherSonSum =
+      todayFiltered.dotherSon +
+      tomorrowFiltered.dotherSon +
+      nextFiltered.dotherSon +
+      afterFiltered.dotherSon +
+      burnedOutFiltered.dotherSon +
+      doneFiltered.dotherSon;
+
+    const coWorkerSum =
+      todayFiltered.coWorker +
+      tomorrowFiltered.coWorker +
+      nextFiltered.coWorker +
+      afterFiltered.coWorker +
+      burnedOutFiltered.coWorker +
+      doneFiltered.coWorker;
+
+    const noneSum =
+      todayFiltered.none +
+      tomorrowFiltered.none +
+      nextFiltered.none +
+      afterFiltered.none +
+      burnedOutFiltered.none +
+      doneFiltered.none;
+
+    return (
+      [partnerSum, learnerSum, dotherSonSum, coWorkerSum, noneSum] || [
+        0,
+        0,
+        0,
+        0,
+        0,
+      ]
+    );
   };
 
   render() {
-    const { done, test } = this.state;
-    console.log(test);
+    // const { done } = this.state;
+    const { tasks } = this.props;
+    const { burnedOut, nextAfter, todayTomorrow, done } = tasks.tasks;
+
+    console.log(this.total(todayTomorrow, nextAfter, burnedOut, done));
 
     return (
       <>
@@ -52,7 +115,15 @@ class StatisticsPage extends Component {
                 <Chart data={done} />
               </div>
               <div className={styles.tableWraper}>
-                <Table data={done} />
+                <Table
+                  data={done}
+                  dataTotal={this.total(
+                    todayTomorrow,
+                    nextAfter,
+                    burnedOut,
+                    done,
+                  )}
+                />
               </div>
             </div>
           </div>
