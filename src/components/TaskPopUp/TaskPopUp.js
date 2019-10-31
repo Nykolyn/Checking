@@ -48,7 +48,6 @@ export default class TaskPopUp extends Component {
 
   componentDidMount() {
     const { taskPopUpEditOpen, taskInEditMode } = this.props;
-    console.log(taskInEditMode);
     if (taskPopUpEditOpen) {
       const taskToEdit = { ...taskInEditMode };
       const { role, date, title, description, time, priority } = taskToEdit;
