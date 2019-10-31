@@ -7,8 +7,13 @@ import {
   putTaskToEditMode,
   removeTaskFromEditMode,
 } from '../../../../redux/tasks/taskActions';
+import { getTaskInEditMode } from '../../../../redux/tasks/tasksSelectors';
 
 import EditButton from './EditButton';
+
+const mSTP = state => ({
+  taskInEditMode: getTaskInEditMode(state),
+});
 
 const mDtP = dispatch => ({
   onClick: isEditOpen => dispatch(taskPopUpEditOpen(isEditOpen)),
@@ -18,6 +23,6 @@ const mDtP = dispatch => ({
 });
 
 export default connect(
-  null,
+  mSTP,
   mDtP,
 )(EditButton);

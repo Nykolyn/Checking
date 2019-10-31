@@ -48,7 +48,24 @@ export default class TaskPopUp extends Component {
 
   componentDidMount() {
     const { taskPopUpEditOpen, taskInEditMode } = this.props;
+    console.log(taskInEditMode);
     if (taskPopUpEditOpen) {
+      const taskToEdit = { ...taskInEditMode };
+      const { role, date, title, description, time, priority } = taskToEdit;
+      this.setState({
+        role: roles.find(elem => elem.label === role),
+        title,
+        description,
+        time: timeRanges.find(elem => elem.label === time),
+        priority,
+        date: new Date(date) < new Date() ? new Date() : new Date(date),
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { taskInEditMode } = this.props;
+    if (prevProps.taskInEditMode !== taskInEditMode) {
       const taskToEdit = { ...taskInEditMode };
       const { role, date, title, description, time, priority } = taskToEdit;
       this.setState({
@@ -182,19 +199,16 @@ export default class TaskPopUp extends Component {
         )}
         <div className={styles.helperDiv}>
           <RoleSelect
-            value={taskInEditMode ? taskInEditMode.role : role}
+            value={role}
             onChange={this.handleRoleSelect}
             taskPopUpEditOpen={taskPopUpEditOpen}
           />
-          <DateSelect
-            value={taskInEditMode ? taskInEditMode.date : date}
-            onChange={this.handleDateChange}
-          />
+          <DateSelect value={date} onChange={this.handleDateChange} />
         </div>
         <h4 className={styles.titleTitle}>Title (up to 150 characters)</h4>
         <input
           name="title"
-          value={taskInEditMode ? taskInEditMode.title : title}
+          value={title}
           className={styles.titleInput}
           type="text"
           placeholder="Write title"
@@ -204,19 +218,16 @@ export default class TaskPopUp extends Component {
         <h4 className={styles.title}>Description (up to 800 characters)</h4>
         <textarea
           name="description"
-          value={taskInEditMode ? taskInEditMode.description : description}
+          value={description}
           className={styles.textarea}
           placeholder="Your description"
           rows={3}
           onChange={this.handleTextInput}
         />
         <div className={styles.flexHelperDiv}>
-          <TimeSelect
-            value={taskInEditMode ? taskInEditMode.time : time}
-            onChange={this.handleTimeSelect}
-          />
+          <TimeSelect value={time} onChange={this.handleTimeSelect} />
           <PrioritySelect
-            priority={taskInEditMode ? taskInEditMode.priority : priority}
+            priority={priority}
             onClick={this.handlePrioritySelect}
           />
         </div>
