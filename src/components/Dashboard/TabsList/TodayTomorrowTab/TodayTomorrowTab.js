@@ -8,10 +8,10 @@ import { burgerEvent } from '../../../../redux/componentController/controllerSel
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 
 //FILTER NE TROGAT`
-
 // const filterCard = array => {
 //   let filtredArray = [];
 //   if (array.length >= 1) {
+//     filtredArray = array.filter(el.time.sort());
 //     filtredArray = array.filter(el.priority.sort());
 //   }
 //   return filtredArray;
@@ -95,8 +95,6 @@ class TodayTomorrowTab extends Component {
       todayTasks,
       tomorrowTasks,
     } = this.state;
-    const { burgerEvent } = this.props;
-    console.log(burgerEvent);
     //FILTER NE TROGAT`
     // const filterCardToday = filterCard(todayTasks);
     // const filterCardTomorrow = filterCard(tomorrowTasks);
