@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 import ModalLogout from './ModalLogout/ModalLogout';
+// import ModalDeleteTask from './ModalDeleteTask/ModalDeleteTask';
 import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
 import TabsList from './TabsList/TabsList';
 import css from './Dashbard.module.css';
@@ -25,6 +26,7 @@ class Dashboard extends Component {
         <Header />
         <main>
           <ModalLogout />
+          {/* <ModalDeleteTask /> */}
           <BurgerMenu />
           <div className={css.dashboard}>
             <TabsList />

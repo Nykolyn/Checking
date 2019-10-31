@@ -20,7 +20,7 @@ class ModalDeleteTask extends Component {
   };
 
   onDeleteTask = () => {
-    return this.props.deleteTask();
+    return this.props.deleteTask(this.props.taskToDelete);
   };
 
   handleKeyPress = e => {
@@ -38,6 +38,7 @@ class ModalDeleteTask extends Component {
   };
 
   render() {
+    // const { task } = this.props;
     return (
       this.props.openModalDeleteTask && (
         <div

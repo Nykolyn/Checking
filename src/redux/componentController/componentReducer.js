@@ -6,6 +6,8 @@ const modalDeleteTaskOpen = (state = false, { type }) => {
   switch (type) {
     case ActionTypes.MODAL_DELETE_TASK_OPEN:
       return true;
+    case ActionTypes.MODAL_DELETE_TASK_CLOSE:
+      return false;
 
     default:
       return state;

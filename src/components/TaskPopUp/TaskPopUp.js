@@ -11,6 +11,7 @@ import roles from '../../constants/roles';
 import timeRanges from '../../constants/timeRanges';
 import defineDispatcher from '../../helpers/dispatchHelper';
 import styles from './TaskPopUp.module.css';
+import ModalDeleteTask from '../Dashboard/ModalDeleteTask/ModalDeleteTask';
 
 export default class TaskPopUp extends Component {
   static defaultProps = {
@@ -237,6 +238,7 @@ export default class TaskPopUp extends Component {
             Accept
           </button>
         </div>
+        <ModalDeleteTask taskToDelete={this.props.taskInEditMode} />
       </form>
     );
   }

@@ -119,6 +119,7 @@ export const updateTask = task => (dispatch, getState) => {
 };
 
 export const deleteTask = task => (dispatch, getState) => {
+  console.log('task', task);
   const token = getToken(getState());
   if (!token) return;
 
@@ -140,9 +141,8 @@ export const deleteTask = task => (dispatch, getState) => {
     default:
       dispatch(taskHandlers.deleteTaskBurnedRequest());
   }
-
   api
-    .deleteTask(task, token, task.id)
+    .deleteTask(token, task._id)
     .then(res => {
       switch (dispatcher) {
         case taskTypes.TODAY:
