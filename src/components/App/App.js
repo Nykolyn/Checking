@@ -10,6 +10,7 @@ import Dashboard from '../../pages/DashboardPage/DashboardPage';
 import Login from '../../pages/AuthPage/LoginPage';
 import Registration from '../../pages/AuthPage/RegistrationPage';
 import Statistics from '../../pages/StatisticsPage/StatisticsPage';
+import BurgerMenu from '../../pages/BurgerMenuPage/BurgerMenuPage';
 
 // const AsyncDashboard = Loadable({
 //   loader: () =>
@@ -69,6 +70,7 @@ class App extends Component {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
+        <ProtectedComponent path="/menu" component={BurgerMenu} />
         <ProtectedComponent path="/dashboard" component={Dashboard} />
         <ProtectedComponent path="/statistics" component={Statistics} />
         <Redirect to="/dashboard" />
