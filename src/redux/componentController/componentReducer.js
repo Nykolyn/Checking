@@ -6,6 +6,8 @@ const modalDeleteTaskOpen = (state = false, { type }) => {
   switch (type) {
     case ActionTypes.MODAL_DELETE_TASK_OPEN:
       return true;
+    case ActionTypes.MODAL_DELETE_TASK_CLOSE:
+      return false;
 
     default:
       return state;
@@ -57,7 +59,7 @@ const taskPopUpEditOpen = (state = false, { type, payload }) => {
   }
 };
 
-const burgerMenuOpen = (state = true, { type, payload }) => {
+const burgerMenuOpen = (state = false, { type, payload }) => {
   switch (type) {
     case ActionTypes.HANDLE_OPEN_BURGER_MENU:
       return !state;

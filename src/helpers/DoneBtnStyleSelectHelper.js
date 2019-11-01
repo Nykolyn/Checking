@@ -7,7 +7,9 @@ const styleSelector = (inDoneTab, inBudnedOutTab) => {
       cursor: 'default',
     };
   } else if (inBudnedOutTab) {
-    style = { fill: '#f25137', backgroundColor: '#f5e6e6', cursor: 'default' };
+    style = {
+      cursor: 'pointer',
+    };
   }
   return style;
 };

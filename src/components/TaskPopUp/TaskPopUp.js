@@ -10,6 +10,7 @@ import roles from '../../constants/roles';
 import timeRanges from '../../constants/timeRanges';
 import defineDispatcher from '../../helpers/dispatchHelper';
 import styles from './TaskPopUp.module.css';
+import ModalDeleteTask from '../Dashboard/ModalDeleteTask/ModalDeleteTask';
 
 export default class TaskPopUp extends Component {
   static defaultProps = {
@@ -31,6 +32,7 @@ export default class TaskPopUp extends Component {
       date: PropTypes.string,
       time: PropTypes.string,
       title: PropTypes.string,
+      priority: PropTypes.number,
       description: PropTypes.string,
     }),
   };
@@ -47,6 +49,22 @@ export default class TaskPopUp extends Component {
   componentDidMount() {
     const { taskPopUpEditOpen, taskInEditMode } = this.props;
     if (taskPopUpEditOpen) {
+      const taskToEdit = { ...taskInEditMode };
+      const { role, date, title, description, time, priority } = taskToEdit;
+      this.setState({
+        role: roles.find(elem => elem.label === role),
+        title,
+        description,
+        time: timeRanges.find(elem => elem.label === time),
+        priority,
+        date: new Date(date) < new Date() ? new Date() : new Date(date),
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { taskInEditMode } = this.props;
+    if (prevProps.taskInEditMode !== taskInEditMode) {
       const taskToEdit = { ...taskInEditMode };
       const { role, date, title, description, time, priority } = taskToEdit;
       this.setState({
@@ -118,7 +136,7 @@ export default class TaskPopUp extends Component {
         removeTask(taskInEditMode);
       updateTask(taskToAdd);
       taskPopUpEditClose();
-      taskPopUpCreateClose();
+      // taskPopUpCreateClose();
       removeTaskFromEditMode(taskInEditMode);
       this.reset();
       return;
@@ -139,7 +157,7 @@ export default class TaskPopUp extends Component {
     if (taskPopUpEditOpen) {
       removeTaskFromEditMode();
       taskPopUpEditClose();
-      taskPopUpCreateClose();
+     // taskPopUpCreateClose();
       return;
     }
     taskPopUpCreateClose();
@@ -157,8 +175,9 @@ export default class TaskPopUp extends Component {
 
   render() {
     const windowWidth = document.documentElement.clientWidth;
-    const { taskPopUpEditOpen } = this.props;
+    const { taskPopUpEditOpen, taskInEditMode } = this.props;
     const { role, date, title, description, time, priority } = this.state;
+
     return (
       <form className={styles.outer}>
         {!taskPopUpEditOpen ? (
@@ -201,7 +220,7 @@ export default class TaskPopUp extends Component {
           value={description}
           className={styles.textarea}
           placeholder="Your description"
-          rows={10}
+          rows={3}
           onChange={this.handleTextInput}
         />
         <div className={styles.flexHelperDiv}>
@@ -236,6 +255,10 @@ export default class TaskPopUp extends Component {
             Accept
           </button>
         </div>
+        <ModalDeleteTask
+          handleCloseEditModal={this.handleClose}
+          taskToDelete={taskInEditMode}
+        />
       </form>
     );
   }

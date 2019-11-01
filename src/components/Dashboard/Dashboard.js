@@ -1,74 +1,93 @@
 import React, { Component } from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
 import TabsList from './TabsList/TabsList';
 import css from './Dashbard.module.css';
 import CreateTaskButton from '../CreateTaskButton/CreateTaskButtonContainer';
-import BurgerMenu from './BurgerMenu/BurgerMenu';
 import Header from '../Header/Header';
+
+import { refreshUser } from '../../redux/session/sessionOperations';
 
 class Dashboard extends Component {
   static propTypes = {
     taskCreateOpen: PropTypes.bool.isRequired,
+    refreshUserData: PropTypes.func.isRequired,
   };
 
   state = {};
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { refreshUserData } = this.props;
+
+    refreshUserData();
+  }
 
   render() {
     const { taskCreateOpen } = this.props;
     return (
       <>
-        <Header />
+        <div className={css.headerContainer}>
+          <Header />
+        </div>
         <main>
-          <BurgerMenu />
           <Media
             queries={{
-              small: '(min-width: 320px) and (max-width: 1199px)',
-              large: '(min-width: 1200px)',
+              small: '(min-width: 320px) and (max-width: 979px)',
+              large: '(min-width: 980px)',
             }}
           >
             {matches => (
               <>
                 {matches.small && (
-                  <>
-                    <div className={css.dashboard}>
-                      {taskCreateOpen ? (
-                        <aside className={css.createTaskModalWrapper}>
-                          <TaskPopUp />
-                        </aside>
-                      ) : (
-                        <>
-                          <TabsList />
-                          <div className={css.popUpDesktop}>
-                            <div className={css.CreateTaskButtonWrapper}>
-                              <CreateTaskButton />
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </>
-                )}
-                {matches.large && (
-                  <>
-                    <div className={css.dashboard}>
-                      <TabsList />
-                      {taskCreateOpen ? (
-                        <aside className={css.createTaskModalWrapper}>
-                          <TaskPopUp />
-                        </aside>
-                      ) : (
+                  <div
+                    className={`${css.dashboard} ${taskCreateOpen &&
+                      css.dashboardPopUpOpen}`}
+                  >
+                    {taskCreateOpen ? (
+                      <aside className={css.createTaskModalWrapper}>
+                        <TaskPopUp />
+                      </aside>
+                    ) : (
+                      <>
                         <div className={css.popUpDesktop}>
                           <div className={css.CreateTaskButtonWrapper}>
                             <CreateTaskButton />
                           </div>
                         </div>
+                        <TabsList />
+                      </>
+                    )}
+                  </div>
+                )}
+                {matches.large && (
+                  <div className={css.dashboard}>
+                    <aside
+                      className={
+                        taskCreateOpen
+                          ? css.createTaskModalWrapperOpen
+                          : css.popUpDesktop
+                      }
+                    >
+                      {taskCreateOpen ? (
+                        <TaskPopUp />
+                      ) : (
+                        <div className={css.CreateTaskButtonWrapper}>
+                          <CreateTaskButton />
+                        </div>
                       )}
+                    </aside>
+                    <div
+                      className={
+                        taskCreateOpen
+                          ? css.tabsListContainerOpen
+                          : css.tabsListContainerClose
+                      }
+                    >
+                      <TabsList />
                     </div>
-                  </>
+                  </div>
                 )}
               </>
             )}
@@ -79,4 +98,11 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mDTP = {
+  refreshUserData: refreshUser,
+};
+
+export default connect(
+  null,
+  mDTP,
+)(Dashboard);

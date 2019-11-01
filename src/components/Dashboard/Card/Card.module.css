@@ -26,7 +26,6 @@
   height: 114px;
   color: white;
   background-color: #091e3f;
-  margin-bottom: 8px;
 }
 
 .cardBody__title {
@@ -51,7 +50,8 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
-  padding: 0px 12px;
+  padding: 8px 12px 4px 12px;
+  background-color: #fff;
 }
 
 .cardFooter__wrap {
@@ -65,4 +65,8 @@
 .cardFooter__dateTime {
   color: #869096;
   font-size: 11px;
+}
+
+.cardFooter__btnWrapper {
+  position: relative;
 }

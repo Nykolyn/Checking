@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { combineReducers } from 'redux';
 import { ActionTypes as SessionActionTypes } from '../session/sessionActions';
 import { ActionTypes } from './taskActions';
@@ -86,6 +85,8 @@ const done = (state = [], { type, payload }) => {
   switch (type) {
     case SessionActionTypes.REFRESH_USER_SUCCESS:
       return payload.response.done;
+    case ActionTypes.UPDATE_DONE_TASK_SUCCESS:
+      return [...state.filter(task => task._id !== payload._id), payload];
     default:
       return state;
   }
@@ -110,7 +111,6 @@ const tasks = combineReducers({
   burnedOut,
   done,
   taskInEditMode,
-  // DoneStatusChange,
 });
 
 export default tasks;
