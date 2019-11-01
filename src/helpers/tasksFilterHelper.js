@@ -1,22 +1,4 @@
 // sort Today Tasks
-// export const sortTodayTomorrowTasks = arr => {
-//   let sortArr = [];
-//   if (arr.length >= 1) {
-//     const arrAllDay = arr.filter(el => el.time === 'All Day');
-//     arrAllDay.sort((a, b) => {
-//       return a.priority > b.priority ? 1 : -1;
-//     });
-//     const filterArr = arr.filter(el => el.time !== 'All Day');
-//     filterArr.sort((a, b) => (a.time > b.time ? 1 : -1));
-//     filterArr.sort((a, b) => {
-//       return a.priority > b.priority ? 1 : -1;
-//     });
-//     sortArr = filterArr.concat(arrAllDay);
-//   }
-//   return sortArr;
-// };
-
-// sort Today Tasks
 export const sortTodayTomorrowTasks = arr => {
   if (arr.length >= 0) {
     arr.sort(
