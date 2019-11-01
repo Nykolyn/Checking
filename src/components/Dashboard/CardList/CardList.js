@@ -10,9 +10,9 @@ const CardList = ({ cardItems, taskPopUpCreateIsOpen }) => {
   return (
     <div>
       <ul
-        className={
-          !taskPopUpCreateIsOpen ? [styles.cardList] : [styles.cardListOpen]
-        }
+        className={`${styles.cardsTrsn}
+          ${!taskPopUpCreateIsOpen ? [styles.cardList] : [styles.cardListOpen]}
+        `}
       >
         {cardItems.map(el => (
           <li
