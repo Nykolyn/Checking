@@ -69,13 +69,17 @@
     vertical-align: middle;
     width: 100%;
     border: 1px solid #e0e5eb;
-    z-index: -1;
   }
 }
 
 @media screen and (min-width: 980px) {
   .container {
-    width: 980px;
+    min-width: 980px;
+  }
+
+  .containerOpen {
+    width: 640px;
+    margin: 0 auto;
   }
 
   .section {
@@ -83,6 +87,6 @@
   }
 
   .titleButton {
-    width: 980px;
+    width: 100%;
   }
 }

@@ -1,6 +1,8 @@
+/*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Element } from 'react-scroll';
+import { taskPopUpCreateIsOpen } from '../../../../redux/componentController/controllerSelectrors';
 import { getBurnedOutTasks } from '../../../../redux/tasks/tasksSelectors';
 import CardList from '../../CardList/CardList';
 import styles from './BurnedOutTab.module.css';
@@ -28,8 +30,13 @@ class BurnedOutTab extends Component {
 
   render() {
     const { burnedOutTasks } = this.state;
+    const { taskPopUpCreateIsOpen } = this.props;
     return (
-      <main className={styles.container}>
+      <main
+        className={
+          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+        }
+      >
         <Element name="burnedOut">
           <section className={styles.section}>
             {/* <button type="button" className={styles.titleButton}>
@@ -46,6 +53,7 @@ class BurnedOutTab extends Component {
 
 const mapStateToProps = state => ({
   getBurnedOutTasks: getBurnedOutTasks(state),
+  taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
 });
 
 export default connect(mapStateToProps)(BurnedOutTab);
