@@ -81,6 +81,14 @@
     margin: 0 auto;
     display: block;
   }
+
+  .headerContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 980px) {
