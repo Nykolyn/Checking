@@ -7,18 +7,10 @@ import CardList from '../../CardList/CardList';
 import {
   burgerEvent,
   taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
-
-//FILTER NE TROGAT`
-// const filterCard = array => {
-//   let filtredArray = [];
-//   if (array.length >= 1) {
-//     filtredArray = array.filter(el.time.sort());
-//     filtredArray = array.filter(el.priority.sort());
-//   }
-//   return filtredArray;
-// };
+import { sortTodayTomorrowTasks } from '../../../../helpers/tasksFilterHelper';
 
 class TodayTomorrowTab extends Component {
   state = {
@@ -98,14 +90,15 @@ class TodayTomorrowTab extends Component {
       todayTasks,
       tomorrowTasks,
     } = this.state;
-    const { taskPopUpCreateIsOpen } = this.props;
-    //FILTER NE TROGAT`
-    // const filterCardToday = filterCard(todayTasks);
-    // const filterCardTomorrow = filterCard(tomorrowTasks);
+    const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
+    const sortTodayTasks = sortTodayTomorrowTasks(todayTasks);
+    const sortTomorrowTasks = sortTodayTomorrowTasks(tomorrowTasks);
     return (
       <main
         className={
-          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+          taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+            ? [styles.containerOpen]
+            : [styles.container]
         }
       >
         <Element name="today">
@@ -126,7 +119,7 @@ class TodayTomorrowTab extends Component {
             >
               Today
             </button>
-            {isOpenToday && <CardList cardItems={todayTasks} />}
+            {isOpenToday && <CardList cardItems={sortTodayTasks} />}
           </section>
         </Element>
 
@@ -147,7 +140,7 @@ class TodayTomorrowTab extends Component {
             >
               Tomorrow
             </button>
-            {isOpenTomorrow && <CardList cardItems={tomorrowTasks} />}
+            {isOpenTomorrow && <CardList cardItems={sortTomorrowTasks} />}
           </section>
         </Element>
       </main>
@@ -159,11 +152,8 @@ const mapStateToProps = state => ({
   getTodayTomorrowTasks: getTodayTomorrowTasks(state),
   burgerEvent: burgerEvent(state),
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
+  taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
-
-// const mapDispatchToProps = dispatch => ({
-//   getBurgerEvent: () => dispatch(burgerEvent(null)),
-// });
 
 export default connect(
   mapStateToProps,

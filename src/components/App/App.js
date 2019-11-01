@@ -73,7 +73,7 @@ class App extends Component {
         <ProtectedComponent path="/menu" component={BurgerMenu} />
         <ProtectedComponent path="/dashboard" component={Dashboard} />
         <ProtectedComponent path="/statistics" component={Statistics} />
-        <Redirect to="/dashboard" />
+        <Redirect to="/login" />
       </Switch>
     );
   }
