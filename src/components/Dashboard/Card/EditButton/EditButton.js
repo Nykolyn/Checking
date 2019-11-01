@@ -18,7 +18,7 @@ const EditButton = ({
       if (taskInEditMode) removeTaskFromEditMode();
       onClick();
       TaskToEditMode(task);
-      // taskPopUpCreateOpen();
+      taskPopUpCreateOpen();
     }}
   >
     <Edit />
