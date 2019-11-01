@@ -10,6 +10,7 @@ import {
   taskPopUpEditIsOpen,
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
+import { sortTodayTomorrowTasks } from '../../../../helpers/tasksFilterHelper';
 
 class TodayTomorrowTab extends Component {
   state = {
@@ -90,9 +91,8 @@ class TodayTomorrowTab extends Component {
       tomorrowTasks,
     } = this.state;
     const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
-    //FILTER NE TROGAT`
-    // const filterCardToday = filterCard(todayTasks);
-    // const filterCardTomorrow = filterCard(tomorrowTasks);
+    const sortTodayTasks = sortTodayTomorrowTasks(todayTasks);
+    const sortTomorrowTasks = sortTodayTomorrowTasks(tomorrowTasks);
     return (
       <main
         className={
@@ -119,7 +119,7 @@ class TodayTomorrowTab extends Component {
             >
               Today
             </button>
-            {isOpenToday && <CardList cardItems={todayTasks} />}
+            {isOpenToday && <CardList cardItems={sortTodayTasks} />}
           </section>
         </Element>
 
@@ -140,7 +140,7 @@ class TodayTomorrowTab extends Component {
             >
               Tomorrow
             </button>
-            {isOpenTomorrow && <CardList cardItems={tomorrowTasks} />}
+            {isOpenTomorrow && <CardList cardItems={sortTomorrowTasks} />}
           </section>
         </Element>
       </main>

@@ -9,6 +9,7 @@ import {
 import { getBurnedOutTasks } from '../../../../redux/tasks/tasksSelectors';
 import CardList from '../../CardList/CardList';
 import styles from './BurnedOutTab.module.css';
+import { sortBurnedOutTasks } from '../../../../helpers/tasksFilterHelper';
 
 class BurnedOutTab extends Component {
   state = {
@@ -34,6 +35,7 @@ class BurnedOutTab extends Component {
   render() {
     const { burnedOutTasks } = this.state;
     const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
+    const sortTasks = sortBurnedOutTasks(burnedOutTasks);
     return (
       <main
         className={
@@ -45,7 +47,8 @@ class BurnedOutTab extends Component {
         <Element name="burnedOut">
           <section className={styles.section}>
             <p className={styles.titleButton}>Burned Out</p>
-            <CardList cardItems={burnedOutTasks} />
+            {/* <CardList cardItems={burnedOutTasks} /> */}
+            <CardList cardItems={sortTasks} />
           </section>
         </Element>
       </main>
