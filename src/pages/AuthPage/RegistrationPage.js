@@ -13,8 +13,8 @@ const SIGNUP_SCHEMA = Yup.object().shape({
     .email('Invalid email')
     .required('Required'),
   password: Yup.string()
-    .min(6, 'Too Short!')
-    .max(16, 'Too Long!')
+    .min(6, 'Too short password!')
+    .max(16, 'Too long password!')
     .required('Required'),
   confirmPassword: Yup.string().oneOf(
     [Yup.ref('password'), null],

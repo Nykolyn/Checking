@@ -19,6 +19,7 @@ const taskPopUpError = (state = null, { type, payload }) => {
     case ActionTypes.UPDATE_TOMORROW_TASK_ERROR:
     case ActionTypes.UPDATE_NEXT_TASK_ERROR:
     case ActionTypes.UPDATE_AFTER_TASK_ERROR:
+    case ActionTypes.UPDATE_DONE_TASK_ERROR:
     case ActionTypes.REMOVE_TODAY_TASK_ERROR:
     case ActionTypes.REMOVE_TOMORROW_TASK_ERROR:
     case ActionTypes.REMOVE_NEXT_TASK_ERROR:

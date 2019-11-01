@@ -23,8 +23,6 @@
   border: 0;
   padding: 0;
   width: 52px;
-  position: relative;
-  z-index: 9999;
   height: 100%;
   background-image: url('../../assets/icons/donut_small-24px.svg');
   background-repeat: no-repeat;
