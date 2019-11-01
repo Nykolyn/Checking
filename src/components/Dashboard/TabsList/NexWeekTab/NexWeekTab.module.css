@@ -100,7 +100,7 @@
 
 @media screen and (min-width: 980px) {
   .container {
-    width: 100%;
+    width: 980px;
   }
 
   .containerOpen {
@@ -113,6 +113,6 @@
   }
 
   .titleButton {
-    width: 100%;
+    width: 980px;
   }
 }
