@@ -1,9 +1,13 @@
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
-import { taskPopUpCreateIsOpen } from '../../redux/componentController/controllerSelectrors';
+import {
+  taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
+} from '../../redux/componentController/controllerSelectrors';
 
 const mSTP = state => ({
   taskCreateOpen: taskPopUpCreateIsOpen(state),
+  taskEditOpen: taskPopUpEditIsOpen(state),
 });
 const mDTP = () => ({});
 

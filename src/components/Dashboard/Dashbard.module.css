@@ -4,7 +4,6 @@
   width: 57px;
   height: 57px;
   right: 4%;
-  z-index: 99999;
 }
 
 .popUpDesktop {
@@ -48,9 +47,14 @@
     position: relative;
   }
 
+  .popUpWrapper {
+    position: fixed;
+    width: 34%;
+  }
+
   .createTaskModalWrapperOpen {
     width: 34%;
-    height: calc(100vh - 52px);
+    min-height: calc(100vh - 52px);
     background-color: #fff;
     box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
   }
@@ -60,7 +64,7 @@
   }
 
   .CreateTaskButtonWrapper {
-    left: 1.8%;
+    left: 1.6%;
     transform: translateY(-50%);
     position: fixed;
     top: 50%;
