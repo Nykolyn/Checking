@@ -22,6 +22,10 @@
   text-align: center;
 }
 
+.cardHeader__burn {
+  fill: orange;
+}
+
 .cardBody {
   height: 114px;
   color: white;
