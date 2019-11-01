@@ -4,7 +4,10 @@ import { Element, scroller } from 'react-scroll';
 import { connect } from 'react-redux';
 import styles from './NexWeekTab.module.css';
 import CardList from '../../CardList/CardList';
-import { burgerEvent } from '../../../../redux/componentController/controllerSelectrors';
+import {
+  burgerEvent,
+  taskPopUpCreateIsOpen,
+} from '../../../../redux/componentController/controllerSelectrors';
 import { getNextAfterTasks } from '../../../../redux/tasks/tasksSelectors';
 
 class NexWeekTab extends Component {
@@ -78,8 +81,13 @@ class NexWeekTab extends Component {
 
   render() {
     const { isOpenNext, isOpenAfter, nextTasks, afterTasks } = this.state;
+    const { taskPopUpCreateIsOpen } = this.props;
     return (
-      <main className={styles.container}>
+      <main
+        className={
+          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+        }
+      >
         <Element name="next">
           <section className={styles.section}>
             <button
@@ -131,13 +139,10 @@ class NexWeekTab extends Component {
 const mapStateToProps = state => ({
   getNextAfterTasks: getNextAfterTasks(state),
   burgerEvent: burgerEvent(state),
-});
-
-const mapDispatchToProps = dispatch => ({
-  getBurgerEvent: () => dispatch(burgerEvent(null)),
+  taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  null,
 )(NexWeekTab);
