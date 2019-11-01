@@ -79,11 +79,11 @@ class Dashboard extends Component {
                       )}
                     </aside>
                     <div
-                      className={`${
+                      className={
                         taskCreateOpen
                           ? css.tabsListContainerOpen
                           : css.tabsListContainerClose
-                      }`}
+                      }
                     >
                       <TabsList />
                     </div>
