@@ -157,7 +157,7 @@ export default class TaskPopUp extends Component {
     if (taskPopUpEditOpen) {
       removeTaskFromEditMode();
       taskPopUpEditClose();
-     // taskPopUpCreateClose();
+      // taskPopUpCreateClose();
       return;
     }
     taskPopUpCreateClose();
@@ -213,6 +213,7 @@ export default class TaskPopUp extends Component {
           placeholder="Write title"
           required
           onChange={this.handleTextInput}
+          autoComplete="off"
         />
         <h4 className={styles.title}>Description (up to 800 characters)</h4>
         <textarea
