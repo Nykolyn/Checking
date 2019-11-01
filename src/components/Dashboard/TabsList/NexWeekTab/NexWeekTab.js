@@ -85,7 +85,7 @@ class NexWeekTab extends Component {
     const { isOpenNext, isOpenAfter, nextTasks, afterTasks } = this.state;
     const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
     const sortNextTasks = sortNextAfterTasks(nextTasks);
-    const sortAfterTasks = sortNextAfterTasks(afterTasks);
+    // const sortAfterTasks = sortNextAfterTasks(afterTasks);
     return (
       <main
         className={
@@ -134,7 +134,8 @@ class NexWeekTab extends Component {
             >
               After 7 Days
             </button>
-            {isOpenAfter && <CardList cardItems={sortAfterTasks} />}
+            {/* {isOpenAfter && <CardList cardItems={sortAfterTasks} />} */}
+            {isOpenAfter && <CardList cardItems={afterTasks} />}
           </section>
         </Element>
       </main>

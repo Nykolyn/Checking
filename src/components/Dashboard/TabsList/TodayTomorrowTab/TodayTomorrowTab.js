@@ -93,7 +93,6 @@ class TodayTomorrowTab extends Component {
     const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
     const sortTodayTasks = sortTodayTomorrowTasks(todayTasks);
     const sortTomorrowTasks = sortTodayTomorrowTasks(tomorrowTasks);
-    console.log(todayTasks);
     return (
       <main
         className={
