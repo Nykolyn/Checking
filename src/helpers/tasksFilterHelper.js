@@ -59,7 +59,7 @@ export const sortBurnedOutTasks = arr => {
     arr.sort(
       (a, b) =>
         b.date.localeCompare(a.date) ||
-        a.time - b.time ||
+        b.time - a.time ||
         b.priority - a.priority,
     );
   }
