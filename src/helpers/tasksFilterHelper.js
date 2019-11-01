@@ -18,6 +18,9 @@ export const sortTodayTomorrowTasks = arr => {
 
 // sort next 7 Tasks
 export const sortNextAfterTasks = arr => {
+  if (arr.length >= 0) {
+    console.log(arr);
+  }
   return arr;
 };
 
