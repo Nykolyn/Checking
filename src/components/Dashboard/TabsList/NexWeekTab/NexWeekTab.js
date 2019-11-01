@@ -7,6 +7,7 @@ import CardList from '../../CardList/CardList';
 import {
   burgerEvent,
   taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getNextAfterTasks } from '../../../../redux/tasks/tasksSelectors';
 
@@ -81,11 +82,13 @@ class NexWeekTab extends Component {
 
   render() {
     const { isOpenNext, isOpenAfter, nextTasks, afterTasks } = this.state;
-    const { taskPopUpCreateIsOpen } = this.props;
+    const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
     return (
       <main
         className={
-          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+          taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+            ? [styles.containerOpen]
+            : [styles.container]
         }
       >
         <Element name="next">
@@ -140,6 +143,7 @@ const mapStateToProps = state => ({
   getNextAfterTasks: getNextAfterTasks(state),
   burgerEvent: burgerEvent(state),
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
+  taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
 
 export default connect(

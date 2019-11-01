@@ -4,20 +4,33 @@ import Card from '../Card/Card';
 import styles from '../CardList/CardList.module.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { taskPopUpCreateIsOpen } from '../../../redux/componentController/controllerSelectrors';
+import {
+  taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
+} from '../../../redux/componentController/controllerSelectrors';
 
-const CardList = ({ cardItems, taskPopUpCreateIsOpen }) => {
+const CardList = ({
+  cardItems,
+  taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
+}) => {
   return (
     <div>
       <ul
         className={`${styles.cardsTrsn}
-          ${!taskPopUpCreateIsOpen ? [styles.cardList] : [styles.cardListOpen]}
+          ${
+            taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+              ? [styles.cardListOpen]
+              : [styles.cardList]
+          }
         `}
       >
         {cardItems.map(el => (
           <li
             className={
-              !taskPopUpCreateIsOpen ? [styles.cardItem] : [styles.cardItemOpen]
+              taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+                ? [styles.cardItemOpen]
+                : [styles.cardItem]
             }
             key={el._id}
           >
@@ -31,6 +44,7 @@ const CardList = ({ cardItems, taskPopUpCreateIsOpen }) => {
 
 const mapStateToProps = state => ({
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
+  taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
 
 export default connect(

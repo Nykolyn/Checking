@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import { connect } from 'react-redux';
 import CardList from '../../CardList/CardList';
-import { taskPopUpCreateIsOpen } from '../../../../redux/componentController/controllerSelectrors';
+import {
+  taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
+} from '../../../../redux/componentController/controllerSelectrors';
 import { getDoneTasks } from '../../../../redux/tasks/tasksSelectors';
 import styles from './DoneTab.module.css';
 
@@ -30,11 +33,13 @@ class DoneTab extends Component {
 
   render() {
     const { doneTasks } = this.state;
-    const { taskPopUpCreateIsOpen } = this.props;
+    const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
     return (
       <main
         className={
-          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+          taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+            ? [styles.containerOpen]
+            : [styles.container]
         }
       >
         <Element name="done">
@@ -54,6 +59,7 @@ class DoneTab extends Component {
 const mapStateToProps = state => ({
   getDone: getDoneTasks(state),
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
+  taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
 
 export default connect(mapStateToProps)(DoneTab);

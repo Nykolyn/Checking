@@ -7,6 +7,7 @@ import CardList from '../../CardList/CardList';
 import {
   burgerEvent,
   taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 
@@ -98,14 +99,16 @@ class TodayTomorrowTab extends Component {
       todayTasks,
       tomorrowTasks,
     } = this.state;
-    const { taskPopUpCreateIsOpen } = this.props;
+    const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
     //FILTER NE TROGAT`
     // const filterCardToday = filterCard(todayTasks);
     // const filterCardTomorrow = filterCard(tomorrowTasks);
     return (
       <main
         className={
-          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+          taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+            ? [styles.containerOpen]
+            : [styles.container]
         }
       >
         <Element name="today">
@@ -159,6 +162,7 @@ const mapStateToProps = state => ({
   getTodayTomorrowTasks: getTodayTomorrowTasks(state),
   burgerEvent: burgerEvent(state),
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
+  taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
 
 // const mapDispatchToProps = dispatch => ({
