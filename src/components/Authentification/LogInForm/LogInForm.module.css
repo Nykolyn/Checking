@@ -170,7 +170,7 @@ input:valid:not(:placeholder-shown) {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-image: url('../../../img/pic.png');
+    background-image: url('../../../assets/images/registration-img.png');
     display: block;
   }
 
