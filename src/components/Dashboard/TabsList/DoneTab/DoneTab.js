@@ -37,7 +37,6 @@ class DoneTab extends Component {
     const { doneTasks } = this.state;
     const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
     const sortTasks = sortDoneTasks(doneTasks);
-    console.log(doneTasks);
     return (
       <main
         className={
