@@ -19,7 +19,7 @@ class LogIn extends Component {
       touched,
     } = this.props;
     return (
-      <div className={style.wrapLogin}>
+      <>
         {screenWidth < 768 && <Header />}
         <div className={style.loginContainer}>
           <div className={style.imgContainer} />
@@ -40,7 +40,11 @@ class LogIn extends Component {
                 <span className={style.sloganText}>Just check in.</span>
               </div>
 
-              <form className={style.formLogin} onSubmit={handleSubmit}>
+              <form
+                method="GET"
+                className={style.formLogin}
+                onSubmit={handleSubmit}
+              >
                 <p className={style.textEmail}>
                   E-mail<span className={style.star}>*</span>
                 </p>
@@ -81,7 +85,7 @@ class LogIn extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

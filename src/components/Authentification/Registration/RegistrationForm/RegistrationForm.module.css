@@ -57,11 +57,19 @@
 
 .inputError {
   color: red;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   text-align: center;
   text-transform: uppercase;
   font-size: 10px;
 }
+
+/* .consent {
+  color: red;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  margin-bottom: 15px;
+} */
 
 input:required:valid {
   border-color: green;
