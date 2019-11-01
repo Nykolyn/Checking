@@ -14,6 +14,7 @@ class Dashboard extends Component {
   static propTypes = {
     taskCreateOpen: PropTypes.bool.isRequired,
     refreshUserData: PropTypes.func.isRequired,
+    taskEditOpen: PropTypes.bool.isRequired,
   };
 
   state = {};
@@ -25,7 +26,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { taskCreateOpen } = this.props;
+    const { taskCreateOpen, taskEditOpen } = this.props;
     return (
       <>
         <div className={css.headerContainer}>
@@ -42,10 +43,10 @@ class Dashboard extends Component {
               <>
                 {matches.small && (
                   <div
-                    className={`${css.dashboard} ${taskCreateOpen &&
-                      css.dashboardPopUpOpen}`}
+                    className={`${css.dashboard} ${taskCreateOpen ||
+                      (taskEditOpen && css.dashboardPopUpOpen)}`}
                   >
-                    {taskCreateOpen ? (
+                    {taskCreateOpen || taskEditOpen ? (
                       <aside className={css.createTaskModalWrapper}>
                         <TaskPopUp />
                       </aside>
@@ -65,13 +66,15 @@ class Dashboard extends Component {
                   <div className={css.dashboard}>
                     <aside
                       className={
-                        taskCreateOpen
+                        taskCreateOpen || taskEditOpen
                           ? css.createTaskModalWrapperOpen
                           : css.popUpDesktop
                       }
                     >
-                      {taskCreateOpen ? (
-                        <TaskPopUp />
+                      {taskCreateOpen || taskEditOpen ? (
+                        <div className={css.popUpWrapper}>
+                          <TaskPopUp />
+                        </div>
                       ) : (
                         <div className={css.CreateTaskButtonWrapper}>
                           <CreateTaskButton />
@@ -80,7 +83,7 @@ class Dashboard extends Component {
                     </aside>
                     <div
                       className={
-                        taskCreateOpen
+                        taskCreateOpen || taskEditOpen
                           ? css.tabsListContainerOpen
                           : css.tabsListContainerClose
                       }

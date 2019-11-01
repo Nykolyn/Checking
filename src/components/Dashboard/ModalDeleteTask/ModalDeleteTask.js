@@ -7,10 +7,21 @@ import { deleteTask } from '../../../redux/tasks/tasksOperations';
 import { refreshUser } from '../../../redux/session/sessionOperations';
 
 class ModalDeleteTask extends Component {
+  static defaultProps = {
+    taskToDelete: null,
+  };
+
   static propTypes = {
     modalDeleteTaskClose: PropTypes.func.isRequired,
     deleteTask: PropTypes.func.isRequired,
-    taskToDelete: PropTypes.func.isRequired,
+    taskToDelete: PropTypes.shape({
+      role: PropTypes.string,
+      date: PropTypes.string,
+      time: PropTypes.string,
+      title: PropTypes.string,
+      priority: PropTypes.number,
+      description: PropTypes.string,
+    }),
     handleCloseEditModal: PropTypes.func.isRequired,
     openModalDeleteTask: PropTypes.bool.isRequired,
   };
