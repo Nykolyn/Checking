@@ -45,37 +45,42 @@ class LogIn extends Component {
                 className={style.formLogin}
                 onSubmit={handleSubmit}
               >
-                <p className={style.textEmail}>
-                  E-mail<span className={style.star}>*</span>
-                </p>
-                <input
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="email"
-                  name="email"
-                  className={style.input}
-                  placeholder="your@email.com"
-                  required
-                />
+                <label htmlFor="1">
+                  <p className={style.textEmail}>
+                    E-mail<span className={style.star}>*</span>
+                  </p>
+                  <input
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="email"
+                    name="email"
+                    className={style.input}
+                    placeholder="your@email.com"
+                    required
+                  />
+                </label>
                 {errors.email && touched.email && (
                   <div className={style.inputError}>{errors.email}</div>
                 )}
-                <p className={style.password}>
-                  <span className={style.textPassword}>
-                    Password<span className={style.star}>*</span>
-                  </span>
-                </p>
-                <input
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="password"
-                  name="password"
-                  className={style.input}
-                  placeholder="yourpassword"
-                  required
-                />
+
+                <label htmlFor="2">
+                  <p className={style.password}>
+                    <span className={style.textPassword}>
+                      Password<span className={style.star}>*</span>
+                    </span>
+                  </p>
+                  <input
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="password"
+                    name="password"
+                    className={style.input}
+                    placeholder="yourpassword"
+                    required
+                  />
+                </label>
                 {errors.password && touched.password && (
                   <div className={style.inputError}>{errors.password}</div>
                 )}
