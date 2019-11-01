@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { Component } from 'react';
 import Loadable from 'react-loadable';
 import { Route, Redirect, Switch } from 'react-router-dom';

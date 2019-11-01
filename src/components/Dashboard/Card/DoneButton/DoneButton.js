@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Throttle } from 'react-throttle';
 import styleSelector from '../../../../helpers/DoneBtnStyleSelectHelper';
 import style from './DoneButton.module.css';
+import Loaders from '../../TabsList/Loaders';
 import { ReactComponent as ThumbUp } from '../../../../assets/icons/thumb_up-24px.svg';
 
 export default class DoneButton extends Component {
-  state = {};
+  state = {
+    isLoading: false,
+  };
 
   static propTypes = {
     removeTask: PropTypes.func.isRequired,
@@ -28,28 +32,44 @@ export default class DoneButton extends Component {
     }).isRequired,
   };
 
+  handleLoader = () => {
+    return this.setState(prevState => ({ isLoading: !prevState.isLoading }));
+  };
+
   handleClick = task => {
-    const changedTask = { ...task, isComplete: true };
+    const changedTask = { ...task, isComplete: true, date: new Date() };
     const { removeTask, updateTask } = this.props;
-    removeTask(task);
-    updateTask(changedTask);
+    //
+    setTimeout(() => {
+      removeTask(task);
+      updateTask(changedTask);
+    }, 1000);
   };
 
   render() {
+    const { isLoading } = this.state;
     const { inDoneTab, inBurnedOutTab, task } = this.props;
     return (
       <>
-        <button
-          disabled={inDoneTab}
-          type="button"
-          className={style.DoneBtn}
-          style={styleSelector(inDoneTab, inBurnedOutTab)}
-          onClick={() => {
-            this.handleClick(task);
-          }}
-        >
-          <ThumbUp />
-        </button>
+        <Throttle time="1000" handler="onClick">
+          <button
+            disabled={inDoneTab}
+            type="button"
+            className={inBurnedOutTab ? style.DoneBtnBurn : style.DoneBtn}
+            style={styleSelector(inDoneTab, inBurnedOutTab)}
+            onClick={() => {
+              this.handleLoader();
+              this.handleClick(task);
+            }}
+          >
+            <ThumbUp />
+          </button>
+        </Throttle>
+        {isLoading && (
+          <div className={style.loaderWrapper}>
+            <Loaders />
+          </div>
+        )}
       </>
     );
   }

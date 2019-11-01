@@ -3,17 +3,26 @@ import {
   taskPopUpEditOpen,
   taskPopUpCreateOpen,
 } from '../../../../redux/componentController/componentActions';
-import { putTaskToEditMode } from '../../../../redux/tasks/taskActions';
+import {
+  putTaskToEditMode,
+  removeTaskFromEditMode,
+} from '../../../../redux/tasks/taskActions';
+import { getTaskInEditMode } from '../../../../redux/tasks/tasksSelectors';
 
 import EditButton from './EditButton';
+
+const mSTP = state => ({
+  taskInEditMode: getTaskInEditMode(state),
+});
 
 const mDtP = dispatch => ({
   onClick: isEditOpen => dispatch(taskPopUpEditOpen(isEditOpen)),
   TaskToEditMode: task => dispatch(putTaskToEditMode(task)),
-  PopUpCreateOpen: () => dispatch(taskPopUpCreateOpen()),
+  removeTaskFromEditMode: () => dispatch(removeTaskFromEditMode()),
+  taskPopUpCreateOpen: () => dispatch(taskPopUpCreateOpen()),
 });
 
 export default connect(
-  null,
+  mSTP,
   mDtP,
 )(EditButton);

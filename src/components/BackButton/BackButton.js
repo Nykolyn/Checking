@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as css from './BackButton.module.css';
 
 const BackButton = ({ handleOpenDashboard }) => (
-  <Link to="/dashboard">
+  <Link to="/dashboard" className={css.link}>
     <button
       type="button"
       className={css.backButton}
