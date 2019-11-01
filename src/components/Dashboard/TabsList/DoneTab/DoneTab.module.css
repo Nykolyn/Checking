@@ -32,6 +32,9 @@
   border: none;
   text-align: left;
   color: #869096;
+  /* cursor: default; */
+  cursor: none;
+
 }
 
 @media screen and (max-width: 767px) {

@@ -37,7 +37,6 @@ class DoneTab extends Component {
     const { doneTasks } = this.state;
     const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
     const sortTasks = sortDoneTasks(doneTasks);
-    console.log(sortTasks);
     return (
       <main
         className={
@@ -49,8 +48,7 @@ class DoneTab extends Component {
         <Element name="done">
           <section className={styles.section}>
             <p className={styles.titleButton}>Done</p>
-            {/* <CardList cardItems={sortTasks} /> */}
-            <CardList cardItems={doneTasks} />
+            <CardList cardItems={sortTasks} />
           </section>
         </Element>
       </main>
