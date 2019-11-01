@@ -9,6 +9,7 @@
   margin: 0 auto;
   padding: 0;
   width: 320px;
+  cursor: none;
 }
 
 .section {
@@ -32,9 +33,7 @@
   border: none;
   text-align: left;
   color: #869096;
-  /* cursor: default; */
-  cursor: none;
-
+  cursor: default;
 }
 
 @media screen and (max-width: 767px) {
