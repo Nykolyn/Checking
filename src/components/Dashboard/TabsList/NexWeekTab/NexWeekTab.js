@@ -7,8 +7,10 @@ import CardList from '../../CardList/CardList';
 import {
   burgerEvent,
   taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getNextAfterTasks } from '../../../../redux/tasks/tasksSelectors';
+import { sortNextAfterTasks } from '../../../../helpers/tasksFilterHelper';
 
 class NexWeekTab extends Component {
   state = {
@@ -81,11 +83,15 @@ class NexWeekTab extends Component {
 
   render() {
     const { isOpenNext, isOpenAfter, nextTasks, afterTasks } = this.state;
-    const { taskPopUpCreateIsOpen } = this.props;
+    const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
+    const sortNextTasks = sortNextAfterTasks(nextTasks);
+    // const sortAfterTasks = sortNextAfterTasks(afterTasks);
     return (
       <main
         className={
-          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+          taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+            ? [styles.containerOpen]
+            : [styles.container]
         }
       >
         <Element name="next">
@@ -107,7 +113,7 @@ class NexWeekTab extends Component {
             >
               Next 7 Days
             </button>
-            {isOpenNext && <CardList cardItems={nextTasks} />}
+            {isOpenNext && <CardList cardItems={sortNextTasks} />}
           </section>
         </Element>
 
@@ -128,6 +134,7 @@ class NexWeekTab extends Component {
             >
               After 7 Days
             </button>
+            {/* {isOpenAfter && <CardList cardItems={sortAfterTasks} />} */}
             {isOpenAfter && <CardList cardItems={afterTasks} />}
           </section>
         </Element>
@@ -140,6 +147,7 @@ const mapStateToProps = state => ({
   getNextAfterTasks: getNextAfterTasks(state),
   burgerEvent: burgerEvent(state),
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
+  taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
 
 export default connect(

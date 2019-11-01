@@ -32,6 +32,8 @@
   border: none;
   text-align: left;
   color: #869096;
+  /* cursor: default; */
+  cursor: row-resize;
 }
 
 @media screen and (max-width: 767px) {
