@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-import {
-  taskPopUpEditOpen,
-} from '../../../../redux/componentController/componentActions';
+import { taskPopUpEditOpen } from '../../../../redux/componentController/componentActions';
 import {
   putTaskToEditMode,
   removeTaskFromEditMode,
