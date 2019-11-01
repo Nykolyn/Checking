@@ -11,16 +11,6 @@ import {
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 
-//FILTER NE TROGAT`
-// const filterCard = array => {
-//   let filtredArray = [];
-//   if (array.length >= 1) {
-//     filtredArray = array.filter(el.time.sort());
-//     filtredArray = array.filter(el.priority.sort());
-//   }
-//   return filtredArray;
-// };
-
 class TodayTomorrowTab extends Component {
   state = {
     isOpenToday: true,
@@ -164,10 +154,6 @@ const mapStateToProps = state => ({
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
   taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
-
-// const mapDispatchToProps = dispatch => ({
-//   getBurgerEvent: () => dispatch(burgerEvent(null)),
-// });
 
 export default connect(
   mapStateToProps,

@@ -10,6 +10,8 @@ import {
 import { getDoneTasks } from '../../../../redux/tasks/tasksSelectors';
 import styles from './DoneTab.module.css';
 
+import { sortDoneTasks } from '../../../../helpers/tasksFilterHelper';
+
 class DoneTab extends Component {
   state = {
     doneTasks: [],
@@ -34,6 +36,8 @@ class DoneTab extends Component {
   render() {
     const { doneTasks } = this.state;
     const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
+    const sortTasks = sortDoneTasks(doneTasks);
+    console.log(sortTasks);
     return (
       <main
         className={
@@ -44,10 +48,8 @@ class DoneTab extends Component {
       >
         <Element name="done">
           <section className={styles.section}>
-            {/* <button type="button" className={styles.titleButton}>
-            Done
-          </button> */}
             <p className={styles.titleButton}>Done</p>
+            {/* <CardList cardItems={sortTasks} /> */}
             <CardList cardItems={doneTasks} />
           </section>
         </Element>
