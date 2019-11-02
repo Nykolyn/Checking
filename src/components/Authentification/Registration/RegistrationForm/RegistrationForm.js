@@ -1,15 +1,12 @@
-/* eslint-disable */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import css from './RegistrationForm.module.css';
 import FormButton from '../../FormButton';
-import Header from '../../../Header/Header';
-import PropTypes from 'prop-types';
 
 class RegistrationForm extends Component {
   state = {};
 
   render() {
-    const screenWidth = document.documentElement.clientWidth;
     const {
       values,
       handleBlur,
