@@ -1,9 +1,5 @@
 import { connect } from 'react-redux';
-import {
-  taskPopUpEditOpen,
-  // dont touch next line
-  // taskPopUpCreateOpen,
-} from '../../../../redux/componentController/componentActions';
+import { taskPopUpEditOpen } from '../../../../redux/componentController/componentActions';
 import {
   putTaskToEditMode,
   removeTaskFromEditMode,
@@ -20,8 +16,6 @@ const mDtP = dispatch => ({
   onClick: isEditOpen => dispatch(taskPopUpEditOpen(isEditOpen)),
   TaskToEditMode: task => dispatch(putTaskToEditMode(task)),
   removeTaskFromEditMode: () => dispatch(removeTaskFromEditMode()),
-  // dont touch next line
-  // taskPopUpCreateOpen: () => dispatch(taskPopUpCreateOpen()),
 });
 
 export default connect(

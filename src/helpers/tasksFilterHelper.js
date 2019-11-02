@@ -1,3 +1,4 @@
+// sort Today Tasks
 export const sortTodayTomorrowTasks = arr => {
   if (arr.length >= 0) {
     arr.sort(
@@ -7,10 +8,10 @@ export const sortTodayTomorrowTasks = arr => {
           ? a.time > b.time
             ? 1
             : -1
-          : a.time > b.time
-          ? -1
-          : 1) ||
-        b.priority - a.priority,
+          : a.priority > b.priority
+          ? 1
+          : -1) ||
+        a.priority - b.priority,
     );
   }
   return arr;
@@ -26,7 +27,7 @@ export const sortNextAfterTasks = arr => {
           ? a.time > b.time
             ? 1
             : -1
-          : a.time > b.time
+          : a.priority > b.priority
           ? -1
           : 1) ||
         b.priority - a.priority,
