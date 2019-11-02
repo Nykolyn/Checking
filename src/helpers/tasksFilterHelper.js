@@ -6,8 +6,8 @@ export const sortTodayTomorrowTasks = arr => {
         a.time.localeCompare(b.time) ||
         (a.time !== 'All Day' || b.time !== 'All Day'
           ? a.time > b.time
-            ? 1
-            : -1
+            ? -1
+            : 1
           : a.priority > b.priority
           ? 1
           : -1) ||
@@ -56,5 +56,3 @@ export const sortDoneTasks = arr => {
   }
   return arr;
 };
-
-
