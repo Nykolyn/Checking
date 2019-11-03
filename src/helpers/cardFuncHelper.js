@@ -28,7 +28,7 @@ export const priorityStyleSelect = priority => {
   const basicStyle = {
     display: 'block',
     backgroundColor: '#fff',
-    marginRight: '20px',
+    marginRight: '10px',
     padding: '3px 9px',
     fontSize: '14px',
     fontWeight: '500',
@@ -87,4 +87,16 @@ export const dateFormatter = date => {
   const isYearAdd =
     dateNow.getFullYear() === new Date().getFullYear() ? 10 : 15;
   return String(dateNow).slice(4, isYearAdd);
+};
+
+export const timeTester = (date, time) => {
+  const hoursInTime = Number(time.trim().slice(6, 8));
+  const dateTime = new Date(date).getHours() - 2;
+  if (Number.isNaN(hoursInTime)) {
+    return false;
+  }
+  if (dateTime >= hoursInTime) {
+    return true;
+  }
+  return false;
 };

@@ -9,6 +9,10 @@
   flex-wrap: wrap;
 }
 
+.cardsTrsn {
+  transition: all 0.4s;
+}
+
 .cardItem {
   display: block;
   padding: 0;

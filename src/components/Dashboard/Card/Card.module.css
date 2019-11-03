@@ -15,11 +15,28 @@
   padding: 0px;
 }
 
+.cardHeader__wrap {
+  margin: 0;
+  /* margin-left: 10px; */
+  width: 120px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .cardHeader__role {
   margin: 0px;
-  margin-left: 27px;
+  margin-left: 4px;
   padding: 10px 0px;
   text-align: center;
+  text-align: left;
+  width: 86px;
+}
+
+.cardHeader__burn {
+  fill: #ff6b08;
+  padding-top: 6px;
+  margin: 0px;
+  opacity: 0;
 }
 
 .cardBody {
@@ -50,7 +67,7 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
-  padding: 8px 12px 4px 12px;
+  padding: 4px 12px;
   background-color: #fff;
 }
 

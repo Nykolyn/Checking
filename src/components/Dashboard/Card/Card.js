@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ReactComponent as Burn } from '../../../assets/icons/whatshot-24px.svg';
 import EditButton from './EditButton/EditButtonContainer';
 import DoneButton from './DoneButton/DoneButtonContainer';
 import {
@@ -8,6 +9,7 @@ import {
   titleSlicer,
   descriptionSlicer,
   dateFormatter,
+  timeTester,
 } from '../../../helpers/cardFuncHelper';
 import style from './Card.module.css';
 import taskTypes from '../../../constants/taskTypes';
@@ -16,7 +18,14 @@ import defineDispatcher from '../../../helpers/dispatchHelper';
 const Card = ({ task }) => (
   <section className={style.cardSection}>
     <header style={roleStyleSelect(task.role)}>
-      <p className={style.cardHeader__role}>{task.role}</p>
+      <div className={style.cardHeader__wrap}>
+        {timeTester(task.date, task.time) && (
+          <p className={style.cardHeader__burn} style={{ opacity: '1' }}>
+            <Burn />
+          </p>
+        )}
+        <p className={style.cardHeader__role}>{task.role}</p>
+      </div>
       <p style={priorityStyleSelect(task.priority)}>{task.priority}</p>
     </header>
     <div className={style.cardBody}>

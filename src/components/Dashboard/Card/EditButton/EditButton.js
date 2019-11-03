@@ -9,7 +9,6 @@ const EditButton = ({
   TaskToEditMode,
   removeTaskFromEditMode,
   taskInEditMode,
-  taskPopUpCreateOpen,
 }) => (
   <button
     type="button"
@@ -18,7 +17,6 @@ const EditButton = ({
       if (taskInEditMode) removeTaskFromEditMode();
       onClick();
       TaskToEditMode(task);
-      // taskPopUpCreateOpen();
     }}
   >
     <Edit />
@@ -47,7 +45,6 @@ EditButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   TaskToEditMode: PropTypes.func.isRequired,
   removeTaskFromEditMode: PropTypes.func.isRequired,
-  taskPopUpCreateOpen: PropTypes.func.isRequired,
   taskInEditMode: PropTypes.shape({
     role: PropTypes.string,
     date: PropTypes.string,

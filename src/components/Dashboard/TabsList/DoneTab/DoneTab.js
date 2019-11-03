@@ -3,9 +3,14 @@ import React, { Component } from 'react';
 import { Element } from 'react-scroll';
 import { connect } from 'react-redux';
 import CardList from '../../CardList/CardList';
-import { taskPopUpCreateIsOpen } from '../../../../redux/componentController/controllerSelectrors';
+import {
+  taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
+} from '../../../../redux/componentController/controllerSelectrors';
 import { getDoneTasks } from '../../../../redux/tasks/tasksSelectors';
 import styles from './DoneTab.module.css';
+
+import { sortDoneTasks } from '../../../../helpers/tasksFilterHelper';
 
 class DoneTab extends Component {
   state = {
@@ -30,20 +35,20 @@ class DoneTab extends Component {
 
   render() {
     const { doneTasks } = this.state;
-    const { taskPopUpCreateIsOpen } = this.props;
+    const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
+    const sortTasks = sortDoneTasks(doneTasks);
     return (
       <main
         className={
-          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+          taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+            ? [styles.containerOpen]
+            : [styles.container]
         }
       >
         <Element name="done">
           <section className={styles.section}>
-            {/* <button type="button" className={styles.titleButton}>
-            Done
-          </button> */}
             <p className={styles.titleButton}>Done</p>
-            <CardList cardItems={doneTasks} />
+            <CardList cardItems={sortTasks} />
           </section>
         </Element>
       </main>
@@ -54,6 +59,7 @@ class DoneTab extends Component {
 const mapStateToProps = state => ({
   getDone: getDoneTasks(state),
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
+  taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
 
 export default connect(mapStateToProps)(DoneTab);

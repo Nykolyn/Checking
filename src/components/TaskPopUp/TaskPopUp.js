@@ -157,7 +157,6 @@ export default class TaskPopUp extends Component {
     if (taskPopUpEditOpen) {
       removeTaskFromEditMode();
       taskPopUpEditClose();
-      // taskPopUpCreateClose();
       return;
     }
     taskPopUpCreateClose();

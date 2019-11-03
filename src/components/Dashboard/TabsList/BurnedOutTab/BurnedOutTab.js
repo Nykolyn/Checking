@@ -2,10 +2,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Element } from 'react-scroll';
-import { taskPopUpCreateIsOpen } from '../../../../redux/componentController/controllerSelectrors';
+import {
+  taskPopUpCreateIsOpen,
+  taskPopUpEditIsOpen,
+} from '../../../../redux/componentController/controllerSelectrors';
 import { getBurnedOutTasks } from '../../../../redux/tasks/tasksSelectors';
 import CardList from '../../CardList/CardList';
 import styles from './BurnedOutTab.module.css';
+import { sortBurnedOutTasks } from '../../../../helpers/tasksFilterHelper';
 
 class BurnedOutTab extends Component {
   state = {
@@ -30,20 +34,21 @@ class BurnedOutTab extends Component {
 
   render() {
     const { burnedOutTasks } = this.state;
-    const { taskPopUpCreateIsOpen } = this.props;
+    const { taskPopUpCreateIsOpen, taskPopUpEditIsOpen } = this.props;
+    const sortTasks = sortBurnedOutTasks(burnedOutTasks);
     return (
       <main
         className={
-          !taskPopUpCreateIsOpen ? [styles.container] : [styles.containerOpen]
+          taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+            ? [styles.containerOpen]
+            : [styles.container]
         }
       >
         <Element name="burnedOut">
           <section className={styles.section}>
-            {/* <button type="button" className={styles.titleButton}>
-            Burned Out
-          </button> */}
             <p className={styles.titleButton}>Burned Out</p>
-            <CardList cardItems={burnedOutTasks} />
+            {/* <CardList cardItems={burnedOutTasks} /> */}
+            <CardList cardItems={sortTasks} />
           </section>
         </Element>
       </main>
@@ -54,6 +59,7 @@ class BurnedOutTab extends Component {
 const mapStateToProps = state => ({
   getBurnedOutTasks: getBurnedOutTasks(state),
   taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
+  taskPopUpEditIsOpen: taskPopUpEditIsOpen(state),
 });
 
 export default connect(mapStateToProps)(BurnedOutTab);
