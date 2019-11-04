@@ -28,7 +28,7 @@ export const priorityStyleSelect = priority => {
   const basicStyle = {
     display: 'block',
     backgroundColor: '#fff',
-    marginRight: '20px',
+    marginRight: '10px',
     padding: '3px 9px',
     fontSize: '14px',
     fontWeight: '500',
