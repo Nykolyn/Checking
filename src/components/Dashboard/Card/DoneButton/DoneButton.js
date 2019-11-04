@@ -37,7 +37,9 @@ export default class DoneButton extends Component {
   };
 
   handleClick = task => {
+    console.log(task);
     const changedTask = { ...task, isComplete: true, date: new Date() };
+    console.log(changedTask);
     const { removeTask, updateTask } = this.props;
     //
     setTimeout(() => {

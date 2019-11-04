@@ -17,6 +17,7 @@ const EditButton = ({
       if (taskInEditMode) removeTaskFromEditMode();
       onClick();
       TaskToEditMode(task);
+      console.log('Edit:', task);
     }}
   >
     <Edit />
