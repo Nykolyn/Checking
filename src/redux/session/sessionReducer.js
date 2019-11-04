@@ -51,7 +51,6 @@ const authentificated = (state = false, { type }) => {
     case ActionTypes.SIGN_IN_SUCCESS:
     case ActionTypes.SIGN_UP_SUCCESS:
     case ActionTypes.REFRESH_USER_SUCCESS:
-    case ActionTypes.REFRESH_USER_ERROR:
       return true;
 
     case ActionTypes.LOGOUT_SUCCESS:
