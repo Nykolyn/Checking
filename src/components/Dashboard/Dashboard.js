@@ -19,8 +19,6 @@ class Dashboard extends Component {
     taskEditOpen: PropTypes.bool.isRequired,
   };
 
-  state = {};
-
   componentDidMount() {
     const { refreshUserData } = this.props;
 
