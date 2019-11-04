@@ -131,6 +131,14 @@ input:valid:not(:placeholder-shown) {
   border-color: green;
 }
 
+input:required:placeholder-shown {
+  border: 1px solid red;
+}
+
+input:not(output):invalid {
+  border: none;
+}
+
 @media screen and (min-width: 768px) {
   .wrapLogin {
     background-color: #f5f7fa;

@@ -65,6 +65,7 @@ class LogIn extends Component {
                   name="email"
                   className={style.input}
                   placeholder="your@email.com"
+                  autofocus='autofocus'
                   required
                 />
                 {errors.email && touched.email && (
@@ -87,6 +88,7 @@ class LogIn extends Component {
                   className={style.input}
                   placeholder="yourpassword"
                   required
+
                 />
                 {errors.password && touched.password && (
                   <div className={style.inputError}>{errors.password}</div>
