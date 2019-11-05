@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import styles from './Statistic.module.css';
 import BackButton from '../BackButton/BackButtonContainer';
 import roleFilter from '../../helpers/roleFilter';
-import Selector from '../Statistics/Select/Select';
+import Selector from "./Select/Select";
 import periodFilter from '../../helpers/periodFIlter';
 
 class Statistics extends Component {
@@ -83,7 +83,6 @@ class Statistics extends Component {
     const { tasks } = this.props;
     const { burnedOut, nextAfter, todayTomorrow, done } = tasks.tasks;
     const screenWidth = document.documentElement.clientWidth;
-    const { selected } = this.state;
 
     return (
       <>
