@@ -9,13 +9,13 @@ const filteredData = array => {
   const none = array.filter(el => el.role === 'None').length;
 
   return {
-    labels: ['Partner', 'Learner', 'Dother / son', 'Co-worker', 'None'],
+    labels: ['Learner', 'Partner', 'Co-worker', 'Dother / son', 'None'],
     datasets: [
       {
-        data: [partner, learner, dotherSon, coWorker, none],
+        data: [learner, partner, dotherSon, coWorker, none],
         backgroundColor: [
-          '#c2c9de',
           '#fef9de',
+          '#c2c9de',
           '#d5ebff',
           '#d3dcd6',
           '#cdd0d9',
@@ -37,7 +37,7 @@ const Chart = ({ data }) => {
         options={{
           responsive: true,
           maintainAspectRatio: true,
-          cutoutPercentage: 55,
+          cutoutPercentage: 75,
         }}
         legend={{
           display: false,
