@@ -134,6 +134,7 @@ export default class TaskPopUp extends Component {
       taskToAdd._id = taskInEditMode._id;
       if (defineDispatcher(taskToAdd) !== defineDispatcher(taskInEditMode))
         removeTask(taskInEditMode);
+      // postTask(taskToAdd);
       updateTask(taskToAdd);
       taskPopUpEditClose();
       // taskPopUpCreateClose();
