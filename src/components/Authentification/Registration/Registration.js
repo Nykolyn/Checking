@@ -22,7 +22,6 @@ class Registration extends Component {
                     Login
                   </Link>
                 </div>
-
                 <RegistrationForm {...this.props} />
               </div>
             </div>
