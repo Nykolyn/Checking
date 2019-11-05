@@ -92,7 +92,7 @@ const done = (state = [], { type, payload }) => {
   }
 };
 
-const taskInEditMode = (state = null, { type, payload }) => {
+const taskInEditMode = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.PUT_TASK_TO_EDIT_MODE:
       return payload;

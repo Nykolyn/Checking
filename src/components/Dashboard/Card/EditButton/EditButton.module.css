@@ -1,10 +1,13 @@
-.EditBtn {
+.EditBtn,
+.EditBtnNoHover {
   padding: 6px;
   background-color: #f5f7fa;
   border: 0;
   border-radius: 50%;
   fill: #cdd0d9;
 }
+
+
 
 .EditBtn:hover {
   background-color: #e0e2e8;
