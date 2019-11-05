@@ -5,11 +5,13 @@ import {
   removeTaskFromEditMode,
 } from '../../../../redux/tasks/taskActions';
 import { getTaskInEditMode } from '../../../../redux/tasks/tasksSelectors';
+import { taskPopUpCreateIsOpen } from '../../../../redux/componentController/controllerSelectrors';
 
 import EditButton from './EditButton';
 
 const mSTP = state => ({
   taskInEditMode: getTaskInEditMode(state),
+  taskPopUpCreateIsOpen: taskPopUpCreateIsOpen(state),
 });
 
 const mDtP = dispatch => ({

@@ -3,7 +3,7 @@
 }
 
 .aside {
-  width: 52px;
+  width: 55px;
   min-height: calc(100vh - 52px);
   box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
 }
@@ -45,6 +45,7 @@
 }
 
 @media only screen and (min-width: 470px) {
+
   /* .outer {
     max-width: 768px;
   }
@@ -64,8 +65,11 @@
 }
 
 @media only screen and (min-width: 942px) {
+  .aside {
+    width: 54px;
+  }
+
   .outer {
-    /* max-width: 1200px; */
     width: 100%;
     max-height: 80%;
   }

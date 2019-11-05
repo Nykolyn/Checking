@@ -1,4 +1,5 @@
-.EditBtn {
+.EditBtn,
+.EditBtnNoHover {
   padding: 6px;
   background-color: #f5f7fa;
   border: 0;
