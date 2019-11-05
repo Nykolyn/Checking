@@ -29,27 +29,45 @@ const filteredData = (done, total) => {
   return [
     {
       roles: 'Partner',
-      percentage: `${Math.round(role.partner / summ)}%`,
+      percentage: `${
+        isNaN(Math.round(role.partner / summ))
+          ? 0
+          : Math.round(role.partner / summ)
+      }%`,
       goals: `${role.partner}/${total[0]}`,
     },
     {
       roles: 'Learner',
-      percentage: `${Math.round(role.learner / summ)}%`,
+      percentage: `${
+        isNaN(Math.round(role.learner / summ))
+          ? 0
+          : Math.round(role.learner / summ)
+      }%`,
       goals: `${role.learner}/${total[1]}`,
     },
     {
       roles: 'Daugther / Son',
-      percentage: `${Math.round(role.dotherSon / summ)}%`,
+      percentage: `${
+        isNaN(Math.round(role.dotherSon / summ))
+          ? 0
+          : Math.round(role.dotherSon / summ)
+      }%`,
       goals: `${role.dotherSon}/${total[2]}`,
     },
     {
       roles: 'Co-worker',
-      percentage: `${Math.round(role.coWorker / summ)}%`,
+      percentage: `${
+        isNaN(Math.round(role.coWorker / summ))
+          ? 0
+          : Math.round(role.coWorker / summ)
+      }%`,
       goals: `${role.coWorker}/${total[3]}`,
     },
     {
       roles: 'None',
-      percentage: `${Math.round(role.none / summ)}%`,
+      percentage: `${
+        isNaN(Math.round(role.none / summ)) ? 0 : Math.round(role.none / summ)
+      }%`,
       goals: `${role.none}/${total[4]}`,
     },
   ];

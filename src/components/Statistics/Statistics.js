@@ -6,18 +6,36 @@ import Header from '../Header/Header';
 import styles from './Statistic.module.css';
 import BackButton from '../BackButton/BackButtonContainer';
 import roleFilter from '../../helpers/roleFilter';
+import Selector from '../Statistics/Select/Select';
+import periodFilter from '../../helpers/periodFIlter';
+import test from './test';
 
 class Statistics extends Component {
+  state = {};
+
+  onSelectChange = select => {
+    this.setState({ selected: select });
+  };
+
   rolesSum = (todayTomorrow, nextAfter, burnedOut, done) => {
     const { today, tomorrow } = todayTomorrow;
     const { next, after } = nextAfter;
 
-    const todayFiltered = roleFilter(today);
-    const tomorrowFiltered = roleFilter(tomorrow);
-    const nextFiltered = roleFilter(next);
-    const afterFiltered = roleFilter(after);
-    const burnedOutFiltered = roleFilter(burnedOut);
-    const doneFiltered = roleFilter(done);
+    const { selected } = this.state;
+
+    const _today = periodFilter(selected, today);
+    const _tomorrow = periodFilter(selected, tomorrow);
+    const _next = periodFilter(selected, next);
+    const _after = periodFilter(selected, after);
+    const _burnedOut = periodFilter(selected, burnedOut);
+    const _done = periodFilter(selected, done);
+
+    const todayFiltered = roleFilter(_today);
+    const tomorrowFiltered = roleFilter(_tomorrow);
+    const nextFiltered = roleFilter(_next);
+    const afterFiltered = roleFilter(_after);
+    const burnedOutFiltered = roleFilter(_burnedOut);
+    const doneFiltered = roleFilter(_done);
 
     const partnerSum =
       todayFiltered.partner +
@@ -59,15 +77,7 @@ class Statistics extends Component {
       burnedOutFiltered.none +
       doneFiltered.none;
 
-    return (
-      [partnerSum, learnerSum, dotherSonSum, coWorkerSum, noneSum] || [
-        0,
-        0,
-        0,
-        0,
-        0,
-      ]
-    );
+    return [partnerSum, learnerSum, dotherSonSum, coWorkerSum, noneSum];
   };
 
   render() {
@@ -85,6 +95,7 @@ class Statistics extends Component {
               <h2 className={styles.pageName}> Statistics </h2>
               <div className={styles.componentsWraper}>
                 <div className={styles.chartWraper}>
+                  <Selector status={this.onSelectChange} />
                   <Chart data={done} />
                 </div>
                 <div className={styles.tableWraper}>

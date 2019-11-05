@@ -1,5 +1,6 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import test from '../test';
 
 const filteredData = array => {
   const partner = array.filter(el => el.role === 'Partner').length;

@@ -1,0 +1,106 @@
+import React, { Component } from 'react';
+import Select from 'react-select';
+import { connect } from 'react-redux';
+
+const options = [
+  { value: 'week', label: 'Week' },
+  { value: 'month', label: 'Month' },
+  { value: 'total', label: 'Total' },
+];
+
+const customStyles = {
+  indicatorsContainer: base => ({
+    margin: 0,
+    padding: 0,
+  }),
+  control: (base, state) => ({
+    ...base,
+    border: 0,
+    boxShadow: 'none',
+    background: 'transparent',
+    display: 'flex',
+    flexDirection: 'column',
+  }),
+  container: base => ({
+    // ...base,
+    fontSize: 20,
+    position: 'absolute',
+    width: '25%',
+    height: '100%',
+    backgroundColor: 'transparent',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%,-3%)',
+  }),
+  menu: base => ({
+    // ...base,
+    border: 0,
+    // hyphens: 'auto',
+    marginTop: 0,
+    // wordWrap: 'break-word',
+  }),
+  menuList: () => ({
+    textAlign: 'center',
+    // display: 'flex',
+    // flexDirection: 'row',
+  }),
+  indicatorSeparator: base => ({
+    display: 'none',
+  }),
+  singleValue: () => ({
+    fontSize: 15,
+    fontWeight: 500,
+    color: '#869096',
+  }),
+  option: (base, state) => ({
+    ...base,
+    backgroundColor: 'transparent',
+    color: state.isSelected ? 'red' : '#869096',
+    display: state.isSelected ? 'none' : null,
+    padding: 4,
+    fontWeight: 500,
+  }),
+};
+
+class Selector extends Component {
+  state = {
+    selectedOption: { value: 'week', label: 'Week' },
+  };
+
+  componentDidMount() {
+    const { status } = this.props;
+    const { selectedOption } = this.state;
+    status(selectedOption.value);
+  }
+
+  handleChange = selectedOption => {
+    const { status } = this.props;
+    this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption);
+
+    status(selectedOption.value);
+  };
+
+  render() {
+    const { selectedOption } = this.state;
+
+    return (
+      <Select
+        // autoFocus
+        // defaultMenuIsOpen
+        isSearchable={false}
+        styles={customStyles}
+        value={selectedOption}
+        defaultValue={{ value: 'week', label: 'Week' }}
+        onChange={this.handleChange}
+        options={options}
+      />
+    );
+  }
+}
+const mapStateToProps = state => ({ tasks: state });
+
+export default connect(
+  mapStateToProps,
+  null,
+)(Selector);
