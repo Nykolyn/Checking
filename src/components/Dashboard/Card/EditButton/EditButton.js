@@ -9,14 +9,17 @@ const EditButton = ({
   TaskToEditMode,
   removeTaskFromEditMode,
   taskInEditMode,
+  taskPopUpCreateIsOpen,
 }) => (
   <button
     type="button"
-    className={style.EditBtn}
+    className={taskPopUpCreateIsOpen ? style.EditBtnNoHover : style.EditBtn}
+    disabled={taskPopUpCreateIsOpen}
     onClick={() => {
       if (taskInEditMode) removeTaskFromEditMode();
       onClick();
       TaskToEditMode(task);
+      console.log('Edit:', task);
     }}
   >
     <Edit />
@@ -53,6 +56,7 @@ EditButton.propTypes = {
     priority: PropTypes.number,
     description: PropTypes.string,
   }),
+  taskPopUpCreateIsOpen: PropTypes.bool.isRequired,
 };
 
 export default EditButton;

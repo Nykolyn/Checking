@@ -53,8 +53,8 @@ export const titleSlicer = title => {
   let sliceTitle;
   sliceTitle = title;
 
-  if (title.length > 50) {
-    sliceTitle = title.trim().slice(0, 49);
+  if (title.length > 46) {
+    sliceTitle = title.trim().slice(0, 45);
     return `${sliceTitle.slice(
       0,
       sliceTitle.lastIndexOf(' ') > 45
@@ -91,7 +91,7 @@ export const dateFormatter = date => {
 
 export const timeTester = (date, time) => {
   const hoursInTime = Number(time.trim().slice(6, 8));
-  const dateTime = new Date(date).getHours() - 2;
+  const dateTime = new Date(date).getHours() - 1;
   if (Number.isNaN(hoursInTime)) {
     return false;
   }
