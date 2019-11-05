@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -10,41 +9,45 @@ import { signUp } from '../../redux/session/sessionOperations';
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   email: Yup.string()
-    .email('Invalid email')
-    .required('Required'),
+    .email()
+    .required('Email is required'),
   password: Yup.string()
-    .min(6, 'Too short password!')
-    .max(16, 'Too long password!')
-    .required('Required'),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'Passwords must match',
-  ),
+    .min(6)
+    .max(16)
+    .required('Password is required'),
+  passwordConfirm: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('Please confirm your password'),
+  // consent: Yup.boolean()
+  //   .oneOf([true], 'Must Accept Privacy Policy')
+  consent: Yup.string()
+    .test('consent', 'Must Accept Privacy Policy', values => values === true)
+    .required('Must Accept Privacy Policy'),
 });
 
-const RegistrationPage = ({ onSignUp, history }) => (
+const RegistrationPage = ({ onSignUp }) => (
   <Formik
     initialValues={{
       email: '',
       password: '',
       passwordConfirm: '',
+      consent: '',
     }}
     onSubmit={(values, { setSubmitting }) => {
       setTimeout(() => {
-        const { email, password, passwordConfirm } = values;
-        onSignUp({ email, password, passwordConfirm });
+        const { email, password, passwordConfirm, consent } = values;
+        onSignUp({ email, password, passwordConfirm, consent });
         setSubmitting(false);
       }, 100);
     }}
     validationSchema={SIGNUP_SCHEMA}
   >
-    {props => <Registration {...props} history={history} />}
+    {props => <Registration {...props} />}
   </Formik>
 );
 
 RegistrationPage.propTypes = {
   onSignUp: PropTypes.func.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
 };
 
 const mapDispatchToProps = {

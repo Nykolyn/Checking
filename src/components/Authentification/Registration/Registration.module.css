@@ -4,6 +4,13 @@
   font-family: Montserrat;
 }
 
+.formWrapper {
+  padding: 4px;
+  padding-top: 44px;
+  display: block;
+  margin: 0 auto;
+}
+
 .imgWrapper {
   display: none;
 }
@@ -33,9 +40,11 @@
   .registrationSection {
     max-width: 400px;
   }
+
   .registrationWrapper {
     background-color: #f5f7fa;
   }
+
   .headerWrapper {
     width: 100%;
     justify-content: space-around;
