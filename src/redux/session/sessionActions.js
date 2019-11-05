@@ -83,3 +83,11 @@ export const refreshUserError = error => ({
   type: ActionTypes.REFRESH_USER_ERROR,
   payload: { error },
 });
+
+//
+// errorMsg
+//
+
+export const errorMsg = () => ({
+  type: ActionTypes.CLEAR_ERROR_MESSAGE,
+});
