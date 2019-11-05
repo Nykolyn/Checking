@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { Link } from 'react-router-dom';
 import style from './LogInForm.module.css';
 import FormButton from '../FormButton';
 import Header from '../../Header/Header';
-import { isAuthentificated } from '../../../redux/session/sessionSelectors';
 
 class LogIn extends Component {
-  static propTypes = {
-    authentificated: PropTypes.bool.isRequired,
-    history: ReactRouterPropTypes.history.isRequired,
-  };
-
-  componentDidUpdate() {
-    const { authentificated, history } = this.props;
-    if (authentificated) {
-      history.replace('/dashboard');
-    }
-  }
+  state = {};
 
   render() {
     const screenWidth = document.documentElement.clientWidth;
@@ -32,7 +19,7 @@ class LogIn extends Component {
       touched,
     } = this.props;
     return (
-      <div className={style.wrapLogin}>
+      <>
         {screenWidth < 768 && <Header />}
         <div className={style.loginContainer}>
           <div className={style.imgContainer} />
@@ -53,42 +40,47 @@ class LogIn extends Component {
                 <span className={style.sloganText}>Just check in.</span>
               </div>
 
-              <form className={style.formLogin} onSubmit={handleSubmit}>
-                <p className={style.textEmail}>
-                  E-mail<span className={style.star}>*</span>
-                </p>
-                <input
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="email"
-                  name="email"
-                  className={style.input}
-                  placeholder="your@email.com"
-                  autofocus="autofocus"
-                  required
-                />
+              <form
+                method="GET"
+                className={style.formLogin}
+                onSubmit={handleSubmit}
+              >
+                <label htmlFor="1">
+                  <p className={style.textEmail}>
+                    E-mail<span className={style.star}>*</span>
+                  </p>
+                  <input
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="email"
+                    name="email"
+                    className={style.input}
+                    placeholder="your@email.com"
+                    required
+                  />
+                </label>
                 {errors.email && touched.email && (
                   <div className={style.inputError}>{errors.email}</div>
                 )}
-                <p className={style.password}>
-                  <span className={style.textPassword}>
-                    Password<span className={style.star}>*</span>
-                  </span>
-                  <Link to="/forgot" className={style.linkForgot}>
-                    Forgot?
-                  </Link>
-                </p>
-                <input
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  type="password"
-                  name="password"
-                  className={style.input}
-                  placeholder="yourpassword"
-                  required
-                />
+
+                <label htmlFor="2">
+                  <p className={style.password}>
+                    <span className={style.textPassword}>
+                      Password<span className={style.star}>*</span>
+                    </span>
+                  </p>
+                  <input
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    type="password"
+                    name="password"
+                    className={style.input}
+                    placeholder="yourpassword"
+                    required
+                  />
+                </label>
                 {errors.password && touched.password && (
                   <div className={style.inputError}>{errors.password}</div>
                 )}
@@ -98,7 +90,7 @@ class LogIn extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
@@ -112,11 +104,4 @@ LogIn.propTypes = {
   touched: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-const mapStateToProps = state => ({
-  authentificated: isAuthentificated(state),
-});
-
-export default connect(
-  mapStateToProps,
-  null,
-)(LogIn);
+export default LogIn;

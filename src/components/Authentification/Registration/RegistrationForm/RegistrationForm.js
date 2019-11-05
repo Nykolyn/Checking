@@ -1,15 +1,12 @@
-/* eslint-disable */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import css from './RegistrationForm.module.css';
 import FormButton from '../../FormButton';
-import Header from '../../../Header/Header';
-import PropTypes from 'prop-types';
 
 class RegistrationForm extends Component {
   state = {};
 
   render() {
-    const screenWidth = document.documentElement.clientWidth;
     const {
       values,
       handleBlur,
@@ -36,10 +33,10 @@ class RegistrationForm extends Component {
             placeholder="your@email.com"
             required
           />
-          {errors.email && touched.email && (
-            <div className={css.inputError}>{errors.email}</div>
-          )}
         </label>
+        {errors.email && touched.email && (
+          <div className={css.inputError}>{errors.email}</div>
+        )}
         <label htmlFor="2" className={css.label}>
           <p className={css.labelTitle}>
             Password (6 + characters)
@@ -57,10 +54,10 @@ class RegistrationForm extends Component {
             autoComplete="false"
             required
           />
-          {errors.password && touched.password && (
-            <div className={css.inputError}>{errors.password}</div>
-          )}
         </label>
+        {errors.password && touched.password && (
+          <div className={css.inputError}>{errors.password}</div>
+        )}
         <label htmlFor="3" className={css.label}>
           <p className={css.labelTitle}>
             Password Confirmation <span className={css.RequireField}>*</span>
@@ -78,17 +75,25 @@ class RegistrationForm extends Component {
             autoComplete="false"
             required
           />
-          {errors.confirmPassword && touched.confirmPassword && (
-            <div className={css.inputError}>{errors.con}</div>
-          )}
         </label>
+        {errors.passwordConfirm && touched.passwordConfirm && (
+          <div className={css.inputError}>{errors.passwordConfirm}</div>
+        )}
         <label htmlFor="4" className={`${css.label} ${css.checkBoxLabel}`}>
-          <input type="checkbox" id="4" />
+          <input
+            type="checkbox"
+            name="consent"
+            id="4"
+            onChange={handleChange}
+          />
           <p className={css.labelTitle}>
-            Agreed with Private Policy{' '}
+            Agreed with Private Policy
             <span className={css.RequireField}>*</span>
           </p>
         </label>
+        {errors.consent && touched.consent && (
+          <div className={css.inputError}>{errors.consent}</div>
+        )}
         <FormButton type="submit">Registration</FormButton>
       </form>
     );

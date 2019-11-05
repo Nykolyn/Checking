@@ -4,19 +4,12 @@
   padding: 0;
 }
 
-.header {
-  padding: 20px 0 20px 0;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
-  margin-bottom: 40px;
-  text-align: center;
-  font-size: 15px;
-  max-width: 100%;
-}
-
 .loginContainer {
-  padding-bottom: 0;
+  padding: 4px;
+  width: 320px;
   margin: 0 auto;
+  font-family: Montserrat;
+  padding-top: 44px;
 }
 
 .loginTextWrap {
@@ -85,7 +78,8 @@
   border-style: solid;
   background-color: rgb(245, 247, 250);
   box-shadow: 0px -2px 2px 0px rgba(29, 29, 27, 0.1);
-  width: 320px;
+  width: 312px;
+  margin: 0 auto;
   height: 38px;
   margin-bottom: 24px;
 }
@@ -147,24 +141,24 @@ input:not(output):invalid {
   .loginContainer {
     width: 100%;
     height: 100vh;
+    background-color: #f5f7fa;
   }
 
   .formContainer {
-    max-width: 403px;
+    width: 400px;
     margin: 0 auto;
     background-color: #fff;
     padding: 48px 40px 48px 40px;
-    background-color: #ffffff;
   }
 
   .loginTextWrap {
     justify-content: space-around;
     margin: 0 auto;
-    max-width: 403px;
+    width: 400px;
     padding-bottom: 20px;
   }
 
-  .formWrap,
+  .formLogin,
   .mainText {
     display: flex;
     flex-direction: column;
@@ -179,10 +173,6 @@ input:not(output):invalid {
     margin: 0 auto;
   }
 
-  .header {
-    display: none;
-  }
-
   .imgContainer {
     background-color: #fff;
     height: 100vh;
@@ -195,6 +185,7 @@ input:not(output):invalid {
   }
 
   .loginContainer {
+    padding-top: 0;
     display: flex;
     flex-direction: row-reverse;
   }
