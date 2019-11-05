@@ -5,10 +5,11 @@
 }
 
 .loginContainer {
+  padding: 4px;
   width: 320px;
   margin: 0 auto;
   font-family: Montserrat;
-  padding-top: 40px;
+  padding-top: 44px;
 }
 
 .loginTextWrap {
@@ -77,7 +78,8 @@
   border-style: solid;
   background-color: rgb(245, 247, 250);
   box-shadow: 0px -2px 2px 0px rgba(29, 29, 27, 0.1);
-  width: 320px;
+  width: 312px;
+  margin: 0 auto;
   height: 38px;
   margin-bottom: 24px;
 }
