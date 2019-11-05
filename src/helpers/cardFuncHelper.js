@@ -92,7 +92,6 @@ export const dateFormatter = date => {
 export const timeTester = (date, time) => {
   const hoursInTime = Number(time.trim().slice(6, 8));
   const dateTime = new Date(date).getHours() - 1;
-  console.log('Hours in task: ', hoursInTime, 'Hours in date: ', dateTime);
   if (Number.isNaN(hoursInTime)) {
     return false;
   }
