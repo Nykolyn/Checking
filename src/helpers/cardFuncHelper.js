@@ -91,7 +91,7 @@ export const dateFormatter = date => {
 
 export const timeTester = (date, time) => {
   const hoursInTime = Number(time.trim().slice(6, 8));
-  const dateTime = new Date(date).getHours() - 1;
+  const dateTime = new Date(date).getHours();
   if (Number.isNaN(hoursInTime)) {
     return false;
   }
