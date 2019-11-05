@@ -10,15 +10,15 @@ const filteredData = array => {
   const none = array.filter(el => el.role === 'None').length;
 
   return {
-    labels: ['Partner', 'Learner', 'Dother / son', 'Co-worker', 'None'],
+    labels: ['Learner', 'Partner', 'Dother / son', 'Co-worker', 'None'],
     datasets: [
       {
-        data: [partner, learner, dotherSon, coWorker, none],
+        data: [learner, partner, dotherSon, coWorker, none],
         backgroundColor: [
-          '#c2c9de',
           '#fef9de',
-          '#d5ebff',
+          '#c2c9de',
           '#d3dcd6',
+          '#d5ebff',
           '#cdd0d9',
         ],
       },

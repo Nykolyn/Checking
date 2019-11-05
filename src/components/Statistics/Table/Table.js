@@ -28,15 +28,6 @@ const filteredData = (done, total) => {
 
   return [
     {
-      roles: 'Partner',
-      percentage: `${
-        isNaN(Math.round(role.partner / summ))
-          ? 0
-          : Math.round(role.partner / summ)
-      }%`,
-      goals: `${role.partner}/${total[0]}`,
-    },
-    {
       roles: 'Learner',
       percentage: `${
         isNaN(Math.round(role.learner / summ))
@@ -46,13 +37,13 @@ const filteredData = (done, total) => {
       goals: `${role.learner}/${total[1]}`,
     },
     {
-      roles: 'Daugther / Son',
+      roles: 'Partner',
       percentage: `${
-        isNaN(Math.round(role.dotherSon / summ))
+        isNaN(Math.round(role.partner / summ))
           ? 0
-          : Math.round(role.dotherSon / summ)
+          : Math.round(role.partner / summ)
       }%`,
-      goals: `${role.dotherSon}/${total[2]}`,
+      goals: `${role.partner}/${total[0]}`,
     },
     {
       roles: 'Co-worker',
@@ -62,6 +53,15 @@ const filteredData = (done, total) => {
           : Math.round(role.coWorker / summ)
       }%`,
       goals: `${role.coWorker}/${total[3]}`,
+    },
+    {
+      roles: 'Daugther / Son',
+      percentage: `${
+        isNaN(Math.round(role.dotherSon / summ))
+          ? 0
+          : Math.round(role.dotherSon / summ)
+      }%`,
+      goals: `${role.dotherSon}/${total[2]}`,
     },
     {
       roles: 'None',

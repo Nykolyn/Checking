@@ -41,6 +41,7 @@ const customStyles = {
   }),
   menuList: () => ({
     textAlign: 'center',
+
     // display: 'flex',
     // flexDirection: 'row',
   }),
@@ -48,17 +49,19 @@ const customStyles = {
     display: 'none',
   }),
   singleValue: () => ({
-    fontSize: 15,
+    fontSize: 26,
     fontWeight: 500,
     color: '#869096',
+    width: '50%',
   }),
   option: (base, state) => ({
     ...base,
     backgroundColor: 'transparent',
-    color: state.isSelected ? 'red' : '#869096',
+    color: '#869096',
     display: state.isSelected ? 'none' : null,
     padding: 4,
     fontWeight: 500,
+    fontSize: 15,
   }),
 };
 
@@ -87,7 +90,7 @@ class Selector extends Component {
     return (
       <Select
         // autoFocus
-        // defaultMenuIsOpen
+        defaultMenuIsOpen
         isSearchable={false}
         styles={customStyles}
         value={selectedOption}
