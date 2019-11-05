@@ -8,7 +8,6 @@ import BackButton from '../BackButton/BackButtonContainer';
 import roleFilter from '../../helpers/roleFilter';
 import Selector from '../Statistics/Select/Select';
 import periodFilter from '../../helpers/periodFIlter';
-import test from './test';
 
 class Statistics extends Component {
   state = {};
