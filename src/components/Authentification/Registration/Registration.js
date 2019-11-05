@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import RegistrationForm from './RegistrationForm/RegistrationFormContainer';
 import css from './Registration.module.css';
 import Header from '../../Header/Header';
@@ -9,6 +10,7 @@ class Registration extends Component {
 
   render() {
     const screenWidth = document.documentElement.clientWidth;
+
     return (
       <>
         {screenWidth < 768 && <Header />}
