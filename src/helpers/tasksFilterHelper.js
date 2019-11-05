@@ -5,12 +5,8 @@ export const sortTodayTomorrowTasks = arr => {
       (a, b) =>
         a.time.localeCompare(b.time) ||
         (a.time !== 'All Day' || b.time !== 'All Day'
-          ? a.time > b.time
-            ? -1
-            : 1
-          : a.priority > b.priority
-          ? 1
-          : -1) ||
+          ? a.time - b.time
+          : a.priority - b.priority) ||
         a.priority - b.priority,
     );
   }
@@ -24,13 +20,9 @@ export const sortNextAfterTasks = arr => {
       (a, b) =>
         a.date.localeCompare(b.date) ||
         (a.time !== 'All Day' || b.time !== 'All Day'
-          ? a.time > b.time
-            ? 1
-            : -1
-          : a.priority > b.priority
-          ? -1
-          : 1) ||
-        b.priority - a.priority,
+          ? a.time - b.time
+          : a.priority - b.priority) ||
+        a.priority - b.priority,
     );
   }
   return arr;
