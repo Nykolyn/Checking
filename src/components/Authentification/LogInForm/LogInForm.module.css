@@ -183,7 +183,7 @@ input:not(output):invalid {
     background-position: center;
     background-image: url('../../../assets/images/registration-img.png');
   }
-  
+
   .loginContainer {
     padding-top: 0;
     display: flex;
