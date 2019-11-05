@@ -23,7 +23,6 @@ class LogIn extends Component {
         {screenWidth < 768 && <Header />}
         <div className={style.loginContainer}>
           <div className={style.imgContainer} />
-
           <div className={style.textWrap}>
             <div className={style.loginTextWrap}>
               <h2 className={style.textLogin}>Log In</h2>
