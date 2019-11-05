@@ -67,7 +67,7 @@ const customStyles = {
 
 class Selector extends Component {
   state = {
-    selectedOption: { value: 'week', label: 'Week' },
+    selectedOption: { value: 'total', label: 'Total' },
   };
 
   componentDidMount() {
@@ -90,7 +90,7 @@ class Selector extends Component {
     return (
       <Select
         // autoFocus
-        defaultMenuIsOpen
+        // defaultMenuIsOpen
         isSearchable={false}
         styles={customStyles}
         value={selectedOption}
