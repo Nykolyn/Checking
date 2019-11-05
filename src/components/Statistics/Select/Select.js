@@ -22,7 +22,6 @@ const customStyles = {
     flexDirection: 'column',
   }),
   container: base => ({
-    // ...base,
     fontSize: 20,
     position: 'absolute',
     width: '25%',
@@ -33,17 +32,11 @@ const customStyles = {
     transform: 'translate(-50%,-3%)',
   }),
   menu: base => ({
-    // ...base,
     border: 0,
-    // hyphens: 'auto',
     marginTop: 0,
-    // wordWrap: 'break-word',
   }),
   menuList: () => ({
     textAlign: 'center',
-
-    // display: 'flex',
-    // flexDirection: 'row',
   }),
   indicatorSeparator: base => ({
     display: 'none',
@@ -67,7 +60,7 @@ const customStyles = {
 
 class Selector extends Component {
   state = {
-    selectedOption: { value: 'total', label: 'Total' },
+    selectedOption: { value: 'week', label: 'Week' },
   };
 
   componentDidMount() {
@@ -79,7 +72,6 @@ class Selector extends Component {
   handleChange = selectedOption => {
     const { status } = this.props;
     this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
 
     status(selectedOption.value);
   };
@@ -89,8 +81,6 @@ class Selector extends Component {
 
     return (
       <Select
-        // autoFocus
-        // defaultMenuIsOpen
         isSearchable={false}
         styles={customStyles}
         value={selectedOption}

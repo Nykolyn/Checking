@@ -84,6 +84,7 @@ class Statistics extends Component {
     const { tasks } = this.props;
     const { burnedOut, nextAfter, todayTomorrow, done } = tasks.tasks;
     const screenWidth = document.documentElement.clientWidth;
+    const { selected } = this.state;
 
     return (
       <>
