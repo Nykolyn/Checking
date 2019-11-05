@@ -28,7 +28,7 @@ const Header = ({
 }) => {
   const screenWidth = document.documentElement.clientWidth;
   return (
-    <header>
+    <header className={styles.header}>
       <nav>
         <ul className={styles.container}>
           {screenWidth > 767 && (
