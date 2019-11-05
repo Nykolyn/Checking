@@ -19,11 +19,13 @@ const Card = ({ task }) => (
   <section className={style.cardSection}>
     <header style={roleStyleSelect(task.role)}>
       <div className={style.cardHeader__wrap}>
-        {timeTester(task.date, task.time) && (
-          <p className={style.cardHeader__burn} style={{ opacity: '1' }}>
-            <Burn />
-          </p>
-        )}
+        {task.isComplete
+          ? null
+          : timeTester(task.date, task.time) && (
+              <p className={style.cardHeader__burn} style={{ opacity: '1' }}>
+                <Burn />
+              </p>
+            )}
         <p className={style.cardHeader__role}>{task.role}</p>
       </div>
       <p style={priorityStyleSelect(task.priority)}>{task.priority}</p>
