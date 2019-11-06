@@ -29,7 +29,11 @@ export const signUp = credentials => dispatch => {
   dispatch(signUpRequest());
   return axios
     .post('/auth/register', credentials)
-    .then(response => dispatch(signUpSuccesss(response.data.user)))
+    .then(response => {
+      if (response.data.error)
+        return dispatch(signUpError(response.data.error));
+      return dispatch(signUpSuccesss(response.data.user));
+    })
     .catch(error => dispatch(signUpError(error)));
 };
 
@@ -38,7 +42,11 @@ export const signIn = credentials => dispatch => {
 
   axios
     .post('/auth/login', credentials)
-    .then(response => dispatch(signInSuccesss(response.data.user)))
+    .then(response => {
+      if (response.data.error)
+        return dispatch(signInError(response.data.error));
+      return dispatch(signInSuccesss(response.data.user));
+    })
     .catch(error => dispatch(signInError(error)));
 };
 
