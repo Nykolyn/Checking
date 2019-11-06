@@ -7,6 +7,11 @@
   fill: #cdd0d9;
 }
 
+.EditBtnNoHover {
+  background-color: #e0e2e8;
+  fill: white;
+}
+
 .EditBtn:hover {
   background-color: #e0e2e8;
   fill: white;
