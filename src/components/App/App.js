@@ -40,7 +40,7 @@ class App extends Component {
     refreshUserData()
       .then(() => null)
       .catch(err => {
-        throw new Error(`error while bla bla ${err}`);
+        throw new Error(`error while refreshing user: ${err}`);
       })
       .finally(() => this.setState({ loading: false }));
   }

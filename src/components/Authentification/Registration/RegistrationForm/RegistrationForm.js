@@ -29,7 +29,7 @@ class RegistrationForm extends Component {
             value={values.email}
             name="email"
             type="email"
-            id="1"
+            id={errors.email && values.email !== '' && css.errorInput}
             className={css.formInput}
             placeholder="your@email.com"
             required
@@ -49,8 +49,8 @@ class RegistrationForm extends Component {
             value={values.password}
             name="password"
             type="password"
-            id="2"
             className={css.formInput}
+            id={errors.password && values.password !== '' && css.errorInput}
             placeholder="your password"
             autoComplete="false"
             required
@@ -70,14 +70,18 @@ class RegistrationForm extends Component {
             value={values.passwordConfirm}
             name="passwordConfirm"
             type="password"
-            id="3"
+            id={
+              errors.passwordConfirm &&
+              values.passwordConfirm !== '' &&
+              css.errorInput
+            }
             className={css.formInput}
             placeholder="confirmation"
             autoComplete="false"
             required
           />
         </label>
-        {errors.passwordConfirm && touched.passwordConfirm && (
+        {errors.passwordConfirm && values.passwordConfirm !== '' && (
           <div className={css.inputError}>{errors.passwordConfirm}</div>
         )}
         <FormButton type="submit">Registration</FormButton>

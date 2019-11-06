@@ -59,6 +59,7 @@ class LogIn extends Component {
                     type="email"
                     name="email"
                     className={style.input}
+                    id={errors.email && values.email !== '' && style.errorInput}
                     placeholder="your@email.com"
                     required
                   />
@@ -80,7 +81,12 @@ class LogIn extends Component {
                     type="password"
                     name="password"
                     className={style.input}
-                    placeholder="yourpassword"
+                    id={
+                      errors.password &&
+                      values.password !== '' &&
+                      style.errorInput
+                    }
+                    placeholder="your password"
                     required
                   />
                 </label>
@@ -107,8 +113,12 @@ const mSTP = state => ({
 
 const mDTP = {};
 
+LogIn.defaultProps = {
+  errorMessage: '',
+};
+
 LogIn.propTypes = {
-  errorMessage: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
   handleBlur: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,

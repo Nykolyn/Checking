@@ -105,10 +105,6 @@
   padding-bottom: 0;
 }
 
-.errorInput {
-  border: 1px solid red;
-}
-
 .inputError {
   color: red;
   margin-bottom: 15px;
@@ -131,7 +127,7 @@ input:focus:invalid {
   outline: none;
 }
 
-input:invalid {
+#errorInput {
   box-shadow: 0 0 5px 1px red;
 }
 
@@ -139,7 +135,7 @@ input:focus:valid {
   outline: none;
 }
 
-input:valid {
+input:valid:not(:placeholder-shown) {
   box-shadow: 0 0 5px 1px green;
 }
 /* input:invalid:not(:placeholder-shown) {
@@ -150,7 +146,7 @@ input:valid:not(:placeholder-shown) {
   border-color: green;
 }
 
-input:required:placeholder-shown {
+#errorInput {
   border: 1px solid red;
 }
 

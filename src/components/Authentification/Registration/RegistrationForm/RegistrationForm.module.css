@@ -35,6 +35,10 @@
   color: #f4664f;
 }
 
+/* #errorInput {
+  border: 1px solid red;
+} */
+
 .labelTitle {
   margin: 0;
   font-size: 14px;
@@ -78,16 +82,16 @@ input:focus:invalid {
   outline: none;
 }
 
-input:invalid {
-  box-shadow: 0 0 5px 1px red;
-}
-
 input:focus:valid {
-  outline: none;
+  box-shadow: 0 0 5px 1px green;
 }
 
 input:valid {
   box-shadow: 0 0 5px 1px green;
+}
+
+#errorInput {
+  box-shadow: 0 0 5px 1px red;
 }
 
 @media screen and (min-width: 768px) {
