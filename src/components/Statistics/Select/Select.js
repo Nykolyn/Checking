@@ -26,11 +26,10 @@ const customStyles = {
     textAlign: 'center',
     position: 'absolute',
     width: '25%',
-    height: '100%',
     backgroundColor: 'transparent',
     top: '50%',
     left: '50%',
-    transform: 'translate(-50%,-3%)',
+    transform: 'translate(-55%,-3%)',
   }),
   menu: base => ({
     border: 0,

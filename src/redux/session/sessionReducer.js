@@ -33,7 +33,7 @@ const error = (state = null, { type, payload }) => {
     case ActionTypes.SIGN_UP_ERROR:
     case ActionTypes.SIGN_IN_ERROR:
     case ActionTypes.REFRESH_USER_ERROR:
-      return payload.error.message;
+      return payload.error;
 
     case ActionTypes.SIGN_IN_SUCCESS:
     case ActionTypes.SIGN_UP_SUCCESS:
