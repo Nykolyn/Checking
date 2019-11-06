@@ -18,17 +18,18 @@ export default class DoneButton extends Component {
   handleClick = task => {
     const changedTask = { ...task, isComplete: true, date: new Date() };
     const { removeTask, updateTask } = this.props;
-    console.log('task to be done: ', task);
-    console.log('task changed to be done: ', changedTask);
-    updateTask(changedTask);
-    removeTask(task);
-    this.handleLoader();
+    // console.log('task to be done: ', task);
+    // console.log('task changed to be done: ', changedTask);
+    setTimeout(() => {
+      updateTask(changedTask);
+      removeTask(task);
+    }, 1000);
   };
 
   render() {
     const { isLoading } = this.state;
     const { inDoneTab, inBurnedOutTab, task } = this.props;
-    console.log('task from boHdan :', task);
+    // console.log('task from boHdan :', task);
     return (
       <>
         <Throttle time="1000" handler="onClick">

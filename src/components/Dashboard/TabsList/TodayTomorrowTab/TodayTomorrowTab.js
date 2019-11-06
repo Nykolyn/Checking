@@ -4,7 +4,6 @@ import { Element, scroller } from 'react-scroll';
 import { connect } from 'react-redux';
 import styles from './TodayTomorowTab.module.css';
 import CardList from '../../CardList/CardList';
-import { CSSTransition } from 'react-transition-group';
 import {
   burgerEvent,
   taskPopUpCreateIsOpen,
@@ -12,7 +11,6 @@ import {
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 import { sortTodayTomorrowTasks } from '../../../../helpers/tasksFilterHelper';
-import '../../../../stylesheet/animation/Fade.css';
 
 class TodayTomorrowTab extends Component {
   state = {
@@ -121,14 +119,7 @@ class TodayTomorrowTab extends Component {
             >
               Today
             </button>
-            <CSSTransition
-              in={isOpenToday}
-              timeout={500}
-              classNames="fade"
-              unmountOnExit
-            >
-              <CardList cardItems={sortTodayTasks} />
-            </CSSTransition>
+            {isOpenToday && <CardList cardItems={sortTodayTasks} />}
           </section>
         </Element>
 
@@ -149,14 +140,7 @@ class TodayTomorrowTab extends Component {
             >
               Tomorrow
             </button>
-            <CSSTransition
-              in={isOpenTomorrow}
-              timeout={500}
-              classNames="fade"
-              unmountOnExit
-            >
-              <CardList cardItems={sortTomorrowTasks} />
-            </CSSTransition>
+            {isOpenTomorrow && <CardList cardItems={sortTomorrowTasks} />}
           </section>
         </Element>
       </main>
