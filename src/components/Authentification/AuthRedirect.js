@@ -16,14 +16,19 @@ const authRedirect = ComposedComponent => {
 
     componentDidMount() {
       const { authentificated, history, error } = this.props;
+      const { location } = this.props;
       error();
       if (!authentificated) return;
 
+      if (location.state && location.state.from) {
+        history.replace(location.state.from);
+      }
       history.replace('/dashboard');
     }
 
     componentDidUpdate() {
       const { authentificated, location, history } = this.props;
+
       if (!authentificated) return;
       if (location.state && location.state.from) {
         history.replace(location.state.from);
