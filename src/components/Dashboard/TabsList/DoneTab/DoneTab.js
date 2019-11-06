@@ -9,7 +9,7 @@ import {
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getDoneTasks } from '../../../../redux/tasks/tasksSelectors';
 import styles from './DoneTab.module.css';
-
+import { emptyList } from '../emptyList';
 import { sortDoneTasks } from '../../../../helpers/tasksFilterHelper';
 
 class DoneTab extends Component {
@@ -48,6 +48,9 @@ class DoneTab extends Component {
         <Element name="done">
           <section className={styles.section}>
             <p className={styles.titleButton}>Done</p>
+            {doneTasks.length === 0 && (
+              <p style={emptyList}>Accomplished Tasks</p>
+            )}
             <CardList cardItems={sortTasks} />
           </section>
         </Element>

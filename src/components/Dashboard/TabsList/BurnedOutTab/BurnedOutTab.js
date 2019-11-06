@@ -10,6 +10,7 @@ import { getBurnedOutTasks } from '../../../../redux/tasks/tasksSelectors';
 import CardList from '../../CardList/CardList';
 import styles from './BurnedOutTab.module.css';
 import { sortBurnedOutTasks } from '../../../../helpers/tasksFilterHelper';
+import { emptyList } from '../emptyList';
 
 class BurnedOutTab extends Component {
   state = {
@@ -47,7 +48,9 @@ class BurnedOutTab extends Component {
         <Element name="burnedOut">
           <section className={styles.section}>
             <p className={styles.titleButton}>Burned Out</p>
-            {/* <CardList cardItems={burnedOutTasks} /> */}
+            {burnedOutTasks.length === 0 && (
+              <p style={emptyList}>No out dated Tasks</p>
+            )}
             <CardList cardItems={sortTasks} />
           </section>
         </Element>
