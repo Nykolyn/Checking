@@ -107,10 +107,39 @@
 
 .inputError {
   color: red;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   text-align: center;
   text-transform: uppercase;
   font-size: 10px;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  margin-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+#errorInput {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:focus:valid {
+  outline: none;
+}
+
+input:valid:not(:placeholder-shown) {
+  box-shadow: 0 0 5px 1px green;
+}
+/* input:invalid:not(:placeholder-shown) {
+  border-color: red;
 }
 
 input:valid:not(:placeholder-shown) {
@@ -120,6 +149,10 @@ input:valid:not(:placeholder-shown) {
 #errorInput {
   border: 1px solid red;
 }
+
+input:not(output):invalid {
+  border: none;
+} */
 
 @media screen and (min-width: 768px) {
   .wrapLogin {
@@ -157,14 +190,14 @@ input:valid:not(:placeholder-shown) {
 @media screen and (min-width: 1280px) {
   .textWrap {
     align-self: center;
-    width: 42%;
+    width: 40%;
     margin: 0 auto;
   }
 
   .imgContainer {
     background-color: #fff;
     height: 100vh;
-    width: 68%;
+    width: 60%;
     display: block;
     background-repeat: no-repeat;
     background-size: contain;

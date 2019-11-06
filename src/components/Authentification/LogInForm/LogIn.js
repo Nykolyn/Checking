@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import style from './LogInForm.module.css';
 import FormButton from '../FormButton';
 import Header from '../../Header/Header';
+import { getError } from '../../../redux/session/sessionSelectors';
 
 class LogIn extends Component {
   state = {};
@@ -11,6 +13,7 @@ class LogIn extends Component {
   render() {
     const screenWidth = document.documentElement.clientWidth;
     const {
+      errorMessage,
       values,
       handleBlur,
       handleChange,
@@ -23,6 +26,7 @@ class LogIn extends Component {
         {screenWidth < 768 && <Header />}
         <div className={style.loginContainer}>
           <div className={style.imgContainer} />
+
           <div className={style.textWrap}>
             <div className={style.loginTextWrap}>
               <h2 className={style.textLogin}>Log In</h2>
@@ -55,7 +59,7 @@ class LogIn extends Component {
                     type="email"
                     name="email"
                     className={style.input}
-                    id={errors.email && touched.email && style.errorInput}
+                    id={errors.email && values.email !== '' && style.errorInput}
                     placeholder="your@email.com"
                     required
                   />
@@ -77,7 +81,11 @@ class LogIn extends Component {
                     type="password"
                     name="password"
                     className={style.input}
-                    id={errors.password && touched.password && style.errorInput}
+                    id={
+                      errors.password &&
+                      values.password !== '' &&
+                      style.errorInput
+                    }
                     placeholder="your password"
                     required
                   />
@@ -87,6 +95,9 @@ class LogIn extends Component {
                 )}
 
                 <FormButton type="submit">Log In</FormButton>
+                {errorMessage && (
+                  <p className={style.error}>Invalid email or password</p>
+                )}
               </form>
             </div>
           </div>
@@ -96,7 +107,18 @@ class LogIn extends Component {
   }
 }
 
+const mSTP = state => ({
+  errorMessage: getError(state),
+});
+
+const mDTP = {};
+
+LogIn.defaultProps = {
+  errorMessage: '',
+};
+
 LogIn.propTypes = {
+  errorMessage: PropTypes.string,
   handleBlur: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -105,4 +127,7 @@ LogIn.propTypes = {
   touched: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default LogIn;
+export default connect(
+  mSTP,
+  mDTP,
+)(LogIn);

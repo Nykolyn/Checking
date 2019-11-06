@@ -8,6 +8,7 @@ class RegistrationForm extends Component {
 
   render() {
     const {
+      errorMessage,
       values,
       handleBlur,
       handleChange,
@@ -28,7 +29,7 @@ class RegistrationForm extends Component {
             value={values.email}
             name="email"
             type="email"
-            id={errors.email && touched.email && css.errorInput}
+            id={errors.email && values.email !== '' && css.errorInput}
             className={css.formInput}
             placeholder="your@email.com"
             required
@@ -49,7 +50,7 @@ class RegistrationForm extends Component {
             name="password"
             type="password"
             className={css.formInput}
-            id={errors.password && touched.password && css.errorInput}
+            id={errors.password && values.password !== '' && css.errorInput}
             placeholder="your password"
             autoComplete="false"
             required
@@ -71,7 +72,7 @@ class RegistrationForm extends Component {
             type="password"
             id={
               errors.passwordConfirm &&
-              touched.passwordConfirm &&
+              values.passwordConfirm !== '' &&
               css.errorInput
             }
             className={css.formInput}
@@ -80,16 +81,20 @@ class RegistrationForm extends Component {
             required
           />
         </label>
-        {errors.passwordConfirm && touched.passwordConfirm && (
+        {errors.passwordConfirm && values.passwordConfirm !== '' && (
           <div className={css.inputError}>{errors.passwordConfirm}</div>
         )}
         <FormButton type="submit">Registration</FormButton>
+        {errorMessage && (
+          <p className={css.error}>This user is already registered</p>
+        )}
       </form>
     );
   }
 }
 
 RegistrationForm.propTypes = {
+  errorMessage: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
