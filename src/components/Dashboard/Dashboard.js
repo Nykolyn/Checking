@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
+// import { CSSTransition } from 'react-transition-group';
 import TaskPopUp from '../TaskPopUp/TaskPopUpContainer';
 import TabsList from './TabsList/TabsList';
 import css from './Dashbard.module.css';
 import CreateTaskButton from '../CreateTaskButton/CreateTaskButtonContainer';
 import Header from '../Header/Header';
-import anim from '../../stylesheet/animation/SlideIn.module.css';
+// import anim from '../../stylesheet/animation/SlideIn.module.css';
 
 import { refreshUser } from '../../redux/session/sessionOperations';
 
@@ -48,9 +48,9 @@ class Dashboard extends Component {
                   >
                     {taskCreateOpen || taskEditOpen ? (
                       <aside className={css.createTaskModalWrapper}>
-                        <div className={anim.zoomInLeft}>
-                          <TaskPopUp />
-                        </div>
+                        {/* <div className={anim.zoomInLeft}> */}
+                        <TaskPopUp />
+                        {/* </div> */}
                       </aside>
                     ) : (
                       <>
@@ -75,14 +75,14 @@ class Dashboard extends Component {
                     >
                       {taskCreateOpen || taskEditOpen ? (
                         <div className={css.popUpWrapper}>
-                          <CSSTransition
+                          {/* <CSSTransition
                             in={taskCreateOpen || taskEditOpen}
                             timeout={500}
                             classNames="slide"
                             unmountOnExit
-                          >
-                            <TaskPopUp />
-                          </CSSTransition>
+                          > */}
+                          <TaskPopUp />
+                          {/* </CSSTransition> */}
                         </div>
                       ) : (
                         <div className={css.CreateTaskButtonWrapper}>
