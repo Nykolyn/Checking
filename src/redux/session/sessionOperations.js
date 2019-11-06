@@ -49,7 +49,9 @@ export const refreshUser = () => (dispatch, getState) => {
   setAuthToken(token);
 
   dispatch(refreshUserRequest());
-  axios
+  /* eslint-disable-next-line */
+
+  return axios
     .get('/tasks')
     .then(response => dispatch(refreshUserSuccess(response.data.tasks)))
     .catch(error => dispatch(refreshUserError(error)));

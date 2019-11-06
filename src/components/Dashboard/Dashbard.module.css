@@ -12,6 +12,7 @@
 }
 
 .createTaskModalWrapper {
+  transition: all 0.4s;
   width: 34%;
   z-index: 1;
   top: 0;
@@ -20,12 +21,13 @@
 
 .tabsListWrapper {
   width: 60%;
+  transition: all 0.4s;
 }
 
 .dashboard {
   display: flex;
 
-  transition: all 1s;
+  transition: all 0.4s;
   min-height: calc(100vh - 52px);
   background-color: #f5f7fa;
 }
@@ -39,6 +41,7 @@
 
 @media screen and (min-width: 980px) {
   .popUpDesktop {
+    transition: all 0.4s;
     /*
     Проблема с расположением кнопки, так как у всех разная пикселизация,
     кнопка начинает криво отображаться,
@@ -57,11 +60,16 @@
 
   .popUpWrapper {
     position: fixed;
+    top: 60px;
+    animation-name: fadeInDown;
+    animation-duration: 1s;
+    transition: width 0.4s;
     z-index: 1;
     width: 34%;
   }
 
   .createTaskModalWrapperOpen {
+    transition: all 0.4s;
     width: 34%;
     min-height: 100vh;
     background-color: #fff;
@@ -103,5 +111,21 @@
   .createTaskModalWrapper {
     position: static;
     width: 100%;
+  }
+}
+
+/* ANIMATION */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }

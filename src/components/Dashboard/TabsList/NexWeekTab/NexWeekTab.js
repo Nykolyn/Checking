@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { connect } from 'react-redux';
 import styles from './NexWeekTab.module.css';
+import { CSSTransition } from 'react-transition-group';
 import CardList from '../../CardList/CardList';
+import '../../../../stylesheet/animation/Fade.css';
 import {
   burgerEvent,
   taskPopUpCreateIsOpen,
@@ -113,7 +115,14 @@ class NexWeekTab extends Component {
             >
               Next 7 Days
             </button>
-            {isOpenNext && <CardList cardItems={sortNextTasks} />}
+            <CSSTransition
+              in={isOpenNext}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <CardList cardItems={sortNextTasks} />
+            </CSSTransition>
           </section>
         </Element>
 
@@ -134,8 +143,14 @@ class NexWeekTab extends Component {
             >
               After 7 Days
             </button>
-            {/* {isOpenAfter && <CardList cardItems={sortAfterTasks} />} */}
-            {isOpenAfter && <CardList cardItems={afterTasks} />}
+            <CSSTransition
+              in={isOpenAfter}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <CardList cardItems={afterTasks} />
+            </CSSTransition>
           </section>
         </Element>
       </main>
