@@ -79,21 +79,6 @@ class RegistrationForm extends Component {
         {errors.passwordConfirm && touched.passwordConfirm && (
           <div className={css.inputError}>{errors.passwordConfirm}</div>
         )}
-        <label htmlFor="4" className={`${css.label} ${css.checkBoxLabel}`}>
-          <input
-            type="checkbox"
-            name="consent"
-            id="4"
-            onChange={handleChange}
-          />
-          <p className={css.labelTitle}>
-            Agreed with Private Policy
-            <span className={css.RequireField}>*</span>
-          </p>
-        </label>
-        {errors.consent && touched.consent && (
-          <div className={css.inputError}>{errors.consent}</div>
-        )}
         <FormButton type="submit">Registration</FormButton>
       </form>
     );

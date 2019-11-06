@@ -18,11 +18,6 @@ const SIGNUP_SCHEMA = Yup.object().shape({
   passwordConfirm: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
     .required('Please confirm your password'),
-  // consent: Yup.boolean()
-  //   .oneOf([true], 'Must Accept Privacy Policy')
-  consent: Yup.string()
-    .test('consent', 'Must Accept Privacy Policy', values => values === true)
-    .required('Must Accept Privacy Policy'),
 });
 
 const RegistrationPage = ({ onSignUp }) => (
@@ -31,12 +26,11 @@ const RegistrationPage = ({ onSignUp }) => (
       email: '',
       password: '',
       passwordConfirm: '',
-      consent: '',
     }}
     onSubmit={(values, { setSubmitting }) => {
       setTimeout(() => {
-        const { email, password, passwordConfirm, consent } = values;
-        onSignUp({ email, password, passwordConfirm, consent });
+        const { email, password, passwordConfirm } = values;
+        onSignUp({ email, password, passwordConfirm });
         setSubmitting(false);
       }, 100);
     }}
