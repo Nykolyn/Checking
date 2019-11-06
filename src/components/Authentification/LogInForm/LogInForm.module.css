@@ -169,19 +169,19 @@ input:not(output):invalid {
 @media screen and (min-width: 1280px) {
   .textWrap {
     align-self: center;
-    width: 40%;
+    width: 42%;
     margin: 0 auto;
   }
 
   .imgContainer {
     background-color: #fff;
     height: 100vh;
-    width: 60%;
+    width: 68%;
+    display: block;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     background-image: url('../../../assets/images/registration-img.png');
-    display: block;
   }
 
   .loginContainer {
