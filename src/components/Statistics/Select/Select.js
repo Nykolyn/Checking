@@ -23,6 +23,7 @@ const customStyles = {
   }),
   container: base => ({
     fontSize: 20,
+    textAlign: 'center',
     position: 'absolute',
     width: '25%',
     height: '100%',
@@ -44,6 +45,7 @@ const customStyles = {
   singleValue: () => ({
     fontSize: 26,
     fontWeight: 500,
+    textAlign: 'center',
     color: '#869096',
     width: '50%',
   }),
