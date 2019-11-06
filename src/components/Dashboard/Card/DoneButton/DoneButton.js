@@ -11,47 +11,24 @@ export default class DoneButton extends Component {
     isLoading: false,
   };
 
-  static propTypes = {
-    removeTask: PropTypes.func.isRequired,
-    updateTask: PropTypes.func.isRequired,
-    inBurnedOutTab: PropTypes.bool.isRequired,
-    inDoneTab: PropTypes.bool.isRequired,
-    task: PropTypes.shape({
-      role: PropTypes.string,
-      time: PropTypes.string,
-      priority: PropTypes.number,
-      isComplete: PropTypes.bool,
-      _id: PropTypes.string,
-      date: PropTypes.string,
-      title: PropTypes.string,
-      description: PropTypes.string,
-      userId: PropTypes.string,
-      createdAt: PropTypes.string,
-      updatedAt: PropTypes.string,
-      __v: PropTypes.number,
-    }).isRequired,
-  };
-
   handleLoader = () => {
     return this.setState(prevState => ({ isLoading: !prevState.isLoading }));
   };
 
   handleClick = task => {
     const changedTask = { ...task, isComplete: true, date: new Date() };
-    const { removeTask, updateTask, refreshUserRequest } = this.props;
-    //
-    refreshUserRequest();
-    setTimeout(() => {
-      updateTask(changedTask);
-    }, 500);
-    setTimeout(() => {
-      removeTask(task);
-    }, 500);
+    const { removeTask, updateTask } = this.props;
+    console.log('task to be done: ', task);
+    console.log('task changed to be done: ', changedTask);
+    updateTask(changedTask);
+    removeTask(task);
+    this.handleLoader();
   };
 
   render() {
     const { isLoading } = this.state;
     const { inDoneTab, inBurnedOutTab, task } = this.props;
+    console.log('task from boHdan :', task);
     return (
       <>
         <Throttle time="1000" handler="onClick">
@@ -77,3 +54,24 @@ export default class DoneButton extends Component {
     );
   }
 }
+
+DoneButton.propTypes = {
+  removeTask: PropTypes.func.isRequired,
+  updateTask: PropTypes.func.isRequired,
+  inBurnedOutTab: PropTypes.bool.isRequired,
+  inDoneTab: PropTypes.bool.isRequired,
+  task: PropTypes.shape({
+    role: PropTypes.string,
+    time: PropTypes.string,
+    priority: PropTypes.number,
+    isComplete: PropTypes.bool,
+    _id: PropTypes.string,
+    date: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    userId: PropTypes.string,
+    createdAt: PropTypes.string,
+    updatedAt: PropTypes.string,
+    __v: PropTypes.number,
+  }).isRequired,
+};

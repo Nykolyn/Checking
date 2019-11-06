@@ -4,12 +4,10 @@ import {
   updateTask,
   removeTask,
 } from '../../../../redux/tasks/tasksOperations';
-import { refreshUserRequest } from '../../../../redux/session/sessionActions';
 
 const mDtP = dispatch => ({
   removeTask: task => dispatch(removeTask(task)),
   updateTask: task => dispatch(updateTask(task)),
-  refreshUserRequest: () => dispatch(refreshUserRequest()),
 });
 
 export default connect(
