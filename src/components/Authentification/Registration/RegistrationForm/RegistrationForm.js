@@ -28,7 +28,7 @@ class RegistrationForm extends Component {
             value={values.email}
             name="email"
             type="email"
-            id="1"
+            id={errors.email && touched.email && css.errorInput}
             className={css.formInput}
             placeholder="your@email.com"
             required
@@ -48,8 +48,8 @@ class RegistrationForm extends Component {
             value={values.password}
             name="password"
             type="password"
-            id="2"
             className={css.formInput}
+            id={errors.password && touched.password && css.errorInput}
             placeholder="your password"
             autoComplete="false"
             required
@@ -69,7 +69,11 @@ class RegistrationForm extends Component {
             value={values.passwordConfirm}
             name="passwordConfirm"
             type="password"
-            id="3"
+            id={
+              errors.passwordConfirm &&
+              touched.passwordConfirm &&
+              css.errorInput
+            }
             className={css.formInput}
             placeholder="confirmation"
             autoComplete="false"

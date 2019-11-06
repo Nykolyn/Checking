@@ -55,6 +55,7 @@ class LogIn extends Component {
                     type="email"
                     name="email"
                     className={style.input}
+                    id={errors.email && touched.email && style.errorInput}
                     placeholder="your@email.com"
                     required
                   />
@@ -76,7 +77,8 @@ class LogIn extends Component {
                     type="password"
                     name="password"
                     className={style.input}
-                    placeholder="yourpassword"
+                    id={errors.password && touched.password && style.errorInput}
+                    placeholder="your password"
                     required
                   />
                 </label>
