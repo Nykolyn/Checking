@@ -4,7 +4,7 @@
 
 .aside {
   width: 55px;
-  height: calc(100vh - 52px);
+  min-height: calc(100vh - 52px);
   box-shadow: 2px 3.464px 8px 0px rgba(29, 29, 27, 0.1);
 }
 
@@ -12,7 +12,7 @@
   width: 100%;
 }
 
-.inner {
+zz .inner {
   margin: 0 auto;
   width: 300px;
   padding-bottom: 20px;
@@ -45,7 +45,13 @@
 }
 
 @media only screen and (min-width: 470px) {
+
+  /* .outer {
+    max-width: 768px;
+  }
+*/
   .inner {
+    /* max-width: 470px; */
     width: 60%;
   }
 
@@ -65,20 +71,23 @@
 
   .outer {
     width: 100%;
-    height: calc(100vh-55px);
+    max-height: 80%;
   }
 
   .inner {
     max-width: 942px;
     width: 70%;
+    padding-top: 80px;
   }
 
   .chartWraper {
+    /* width: 364px; */
     margin: 0;
     width: 40%;
   }
 
   .tableWraper {
+    /* width: 470px; */
     width: 50%;
     margin: auto 0;
   }
