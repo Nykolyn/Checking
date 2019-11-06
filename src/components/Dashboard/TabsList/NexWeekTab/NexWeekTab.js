@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { Element, scroller } from 'react-scroll';
 import { connect } from 'react-redux';
 import styles from './NexWeekTab.module.css';
+import { CSSTransition } from 'react-transition-group';
 import CardList from '../../CardList/CardList';
+import '../../../../stylesheet/animation/Fade.css';
 import {
   burgerEvent,
   taskPopUpCreateIsOpen,
@@ -116,6 +118,14 @@ class NexWeekTab extends Component {
             </button>
             {nextTasks.length === 0 && <p style={emptyList}>Upcoming tasks </p>}
             {isOpenNext && <CardList cardItems={sortNextTasks} />}
+            <CSSTransition
+              in={isOpenNext}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <CardList cardItems={sortNextTasks} />
+            </CSSTransition>
           </section>
         </Element>
 
@@ -140,6 +150,14 @@ class NexWeekTab extends Component {
               <p style={emptyList}>Upcoming tasks </p>
             )}
             {isOpenAfter && <CardList cardItems={sortAfterTasks} />}
+            <CSSTransition
+              in={isOpenAfter}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <CardList cardItems={afterTasks} />
+            </CSSTransition>
           </section>
         </Element>
       </main>
