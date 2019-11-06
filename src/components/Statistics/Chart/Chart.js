@@ -31,9 +31,7 @@ const noData = () => {
     datasets: [
       {
         data: [100],
-        backgroundColor: [
-          '#fff8f1',
-        ],
+        backgroundColor: ['#fff8f1'],
       },
     ],
   };
@@ -45,7 +43,7 @@ const Chart = ({ data }) => {
   return (
     <div>
       <Doughnut
-        data={data.length? filteredData(data) : noData()}
+        data={data.length ? filteredData(data) : noData()}
         width={100}
         height={100}
         options={{
