@@ -25,7 +25,6 @@ const customStyles = {
     fontSize: 20,
     position: 'absolute',
     width: '25%',
-    height: '100%',
     backgroundColor: 'transparent',
     top: '50%',
     left: '50%',
