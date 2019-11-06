@@ -76,6 +76,7 @@ zz .inner {
   .inner {
     max-width: 942px;
     width: 70%;
+    margin: 0 auto;
     padding-top: 80px;
   }
 
