@@ -71,6 +71,10 @@
   display: none;
 }
 
+.react-date-picker__calendar--open {
+  bottom: 0;
+}
+
 .react-date-picker__calendar .react-calendar {
   border-width: thin;
 }

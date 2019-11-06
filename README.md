@@ -1,4 +1,4 @@
-РАБОТА З “GIT” GitHub:
+РАБОТА C “GIT” GitHub:
 
 1. Клонируете себе dev : git clone -b dev
    https://github.com/Nykolyn/Checking.git
