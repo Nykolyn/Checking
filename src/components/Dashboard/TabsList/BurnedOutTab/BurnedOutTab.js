@@ -49,7 +49,7 @@ class BurnedOutTab extends Component {
           <section className={styles.section}>
             <p className={styles.titleButton}>Burned Out</p>
             {burnedOutTasks.length === 0 && (
-              <p style={emptyList}>Burned out Tasks</p>
+              <p style={emptyList}>No out dated Tasks</p>
             )}
             <CardList cardItems={sortTasks} />
           </section>

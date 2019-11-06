@@ -122,7 +122,7 @@ class TodayTomorrowTab extends Component {
                 Today
               </button>
               {todayTasks.length === 0 && (
-                <p style={emptyList}>No tasks for Today.</p>
+                <p style={emptyList}>No Tasks for Today.</p>
               )}
               {isOpenToday && <CardList cardItems={sortTodayTasks} />}
             </section>
@@ -146,7 +146,7 @@ class TodayTomorrowTab extends Component {
                 Tomorrow
               </button>
               {tomorrowTasks.length === 0 && (
-                <p style={emptyList}> No tasks for Tomorrow. </p>
+                <p style={emptyList}> No Tasks for Tomorrow. </p>
               )}
               {isOpenTomorrow && <CardList cardItems={sortTomorrowTasks} />}
             </section>
