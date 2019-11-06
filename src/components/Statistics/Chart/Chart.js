@@ -25,13 +25,25 @@ const filteredData = array => {
   };
 };
 
+const noData = () => {
+  return {
+    labels: ['No tasks'],
+    datasets: [
+      {
+        data: [100],
+        backgroundColor: ['#fff8f1'],
+      },
+    ],
+  };
+};
+
 /* eslint-disable */
 
 const Chart = ({ data }) => {
   return (
     <div>
       <Doughnut
-        data={filteredData(data)}
+        data={data.length ? filteredData(data) : noData()}
         width={100}
         height={100}
         options={{
