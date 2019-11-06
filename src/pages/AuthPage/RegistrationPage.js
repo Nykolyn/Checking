@@ -10,12 +10,15 @@ import { signUp } from '../../redux/session/sessionOperations';
 const SIGNUP_SCHEMA = Yup.object().shape({
   email: Yup.string()
     .email()
+    .label('email')
     .required('Email is required'),
   password: Yup.string()
-    .min(6)
-    .max(16)
+    .min(6, 'Seems a bit short...')
+    .max(16, 'We prefer insecure system, try a shorter password.')
+    .label('password')
     .required('Password is required'),
   passwordConfirm: Yup.string()
+    .label('passwordConfirm')
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
     .required('Please confirm your password'),
 });

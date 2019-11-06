@@ -8,6 +8,7 @@ class RegistrationForm extends Component {
 
   render() {
     const {
+      errorMessage,
       values,
       handleBlur,
       handleChange,
@@ -80,12 +81,16 @@ class RegistrationForm extends Component {
           <div className={css.inputError}>{errors.passwordConfirm}</div>
         )}
         <FormButton type="submit">Registration</FormButton>
+        {errorMessage && (
+          <p className={css.error}>This user is already registered</p>
+        )}
       </form>
     );
   }
 }
 
 RegistrationForm.propTypes = {
+  errorMessage: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
