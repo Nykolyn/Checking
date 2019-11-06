@@ -33,9 +33,11 @@ export const sortBurnedOutTasks = arr => {
   if (arr.length >= 0) {
     arr.sort(
       (a, b) =>
-        b.date.localeCompare(a.date) ||
-        b.time - a.time ||
-        b.priority - a.priority,
+        a.time.localeCompare(b.time) ||
+        (a.time !== 'All Day' || b.time !== 'All Day'
+          ? a.time - b.time
+          : a.priority - b.priority) ||
+        a.priority - b.priority,
     );
   }
   return arr;
