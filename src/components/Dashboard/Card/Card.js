@@ -21,7 +21,11 @@ const Card = ({ task }) => (
       <div className={style.cardHeader__wrap}>
         {task.isComplete
           ? null
-          : timeTester(task.date, task.time) && (
+          : timeTester(
+              task.date,
+              task.time,
+              defineDispatcher(task) === taskTypes.BURNED,
+            ) && (
               <p className={style.cardHeader__burn} style={{ opacity: '1' }}>
                 <Burn />
               </p>

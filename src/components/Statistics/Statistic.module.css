@@ -45,6 +45,10 @@
 }
 
 @media only screen and (min-width: 470px) {
+  /* .outer {
+    max-width: 768px;
+  }
+*/
   .inner {
     width: 60%;
   }

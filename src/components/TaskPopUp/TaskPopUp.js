@@ -136,7 +136,6 @@ export default class TaskPopUp extends Component {
         removeTask(taskInEditMode);
       updateTask(taskToAdd);
       taskPopUpEditClose();
-      // taskPopUpCreateClose();
       removeTaskFromEditMode(taskInEditMode);
       this.reset();
       return;

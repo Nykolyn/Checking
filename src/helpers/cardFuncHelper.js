@@ -89,14 +89,19 @@ export const dateFormatter = date => {
   return String(dateNow).slice(4, isYearAdd);
 };
 
-export const timeTester = (date, time) => {
+export const timeTester = (date, time, inBurn) => {
   const hoursInTime = Number(time.trim().slice(6, 8));
-  const dateTime = new Date(date).getHours() - 1;
+  const dateTime = new Date(date).getHours();
+
+  if (inBurn) return true;
+
   if (Number.isNaN(hoursInTime)) {
     return false;
   }
+
   if (dateTime >= hoursInTime) {
     return true;
   }
+
   return false;
 };
