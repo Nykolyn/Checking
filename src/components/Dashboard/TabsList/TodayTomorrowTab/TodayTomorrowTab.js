@@ -11,6 +11,7 @@ import {
 } from '../../../../redux/componentController/controllerSelectrors';
 import { getTodayTomorrowTasks } from '../../../../redux/tasks/tasksSelectors';
 import { sortTodayTomorrowTasks } from '../../../../helpers/tasksFilterHelper';
+import { emptyList } from '../emptyList';
 
 class TodayTomorrowTab extends Component {
   state = {
@@ -94,56 +95,64 @@ class TodayTomorrowTab extends Component {
     const sortTodayTasks = sortTodayTomorrowTasks(todayTasks);
     const sortTomorrowTasks = sortTodayTomorrowTasks(tomorrowTasks);
     return (
-      <main
-        className={
-          taskPopUpCreateIsOpen || taskPopUpEditIsOpen
-            ? [styles.containerOpen]
-            : [styles.container]
-        }
-      >
-        <Element name="today">
-          <section className={styles.section}>
-            <button
-              type="button"
-              onClick={this.handleToggleToday}
-              // eslint-disable-next-line react/jsx-no-duplicate-props
-              className={
-                isOpenToday
-                  ? [styles.titleButton, styles.titleToday].join(' ')
-                  : [
-                      styles.titleButton,
-                      styles.dropDoun,
-                      styles.titleToday,
-                    ].join(' ')
-              }
-            >
-              Today
-            </button>
-            {isOpenToday && <CardList cardItems={sortTodayTasks} />}
-          </section>
-        </Element>
+      <>
+        <main
+          className={
+            taskPopUpCreateIsOpen || taskPopUpEditIsOpen
+              ? [styles.containerOpen]
+              : [styles.container]
+          }
+        >
+          <Element name="today">
+            <section className={styles.section}>
+              <button
+                type="button"
+                onClick={this.handleToggleToday}
+                // eslint-disable-next-line react/jsx-no-duplicate-props
+                className={
+                  isOpenToday
+                    ? [styles.titleButton, styles.titleToday].join(' ')
+                    : [
+                        styles.titleButton,
+                        styles.dropDoun,
+                        styles.titleToday,
+                      ].join(' ')
+                }
+              >
+                Today
+              </button>
+              {todayTasks.length === 0 && (
+                <p style={emptyList}>No tasks for Today.</p>
+              )}
+              {isOpenToday && <CardList cardItems={sortTodayTasks} />}
+            </section>
+          </Element>
 
-        <Element name="tomorrow">
-          <section className={styles.section}>
-            <button
-              type="button"
-              onClick={this.handleToggleTomorrow}
-              className={
-                isOpenTomorrow
-                  ? [styles.titleButton, styles.titleTomorrow].join(' ')
-                  : [
-                      styles.titleButton,
-                      styles.dropDoun,
-                      styles.titleTomorrow,
-                    ].join(' ')
-              }
-            >
-              Tomorrow
-            </button>
-            {isOpenTomorrow && <CardList cardItems={sortTomorrowTasks} />}
-          </section>
-        </Element>
-      </main>
+          <Element name="tomorrow">
+            <section className={styles.section}>
+              <button
+                type="button"
+                onClick={this.handleToggleTomorrow}
+                className={
+                  isOpenTomorrow
+                    ? [styles.titleButton, styles.titleTomorrow].join(' ')
+                    : [
+                        styles.titleButton,
+                        styles.dropDoun,
+                        styles.titleTomorrow,
+                      ].join(' ')
+                }
+              >
+                Tomorrow
+              </button>
+              {tomorrowTasks.length === 0 && (
+                <p style={emptyList}> No tasks for Tomorrow. </p>
+              )}
+              {isOpenTomorrow && <CardList cardItems={sortTomorrowTasks} />}
+            </section>
+          </Element>
+        </main>
+      </>
     );
   }
 }
