@@ -193,8 +193,8 @@ export default class TaskPopUp extends Component {
             </button>
           </div>
         ) : (
-              <h3 className={styles.createTaskTitle}>Edit Task</h3>
-            )}
+          <h3 className={styles.createTaskTitle}>Edit Task</h3>
+        )}
         <div className={styles.helperDiv}>
           <RoleSelect
             value={role}
