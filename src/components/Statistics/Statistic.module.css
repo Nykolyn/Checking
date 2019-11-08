@@ -12,7 +12,7 @@
   width: 100%;
 }
 
-zz .inner {
+.inner {
   margin: 0 auto;
   width: 300px;
   padding-bottom: 20px;
@@ -45,6 +45,7 @@ zz .inner {
 }
 
 @media only screen and (min-width: 470px) {
+
   /* .outer {
     max-width: 768px;
   }
@@ -76,7 +77,7 @@ zz .inner {
   .inner {
     max-width: 942px;
     width: 70%;
-    padding-top: 80px;
+    padding-top: 40px;
   }
 
   .chartWraper {
