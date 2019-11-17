@@ -135,9 +135,9 @@ input:focus:valid {
   outline: none;
 }
 
-input:valid:not(:placeholder-shown) {
+/* input:valid:not(:placeholder-shown) {
   box-shadow: 0 0 5px 1px green;
-}
+} */
 /* input:invalid:not(:placeholder-shown) {
   border-color: red;
 }
